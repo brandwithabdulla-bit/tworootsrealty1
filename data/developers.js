@@ -1,0 +1,3 @@
+import {images} from './images.js';
+export const slugify = name => name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+export const developers = ['Emaar','Damac','Sobha','Ellington','Dubai Holdings','Omniyat','Beyond','Dubai South','Leos','Object1','Marquis','Imtiaz','Samana','Binghatti','Azizi'].map((name,i)=>({id:`dev-${i+1}`,name,slug:slugify(name),image:[images.architecture,images.villa,images.apartment,images.community][i%4],logo:null,logoDark:null,logoLight:null,description:`Explore the illustrative ${name} collection, with connected projects and communities to help shape your shortlist.`,demo:true}));

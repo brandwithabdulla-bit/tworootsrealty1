@@ -1,0 +1,1 @@
+export const testimonials=[{id:'pending-1',quote:'Client testimonial will be added here.',name:null,approved:false},{id:'pending-2',quote:'Client testimonial will be added here.',name:null,approved:false}];
