@@ -1,0 +1,584 @@
+/* ==========================================================================
+   Two Roots Realty — Glassmorphism Header & Navigation
+   ========================================================================== */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(8, 18, 30, 0.22);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid rgba(244, 245, 240, 0.12);
+  z-index: 100;
+  transition: background 0.4s ease, border-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+  padding: 1.25rem 0;
+  color: var(--white);
+}
+
+.scrolled {
+  padding: 0.85rem 0;
+  background: rgba(8, 18, 30, 0.78);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border-bottom: 1px solid rgba(244, 245, 240, 0.15);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+}
+
+.transparent {
+  background: rgba(8, 18, 30, 0.18);
+  border-bottom-color: rgba(244, 245, 240, 0.12);
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+}
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  z-index: 101;
+  transition: opacity 0.25s ease;
+}
+
+.logoWrapper:hover {
+  opacity: 0.9;
+}
+
+.logoImage {
+  height: auto;
+  width: 175px;
+  object-fit: contain;
+}
+
+.desktopLinks {
+  display: none;
+}
+
+.desktopActions {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .desktopLinks {
+    display: flex;
+    gap: 2.2rem;
+    align-items: center;
+  }
+  
+  .desktopActions {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+}
+
+.navLink {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 500;
+  position: relative;
+  padding: 0.5rem 0;
+  color: rgba(244, 245, 240, 0.92);
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.navLink:hover {
+  color: var(--warm-sand);
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background-color: var(--warm-sand);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+/* ==========================================================================
+   Glassmorphism Standard Dropdown (About, Media)
+   ========================================================================== */
+
+.dropdown {
+  position: relative;
+  padding-bottom: 20px;
+  margin-bottom: -20px; 
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  padding: 0.75rem;
+  border-radius: 16px;
+  background: rgba(8, 18, 30, 0.88);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  border: 1px solid rgba(244, 245, 240, 0.18);
+  box-shadow: 
+    0 24px 50px rgba(0, 0, 0, 0.55), 
+    0 8px 20px rgba(0, 0, 0, 0.3), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px) scale(0.98);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  pointer-events: none;
+}
+
+.dropdownOpen .dropdownMenu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(4px) scale(1);
+}
+
+.dropdownMenu a {
+  padding: 0.65rem 1rem;
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: rgba(244, 245, 240, 0.9);
+  border-radius: 8px;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+}
+
+.dropdownMenu a:hover {
+  background: rgba(244, 245, 240, 0.12);
+  color: var(--warm-sand);
+  transform: translateX(4px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* ==========================================================================
+   Glassmorphism Mega Menu (Projects)
+   ========================================================================== */
+
+.megaMenuTrigger {
+  position: relative;
+  padding-bottom: 20px;
+  margin-bottom: -20px;
+}
+
+.megaMenu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(14px) scale(0.98);
+  min-width: 780px;
+  padding: 2.2rem 2.5rem;
+  border-radius: 20px;
+  background: rgba(8, 18, 30, 0.88);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  border: 1px solid rgba(244, 245, 240, 0.2);
+  box-shadow: 
+    0 30px 70px rgba(0, 0, 0, 0.6), 
+    0 10px 25px rgba(0, 0, 0, 0.35), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 0 30px rgba(255, 255, 255, 0.02);
+  opacity: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.25rem;
+  z-index: 100;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.megaMenuOpen .megaMenu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(6px) scale(1);
+}
+
+.megaMenuSection {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.megaMenuSection:not(:last-child) {
+  padding-right: 1.5rem;
+  border-right: 1px solid rgba(244, 245, 240, 0.1);
+}
+
+.megaMenuSection h4 {
+  font-family: var(--font-secondary);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--warm-sand);
+  margin-bottom: 1.1rem;
+  border-bottom: 1px solid rgba(224, 204, 181, 0.22);
+  padding-bottom: 0.55rem;
+  letter-spacing: 0.04em;
+}
+
+.megaMenuSection a {
+  padding: 0.55rem 0.85rem;
+  margin: 2px 0;
+  font-size: 0.86rem;
+  font-weight: 400;
+  color: rgba(244, 245, 240, 0.82);
+  border-radius: 8px;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+}
+
+.megaMenuSection a:hover {
+  background: rgba(244, 245, 240, 0.1);
+  color: #FFFFFF;
+  padding-left: 1.1rem;
+  border-left: 2.5px solid var(--warm-sand);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* ==========================================================================
+   Action Buttons
+   ========================================================================== */
+
+.primaryBtn {
+  background-color: var(--warm-sand);
+  color: var(--midnight-navy);
+  padding: 10px 24px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid var(--warm-sand);
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(224, 204, 181, 0.25);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.primaryBtn:hover {
+  background-color: transparent;
+  color: var(--warm-sand);
+  border-color: var(--warm-sand);
+  box-shadow: 0 6px 20px rgba(224, 204, 181, 0.15);
+  transform: translateY(-1px);
+}
+
+.transparent .primaryBtn {
+  background-color: var(--warm-sand);
+  color: var(--midnight-navy);
+  border-color: var(--warm-sand);
+}
+
+.transparent .primaryBtn:hover {
+  background-color: transparent;
+  color: var(--warm-sand);
+}
+
+.btnArrow {
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 0.95em;
+  line-height: 1;
+  transition: transform 0.22s ease;
+}
+
+.primaryBtn:hover .btnArrow,
+.mobilePrimaryBtn:hover .btnArrow,
+.submitBtn:hover .btnArrow {
+  transform: translate(2px, -2px);
+}
+
+/* ==========================================================================
+   Mobile Toggle & Glass Menu
+   ========================================================================== */
+
+.mobileToggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  background: rgba(244, 245, 240, 0.1);
+  border: 1px solid rgba(244, 245, 240, 0.18);
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 102;
+  color: var(--white);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background 0.2s;
+}
+
+.mobileToggle:hover {
+  background: rgba(244, 245, 240, 0.18);
+}
+
+@media (min-width: 1024px) {
+  .mobileToggle {
+    display: none;
+  }
+}
+
+.bar {
+  width: 22px;
+  height: 2px;
+  background-color: currentColor;
+  margin: 3px 0;
+  transition: 0.35s ease;
+  border-radius: 2px;
+}
+
+.barOpen1 {
+  transform: rotate(-45deg) translate(-5px, 5px);
+}
+
+.barOpen2 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 420px;
+  height: 100vh;
+  background: rgba(8, 18, 30, 0.88);
+  backdrop-filter: blur(30px) saturate(190%);
+  -webkit-backdrop-filter: blur(30px) saturate(190%);
+  border-left: 1px solid rgba(244, 245, 240, 0.16);
+  box-shadow: -15px 0 45px rgba(0, 0, 0, 0.55);
+  color: var(--white);
+  z-index: 100;
+  transition: right 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  padding: 90px 2rem 2.5rem;
+  overflow-y: auto;
+}
+
+.mobileMenuOpen {
+  right: 0;
+}
+
+.mobileLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobileLinks a, .mobileMenuTrigger {
+  font-size: 1.45rem;
+  font-family: var(--font-secondary);
+  color: var(--white);
+  transition: color 0.25s;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  outline: none;
+}
+
+.mobileLinks a:hover, .mobileMenuTrigger:hover {
+  color: var(--warm-sand);
+}
+
+.mobileSubmenu {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-left: 1.25rem;
+  padding-bottom: 1rem;
+  padding-top: 0.75rem;
+  margin-top: -0.25rem;
+  margin-bottom: 0.5rem;
+  border-left: 1px solid rgba(224, 204, 181, 0.25);
+}
+
+.mobileSubmenu a {
+  font-size: 1.05rem;
+  font-family: inherit;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.mobileSubmenu a:hover {
+  color: var(--warm-sand);
+}
+
+.caretOpen {
+  transform: rotate(180deg);
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.mobilePrimaryBtn {
+  background-color: var(--warm-sand);
+  color: var(--midnight-navy);
+  padding: 1.1rem;
+  border: none;
+  width: 100%;
+  border-radius: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  font-size: 0.82rem;
+  margin-top: 2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(224, 204, 181, 0.25);
+  transition: background 0.3s;
+}
+
+.mobilePrimaryBtn:hover {
+  background-color: #f0deca;
+}
+
+/* ==========================================================================
+   Glassmorphism Callback Modal
+   ========================================================================== */
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(8, 18, 30, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  padding: 1rem;
+}
+
+.modalContent {
+  background: rgba(8, 18, 30, 0.88);
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  border: 1px solid rgba(244, 245, 240, 0.22);
+  box-shadow: 
+    0 30px 70px rgba(0, 0, 0, 0.6), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  padding: 3.2rem 2.8rem;
+  width: 100%;
+  max-width: 480px;
+  border-radius: 18px;
+  position: relative;
+  text-align: center;
+  color: var(--white);
+}
+
+.closeBtn {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.closeBtn:hover {
+  background: var(--warm-sand);
+  color: var(--midnight-navy);
+  transform: scale(1.08);
+}
+
+.modalContent h3 {
+  font-size: 2rem;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+
+.modalContent p {
+  font-size: 0.92rem;
+  color: rgba(244, 245, 240, 0.72);
+  margin-bottom: 2.2rem;
+}
+
+.callbackForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.callbackForm input,
+.callbackForm select {
+  padding: 0.95rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--white);
+  background-color: rgba(255, 255, 255, 0.07);
+  outline: none;
+  transition: border-color 0.25s, background-color 0.25s;
+}
+
+.callbackForm select option {
+  background-color: var(--midnight-navy);
+  color: var(--white);
+}
+
+.callbackForm input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.callbackForm input:focus,
+.callbackForm select:focus {
+  border-color: var(--warm-sand);
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.submitBtn {
+  background-color: var(--warm-sand);
+  color: var(--midnight-navy);
+  padding: 1.05rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.82rem;
+  cursor: pointer;
+  margin-top: 0.8rem;
+  box-shadow: 0 4px 18px rgba(224, 204, 181, 0.25);
+  transition: all 0.3s ease;
+}
+
+.submitBtn:hover {
+  background-color: #f2e2d0;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(224, 204, 181, 0.35);
+}

@@ -1,0 +1,263 @@
+.gallerySection {
+  padding-top: 3rem;
+  padding-bottom: 6rem;
+}
+
+.filterTabs {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 3.5rem;
+}
+
+.filterBtn {
+  background: rgba(15, 38, 69, 0.08);
+  border: 1px solid rgba(15, 38, 69, 0.15);
+  color: var(--midnight-navy);
+  padding: 0.65rem 1.4rem;
+  border-radius: 30px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.filterBtn:hover {
+  background: rgba(15, 38, 69, 0.15);
+  border-color: var(--midnight-navy);
+  transform: translateY(-1px);
+}
+
+.filterBtnActive {
+  background: var(--midnight-navy);
+  color: var(--white);
+  border-color: var(--midnight-navy);
+  box-shadow: 0 4px 15px rgba(8, 18, 30, 0.2);
+}
+
+/* Uniform, fully-filled grid with no half-card gaps */
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .galleryGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .galleryGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+  }
+}
+
+.galleryCard {
+  cursor: pointer;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #08121E;
+  border: 1px solid rgba(244, 245, 240, 0.14);
+  box-shadow: 0 10px 30px rgba(8, 18, 30, 0.14);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.galleryCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(8, 18, 30, 0.32);
+  border-color: rgba(224, 204, 181, 0.45);
+}
+
+/* 100% full-bleed image container with unified aspect ratio */
+.imageInner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #08121E;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.galleryCard:hover .image {
+  transform: scale(1.08);
+}
+
+/* Clean glassy hover state without any text or titles */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 18, 30, 0.32);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.galleryCard:hover .overlay {
+  opacity: 1;
+}
+
+.zoomIcon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(224, 204, 181, 0.92);
+  color: var(--midnight-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  transform: scale(0.85);
+  transition: transform 0.25s ease;
+}
+
+.galleryCard:hover .zoomIcon {
+  transform: scale(1);
+}
+
+/* Gallery CTA Card */
+.galleryCta {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.ctaGlass {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(15, 38, 69, 0.88) 0%, rgba(8, 18, 30, 0.96) 100%);
+  border: 1px solid rgba(244, 245, 240, 0.2);
+  border-radius: 20px;
+  padding: 3.5rem 2.5rem;
+  color: var(--white);
+  box-shadow: 0 20px 45px rgba(8, 18, 30, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.ctaGlass h2 {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-family: var(--font-secondary);
+  color: var(--white);
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto 0.85rem;
+}
+
+.ctaGlass p {
+  color: rgba(244, 245, 240, 0.8);
+  max-width: 580px;
+  text-align: center;
+  margin: 0 auto 2.2rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.ctaActions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Lightbox Modal */
+.lightboxOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 18, 30, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+}
+
+.lightboxContent {
+  position: relative;
+  background: rgba(8, 18, 30, 0.95);
+  border: 1px solid rgba(244, 245, 240, 0.25);
+  border-radius: 20px;
+  max-width: 900px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.lightboxClose {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  background: rgba(8, 18, 30, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.lightboxClose:hover {
+  background: var(--warm-sand);
+  color: var(--midnight-navy);
+  transform: scale(1.1);
+}
+
+.lightboxImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 65vh;
+  min-height: 380px;
+  background: #000;
+}
+
+.lightboxImage {
+  object-fit: contain;
+}
+
+.lightboxFooter {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1.25rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}

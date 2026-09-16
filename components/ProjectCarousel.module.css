@@ -1,0 +1,201 @@
+.carouselWrapper {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.carouselViewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carouselTrack {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.carouselSlide {
+  flex: 0 0 100%;
+  width: 100%;
+  min-width: 100%;
+}
+
+/* Bottom Navigation Bar matching user reference */
+.navBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(15, 38, 69, 0.12);
+  margin-top: 44px;
+  padding-top: 28px;
+  gap: 24px;
+}
+
+/* Left: Counter & Progress bar */
+.counterProgressGroup {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.counter {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
+  line-height: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
+
+.counterCurrent {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy, #0f2645);
+  letter-spacing: -0.01em;
+}
+
+.counterDivider {
+  font-size: 0.85rem;
+  color: rgba(15, 38, 69, 0.4);
+}
+
+.counterTotal {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(15, 38, 69, 0.5);
+}
+
+.progressTrack {
+  width: 200px;
+  height: 2px;
+  background: rgba(15, 38, 69, 0.12);
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.progressBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: var(--navy, #0f2645);
+  border-radius: 2px;
+  transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Right: Navigation Arrow Buttons */
+.navButtons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navBtn {
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(15, 38, 69, 0.18);
+  background: transparent;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--navy, #0f2645);
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navBtn:hover:not(:disabled) {
+  background: var(--navy, #0f2645);
+  border-color: var(--navy, #0f2645);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.navBtn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.navBtn:disabled {
+  opacity: 0.28;
+  cursor: not-allowed;
+  border-color: rgba(15, 38, 69, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navBar {
+    margin-top: 32px;
+    padding-top: 20px;
+  }
+  
+  .counterProgressGroup {
+    gap: 16px;
+  }
+  
+  .progressTrack {
+    width: 130px;
+  }
+  
+  .navBtn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .progressTrack {
+    width: 90px;
+  }
+  
+  .counterCurrent {
+    font-size: 0.9rem;
+  }
+  
+  .counterTotal {
+    font-size: 0.8rem;
+  }
+}
+
+/* Dark Theme Support (for navy/dark sections) */
+.darkNavBar {
+  border-top-color: rgba(244, 245, 240, 0.18);
+}
+
+.darkCounterCurrent {
+  color: var(--ivory, #f4f5f0);
+}
+
+.darkCounterDivider {
+  color: rgba(244, 245, 240, 0.4);
+}
+
+.darkCounterTotal {
+  color: rgba(244, 245, 240, 0.6);
+}
+
+.darkProgressTrack {
+  background: rgba(244, 245, 240, 0.18);
+}
+
+.darkProgressBar {
+  background: var(--sand, #e0ccb5);
+}
+
+.darkNavBtn {
+  border-color: rgba(244, 245, 240, 0.28);
+  color: var(--ivory, #f4f5f0);
+}
+
+.darkNavBtn:hover:not(:disabled) {
+  background: var(--sand, #e0ccb5);
+  border-color: var(--sand, #e0ccb5);
+  color: var(--navy, #0f2645);
+}
+
+.darkNavBtn:disabled {
+  opacity: 0.22;
+  border-color: rgba(244, 245, 240, 0.12);
+  color: rgba(244, 245, 240, 0.3);
+}

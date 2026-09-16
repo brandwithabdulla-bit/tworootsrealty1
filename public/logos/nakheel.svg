@@ -1,0 +1,8 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 66" width="160" height="66">
+	<defs>
+		<image width="170" height="33" id="img1" href="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEzMyAyNCIgd2lkdGg9IjE3MCIgaGVpZ2h0PSIzMSI+Cgk8c3R5bGU+CgkJLnMwIHsgZmlsbDogIzAwNTc3NSB9IAoJPC9zdHlsZT4KCTxwYXRoIGlkPSJwYXRoOTYzNiIgY2xhc3M9InMwIiBkPSJtMTUuMTggMWg1LjI4djIyLjk2aC0xMC4yNmwtNC45Mi0yMi43NnYyMi43NmgtNS4yOHYtMjIuOTZoMTAuM2w0Ljg4IDIyLjc2em0yMi4xNyAwaC0xMC4zNmwtNC44MiAyMi45Nmg1LjIxbDAuOTUtNC41Nmg3LjY4bDAuOTUgNC41Nmg1LjIxem0tOC4xMyAxNC4yOWwyLjk1LTE0LjEgMi45NSAxNC4xem0yNS4xMi0wLjU1bDcuOTEtMTMuNzRoLTUuODdsLTYuNjYgMTEuNnYtMTEuNmgtNS44NHYyMi45NWg1Ljg0di04LjgyaDMuNjFsMy4wNSA4LjgyaDUuOWwtMy4xOC05LjIxem0yMi4yLTQuNzloLTRsLTIuNjIgNC4yM3YtMTMuMThoLTUuODR2MjIuOTVoNS44NHYtOS41MWg2LjYydjkuNTFoNS44NHYtMjIuOTVoLTUuODR6bTguNjYgMTRoMTQuNTN2LTQuMjZoLTguNjl2LTUuMzVoNi45NXYtNC4yNmgtNC40OWwtMi40NiAzLjkzdi04Ljc1aDguNjl2LTQuMjdoLTE0LjUzem0xNi44MiAwaDE0LjUzdi00LjI2aC04LjY5di01LjM1aDYuOTV2LTQuMjZoLTQuNDlsLTIuNDYgMy45NHYtOC43Nmg4LjY5di00LjI2aC0xNC41M3ptMjIuNjYtNC4yN3YtMTguNjloLTUuODR2MjIuOTZoMTMuNDV2LTQuMjd6Ii8+Cjwvc3ZnPg=="/>
+	</defs>
+	<style>
+	</style>
+	<use id="nakheel-logo-blue" href="#img1" transform="matrix(.87,0,0,.87,6,19)"/>
+</svg>
