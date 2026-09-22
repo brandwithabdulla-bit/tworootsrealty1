@@ -1,6 +1,28 @@
-import {PageHero,ArrowUpRight} from '@/components/ui';
-import {ContactTabs} from '@/components/interactive';
-import ScrollToLink from '@/components/ScrollToLink';
-import {pageMetadata} from '@/lib/seo';
-export const metadata=pageMetadata('Contact','Start a property conversation with Two Roots Realty. Enquiry forms are currently demonstration only.','/contact');
-export default async function Page({searchParams}){const params=await searchParams;return <><PageHero eyebrow="A connection starts here" title="Let's Find the Right Property for You" description="Tell us what you have in mind. A home, an investment, a property to sell — or simply a question."/><section className="section container contact-layout"><aside className="contact-info"><h2>Let's talk.</h2><p>[Phone number to be added]</p><p>[Email address to be added]</p><p>[Office address to be added]</p><p>Social connections<br/>[Social URLs to be added]</p><p className="small">Consultation scheduling will be connected when the business calendar is supplied.</p><ScrollToLink targetId="contact-form" className="text-link"><span>Book a Consultation</span> <ArrowUpRight size={13}/></ScrollToLink></aside><div id="contact-form"><ContactTabs initial={params.intent==='selling'?'List Your Property':'Quick enquiry'} context={params.context|| (params.intent==='consultation'?'Book a Consultation':'')}/></div></section></>}
+import { PageHero } from '@/components/ui';
+import ContactSection from '@/components/ContactSection';
+import { pageMetadata } from '@/lib/seo';
+
+export const metadata = pageMetadata(
+  'Contact',
+  'Start a property conversation with Two Roots Realty. Enquiry forms are currently demonstration only.',
+  '/contact'
+);
+
+export default async function Page({ searchParams }) {
+  const params = await searchParams;
+  const initialTab = params?.intent === 'requirement' ? 'Property requirement' : 'Quick enquiry';
+  const context = params?.context || (params?.intent === 'consultation' ? 'Book a Consultation' : '');
+
+  return (
+    <>
+      <PageHero
+        eyebrow="A connection starts here"
+        title="Let's Find the Right Property for You"
+        description="Tell us what you have in mind. A home, an investment, a new requirement — or simply a question."
+        image="/images/hero/hero-3.jpg"
+        imageAlt="Two Roots Realty advisory and luxury architectural consultation"
+      />
+      <ContactSection initialTab={initialTab} context={context} />
+    </>
+  );
+}

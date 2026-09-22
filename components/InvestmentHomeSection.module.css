@@ -1,0 +1,205 @@
+.investmentSection {
+  background: linear-gradient(165deg, #0F2645 0%, #08121E 100%);
+  color: var(--ivory);
+  position: relative;
+  overflow: hidden;
+  padding-top: clamp(72px, 8vw, 120px);
+  padding-bottom: clamp(72px, 8vw, 120px);
+  border-top: 1px solid rgba(224, 204, 181, 0.12);
+  border-bottom: 1px solid rgba(224, 204, 181, 0.12);
+}
+
+.investmentSection::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  left: -80px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(224, 204, 181, 0.08) 0%, rgba(15, 38, 69, 0) 70%);
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: clamp(40px, 6vw, 84px);
+  align-items: center;
+}
+
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 30px;
+  background: rgba(224, 204, 181, 0.1);
+  border: 1px solid rgba(224, 204, 181, 0.22);
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--sand);
+  margin-bottom: 24px;
+}
+
+.badgeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sand);
+  box-shadow: 0 0 8px var(--sand);
+}
+
+.title {
+  font-size: clamp(2.4rem, 4vw, 4.2rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  margin: 0 0 28px 0;
+  color: var(--ivory);
+}
+
+.title em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--sand);
+  display: inline-block;
+}
+
+.focusPills {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+  width: 100%;
+}
+
+.focusPill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: rgba(244, 245, 240, 0.04);
+  border: 1px solid rgba(244, 245, 240, 0.08);
+  font-size: 0.86rem;
+  color: rgba(244, 245, 240, 0.9);
+}
+
+.focusPillNumber {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--sand);
+  padding: 2px 8px;
+  background: rgba(224, 204, 181, 0.12);
+  border-radius: 14px;
+}
+
+/* Right Card */
+.glassCard {
+  background: rgba(244, 245, 240, 0.04);
+  border: 1px solid rgba(224, 204, 181, 0.2);
+  border-radius: 24px;
+  padding: clamp(32px, 4vw, 48px);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lead {
+  font-size: clamp(1.15rem, 1.5vw, 1.35rem);
+  line-height: 1.55;
+  color: #FFFFFF;
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+
+.bodyText {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(244, 245, 240, 0.82);
+  margin: 0;
+}
+
+.btnWrap {
+  margin-top: 8px;
+}
+
+.investBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 50px;
+  padding: 14px 28px;
+  background: var(--sand);
+  color: var(--navy);
+  border: 1px solid var(--sand);
+  border-radius: 10px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.investBtn:hover {
+  background: #edd5bc;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.disclaimer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: rgba(244, 245, 240, 0.6);
+  margin: 6px 0 0 0;
+  border-top: 1px solid rgba(244, 245, 240, 0.1);
+  padding-top: 18px;
+}
+
+.disclaimer svg {
+  flex-shrink: 0;
+  color: var(--sand);
+  opacity: 0.8;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .investmentSection {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  .title {
+    font-size: 2.3rem;
+  }
+
+  .glassCard {
+    padding: 24px 20px;
+    border-radius: 20px;
+  }
+}

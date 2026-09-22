@@ -143,7 +143,8 @@
   pointer-events: none;
 }
 
-.dropdownOpen .dropdownMenu {
+.dropdownOpen .dropdownMenu,
+.dropdown:hover .dropdownMenu {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
@@ -204,7 +205,8 @@
   pointer-events: none;
 }
 
-.megaMenuOpen .megaMenu {
+.megaMenuOpen .megaMenu,
+.megaMenuTrigger:hover .megaMenu {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;

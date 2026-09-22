@@ -1,0 +1,211 @@
+/* ==========================================================================
+   Brochure Download Modal Styles
+   ========================================================================== */
+
+.dialogBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 18, 30, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.modalBox {
+  background: var(--ivory, #F4F5F0);
+  border: 1px solid rgba(15, 38, 69, 0.2);
+  border-radius: 20px;
+  width: min(520px, 100%);
+  padding: 2.5rem;
+  box-shadow: 
+    0 25px 60px rgba(8, 18, 30, 0.4),
+    0 10px 20px rgba(8, 18, 30, 0.2);
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modalCloseBtn {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: transparent;
+  border: 1px solid var(--line, rgba(15, 38, 69, 0.15));
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: var(--navy, #0F2645);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modalCloseBtn:hover {
+  background: var(--sand, #E0CCB5);
+  transform: rotate(90deg);
+}
+
+.modalHeader {
+  margin-bottom: 1.8rem;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  color: var(--navy, #0F2645);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.modalTitle {
+  font-size: 1.85rem;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  color: var(--midnight, #08121E);
+  margin-bottom: 0.5rem;
+}
+
+.modalSubtitle {
+  font-size: 0.92rem;
+  color: rgba(15, 38, 69, 0.75);
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+.formGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--navy, #0F2645);
+}
+
+.formField input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid rgba(15, 38, 69, 0.2);
+  border-radius: 8px;
+  background: #FFFFFF;
+  font-size: 0.95rem;
+  color: var(--midnight, #08121E);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.formField input:focus {
+  border-color: var(--navy, #0F2645);
+  box-shadow: 0 0 0 2px rgba(15, 38, 69, 0.1);
+}
+
+.phoneRow {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 10px;
+}
+
+.phoneRow select {
+  padding: 12px 10px;
+  border: 1px solid rgba(15, 38, 69, 0.2);
+  border-radius: 8px;
+  background: #FFFFFF;
+  font-size: 0.88rem;
+  color: var(--midnight, #08121E);
+  outline: none;
+  cursor: pointer;
+}
+
+.fieldError {
+  font-size: 0.75rem;
+  color: #C23B22;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.submitBtn {
+  width: 100%;
+  margin-top: 0.75rem;
+  padding: 14px 20px;
+  border-radius: 8px;
+  background: var(--navy, #0F2645);
+  color: var(--ivory, #F4F5F0);
+  border: 1px solid var(--navy, #0F2645);
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.submitBtn:hover {
+  background: var(--midnight, #08121E);
+  color: var(--sand, #E0CCB5);
+}
+
+/* Success State */
+.successState {
+  text-align: center;
+  padding: 1.5rem 0.5rem;
+}
+
+.successIcon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(224, 204, 181, 0.35);
+  color: var(--navy, #0F2645);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin: 0 auto 1.5rem;
+}
+
+.successTitle {
+  font-size: 1.65rem;
+  color: var(--midnight, #08121E);
+  margin-bottom: 0.75rem;
+}
+
+.successMsg {
+  font-size: 1.05rem;
+  color: rgba(15, 38, 69, 0.85);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.successNote {
+  font-size: 0.88rem;
+  color: rgba(15, 38, 69, 0.65);
+  margin-bottom: 1.5rem;
+}

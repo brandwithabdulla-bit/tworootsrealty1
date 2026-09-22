@@ -182,7 +182,7 @@ export const projects = [
     locationSlug: 'dubai-south',
     propertyType: 'Apartment',
     purpose: 'Buy',
-    status: 'Off-Plan',
+    status: 'Ready',
     price: 1100000,
     priceLabel: 'From AED 1,100,000',
     bedrooms: 1,
@@ -191,11 +191,11 @@ export const projects = [
     plotArea: null,
     builtUpArea: 540,
     lifestyle: 'Nature Sanctuary',
-    tags: ['Off-Plan', 'Nature Sanctuary', 'Forest Living', 'Luxury', 'Investment'],
-    handover: 'Q4 2028',
+    tags: ['Ready', 'Nature Sanctuary', 'Forest Living', 'Luxury', 'Branded Residences', 'Investment'],
+    handover: 'Ready / Immediate',
     featured: true,
-    offPlan: true,
-    ready: false,
+    offPlan: false,
+    ready: true,
     investment: true,
     latitude: 24.948,
     longitude: 55.154,
@@ -212,11 +212,11 @@ export const projects = [
       '~20 KM connected cycling network, botanical gardens & resort beach lagoon',
       'Six elegant contemporary towers centered around a private landscaped garden',
       'Fully fitted kitchens with premium European appliances (Siemens/Bosch/Duravit)',
-      'Flexible 60/40 construction-linked payment plan'
+      'Ready to move in with attractive flexible payment terms'
     ],
     paymentPlan: [
-      { label: 'During Construction (Staged Milestones)', percent: 60, date: 'Construction Period' },
-      { label: 'On Handover (100% Completion)', percent: 40, date: 'Q4 2028' }
+      { label: 'On Booking', percent: 20, date: 'Immediate' },
+      { label: 'On Handover', percent: 80, date: 'Ready' }
     ],
     amenities: [
       'Resort Lagoon & Swimming Pool with Wetdeck',
@@ -266,7 +266,7 @@ export const projects = [
     locationSlug: 'meydan',
     propertyType: 'Apartment',
     purpose: 'Buy',
-    status: 'Off-Plan',
+    status: 'Ready',
     price: 1450000,
     priceLabel: 'From AED 1,450,000',
     bedrooms: 2,
@@ -275,11 +275,11 @@ export const projects = [
     plotArea: null,
     builtUpArea: 890,
     lifestyle: 'Waterfront',
-    tags: ['Off-Plan', 'Waterfront', 'Lagoon Living', 'Luxury', 'Investment'],
-    handover: 'Q4 2027',
+    tags: ['Ready', 'Waterfront', 'Lagoon Living', 'Luxury', 'Branded Residences', 'Investment'],
+    handover: 'Ready / Immediate',
     featured: true,
-    offPlan: true,
-    ready: false,
+    offPlan: false,
+    ready: true,
     investment: true,
     latitude: 25.154,
     longitude: 55.299,
@@ -295,11 +295,11 @@ export const projects = [
       'Two premier international schools integrated within the master community',
       'Signature Sobha backward-integration construction excellence',
       'Floor-to-ceiling panoramic glass windows with skyline and water views',
-      '60/40 construction-linked payment plan'
+      'Move-in ready with flexible payment options'
     ],
     paymentPlan: [
-      { label: 'During Construction (Staged Milestones)', percent: 60, date: 'Construction Period' },
-      { label: 'On Handover (100% Completion)', percent: 40, date: 'Q4 2027' }
+      { label: 'On Booking', percent: 20, date: 'Immediate' },
+      { label: 'On Handover', percent: 80, date: 'Ready' }
     ],
     amenities: [
       'Crystal Lagoon & Boardwalk Promenade',

@@ -1,2 +1,68 @@
-export const services=[{name:'Selling',slug:'selling',description:'Professional support to market and sell your property at the best possible value.',steps:['Understand your property and priorities','Shape the marketing approach','Support negotiation and the next steps']},{name:'Renting',slug:'renting',description:'Helping clients find the right rental property based on their lifestyle, location and budget.',steps:['Define your lifestyle and budget','Discover a focused shortlist','Support your move']},{name:'Leasing',slug:'leasing',description:'End-to-end assistance for property owners and tenants, from marketing and tenant screening to documentation and handover.',steps:['Present your property','Coordinate tenant screening','Support documentation and handover']},{name:'Property Management',slug:'property-management',description:'Complete property care, including tenant management, rent collection, maintenance coordination and regular inspections.',steps:['Understand the asset','Coordinate ongoing care','Maintain a clear owner relationship']}];
-export const futureServices=['Off-plan advisory','Ready property advisory','Investment consultation','Portfolio building','Portfolio management','Asset management','Relocation assistance','International investor support','Golden Visa-related property guidance','After-sales support','Handover support','Developer partnerships','Referral partnerships'];
+export const services = [
+  {
+    name: 'Buying',
+    slug: 'buying',
+    description: 'Personalised guidance to help you identify, evaluate and acquire the right property in Dubai.',
+    steps: [
+      'Define your lifestyle, investment goals and budget',
+      'Curate a focused, high-potential property shortlist',
+      'Support negotiation, paperwork and seamless handover'
+    ]
+  },
+  {
+    name: 'Selling',
+    slug: 'selling',
+    description: 'Professional support to market and sell your property at the best possible value.',
+    steps: [
+      'Understand your property and priorities',
+      'Shape the marketing approach',
+      'Support negotiation and the next steps'
+    ]
+  },
+  {
+    name: 'Renting',
+    slug: 'renting',
+    description: 'Helping clients find the right rental property based on their lifestyle, location and budget.',
+    steps: [
+      'Define your lifestyle and budget',
+      'Discover a focused shortlist',
+      'Support your move'
+    ]
+  },
+  {
+    name: 'Leasing',
+    slug: 'leasing',
+    description: 'End-to-end assistance for property owners and tenants, from marketing and tenant screening to documentation and handover.',
+    steps: [
+      'Present your property',
+      'Coordinate tenant screening',
+      'Support documentation and handover'
+    ]
+  },
+  {
+    name: 'Property Management',
+    slug: 'property-management',
+    description: 'Complete property care, including tenant management, rent collection, maintenance coordination and regular inspections.',
+    steps: [
+      'Understand the asset',
+      'Coordinate ongoing care',
+      'Maintain a clear owner relationship'
+    ]
+  }
+];
+
+export const futureServices = [
+  'Off-plan advisory',
+  'Ready property advisory',
+  'Investment consultation',
+  'Portfolio building',
+  'Portfolio management',
+  'Asset management',
+  'Relocation assistance',
+  'International investor support',
+  'Golden Visa-related property guidance',
+  'After-sales support',
+  'Handover support',
+  'Developer partnerships',
+  'Referral partnerships'
+];

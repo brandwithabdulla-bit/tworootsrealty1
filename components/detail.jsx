@@ -2,6 +2,8 @@ import Link from 'next/link';
 import {Breadcrumbs,CTASection,DemoNote,PropertyGrid,SectionHeader,Button,ArrowUpRight} from './ui';
 import {ImageGallery,EnquiryForm} from './interactive';
 import ScrollToLink from './ScrollToLink';
+import ProjectHeroSlider from './ProjectHeroSlider';
+import ProjectBrochureSection from './ProjectBrochureSection';
 
 export function MapSection({item}){
   return (
@@ -20,7 +22,7 @@ export function ListingDetail({item,kind,similar}){
   const project = kind === 'projects';
   
   const factsList = [
-    ['Bedrooms', item.bedrooms || 'Studio / open plan'],
+    ['Bedrooms', item.bedrooms === 0 || !item.bedrooms ? 'Studio' : item.bedrooms],
     ['Bathrooms', item.bathrooms],
     ['Area', `${(item.builtUpArea || item.area).toLocaleString()} sq ft`],
     ...(item.plotArea ? [['Plot Area', `${item.plotArea.toLocaleString()} sq ft`]] : []),
@@ -30,10 +32,14 @@ export function ListingDetail({item,kind,similar}){
 
   return (
     <>
-      <div className="container">
+      <div className="container detail-page-container">
         <Breadcrumbs items={[{label: project ? 'Projects' : 'Properties', href: `/${kind}`}, {label: item.title}]}/>
         
-        <ImageGallery item={item}/>
+        {project ? (
+          <ProjectHeroSlider item={item} />
+        ) : (
+          <ImageGallery item={item}/>
+        )}
         
         <div className="detail-title">
           <div>
@@ -63,7 +69,7 @@ export function ListingDetail({item,kind,similar}){
 
             {/* Key Project Highlights */}
             {item.highlights && item.highlights.length > 0 && (
-              <section className="project-highlights-section">
+              <div className="project-highlights-section">
                 <h2>Project Highlights & Connectivity</h2>
                 <ul className="project-highlights-list">
                   {item.highlights.map((h, i) => (
@@ -73,7 +79,7 @@ export function ListingDetail({item,kind,similar}){
                     </li>
                   ))}
                 </ul>
-              </section>
+              </div>
             )}
 
             {/* Unit Breakdown & Configurations */}
@@ -148,24 +154,7 @@ export function ListingDetail({item,kind,similar}){
             <section>
               <h2>A closer look</h2>
               {item.brochure ? (
-                <div className="document-row real-brochure-row">
-                  <div>
-                    <h3>Official Project Documentation</h3>
-                    <p>Access the official developer brochure, floor plans and verified masterplan specifications for {item.title}.</p>
-                  </div>
-                  <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '16px' }}>
-                    <a href={item.brochure} target="_blank" rel="noopener noreferrer" className="button download-action-btn" download>
-                      <span>Download Brochure (PDF)</span>
-                      <ArrowUpRight size={14}/>
-                    </a>
-                    {item.factsheet && (
-                      <a href={item.factsheet} target="_blank" rel="noopener noreferrer" className="button secondary download-action-btn" download>
-                        <span>Download Factsheet (PDF)</span>
-                        <ArrowUpRight size={14}/>
-                      </a>
-                    )}
-                  </div>
-                </div>
+                <ProjectBrochureSection item={item} />
               ) : (
                 <>
                   <div className="document-row">

@@ -1,0 +1,209 @@
+/* ==========================================================================
+   Project Hero Slider / Carousel
+   ========================================================================== */
+
+.sliderContainer {
+  position: relative;
+  width: 100%;
+  height: clamp(460px, calc(100vh - 235px), 700px);
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--midnight, #08121E);
+  box-shadow: 0 20px 50px rgba(8, 18, 30, 0.2);
+  margin-top: 0;
+  margin-bottom: 2.5rem;
+  user-select: none;
+}
+
+.slideTrack {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(1.02);
+}
+
+.slideActive {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.slideImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+.slideShade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8, 18, 30, 0.35) 0%, rgba(8, 18, 30, 0.05) 40%, rgba(8, 18, 30, 0.75) 100%);
+  pointer-events: none;
+}
+
+/* Badges Top-Left */
+.badgesTop {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  z-index: 5;
+}
+
+.badgeItem {
+  background: rgba(8, 18, 30, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(244, 245, 240, 0.35);
+  color: var(--ivory, #F4F5F0);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 30px;
+}
+
+.badgeStatus {
+  background: var(--navy, #0F2645);
+  border-color: var(--sand, #E0CCB5);
+  color: var(--sand, #E0CCB5);
+}
+
+/* Slide Counter Top-Right */
+.counterBadge {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: rgba(8, 18, 30, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(244, 245, 240, 0.3);
+  color: var(--ivory, #F4F5F0);
+  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  padding: 6px 16px;
+  border-radius: 30px;
+  z-index: 5;
+}
+
+/* Navigation Buttons */
+.navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(244, 245, 240, 0.4);
+  background: rgba(8, 18, 30, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 6;
+  font-size: 1.4rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navBtn:hover {
+  background: var(--sand, #E0CCB5);
+  color: var(--midnight, #08121E);
+  border-color: var(--sand, #E0CCB5);
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.navBtnPrev {
+  left: 24px;
+}
+
+.navBtnNext {
+  right: 24px;
+}
+
+/* Dots Bottom Navigation */
+.dotsTrack {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 5;
+  background: rgba(8, 18, 30, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 8px 14px;
+  border-radius: 30px;
+  border: 1px solid rgba(244, 245, 240, 0.25);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid rgba(244, 245, 240, 0.6);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.25s ease;
+}
+
+.dotActive {
+  background: var(--sand, #E0CCB5);
+  border-color: var(--sand, #E0CCB5);
+  width: 24px;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .sliderContainer {
+    height: clamp(340px, calc(100vh - 150px), 520px);
+    border-radius: 18px;
+    margin-bottom: 1.5rem;
+  }
+
+  .navBtn {
+    width: 42px;
+    height: 42px;
+    font-size: 1.1rem;
+  }
+
+  .navBtnPrev {
+    left: 14px;
+  }
+
+  .navBtnNext {
+    right: 14px;
+  }
+
+  .badgesTop {
+    top: 14px;
+    left: 14px;
+  }
+
+  .counterBadge {
+    top: 14px;
+    right: 14px;
+    font-size: 0.88rem;
+    padding: 4px 12px;
+  }
+
+  .dotsTrack {
+    bottom: 14px;
+  }
+}

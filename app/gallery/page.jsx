@@ -29,7 +29,7 @@ const galleryItems = [
   },
   {
     id: 5,
-    category: 'Penthouses',
+    category: 'Mansions',
     src: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200&auto=format&fit=crop',
   },
   {
@@ -49,7 +49,7 @@ const galleryItems = [
   },
   {
     id: 9,
-    category: 'Penthouses',
+    category: 'Mansions',
     src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop',
   },
   {
@@ -69,7 +69,7 @@ const galleryItems = [
   }
 ];
 
-const categories = ['All', 'Waterfront', 'Villas', 'Penthouses', 'Architecture', 'Interiors'];
+const categories = ['All', 'Waterfront', 'Villas', 'Mansions', 'Architecture', 'Interiors'];
 
 export default function GalleryPage() {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -85,6 +85,8 @@ export default function GalleryPage() {
         eyebrow="Portfolio & Visuals" 
         title="Curated Gallery." 
         description="A visual showcase of Dubai's most compelling residences, prime waterfront developments and architectural landmarks."
+        image="/images/hero/hero-1.jpg"
+        imageAlt="Panoramic Dubai Skyline and luxury architectural developments"
       />
 
       <section className={`container ${styles.gallerySection}`}>

@@ -1,0 +1,443 @@
+/* ==========================================================================
+   Our Story — 1-5 Milestones Luxury Bento & Journey Section
+   ========================================================================== */
+
+.storyJourneySection {
+  padding-top: clamp(60px, 7vw, 100px);
+  padding-bottom: clamp(70px, 8vw, 120px);
+  position: relative;
+}
+
+.sectionHeader {
+  max-width: 820px;
+  margin-bottom: 3.5rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 1.2rem;
+  opacity: 0.85;
+}
+
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1.5px;
+  background: var(--warm-sand, #E0CCB5);
+}
+
+.sectionTitle {
+  font-size: clamp(2.4rem, 4.2vw, 3.8rem);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  color: var(--midnight, #08121E);
+  margin-bottom: 1.2rem;
+  font-weight: 400;
+}
+
+.sectionTitle em {
+  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif);
+  font-style: italic;
+  color: var(--navy);
+}
+
+.sectionLead {
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  line-height: 1.65;
+  color: rgba(15, 38, 69, 0.8);
+  max-width: 65ch;
+  margin-bottom: 0;
+}
+
+/* Timeline scrubber / Quick Nav */
+.scrubberBar {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.75rem;
+  margin-bottom: 2.5rem;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scrubberBar::-webkit-scrollbar {
+  display: none;
+}
+
+.scrubberBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 30px;
+  border: 1px solid var(--line, rgba(15, 38, 69, 0.15));
+  background: rgba(224, 204, 181, 0.15);
+  color: var(--navy);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+}
+
+.scrubberBtn:hover {
+  background: rgba(224, 204, 181, 0.35);
+  border-color: var(--navy);
+  transform: translateY(-1px);
+}
+
+.scrubberBtnActive {
+  background: var(--navy) !important;
+  color: var(--ivory, #F4F5F0) !important;
+  border-color: var(--navy) !important;
+  box-shadow: 0 4px 14px rgba(15, 38, 69, 0.2);
+}
+
+.scrubberNum {
+  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  opacity: 0.9;
+}
+
+/* 2x2 + Wide Culmination Bento Grid */
+.bentoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+}
+
+/* Base Card Style */
+.bentoCard {
+  position: relative;
+  border-radius: 20px;
+  background: #FFFFFF;
+  border: 1px solid rgba(15, 38, 69, 0.12);
+  padding: 2.5rem 2.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 290px;
+  box-shadow: 
+    0 10px 30px rgba(8, 18, 30, 0.04),
+    0 1px 3px rgba(8, 18, 30, 0.02);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.35s ease;
+  overflow: hidden;
+}
+
+.bentoCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 22px 48px rgba(8, 18, 30, 0.08),
+    0 4px 12px rgba(8, 18, 30, 0.04);
+  border-color: rgba(15, 38, 69, 0.28);
+}
+
+.cardHighlighted {
+  border-color: var(--navy) !important;
+  box-shadow: 0 0 0 2px var(--navy), 0 20px 45px rgba(15, 38, 69, 0.15) !important;
+}
+
+/* Card Top Row */
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.phaseBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  color: var(--navy);
+  background: rgba(224, 204, 181, 0.28);
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(224, 204, 181, 0.45);
+}
+
+.phaseDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--navy);
+  opacity: 0.75;
+}
+
+.cardNum {
+  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif);
+  font-size: 2.8rem;
+  line-height: 1;
+  font-weight: 400;
+  color: rgba(15, 38, 69, 0.2);
+  transition: color 0.3s ease;
+}
+
+.bentoCard:hover .cardNum {
+  color: var(--navy);
+}
+
+/* Card Content */
+.cardContent {
+  margin-bottom: 2rem;
+}
+
+.cardTitle {
+  font-size: clamp(1.45rem, 1.9vw, 1.85rem);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  color: var(--midnight, #08121E);
+  margin-bottom: 0.85rem;
+  line-height: 1.25;
+}
+
+.cardDescription {
+  font-size: 0.96rem;
+  line-height: 1.68;
+  color: rgba(15, 38, 69, 0.82);
+  margin-bottom: 0;
+  max-width: 48ch;
+}
+
+/* Card Footer */
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(15, 38, 69, 0.08);
+}
+
+.cardTag {
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: rgba(15, 38, 69, 0.65);
+  letter-spacing: 0.04em;
+}
+
+.cardIndicator {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--navy);
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+/* ==========================================================================
+   Card 05: The Culmination Hero Card (Full Width)
+   ========================================================================== */
+
+.culminationCard {
+  grid-column: 1 / -1;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #08121E 0%, #0F2645 100%);
+  color: var(--ivory, #F4F5F0);
+  padding: 3.2rem 3rem;
+  border: 1px solid rgba(224, 204, 181, 0.3);
+  box-shadow: 
+    0 25px 60px rgba(8, 18, 30, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.culminationCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 32px 75px rgba(8, 18, 30, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  border-color: rgba(224, 204, 181, 0.5);
+}
+
+.culminationCard::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(224, 204, 181, 0.1) 0%, rgba(8, 18, 30, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.culminationLeft {
+  position: relative;
+  z-index: 1;
+}
+
+.culminationTop {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 1.5rem;
+}
+
+.culminationBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  color: var(--warm-sand, #E0CCB5);
+  background: rgba(224, 204, 181, 0.15);
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(224, 204, 181, 0.3);
+}
+
+.culminationBadgeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--warm-sand, #E0CCB5);
+  box-shadow: 0 0 8px var(--warm-sand, #E0CCB5);
+}
+
+.culminationNum {
+  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.4rem;
+  color: rgba(224, 204, 181, 0.7);
+  letter-spacing: 0.05em;
+}
+
+.culminationTitle {
+  font-size: clamp(2.2rem, 3.4vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+  margin-bottom: 0.4rem;
+  line-height: 1.15;
+}
+
+.culminationTagline {
+  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif);
+  font-style: italic;
+  font-size: clamp(1.25rem, 1.8vw, 1.65rem);
+  color: var(--warm-sand, #E0CCB5);
+  margin-bottom: 1.4rem;
+  display: block;
+}
+
+.culminationDesc {
+  font-size: 1.05rem;
+  line-height: 1.72;
+  color: rgba(244, 245, 240, 0.88);
+  margin-bottom: 0;
+  max-width: 52ch;
+}
+
+/* Culmination Right Side: Architectural Pillar / Monogram Box */
+.culminationRight {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(224, 204, 181, 0.2);
+  border-radius: 18px;
+  padding: 2.2rem 2rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.pillarEyebrow {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--warm-sand, #E0CCB5);
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+}
+
+.pillarEquation {
+  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(1.2rem, 1.6vw, 1.45rem);
+  line-height: 1.5;
+  color: #FFFFFF;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+.pillarEquation span {
+  color: var(--warm-sand, #E0CCB5);
+  padding: 0 4px;
+}
+
+.pillarDetails {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(244, 245, 240, 0.15);
+}
+
+.pillarMetric strong {
+  display: block;
+  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.8rem;
+  color: var(--warm-sand, #E0CCB5);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.pillarMetric span {
+  font-size: 0.72rem;
+  color: rgba(244, 245, 240, 0.7);
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  display: block;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .culminationCard {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+    padding: 2.5rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .bentoGrid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .bentoCard {
+    padding: 2rem 1.6rem;
+    min-height: auto;
+  }
+
+  .culminationCard {
+    padding: 2rem 1.5rem;
+  }
+
+  .pillarDetails {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}

@@ -22,15 +22,8 @@ export const PARTNER_DEVELOPERS = [
 export default function DeveloperPartners() {
   return (
     <section className={styles.partnersSection} aria-label="Leading Developer Partners">
-      <div className={`container ${styles.partnersContainer}`}>
-        
-        {/* Left Label */}
-        <div className={styles.partnersLabel}>
-          <strong>Partnered with</strong>
-          <span>the leading property developers in the UAE</span>
-        </div>
-
-        {/* Marquee Scroller */}
+      <div className={styles.partnersContainer}>
+        {/* Centered Marquee Scroller */}
         <div className={styles.marquee}>
           <div className={styles.marqueeTrack}>
             {/* Group 1 */}

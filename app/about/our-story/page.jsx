@@ -1,6 +1,32 @@
-import {PageHero,CTASection} from '@/components/ui';
-import {images} from '@/data/images';
-import {pageMetadata} from '@/lib/seo';
-export const metadata=pageMetadata('Our Story','A friendship lasting more than a decade became the foundation of Two Roots Realty.','/about/our-story');
-const timeline=[['The same hometown','Sunand and Ashmid grew up in the same hometown in India. A friendship began that would last more than a decade.'],['Different journeys','Their individual paths took them across different countries and industries, building complementary perspectives.'],['Together again in Dubai','Years later, they found themselves together again in Dubai, working in the same real estate company.'],['A shared understanding','Their experiences brought a common belief into focus: strong relationships and transparent guidance belong at the heart of property decisions.'],['Two Roots Realty','Established in August 2026, Two Roots Realty connects people, property, investment, business and opportunities. Two roots. One vision.']];
-export default function Page(){return <><PageHero eyebrow="Our story" title={<>Two Roots.<br/><em>One Vision.</em></>} description="Some connections become the foundation for something bigger." image={images.architecture}/><section className="section container"><ol className="story-timeline">{timeline.map(([title,text],i)=><li key={title}><span>0{i+1}</span><div><h2>{title}</h2><p>{text}</p></div></li>)}</ol></section><section className="section navy"><div className="container"><p className="eyebrow">The idea that connects it all</p><h2>People → Connection → Opportunity → Growth</h2></div></section><CTASection title="Your next chapter begins with a connection." label="Talk to Our Team"/></>}
+import { PageHero, CTASection } from '@/components/ui';
+import { images } from '@/data/images';
+import { pageMetadata } from '@/lib/seo';
+import OurStoryJourney from '@/components/OurStoryJourney';
+
+export const metadata = pageMetadata(
+  'Our Story',
+  'A friendship lasting more than a decade became the foundation of Two Roots Realty.',
+  '/about/our-story'
+);
+
+export default function Page() {
+  return (
+    <>
+      <PageHero 
+        eyebrow="Our story" 
+        title={<>Two Roots.<br /><em>One Vision.</em></>} 
+        description="Some connections become the foundation for something bigger." 
+        image={images.architecture} 
+        imageAlt="Two Roots Realty story and foundational architecture"
+      />
+      
+      {/* Redesigned 1-5 Milestones Single-Section Layout */}
+      <OurStoryJourney />
+
+      <CTASection 
+        title="Your next chapter begins with a connection." 
+        label="Talk to Our Team"
+      />
+    </>
+  );
+}

@@ -112,18 +112,16 @@ export default function Navbar() {
                 <div className={styles.megaMenuSection}>
                   <h4>Property Types</h4>
                   <Link href="/projects?type=apartments" onClick={closeAllMenus}>Apartments</Link>
-                  <Link href="/projects?type=villas" onClick={closeAllMenus}>Villas</Link>
                   <Link href="/projects?type=townhouses" onClick={closeAllMenus}>Townhouses</Link>
-                  <Link href="/projects?type=penthouses" onClick={closeAllMenus}>Penthouses</Link>
-                  <Link href="/projects?type=branded" onClick={closeAllMenus}>Branded Residences</Link>
+                  <Link href="/projects?type=villas" onClick={closeAllMenus}>Villas</Link>
+                  <Link href="/projects?type=mansions" onClick={closeAllMenus}>Mansions</Link>
                   <Link href="/projects?type=commercial" onClick={closeAllMenus}>Commercial</Link>
                 </div>
                 <div className={styles.megaMenuSection}>
                   <h4>Discover</h4>
                   <Link href="/areas" onClick={closeAllMenus}>Popular Locations</Link>
-                  <Link href="/projects?lifestyle=waterfront" onClick={closeAllMenus}>Waterfront Projects</Link>
-                  <Link href="/projects?lifestyle=luxury" onClick={closeAllMenus}>Luxury Projects</Link>
-                  <Link href="/projects?lifestyle=high-potential" onClick={closeAllMenus}>High-Potential Opportunities</Link>
+                  <Link href="/projects?category=Branded%20Residences" onClick={closeAllMenus}>Branded Residences</Link>
+                  <Link href="/projects?category=Waterfront" onClick={closeAllMenus}>Waterfront Projects</Link>
                 </div>
               </div>
             </div>
@@ -200,8 +198,8 @@ export default function Navbar() {
                   <Link href="/projects?status=off-plan" onClick={closeAllMenus}>Off-Plan Projects</Link>
                   <Link href="/projects?status=ready" onClick={closeAllMenus}>Ready Projects</Link>
                   <Link href="/areas" onClick={closeAllMenus}>Popular Locations</Link>
-                  <Link href="/projects?lifestyle=waterfront" onClick={closeAllMenus}>Waterfront Projects</Link>
-                  <Link href="/projects?lifestyle=luxury" onClick={closeAllMenus}>Luxury Projects</Link>
+                  <Link href="/projects?category=Branded%20Residences" onClick={closeAllMenus}>Branded Residences</Link>
+                  <Link href="/projects?category=Waterfront" onClick={closeAllMenus}>Waterfront Projects</Link>
                 </div>
               )}
             </div>

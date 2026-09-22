@@ -1,0 +1,132 @@
+.testimonialsSection {
+  padding-top: clamp(64px, 7vw, 110px);
+  padding-bottom: clamp(64px, 7vw, 110px);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 36px;
+}
+
+.card {
+  position: relative;
+  background: #FFFFFF;
+  border: 1px solid rgba(15, 38, 69, 0.09);
+  border-radius: 22px;
+  padding: clamp(28px, 3.5vw, 40px);
+  box-shadow: 0 12px 32px rgba(8, 18, 30, 0.04), 0 2px 6px rgba(8, 18, 30, 0.02);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 230px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(224, 204, 181, 0.6);
+  box-shadow: 0 20px 44px rgba(8, 18, 30, 0.08);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+  color: #c99c6b;
+}
+
+.quoteIcon {
+  font-family: var(--serif);
+  font-size: 3.2rem;
+  line-height: 0.6;
+  color: var(--sand);
+  opacity: 0.6;
+  user-select: none;
+}
+
+.quoteText {
+  font-family: var(--serif);
+  font-size: clamp(1.35rem, 1.8vw, 1.7rem);
+  line-height: 1.4;
+  color: var(--navy);
+  margin: 0 0 24px 0;
+  font-style: italic;
+  letter-spacing: -0.015em;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(15, 38, 69, 0.08);
+  padding-top: 18px;
+}
+
+.clientMeta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatarPill {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(224, 204, 181, 0.25);
+  border: 1px solid rgba(224, 204, 181, 0.5);
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.clientDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.clientName {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.statusBadge {
+  font-size: 0.75rem;
+  color: rgba(15, 38, 69, 0.62);
+}
+
+.verifiedPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: rgba(15, 38, 69, 0.05);
+  font-size: 0.72rem;
+  color: var(--navy);
+  font-weight: 500;
+}
+
+.verifiedPill svg {
+  color: #10B981;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

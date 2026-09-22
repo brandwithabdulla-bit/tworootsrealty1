@@ -2,35 +2,10 @@
 import {useEffect,useState} from 'react';
 import Image from 'next/image';
 
-const slides = [
-  {
-    src: '/images/hero/hero-1.jpg',
-    alt: 'Dubai Skyline',
-    position: 'center center'
-  },
-  {
-    src: '/images/hero/hero-2.jpg',
-    alt: 'Dubai Marina',
-    position: 'center 40%'
-  },
-  {
-    src: '/images/hero/hero-3.jpg',
-    alt: 'Luxury Architecture',
-    position: 'center center'
-  },
-  {
-    src: '/images/hero/hero-4.jpg',
-    alt: 'Modern Development',
-    position: 'center 60%'
-  },
-  {
-    src: '/images/hero/hero-5.jpg',
-    alt: 'Downtown Dubai',
-    position: 'right center'
-  }
-];
+import { defaultSlides } from '@/data/slides';
 
-export default function HeroSlideshow(){
+export default function HeroSlideshow({ slides: customSlides }){
+  const slides = customSlides && customSlides.length > 0 ? customSlides : defaultSlides;
   const [active,setActive]=useState(0),[paused,setPaused]=useState(false),[reduced,setReduced]=useState(false);
   useEffect(()=>{
     const query=window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -40,12 +15,12 @@ export default function HeroSlideshow(){
     return()=>query.removeEventListener('change',update);
   },[]);
   useEffect(()=>{
-    if(paused||reduced)return;
+    if(paused||reduced||slides.length<=1)return;
     const timer=setInterval(()=>{
       if(!document.hidden)setActive(i=>(i+1)%slides.length);
     },6500);
     return()=>clearInterval(timer);
-  },[paused,reduced]);
+  },[paused,reduced,slides.length]);
 
   return (
     <div className="hero-slides" aria-label="Dubai luxury real estate photography">
@@ -57,7 +32,7 @@ export default function HeroSlideshow(){
             fill 
             sizes="100vw" 
             priority={i===0}
-            style={{ objectPosition: slide.position, objectFit: 'cover' }}
+            style={{ objectPosition: slide.position || 'center center', objectFit: 'cover' }}
           />
         </div>
       ))}
