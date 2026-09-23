@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import styles from './ProjectsFilter.module.css';
-import { locationDatabase, budgetOptions, propertyTypeOrder } from '@/data/locations-database';
+import { locationDatabase, budgetOptions, propertyTypeOrder, developerDatabase } from '@/data/locations-database';
 import { developers } from '@/data/developers';
 import { locations } from '@/data/locations';
 
@@ -14,7 +14,7 @@ function AutocompleteField({
   suggestions = [],
   icon,
   getLabel = (item) => (typeof item === 'string' ? item : item.name),
-  getSub = (item) => (typeof item === 'string' ? '' : (item.city || item.type || '')),
+  getSub = (item) => (typeof item === 'string' ? '' : (item.sub || item.areas || item.city || item.type || '')),
 }) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState(value || '');
@@ -47,7 +47,8 @@ function AutocompleteField({
     : suggestions.filter(item => {
         const str = getLabel(item).toLowerCase();
         const sub = getSub(item).toLowerCase();
-        return str.includes(trimmed) || sub.includes(trimmed);
+        const areas = (item.areas || '').toLowerCase();
+        return str.includes(trimmed) || sub.includes(trimmed) || areas.includes(trimmed);
       }).sort((a, b) => {
         const aName = getLabel(a).toLowerCase();
         const bName = getLabel(b).toLowerCase();
@@ -185,12 +186,12 @@ export function ProjectsFilterBox({ filters, setFilters, onReset }) {
     ...locations.filter(loc => !locationDatabase.some(d => d.name.toLowerCase() === loc.name.toLowerCase())).map(l => ({ name: l.name, city: 'Dubai', type: 'District' }))
   ];
 
-  const developerSuggestions = [
-    ...developers.map(d => ({ name: d.name, type: 'Developer' })),
-    { name: 'Meraas', type: 'Developer' },
-    { name: 'Nakheel', type: 'Developer' },
-    { name: 'Aldar', type: 'Developer' }
-  ];
+  const developerSuggestions = developerDatabase.map(d => ({
+    name: d.name,
+    type: d.type,
+    areas: d.areas,
+    sub: `${d.type} · ${d.areas}`
+  }));
 
   // Count active filters
   const activeCount = [
@@ -253,8 +254,9 @@ export function ProjectsFilterBox({ filters, setFilters, onReset }) {
         label="Developer"
         value={filters.developer || ''}
         onChange={(val) => setFilters({ ...filters, developer: val })}
-        placeholder="All developers"
+        placeholder="All developers & areas"
         suggestions={developerSuggestions}
+        getSub={(item) => item.sub || item.areas || item.type || ''}
         icon={
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>

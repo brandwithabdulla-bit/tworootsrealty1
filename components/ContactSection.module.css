@@ -351,7 +351,7 @@
   box-sizing: border-box;
 }
 
-.formBody :global(.enquiry-form input:not([type="checkbox"]):not([type="hidden"])),
+.formBody :global(.enquiry-form input:not([type="checkbox"]):not([type="hidden"]):not([class*="searchInput"])),
 .formBody :global(.enquiry-form select),
 .formBody :global(.enquiry-form textarea) {
   width: 100%;
@@ -371,7 +371,7 @@
   font-family: var(--sans);
 }
 
-.formBody :global(.enquiry-form input:focus),
+.formBody :global(.enquiry-form input:not([class*="searchInput"]):focus),
 .formBody :global(.enquiry-form select:focus),
 .formBody :global(.enquiry-form textarea:focus) {
   border-color: var(--navy);

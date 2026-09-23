@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { countryCodes } from '@/data/countries';
+import SearchableCountrySelect from '@/components/SearchableCountrySelect';
 import styles from './BrochureModal.module.css';
 
 export default function BrochureModal({ open, onClose, projectTitle, brochureUrl }) {
@@ -26,7 +27,12 @@ export default function BrochureModal({ open, onClose, projectTitle, brochureUrl
     const newErrors = {};
 
     if (!name.trim()) newErrors.name = 'Please enter your name.';
-    if (!phone.trim()) newErrors.phone = 'Please enter your mobile number.';
+    if (!countryCode) newErrors.countryCode = 'Please select a country code.';
+    if (!phone.trim()) {
+      newErrors.phone = 'Please enter your mobile number.';
+    } else if (!/^[0-9\s()-]{5,20}$/.test(phone.trim())) {
+      newErrors.phone = 'Please enter a valid phone number.';
+    }
     if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       newErrors.email = 'Please enter a valid email address.';
     }
@@ -36,17 +42,24 @@ export default function BrochureModal({ open, onClose, projectTitle, brochureUrl
       return;
     }
 
-    // Trigger download of the brochure
-    if (brochureUrl) {
-      const link = document.createElement('a');
-      link.href = brochureUrl;
-      link.download = `${projectTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-brochure.pdf`;
-      link.target = '_blank';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
+    try {
+      fetch('/api/enquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name.trim(),
+          phone: `${countryCode} ${phone.trim()}`,
+          countryCode,
+          phoneNumber: phone.trim(),
+          email: email.trim(),
+          variant: 'brochure',
+          context: `Brochure request: ${projectTitle || 'Project'}`,
+          consent: true
+        })
+      }).catch(() => {});
+    } catch {}
 
+    // Do not download PDF. Show submitted confirmation message.
     setSubmitted(true);
   };
 
@@ -63,7 +76,7 @@ export default function BrochureModal({ open, onClose, projectTitle, brochureUrl
               <span className={styles.eyebrow}>Official Documentation</span>
               <h2 className={styles.modalTitle}>Download Brochure</h2>
               <p className={styles.modalSubtitle}>
-                Please provide your details below to download the verified project brochure for <strong>{projectTitle}</strong>.
+                Please provide your details below to receive the verified project brochure for <strong>{projectTitle}</strong>.
               </p>
             </div>
 
@@ -74,8 +87,12 @@ export default function BrochureModal({ open, onClose, projectTitle, brochureUrl
                   type="text"
                   placeholder="Enter your full name"
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                    if (errors.name) setErrors((prev) => ({ ...prev, name: undefined }));
+                  }}
                   autoFocus
+                  required
                 />
                 {errors.name && <span className={styles.fieldError}>{errors.name}</span>}
               </label>
@@ -83,23 +100,28 @@ export default function BrochureModal({ open, onClose, projectTitle, brochureUrl
               <label className={styles.formField}>
                 Mobile Number *
                 <div className={styles.phoneRow}>
-                  <select
+                  <SearchableCountrySelect
                     value={countryCode}
-                    onChange={(e) => setCountryCode(e.target.value)}
-                  >
-                    {countryCodes.map((c) => (
-                      <option key={`${c.code}-${c.dial_code}`} value={c.dial_code}>
-                        {c.code} {c.dial_code}
-                      </option>
-                    ))}
-                  </select>
+                    onChange={(val) => {
+                      setCountryCode(val);
+                      if (errors.countryCode) setErrors((prev) => ({ ...prev, countryCode: undefined }));
+                    }}
+                    theme="light"
+                    required
+                    ariaLabel="Country calling code"
+                  />
                   <input
                     type="tel"
                     placeholder="Enter mobile number"
                     value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={(e) => {
+                      setPhone(e.target.value);
+                      if (errors.phone) setErrors((prev) => ({ ...prev, phone: undefined }));
+                    }}
+                    required
                   />
                 </div>
+                {errors.countryCode && <span className={styles.fieldError}>{errors.countryCode}</span>}
                 {errors.phone && <span className={styles.fieldError}>{errors.phone}</span>}
               </label>
 
@@ -109,7 +131,11 @@ export default function BrochureModal({ open, onClose, projectTitle, brochureUrl
                   type="email"
                   placeholder="name@example.com"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    if (errors.email) setErrors((prev) => ({ ...prev, email: undefined }));
+                  }}
+                  required
                 />
                 {errors.email && <span className={styles.fieldError}>{errors.email}</span>}
               </label>
@@ -123,9 +149,9 @@ export default function BrochureModal({ open, onClose, projectTitle, brochureUrl
         ) : (
           <div className={styles.successState}>
             <div className={styles.successIcon}>✓</div>
-            <h2 className={styles.successTitle}>We will reach you</h2>
+            <h2 className={styles.successTitle}>Request Submitted</h2>
             <p className={styles.successMsg}>
-              Thank you, <strong>{name}</strong>! Your official brochure download has started. Our team has received your enquiry and will reach out to you shortly.
+              Thank you, <strong>{name}</strong>! Your request for <strong>{projectTitle}</strong> has been submitted. Our team will connect with you at <strong>{countryCode} {phone}</strong> shortly.
             </p>
             <button className={styles.submitBtn} onClick={onClose}>
               Done

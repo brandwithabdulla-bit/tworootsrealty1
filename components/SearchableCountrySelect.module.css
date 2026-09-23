@@ -1,0 +1,422 @@
+/* SearchableCountrySelect.module.css */
+
+.container {
+  position: relative;
+  display: inline-block;
+  user-select: none;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
+
+.codeMode {
+  width: 100%;
+  max-width: 175px;
+  min-width: 125px;
+  flex: 0 0 155px;
+}
+
+.countryMode {
+  width: 100%;
+  margin-top: 6px;
+}
+
+/* ==========================================================================
+   Trigger Button
+   ========================================================================== */
+.triggerBtn {
+  width: 100%;
+  height: 100%;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  text-align: left;
+  box-sizing: border-box;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
+
+/* Themes for Trigger */
+.darkTrigger {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #FFFFFF;
+}
+
+.darkTrigger:hover {
+  border-color: rgba(244, 245, 240, 0.4);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.darkTrigger:focus,
+.darkTrigger[aria-expanded="true"] {
+  border-color: var(--warm-sand, #E0CCB5);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 2px rgba(224, 204, 181, 0.25);
+}
+
+.lightTrigger {
+  background: #FFFFFF;
+  border: 1px solid rgba(15, 38, 69, 0.18);
+  color: var(--midnight-navy, #0F2645);
+}
+
+.lightTrigger:hover {
+  border-color: rgba(15, 38, 69, 0.35);
+  background: #FAFAFA;
+}
+
+.lightTrigger:focus,
+.lightTrigger[aria-expanded="true"] {
+  border-color: var(--midnight-navy, #0F2645);
+  box-shadow: 0 0 0 2px rgba(15, 38, 69, 0.1);
+  background: #FFFFFF;
+}
+
+.triggerContent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.flag {
+  font-size: 1.25rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.label {
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.arrow {
+  font-size: 0.65rem;
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  margin-left: 2px;
+}
+
+.arrowOpen {
+  transform: rotate(180deg);
+}
+
+/* ==========================================================================
+   Dropdown Popover Menu
+   ========================================================================== */
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 1200;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 
+    0 22px 50px rgba(8, 18, 30, 0.25),
+    0 6px 18px rgba(8, 18, 30, 0.12);
+  animation: dropIn 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
+
+@keyframes dropIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.dropdownCode {
+  width: 340px;
+  max-width: min(390px, calc(100vw - 32px));
+  min-width: 290px;
+}
+
+.dropdownCountry {
+  width: 100%;
+  min-width: 300px;
+}
+
+/* Dark Theme Dropdown */
+.darkDropdown {
+  background: #0B192C;
+  border: 1px solid rgba(224, 204, 181, 0.25);
+  color: #FFFFFF;
+}
+
+/* Light Theme Dropdown */
+.lightDropdown {
+  background: #FFFFFF;
+  border: 1px solid rgba(15, 38, 69, 0.18);
+  color: #0F2645;
+}
+
+/* ==========================================================================
+   Search Header & Input
+   ========================================================================== */
+.searchHeader {
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.lightDropdown .searchHeader {
+  border-bottom: 1px solid rgba(15, 38, 69, 0.09);
+  background: #F8F9FA;
+}
+
+.searchBox {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.searchInput {
+  width: 100% !important;
+  height: 40px !important;
+  min-height: 40px !important;
+  max-height: 40px !important;
+  padding: 0 34px 0 42px !important;
+  margin: 0 !important;
+  border-radius: 8px !important;
+  font-family: inherit !important;
+  font-size: 0.88rem !important;
+  outline: none !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+}
+
+.darkDropdown .searchInput {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #FFFFFF;
+}
+
+.darkDropdown .searchInput::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.darkDropdown .searchInput:focus {
+  border-color: var(--warm-sand, #E0CCB5);
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 0 0 2px rgba(224, 204, 181, 0.2);
+}
+
+.lightDropdown .searchInput {
+  background: #FFFFFF;
+  border: 1px solid rgba(15, 38, 69, 0.2);
+  color: #0F2645;
+}
+
+.lightDropdown .searchInput::placeholder {
+  color: rgba(15, 38, 69, 0.45);
+}
+
+.lightDropdown .searchInput:focus {
+  border-color: #0F2645;
+  box-shadow: 0 0 0 2px rgba(15, 38, 69, 0.08);
+}
+
+.clearBtn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.5;
+  border-radius: 50%;
+  transition: opacity 0.15s, background-color 0.15s;
+}
+
+.clearBtn:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.darkDropdown .clearBtn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ==========================================================================
+   Options List
+   ========================================================================== */
+.optionsList {
+  max-height: 240px;
+  overflow-y: auto;
+  padding: 6px 8px;
+  margin: 0;
+  list-style: none;
+  overscroll-behavior: contain;
+}
+
+.optionsList::-webkit-scrollbar {
+  width: 5px;
+}
+
+.optionsList::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 4px;
+}
+
+.lightDropdown .optionsList::-webkit-scrollbar-thumb {
+  background: rgba(15, 38, 69, 0.18);
+}
+
+.optionItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 12px;
+  margin-bottom: 2px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+  gap: 12px;
+}
+
+.darkDropdown .optionItem:hover,
+.darkDropdown .optionItem.optionActive {
+  background: rgba(224, 204, 181, 0.14);
+  color: var(--warm-sand, #E0CCB5);
+}
+
+.lightDropdown .optionItem:hover,
+.lightDropdown .optionItem.optionActive {
+  background: rgba(15, 38, 69, 0.07);
+  color: #0F2645;
+}
+
+.optionMain {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex: 1;
+}
+
+.optionCountry {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 450;
+}
+
+.optionRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.optionCode {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 2px 7px;
+  border-radius: 5px;
+  min-width: 44px;
+  text-align: center;
+}
+
+.darkDropdown .optionCode {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.lightDropdown .optionCode {
+  background: rgba(15, 38, 69, 0.07);
+  color: #0F2645;
+}
+
+.checkSlot {
+  width: 14px;
+  display: inline-flex;
+  justify-content: center;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--warm-sand, #C6A374);
+}
+
+.lightDropdown .checkSlot {
+  color: #0F2645;
+}
+
+.emptyState {
+  padding: 20px 14px;
+  text-align: center;
+  font-size: 0.86rem;
+  opacity: 0.65;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 600px) {
+  .codeMode {
+    flex: 0 0 125px;
+    max-width: 135px;
+    min-width: 110px;
+  }
+
+  .triggerBtn {
+    min-height: 48px;
+    padding: 0.75rem 0.75rem;
+    font-size: 0.85rem;
+    border-radius: 10px;
+  }
+
+  .dropdownCode {
+    width: calc(100vw - 32px);
+    max-width: 360px;
+    left: 0;
+  }
+
+  .optionsList {
+    max-height: 210px;
+  }
+}

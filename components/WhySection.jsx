@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import SpeakToAdvisorLink from '@/components/SpeakToAdvisorLink';
 import { ArrowUpRight } from './ui';
 import { why } from '@/data/brand';
 import styles from './WhySection.module.css';
@@ -61,10 +62,10 @@ export default function WhySection() {
           <p className={styles.lead}>
             We understand these decisions are complex. We provide clarity.
           </p>
-          <Link href="/contact" className={styles.advisorLink}>
+          <SpeakToAdvisorLink className={styles.advisorLink}>
             <span>Speak to an Advisor</span>
             <ArrowUpRight size={14} />
-          </Link>
+          </SpeakToAdvisorLink>
         </div>
 
         <div className={styles.cardsGrid}>

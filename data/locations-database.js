@@ -53,11 +53,10 @@ export const locationDatabase = [
 ];
 
 export const budgetOptions = [
-  { label: 'Less than 1M', value: '<1M', minPrice: '', maxPrice: '1000000' },
-  { label: '1–2M', value: '1-2M', minPrice: '1000000', maxPrice: '2000000' },
-  { label: '2–4M', value: '2-4M', minPrice: '2000000', maxPrice: '4000000' },
-  { label: '4–8M', value: '4-8M', minPrice: '4000000', maxPrice: '8000000' },
-  { label: '8+M', value: '8M+', minPrice: '8000000', maxPrice: '' }
+  { label: 'Under AED 1M', value: '<1M', minPrice: '', maxPrice: '1000000' },
+  { label: 'AED 1M to 3M', value: '1M-3M', minPrice: '1000000', maxPrice: '3000000' },
+  { label: 'AED 3M to 5M', value: '3M-5M', minPrice: '3000000', maxPrice: '5000000' },
+  { label: 'Above AED 5M', value: '5M+', minPrice: '5000000', maxPrice: '' }
 ];
 
 export const propertyTypeOrder = [
@@ -66,4 +65,25 @@ export const propertyTypeOrder = [
   'Villa',
   'Mansion',
   'Commercial'
+];
+
+export const developerDatabase = [
+  { name: 'Emaar', type: 'Master Developer', areas: 'Downtown Dubai, Dubai Creek, Dubai Marina, Hills', popular: true },
+  { name: 'Damac', type: 'Luxury Developer', areas: 'Damac Hills, Business Bay, Lagoons, Safa', popular: true },
+  { name: 'Sobha', type: 'Premium Developer', areas: 'Sobha Hartland, Meydan, Dubai South', popular: true },
+  { name: 'Ellington', type: 'Design-Led Boutique', areas: 'Palm Jumeirah, JVC, MBR City, Downtown', popular: true },
+  { name: 'Nakheel', type: 'Iconic Waterfront', areas: 'Palm Jumeirah, Palm Jebel Ali, Dubai Islands', popular: true },
+  { name: 'Meraas', type: 'Urban & Lifestyle', areas: 'City Walk, Bluewaters, Port de La Mer', popular: true },
+  { name: 'Omniyat', type: 'Ultra-Luxury Architecture', areas: 'DIFC, Business Bay, Palm Jumeirah', popular: true },
+  { name: 'Dubai Holdings', type: 'Master Developer', areas: 'Madinat Jumeirah Living, Jaddaf Waterfront', popular: true },
+  { name: 'Aldar', type: 'Capital & Regional Leader', areas: 'Saadiyat Island, Yas Island, Ras Al Khaimah', popular: true },
+  { name: 'Binghatti', type: 'High-Rise Architectural', areas: 'Business Bay, Downtown, JVC', popular: false },
+  { name: 'Dubai South', type: 'Master Community', areas: 'Expo City, Residential District', popular: false },
+  { name: 'Azizi', type: 'Urban Communities', areas: 'Riviera, Meydan, Al Furjan', popular: false },
+  { name: 'Samana', type: 'Resort-Style Living', areas: 'Dubailand, Arjan, JVC', popular: false },
+  { name: 'Beyond', type: 'Bespoke Waterfront', areas: 'Jumeirah, Dubai Maritime City', popular: false },
+  { name: 'Imtiaz', type: 'Boutique Residences', areas: 'Dubai Islands, JVC, Meydan', popular: false },
+  { name: 'Object1', type: 'Contemporary Living', areas: 'JVT, JVC, Dubai Sports City', popular: false },
+  { name: 'Leos', type: 'Lifestyle Developments', areas: 'Meydan, Dubailand, JVC', popular: false },
+  { name: 'Marquis', type: 'Boutique Luxury', areas: 'Arjan, JVC, Meydan', popular: false }
 ];

@@ -12,7 +12,7 @@ export default function ProjectBrochureSection({ item }) {
       <div>
         <h3>Official Project Documentation</h3>
         <p>
-          Access the official developer brochure, floor plans and verified masterplan specifications for {item.title}.
+          Download the official developer brochure, floor plans and verified masterplan specifications for {item.title}.
         </p>
       </div>
 
@@ -22,7 +22,7 @@ export default function ProjectBrochureSection({ item }) {
           className="button download-action-btn"
           onClick={() => setModalOpen(true)}
         >
-          <span>Download Brochure (PDF)</span>
+          <span>Download Brochure</span>
           <ArrowUpRight size={14} />
         </button>
       </div>

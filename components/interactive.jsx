@@ -8,7 +8,9 @@ import {developers} from '@/data/developers';
 import {locations} from '@/data/locations';
 import {PropertyGrid,LocationCard,BlogCard,DemoNote,ArrowUpRight} from './ui';
 import {countryCodes} from '@/data/countries';
-import {locationDatabase, budgetOptions, propertyTypeOrder} from '@/data/locations-database';
+import SearchableCountrySelect from './SearchableCountrySelect';
+import NationalitySelect from './NationalitySelect';
+import {locationDatabase, budgetOptions, propertyTypeOrder, developerDatabase} from '@/data/locations-database';
 import {ProjectsFilterBox} from './ProjectsFilterBox';
 export function Modal({open,onClose,title,children,className=''}){const ref=useRef(null);const id=useId();useEffect(()=>{if(open){ref.current?.showModal();document.body.style.overflow='hidden';}else{ref.current?.close();document.body.style.overflow='';}return()=>{document.body.style.overflow='';};},[open]);return <dialog ref={ref} className={className} aria-labelledby={id} onCancel={onClose} onClick={e=>{if(e.target===e.currentTarget)onClose();}}><div className="modal-top"><h2 id={id}>{title}</h2><button className="icon-button" onClick={onClose} aria-label="Close dialog">×</button></div>{children}</dialog>}
 const options={purpose:['Buy','Rent','Invest'],propertyType:propertyTypeOrder,location:locations.map(x=>x.name),developer:developers.map(x=>x.name),bedrooms:['Studio','1','2','3','4','5','5+'],status:['Ready','Off-Plan']};
@@ -20,10 +22,26 @@ function FilterFields({filters,setFilters,compact=false}){
         Search by name or area
         <input name="q" value={filters.q} onChange={e=>setFilters({...filters,q:e.target.value})} placeholder="A place to begin…"/>
       </label>
-      {Object.keys(options).map(key=>(
+      <label>
+        Location
+        <LocationAutocomplete
+          value={filters.location}
+          onChange={val => setFilters({...filters, location: val})}
+          placeholder="Where do you see yourself?"
+        />
+      </label>
+      <label>
+        Developer
+        <DeveloperAutocomplete
+          value={filters.developer}
+          onChange={val => setFilters({...filters, developer: val})}
+          placeholder="All developers & areas"
+        />
+      </label>
+      {['propertyType', 'bedrooms', 'status'].map(key=>(
         <label key={key}>
           {labels[key]}
-          <select name={key} value={filters[key]} onChange={e=>setFilters({...filters,[key]:e.target.value})}>
+          <select name={key} value={filters[key] || ''} onChange={e=>setFilters({...filters,[key]:e.target.value})}>
             <option value="">Any {labels[key].toLowerCase()}</option>
             {options[key].map(value=><option key={value} value={value}>{value}</option>)}
           </select>
@@ -55,7 +73,15 @@ function FilterFields({filters,setFilters,compact=false}){
   );
 }
 export function SearchLoading(){return <div className="search-loading" role="status" aria-live="polite"><p>Looking for the best projects…</p><div className="search-loading-line" aria-hidden="true"><span/></div></div>}
-export function LocationAutocomplete({value, onChange, placeholder = 'Where do you see yourself?'}){
+export function LocationAutocomplete({
+  value, 
+  onChange, 
+  placeholder = 'Where do you see yourself?',
+  name = 'location',
+  id,
+  variant = 'hero'
+}){
+  const isFormVariant = variant === 'form';
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState(value || '');
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
@@ -86,8 +112,8 @@ export function LocationAutocomplete({value, onChange, placeholder = 'Where do y
     : locationDatabase.filter(loc => {
         const q = query.toLowerCase().trim();
         return loc.name.toLowerCase().includes(q) ||
-               loc.type.toLowerCase().includes(q) ||
-               loc.city.toLowerCase().includes(q);
+               (loc.type && loc.type.toLowerCase().includes(q)) ||
+               (loc.city && loc.city.toLowerCase().includes(q));
       }).sort((a, b) => {
         const q = query.toLowerCase().trim();
         const aName = a.name.toLowerCase();
@@ -138,7 +164,7 @@ export function LocationAutocomplete({value, onChange, placeholder = 'Where do y
       } else if (filtered.length > 0 && query.trim() !== '') {
         e.preventDefault();
         handleSelect(filtered[0]);
-      } else if (query.trim() !== '') {
+      } else {
         setOpen(false);
       }
     } else if (e.key === 'Escape') {
@@ -147,11 +173,12 @@ export function LocationAutocomplete({value, onChange, placeholder = 'Where do y
   }
 
   return (
-    <div className="location-autocomplete-wrap" ref={wrapRef}>
+    <div className={`location-autocomplete-wrap ${isFormVariant ? 'location-autocomplete-form' : ''}`} ref={wrapRef}>
       <div className="location-input-row">
         <input
           ref={inputRef}
           type="text"
+          id={id}
           value={query}
           onChange={handleInputChange}
           onFocus={() => { if (query.trim()) setOpen(true); }}
@@ -161,12 +188,13 @@ export function LocationAutocomplete({value, onChange, placeholder = 'Where do y
           aria-autocomplete="list"
           aria-expanded={open && hasQuery}
           autoComplete="off"
-          className="location-input"
+          className={`location-input ${isFormVariant ? 'location-input-form' : ''}`}
         />
+        <input type="hidden" name={name} value={query} />
         {query && (
           <button
             type="button"
-            className="location-clear-btn"
+            className={`location-clear-btn ${isFormVariant ? 'location-clear-btn-form' : ''}`}
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
@@ -182,7 +210,7 @@ export function LocationAutocomplete({value, onChange, placeholder = 'Where do y
         )}
       </div>
       {open && hasQuery && (
-        <div className="location-suggestions-dropdown" role="listbox">
+        <div className={`location-suggestions-dropdown ${isFormVariant ? 'location-suggestions-dropdown-form' : ''}`} role="listbox">
           {filtered.length > 0 ? (
             filtered.map((item, idx) => (
               <div
@@ -211,6 +239,176 @@ export function LocationAutocomplete({value, onChange, placeholder = 'Where do y
               onClick={() => setOpen(false)}
             >
               <span>No matching locations for &ldquo;{query}&rdquo;</span>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export function DeveloperAutocomplete({ value, onChange, placeholder = 'All developers & areas' }) {
+  const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState(value || '');
+  const [highlightedIndex, setHighlightedIndex] = useState(-1);
+  const wrapRef = useRef(null);
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    setQuery(value || '');
+  }, [value]);
+
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (wrapRef.current && !wrapRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, []);
+
+  const hasQuery = query.trim().length > 0;
+  const trimmed = query.trim().toLowerCase();
+
+  const filtered = !hasQuery
+    ? []
+    : developerDatabase.filter(dev => {
+        const name = dev.name.toLowerCase();
+        const type = (dev.type || '').toLowerCase();
+        const areas = (dev.areas || '').toLowerCase();
+        return name.includes(trimmed) || type.includes(trimmed) || areas.includes(trimmed);
+      }).sort((a, b) => {
+        const aName = a.name.toLowerCase();
+        const bName = b.name.toLowerCase();
+        const aExact = aName === trimmed;
+        const bExact = bName === trimmed;
+        if (aExact && !bExact) return -1;
+        if (!aExact && bExact) return 1;
+        const aStarts = aName.startsWith(trimmed);
+        const bStarts = bName.startsWith(trimmed);
+        if (aStarts && !bStarts) return -1;
+        if (!aStarts && bStarts) return 1;
+        return 0;
+      }).slice(0, 8);
+
+  function handleSelect(dev) {
+    const name = typeof dev === 'string' ? dev : dev.name;
+    setQuery(name);
+    onChange(name);
+    setOpen(false);
+  }
+
+  function handleInputChange(e) {
+    const val = e.target.value;
+    setQuery(val);
+    onChange(val);
+    setOpen(val.trim().length > 0);
+    setHighlightedIndex(-1);
+  }
+
+  function handleKeyDown(e) {
+    if (!open) {
+      if ((e.key === 'ArrowDown' || e.key === 'Enter') && hasQuery) {
+        setOpen(true);
+      }
+      return;
+    }
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setHighlightedIndex(prev => (prev + 1) % (filtered.length || 1));
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setHighlightedIndex(prev => (prev - 1 + filtered.length) % (filtered.length || 1));
+    } else if (e.key === 'Enter') {
+      if (highlightedIndex >= 0 && filtered[highlightedIndex]) {
+        e.preventDefault();
+        handleSelect(filtered[highlightedIndex]);
+      } else if (filtered.length > 0 && query.trim() !== '') {
+        e.preventDefault();
+        handleSelect(filtered[0]);
+      } else {
+        setOpen(false);
+      }
+    } else if (e.key === 'Escape') {
+      setOpen(false);
+    }
+  }
+
+  return (
+    <div className="developer-autocomplete-wrap" ref={wrapRef}>
+      <div className="developer-input-row">
+        <input
+          ref={inputRef}
+          type="text"
+          value={query}
+          onChange={handleInputChange}
+          onFocus={() => { if (query.trim()) setOpen(true); }}
+          onClick={() => { if (query.trim()) setOpen(true); }}
+          onKeyDown={handleKeyDown}
+          placeholder={placeholder}
+          aria-autocomplete="list"
+          aria-expanded={open && hasQuery}
+          autoComplete="off"
+          className="developer-input"
+        />
+        {query && (
+          <button
+            type="button"
+            className="developer-clear-btn"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setQuery('');
+              onChange('');
+              setOpen(false);
+              inputRef.current?.focus();
+            }}
+            aria-label="Clear developer"
+          >
+            ×
+          </button>
+        )}
+      </div>
+      {open && hasQuery && (
+        <div className="developer-suggestions-dropdown" role="listbox">
+          {filtered.length > 0 ? (
+            filtered.map((item, idx) => (
+              <div
+                key={item.name}
+                role="option"
+                aria-selected={highlightedIndex === idx}
+                className={`developer-suggestion-item ${highlightedIndex === idx ? 'highlighted' : ''}`}
+                onMouseEnter={() => setHighlightedIndex(idx)}
+                onMouseDown={(e) => {
+                  e.preventDefault();
+                  handleSelect(item);
+                }}
+                onClick={() => handleSelect(item)}
+              >
+                <div className="developer-item-main">
+                  <span className="developer-name">{item.name}</span>
+                  <span className="developer-type">{item.type}</span>
+                </div>
+                {item.areas && (
+                  <span className="developer-areas">{item.areas}</span>
+                )}
+              </div>
+            ))
+          ) : (
+            <div
+              className="developer-empty-notice"
+              onMouseDown={(e) => {
+                e.preventDefault();
+                setOpen(false);
+              }}
+              onClick={() => setOpen(false)}
+            >
+              <span>No matching developers for &ldquo;{query}&rdquo;</span>
             </div>
           )}
         </div>
@@ -328,15 +526,11 @@ export function PropertySearch(){
           <div className="advanced">
             <label>
               Developer
-              <select
+              <DeveloperAutocomplete
                 value={filters.developer}
-                onChange={e => setFilters({...filters, developer: e.target.value})}
-              >
-                <option value="">Any developer</option>
-                {options.developer.map(d => (
-                  <option key={d} value={d}>{d}</option>
-                ))}
-              </select>
+                onChange={val => setFilters({...filters, developer: val})}
+                placeholder="All developers & areas"
+              />
             </label>
             <label>
               Bedrooms
@@ -347,18 +541,6 @@ export function PropertySearch(){
                 <option value="">Any bedrooms</option>
                 {options.bedrooms.map(b => (
                   <option key={b} value={b}>{b}</option>
-                ))}
-              </select>
-            </label>
-            <label>
-              Purpose
-              <select
-                value={filters.purpose}
-                onChange={e => setFilters({...filters, purpose: e.target.value})}
-              >
-                <option value="">Any purpose</option>
-                {options.purpose.map(p => (
-                  <option key={p} value={p}>{p}</option>
                 ))}
               </select>
             </label>
@@ -515,6 +697,9 @@ export function EnquiryForm({variant='quick',context='',submitLabel='Submit Enqu
   const [errors,setErrors]=useState({});
   const [countryCode,setCountryCode]=useState('+971');
   const [phoneNumber,setPhoneNumber]=useState('');
+  const [formCountry,setFormCountry]=useState('UAE');
+  const [formLocation,setFormLocation]=useState('');
+  const [formNationality,setFormNationality]=useState('');
   const form=useRef();
   const id=useId();
   const extra=variant==='investor'
@@ -527,10 +712,9 @@ export function EnquiryForm({variant='quick',context='',submitLabel='Submit Enqu
     ?[['role','Position of interest'],['portfolio','CV / portfolio link','url'],['country','Country']]
     :variant==='newsletter'
     ?[]
-    :[['contactMethod','Preferred contact method']];
+    :[['location','Preferred location'],['contactMethod','Preferred contact method']];
   const fields=variant==='newsletter'?[baseFields[1]]:[...baseFields,...extra];
   const selectOptions={
-    location:locations.map(l=>l.name),
     propertyType:options.propertyType,
     budget:budgetOptions.map(b=>b.label),
     contactMethod:['Call','Email','WhatsApp'],
@@ -547,7 +731,8 @@ export function EnquiryForm({variant='quick',context='',submitLabel='Submit Enqu
     fields.forEach(([key,label,type,required])=>{
       if(required){
         if(key==='phone'){
-          if(!phoneNumber.trim()) issues.phone='Phone number is required.';
+          if(!countryCode) issues.phone='Country code is required.';
+          else if(!phoneNumber.trim()) issues.phone='Phone number is required.';
         } else if(!data[key]?.trim()){
           issues[key]=`${label} is required.`;
         }
@@ -573,15 +758,20 @@ export function EnquiryForm({variant='quick',context='',submitLabel='Submit Enqu
         body:JSON.stringify({...data,phone:fullPhone,countryCode,phoneNumber:phoneNumber.trim(),variant,context})
       });
       const result=await response.json();
-      if(!response.ok)throw new Error(result.error||'Unable to validate your enquiry.');
+      if(!response.ok)throw new Error(result.error||'Submission failed.');
       setStatus('success');
-    }catch{
+      form.current?.reset();
+      setPhoneNumber('');
+      setFormLocation('');
+      setFormNationality('');
+    }catch(err){
       setStatus('error');
+      setErrors({form:err.message||'Could not submit form. Please retry.'});
     }
   }
 
   return (
-    <form ref={form} noValidate className={`enquiry-form ${variant==='newsletter'?'newsletter-form':''}`} onSubmit={submit}>
+    <form ref={form} onSubmit={submit} className={`enquiry-form ${variant}`} noValidate>
       <p className="form-note">Demo form · details are validated but are not sent or saved. Please use test details.</p>
       {context&&<p className="context-note">Enquiry: <strong>{context}</strong></p>}
       <div className="form-grid">
@@ -591,20 +781,18 @@ export function EnquiryForm({variant='quick',context='',submitLabel='Submit Enqu
               <div key={key} className="phone-field-item">
                 <label htmlFor={`${id}-phone`}>{label}{required?' *':''}</label>
                 <div className="phone-input-group">
-                  <select
+                  <SearchableCountrySelect
                     id={`${id}-countryCode`}
                     name="countryCode"
                     value={countryCode}
-                    onChange={e=>setCountryCode(e.target.value)}
-                    className="phone-country-select"
-                    aria-label="Country calling code"
-                  >
-                    {countryCodes.map(c=>(
-                      <option key={`${c.code}-${c.country}`} value={c.code}>
-                        {c.flag} {c.country} ({c.code})
-                      </option>
-                    ))}
-                  </select>
+                    onChange={val=>{
+                      setCountryCode(val);
+                      if(errors.phone)setErrors(prev=>({...prev,phone:undefined}));
+                    }}
+                    theme="light"
+                    required={required}
+                    ariaLabel="Country calling code"
+                  />
                   <input
                     id={`${id}-phone`}
                     name="phoneNumber"
@@ -625,6 +813,60 @@ export function EnquiryForm({variant='quick',context='',submitLabel='Submit Enqu
                 <input type="hidden" name="phone" value={phoneNumber.trim()?`${countryCode} ${phoneNumber.trim()}`:''} />
                 {errors.phone&&<span className="field-error" id={`${id}-phone-error`}>{errors.phone}</span>}
               </div>
+            );
+          }
+          if(key==='country'){
+            return (
+              <label key={key} htmlFor={`${id}-country`}>
+                {label}{required?' *':''}
+                <SearchableCountrySelect
+                  id={`${id}-country`}
+                  name="country"
+                  value={formCountry}
+                  onChange={val=>setFormCountry(val)}
+                  mode="country"
+                  theme="light"
+                  required={required}
+                  placeholder="Search country..."
+                  ariaLabel={label}
+                />
+                {errors.country&&<span className="field-error" id={`${id}-country-error`}>{errors.country}</span>}
+              </label>
+            );
+          }
+          if(key==='nationality'){
+            return (
+              <label key={key} htmlFor={`${id}-nationality`} className="form-nationality-label">
+                <span>{label}{required?' *':''}</span>
+                <NationalitySelect
+                  id={`${id}-nationality`}
+                  name="nationality"
+                  value={formNationality}
+                  onChange={val=>{
+                    setFormNationality(val);
+                    if(errors.nationality)setErrors(prev=>({...prev,nationality:undefined}));
+                  }}
+                  required={required}
+                  placeholder="Enter your nationality"
+                  ariaLabel={label}
+                />
+                {errors.nationality&&<span className="field-error" id={`${id}-nationality-error`}>{errors.nationality}</span>}
+              </label>
+            );
+          }
+          if(key==='location'){
+            return (
+              <label key={key} htmlFor={`${id}-location`} className="form-location-label">
+                <span>{label}{required?' *':' (Optional)'}</span>
+                <LocationAutocomplete
+                  id={`${id}-location`}
+                  name="location"
+                  value={formLocation}
+                  onChange={val=>setFormLocation(val)}
+                  placeholder="e.g. Downtown Dubai, Dubai Marina..."
+                  variant="form"
+                />
+              </label>
             );
           }
           return (

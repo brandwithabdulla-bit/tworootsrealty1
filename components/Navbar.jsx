@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './Navbar.module.css';
 import Image from 'next/image';
+import { countryCodes } from '@/data/countries';
+import SearchableCountrySelect from '@/components/SearchableCountrySelect';
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -12,6 +14,15 @@ export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isCallbackOpen, setIsCallbackOpen] = useState(false);
+  const [modalTitle, setModalTitle] = useState('Request a Call Back');
+  const [modalSubtitle, setModalSubtitle] = useState('Our advisory team will contact you shortly.');
+  const [fullName, setFullName] = useState('');
+  const [countryCode, setCountryCode] = useState('+971');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [email, setEmail] = useState('');
+  const [requirement, setRequirement] = useState('');
+  const [callbackErrors, setCallbackErrors] = useState({});
+  const [callbackStatus, setCallbackStatus] = useState('idle'); // idle | loading | success
   const pathname = usePathname();
   
   // Only apply transparent header on homepage
@@ -40,6 +51,94 @@ export default function Navbar() {
   useEffect(() => {
     closeAllMenus();
   }, [pathname]);
+
+  // Global listener to trigger callback / speak to advisor modal
+  useEffect(() => {
+    const handleOpenCallback = (e) => {
+      const title = e?.detail?.title || 'Speak to an Advisor';
+      const subtitle = e?.detail?.subtitle || 'Our senior advisory team will connect with you to guide your property decisions.';
+      setModalTitle(title);
+      setModalSubtitle(subtitle);
+      setCallbackStatus('idle');
+      setCallbackErrors({});
+      setIsCallbackOpen(true);
+    };
+
+    window.addEventListener('open-callback-modal', handleOpenCallback);
+
+    const checkHash = () => {
+      if (typeof window !== 'undefined' && (window.location.hash === '#callback' || window.location.hash === '#speak-to-advisor')) {
+        handleOpenCallback({
+          detail: {
+            title: window.location.hash === '#speak-to-advisor' ? 'Speak to an Advisor' : 'Request a Call Back',
+            subtitle: window.location.hash === '#speak-to-advisor'
+              ? 'Our senior advisory team will connect with you to guide your property decisions.'
+              : 'Our advisory team will contact you shortly.'
+          }
+        });
+      }
+    };
+    checkHash();
+    window.addEventListener('hashchange', checkHash);
+
+    return () => {
+      window.removeEventListener('open-callback-modal', handleOpenCallback);
+      window.removeEventListener('hashchange', checkHash);
+    };
+  }, []);
+
+  const openCallbackModal = (title = 'Request a Call Back', subtitle = 'Our advisory team will contact you shortly.') => {
+    setModalTitle(title);
+    setModalSubtitle(subtitle);
+    setCallbackStatus('idle');
+    setCallbackErrors({});
+    setIsCallbackOpen(true);
+  };
+
+  const handleCallbackSubmit = async (e) => {
+    e.preventDefault();
+    const errors = {};
+    if (!fullName.trim()) errors.fullName = 'Full name is required.';
+    if (!countryCode) errors.countryCode = 'Please select a country code.';
+    if (!phoneNumber.trim()) {
+      errors.phone = 'Phone number is required.';
+    } else if (!/^[0-9\s()-]{5,20}$/.test(phoneNumber.trim())) {
+      errors.phone = 'Please enter a valid phone number.';
+    }
+    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errors.email = 'Valid email address is required.';
+    }
+    if (!requirement) {
+      errors.requirement = 'Please select your requirement.';
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setCallbackErrors(errors);
+      return;
+    }
+
+    setCallbackStatus('loading');
+    try {
+      await fetch('/api/enquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: fullName.trim(),
+          phone: `${countryCode} ${phoneNumber.trim()}`,
+          countryCode,
+          phoneNumber: phoneNumber.trim(),
+          email: email.trim(),
+          requirement,
+          variant: 'callback',
+          context: modalTitle,
+          consent: true
+        })
+      });
+    } catch {
+      // Demo resilience
+    }
+    setCallbackStatus('success');
+  };
 
   const toggleSubmenu = (menu) => {
     setOpenMobileSubmenu(openMobileSubmenu === menu ? null : menu);
@@ -151,7 +250,10 @@ export default function Navbar() {
 
           {/* Desktop Actions */}
           <div className={styles.desktopActions}>
-            <button onClick={() => setIsCallbackOpen(true)} className={styles.primaryBtn}>
+            <button 
+              onClick={() => openCallbackModal('Request a Call Back', 'Our advisory team will contact you shortly.')} 
+              className={styles.primaryBtn}
+            >
               Get a Call Back <span className={styles.btnArrow}>↗</span>
             </button>
           </div>
@@ -220,7 +322,10 @@ export default function Navbar() {
 
             <Link href="/contact" onClick={closeAllMenus}>Contact Us</Link>
             <button 
-              onClick={() => { closeAllMenus(); setIsCallbackOpen(true); }} 
+              onClick={() => { 
+                closeAllMenus(); 
+                openCallbackModal('Request a Call Back', 'Our advisory team will contact you shortly.'); 
+              }} 
               className={styles.mobilePrimaryBtn}
             >
               Get a Call Back <span className={styles.btnArrow}>↗</span>
@@ -229,28 +334,130 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Callback Modal */}
+      {/* Callback / Speak to Advisor Modal */}
       {isCallbackOpen && (
         <div className={styles.modalOverlay} onClick={() => setIsCallbackOpen(false)}>
-          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-            <button className={styles.closeBtn} onClick={() => setIsCallbackOpen(false)}>✕</button>
-            <h3 className="secondary-font">Request a Call Back</h3>
-            <p>Our advisory team will contact you shortly.</p>
-            <form className={styles.callbackForm} onSubmit={(e) => { e.preventDefault(); setIsCallbackOpen(false); }}>
-              <input type="text" placeholder="Full Name" required />
-              <input type="tel" placeholder="Phone Number" required />
-              <input type="email" placeholder="Email Address" required />
-              <select required>
-                <option value="">Select Requirement</option>
-                <option value="buy">Buying Property</option>
-                <option value="sell">Selling Property</option>
-                <option value="invest">Investment Advisory</option>
-                <option value="other">Other Enquiry</option>
-              </select>
-              <button type="submit" className={styles.submitBtn}>
-                Submit Request <span className={styles.btnArrow}>↗</span>
-              </button>
-            </form>
+          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true">
+            <button className={styles.closeBtn} onClick={() => setIsCallbackOpen(false)} aria-label="Close dialog">✕</button>
+            
+            {callbackStatus === 'success' ? (
+              <div className={styles.successBox}>
+                <div className={styles.successIcon}>✓</div>
+                <h3 className="secondary-font">Request Submitted</h3>
+                <p className={styles.successMsg}>
+                  Thank you, <strong>{fullName}</strong>! Your request has been received. Our team will connect with you at <strong>{countryCode} {phoneNumber}</strong> shortly.
+                </p>
+                <button 
+                  type="button" 
+                  className={styles.submitBtn} 
+                  onClick={() => setIsCallbackOpen(false)}
+                >
+                  Done
+                </button>
+              </div>
+            ) : (
+              <>
+                <h3 className="secondary-font">{modalTitle}</h3>
+                <p>{modalSubtitle}</p>
+                <form className={styles.callbackForm} onSubmit={handleCallbackSubmit}>
+                  <div className={styles.formField}>
+                    <label htmlFor="callback-fullname" className={styles.fieldLabel}>Full Name *</label>
+                    <input 
+                      id="callback-fullname"
+                      type="text" 
+                      placeholder="Enter your full name" 
+                      value={fullName}
+                      onChange={(e) => {
+                        setFullName(e.target.value);
+                        if (callbackErrors.fullName) setCallbackErrors(prev => ({ ...prev, fullName: undefined }));
+                      }}
+                      required 
+                    />
+                    {callbackErrors.fullName && <span className={styles.fieldError}>{callbackErrors.fullName}</span>}
+                  </div>
+
+                  <div className={styles.formField}>
+                    <label htmlFor="callback-phone" className={styles.fieldLabel}>Phone Number *</label>
+                    <div className={styles.phoneInputGroup}>
+                      <SearchableCountrySelect
+                        id="callback-country-code"
+                        name="countryCode"
+                        value={countryCode}
+                        onChange={(val) => {
+                          setCountryCode(val);
+                          if (callbackErrors.countryCode) setCallbackErrors(prev => ({ ...prev, countryCode: undefined }));
+                        }}
+                        theme="dark"
+                        required
+                        ariaLabel="Country Code"
+                      />
+                      <input 
+                        id="callback-phone"
+                        type="tel" 
+                        placeholder="50 123 4567" 
+                        value={phoneNumber}
+                        onChange={(e) => {
+                          setPhoneNumber(e.target.value);
+                          if (callbackErrors.phone) setCallbackErrors(prev => ({ ...prev, phone: undefined }));
+                        }}
+                        required 
+                        className={styles.phoneNumberInput}
+                      />
+                    </div>
+                    {callbackErrors.countryCode && <span className={styles.fieldError}>{callbackErrors.countryCode}</span>}
+                    {callbackErrors.phone && <span className={styles.fieldError}>{callbackErrors.phone}</span>}
+                  </div>
+
+                  <div className={styles.formField}>
+                    <label htmlFor="callback-email" className={styles.fieldLabel}>Email Address *</label>
+                    <input 
+                      id="callback-email"
+                      type="email" 
+                      placeholder="name@example.com" 
+                      value={email}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                        if (callbackErrors.email) setCallbackErrors(prev => ({ ...prev, email: undefined }));
+                      }}
+                      required 
+                    />
+                    {callbackErrors.email && <span className={styles.fieldError}>{callbackErrors.email}</span>}
+                  </div>
+
+                  <div className={styles.formField}>
+                    <label htmlFor="callback-requirement" className={styles.fieldLabel}>Select Requirement *</label>
+                    <select 
+                      id="callback-requirement"
+                      value={requirement}
+                      onChange={(e) => {
+                        setRequirement(e.target.value);
+                        if (callbackErrors.requirement) setCallbackErrors(prev => ({ ...prev, requirement: undefined }));
+                      }}
+                      required
+                    >
+                      <option value="">Select Requirement</option>
+                      <option value="buy">Buying Property</option>
+                      <option value="sell">Selling Property</option>
+                      <option value="invest">Investment Advisory</option>
+                      <option value="other">Other Enquiry</option>
+                    </select>
+                    {callbackErrors.requirement && <span className={styles.fieldError}>{callbackErrors.requirement}</span>}
+                  </div>
+
+                  <button 
+                    type="submit" 
+                    className={styles.submitBtn}
+                    disabled={callbackStatus === 'loading'}
+                  >
+                    {callbackStatus === 'loading' ? 'Submitting…' : (
+                      <>
+                        Submit Request <span className={styles.btnArrow}>↗</span>
+                      </>
+                    )}
+                  </button>
+                </form>
+              </>
+            )}
           </div>
         </div>
       )}

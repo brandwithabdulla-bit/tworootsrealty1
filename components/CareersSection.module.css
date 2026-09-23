@@ -1,0 +1,580 @@
+/* CareersSection.module.css */
+
+/* ==========================================================================
+   Section 1: Why Two Roots (Culture)
+   ========================================================================== */
+.cultureSection {
+  padding-top: clamp(64px, 8vw, 110px);
+  padding-bottom: clamp(64px, 8vw, 110px);
+  border-bottom: 1px solid rgba(15, 38, 69, 0.08);
+  background: #FFFFFF;
+}
+
+.cultureGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: clamp(40px, 6vw, 90px);
+  align-items: start;
+}
+
+.cultureLeft {
+  position: sticky;
+  top: 120px;
+}
+
+.cultureTitle {
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 3.8vw, 3.6rem);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: var(--navy);
+  margin-top: 14px;
+}
+
+.cultureRight {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.cultureLead {
+  font-size: clamp(1.2rem, 1.7vw, 1.5rem);
+  line-height: 1.55;
+  color: var(--navy);
+  font-weight: 400;
+  margin: 0;
+}
+
+.cultureBody {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: rgba(15, 38, 69, 0.78);
+  margin: 0;
+}
+
+.culturePillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(15, 38, 69, 0.08);
+}
+
+.pillarCard {
+  padding: 20px 18px;
+  border-radius: 16px;
+  background: #F8F9FA;
+  border: 1px solid rgba(15, 38, 69, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pillarCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(8, 18, 30, 0.06);
+  border-color: rgba(15, 38, 69, 0.15);
+}
+
+.pillarIcon {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.pillarTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 0 0 6px 0;
+}
+
+.pillarText {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: rgba(15, 38, 69, 0.65);
+  margin: 0;
+}
+
+/* ==========================================================================
+   Section 2: Open Positions
+   ========================================================================== */
+.jobsSection {
+  padding-top: clamp(64px, 8vw, 110px);
+  padding-bottom: clamp(64px, 8vw, 110px);
+  background: #FAF9F6;
+  border-bottom: 1px solid rgba(15, 38, 69, 0.08);
+}
+
+.jobsHeader {
+  max-width: 720px;
+  margin-bottom: 48px;
+}
+
+.jobsTitle {
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 3.8vw, 3.6rem);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+.jobsDescription {
+  font-size: 1.05rem;
+  color: rgba(15, 38, 69, 0.7);
+  margin: 0;
+}
+
+.jobsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.jobCard {
+  background: #FFFFFF;
+  border: 1px solid rgba(15, 38, 69, 0.1);
+  border-radius: 22px;
+  padding: clamp(28px, 3.5vw, 40px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 8px 24px rgba(8, 18, 30, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+}
+
+.jobCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 42px rgba(8, 18, 30, 0.09);
+  border-color: rgba(15, 38, 69, 0.22);
+}
+
+.jobCardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.jobBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: rgba(224, 204, 181, 0.35);
+  border: 1px solid rgba(224, 204, 181, 0.8);
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--navy);
+}
+
+.jobRoleTitle {
+  font-family: var(--serif);
+  font-size: 1.85rem;
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--navy);
+  margin: 0 0 14px 0;
+}
+
+.jobSummary {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: rgba(15, 38, 69, 0.72);
+  margin: 0 0 28px 0;
+}
+
+.jobLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--navy);
+  border-bottom: 1.5px solid var(--navy);
+  padding-bottom: 4px;
+  margin-top: auto;
+  align-self: flex-start;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.jobLink:hover {
+  color: #1E3A5F;
+  border-color: #1E3A5F;
+  gap: 11px;
+}
+
+/* ==========================================================================
+   Section 3: General Application (Luxury Split Card Section)
+   ========================================================================== */
+.applicationSection {
+  padding-top: clamp(64px, 8vw, 110px);
+  padding-bottom: clamp(70px, 9vw, 130px);
+  background: linear-gradient(180deg, #F4F5F0 0%, #EAECE4 100%);
+  position: relative;
+}
+
+.applicationContainer {
+  display: grid;
+  grid-template-columns: 410px minmax(0, 1fr);
+  gap: 36px;
+  align-items: start;
+  width: min(calc(100% - clamp(28px, 5vw, 64px)), 1240px);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* Left Luxury Info Card */
+.applicationInfoCard {
+  background: linear-gradient(165deg, #0F2645 0%, #08121E 100%);
+  border: 1px solid rgba(224, 204, 181, 0.24);
+  border-radius: 26px;
+  padding: clamp(32px, 4vw, 48px) clamp(26px, 3.5vw, 42px);
+  color: var(--ivory);
+  box-shadow: 0 24px 50px rgba(8, 18, 30, 0.18);
+  position: sticky;
+  top: 115px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  box-sizing: border-box;
+}
+
+.applicationInfoCardHeader {
+  border-bottom: 1px solid rgba(224, 204, 181, 0.16);
+  padding-bottom: 22px;
+}
+
+.applicationInfoBadge {
+  display: inline-block;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  color: var(--sand);
+  margin-bottom: 12px;
+}
+
+.applicationInfoTitle {
+  font-family: var(--serif);
+  font-size: clamp(2.3rem, 3.2vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1.12;
+  margin: 0;
+  color: var(--ivory);
+  letter-spacing: -0.025em;
+  word-break: break-word;
+}
+
+.applicationInfoDesc {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: rgba(244, 245, 240, 0.82);
+  margin: 0;
+}
+
+.applicationHighlights {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.highlightItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 14px;
+}
+
+.highlightIcon {
+  font-size: 1rem;
+  color: var(--sand);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.highlightText {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: rgba(244, 245, 240, 0.9);
+  margin: 0;
+}
+
+.applicationQuote {
+  border-top: 1px solid rgba(224, 204, 181, 0.16);
+  padding-top: 20px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--sand);
+  margin: 0;
+}
+
+/* Right Elevated Form Card */
+.applicationFormCard {
+  background: #FFFFFF;
+  border-radius: 26px;
+  border: 1px solid rgba(15, 38, 69, 0.09);
+  box-shadow: 
+    0 24px 50px rgba(8, 18, 30, 0.08),
+    0 4px 16px rgba(8, 18, 30, 0.03);
+  padding: clamp(28px, 4vw, 44px);
+  box-sizing: border-box;
+}
+
+.applicationFormHeader {
+  margin-bottom: 24px;
+}
+
+.applicationFormTitle {
+  font-family: var(--serif);
+  font-size: clamp(1.85rem, 2.6vw, 2.4rem);
+  font-weight: 400;
+  line-height: 1.15;
+  margin: 0 0 6px 0;
+  color: var(--navy);
+  letter-spacing: -0.025em;
+}
+
+.applicationFormSubtitle {
+  font-size: 0.92rem;
+  color: rgba(15, 38, 69, 0.65);
+  margin: 0;
+}
+
+.applicationFormBody {
+  width: 100%;
+}
+
+/* Scoped Form Styles for Careers Form */
+.applicationFormBody :global(.form-note) {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 20px;
+  border-radius: 14px;
+  background: rgba(224, 204, 181, 0.22);
+  border: 1px solid rgba(224, 204, 181, 0.6);
+  color: var(--navy);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 0 0 24px 0;
+}
+
+.applicationFormBody :global(.context-note) {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: rgba(15, 38, 69, 0.06);
+  border: 1px solid rgba(15, 38, 69, 0.12);
+  font-size: 0.84rem;
+  color: var(--navy);
+  margin: 0 0 24px 0;
+}
+
+.applicationFormBody :global(.form-grid) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 22px;
+  margin-bottom: 22px;
+}
+
+.applicationFormBody :global(.enquiry-form label) {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--navy);
+  margin-bottom: 0;
+}
+
+.applicationFormBody :global(.enquiry-form input:not([type="checkbox"]):not([type="hidden"]):not([class*="searchInput"])),
+.applicationFormBody :global(.enquiry-form select),
+.applicationFormBody :global(.enquiry-form textarea) {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 38, 69, 0.16);
+  background: #FFFFFF;
+  padding: 14px 18px;
+  font-size: 0.93rem;
+  color: var(--navy);
+  min-height: 52px;
+  margin-top: 0;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+  font-family: var(--sans);
+}
+
+.applicationFormBody :global(.enquiry-form textarea) {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.applicationFormBody :global(.enquiry-form input:not([class*="searchInput"]):focus),
+.applicationFormBody :global(.enquiry-form select:focus),
+.applicationFormBody :global(.enquiry-form textarea:focus) {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(15, 38, 69, 0.08);
+}
+
+.applicationFormBody :global(.phone-field-item) {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.applicationFormBody :global(.phone-field-item label) {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--navy);
+}
+
+.applicationFormBody :global(.phone-input-group) {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+}
+
+.applicationFormBody :global(.phone-number-input) {
+  width: 100%;
+  min-height: 52px;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 38, 69, 0.16);
+  background: #FFFFFF;
+  padding: 14px 18px;
+  font-size: 0.95rem;
+  color: var(--navy);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.applicationFormBody :global(.phone-number-input:focus) {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(15, 38, 69, 0.08);
+}
+
+.applicationFormBody :global(.consent) {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 18px 0 24px 0;
+  font-size: 0.82rem;
+  color: rgba(15, 38, 69, 0.75);
+}
+
+.applicationFormBody :global(.consent input[type="checkbox"]) {
+  width: 20px;
+  height: 20px;
+  min-height: 20px;
+  border-radius: 6px;
+  border: 1.5px solid rgba(15, 38, 69, 0.3);
+  accent-color: var(--navy);
+  cursor: pointer;
+  margin: 0;
+}
+
+.applicationFormBody :global(.consent a) {
+  color: var(--navy);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+}
+
+.applicationFormBody :global(.button) {
+  min-height: 52px;
+  padding: 14px 32px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: var(--navy);
+  color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 6px 18px rgba(15, 38, 69, 0.15);
+}
+
+.applicationFormBody :global(.button:hover) {
+  background: #08121E;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(15, 38, 69, 0.22);
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .cultureGrid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .cultureLeft {
+    position: static;
+  }
+
+  .culturePillars {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .applicationContainer {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .applicationInfoCard {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .culturePillars {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .jobsGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .applicationContainer {
+    width: min(calc(100% - 32px), 1240px);
+  }
+
+  .applicationFormBody :global(.form-grid) {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .applicationFormBody :global(.phone-input-group) {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}

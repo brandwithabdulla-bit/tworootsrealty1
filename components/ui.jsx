@@ -67,6 +67,32 @@ export { CTASection };
 export function PropertyCard({item,kind='properties'}){return <article className="property-card"><Photo className="card-backdrop" src={item.images[0]} alt={`${item.title} photography`} sizes="(max-width: 700px) 95vw, (max-width: 1100px) 50vw, 33vw"/><div className="card-top"><div style={{display:'flex',gap:'6px',flexWrap:'wrap'}}><span className="badge">{item.status}</span>{item.lifestyle&&<span className="badge lifestyle-badge">{item.lifestyle}</span>}</div><Link className="card-open" href={`/${kind}/${item.slug}`} aria-label={`View ${item.title}`}><ArrowUpRight size={16}/></Link></div><div className="card-copy"><div className="card-meta"><span>{item.propertyType}</span><span>{item.lifestyle?`${item.lifestyle} · Selected`:'Demo collection'}</span></div><h3><Link href={`/${kind}/${item.slug}`}>{item.title}</Link></h3><p className="card-location">{item.location} <span>· {item.developer}</span></p><div className="card-facts"><span>{item.bedrooms===0?'Studio':`${item.bedrooms} beds`}</span><span>{item.bathrooms} baths</span><span>{item.area.toLocaleString()} sq ft</span></div><div className="card-bottom"><p className="price">{item.priceLabel}</p><Link href={`/${kind}/${item.slug}`} className="card-details" aria-label={`Explore ${item.title}`}><span>Explore</span> <ArrowUpRight size={13}/></Link></div></div></article>}
 export function PropertyGrid({items,kind='properties',carousel=false}){return <div className={`property-grid ${carousel?'mobile-carousel':''}`}>{items.map(x=><PropertyCard key={x.id} item={x} kind={kind}/>)}</div>}
 export function DeveloperCard({item,projectCount=0}){return <article className="developer-card"><Photo src={item.image||images.architecture} alt={`Illustrative architecture for ${item.name}; not an official developer asset`}/><span className="developer-image-label">Illustrative architecture</span><div className="developer-card-content"><div className="developer-card-heading"><h3>{item.name}</h3><span className="developer-monogram" aria-hidden="true">{item.name.slice(0,1)}</span></div><p className="developer-placeholder">Official logo to be supplied</p><p>{item.description}</p><div className="developer-card-bottom"><span>{projectCount} demo projects</span><Link className="card-open" href={`/developers/${item.slug}`} aria-label={`Explore ${item.name}`}><ArrowUpRight size={16}/></Link></div></div></article>}
-export function LocationCard({item}){return <Link className="location-card" href={`/areas/${item.slug}`}><Photo src={item.image} alt={`Representative community imagery for ${item.name}`}/><div><span className="eyebrow">{item.category}</span><h3>{item.name}</h3><span>Explore the area <ArrowUpRight size={13}/></span></div></Link>}
+export function LocationCard({item}){
+  return (
+    <Link className="property-card location-card" href={`/areas/${item.slug}`}>
+      <Photo className="card-backdrop" src={item.image} alt={`Representative community imagery for ${item.name}`} sizes="(max-width: 700px) 95vw, (max-width: 1100px) 50vw, 33vw"/>
+      <div className="card-top">
+        <div style={{display:'flex',gap:'6px',flexWrap:'wrap'}}>
+          <span className="badge">{item.category}</span>
+        </div>
+        <span className="card-open" aria-label={`Explore ${item.name}`}><ArrowUpRight size={16}/></span>
+      </div>
+      <div className="card-copy">
+        <div className="card-meta">
+          <span>Community</span>
+          <span>{item.category} · Dubai</span>
+        </div>
+        <h3>{item.name}</h3>
+        <p className="card-location">Explore prime communities &amp; residences</p>
+        <div className="card-bottom">
+          <p className="price" style={{fontSize:'0.88rem',opacity:0.85}}>Prime Location</p>
+          <span className="card-details" aria-label={`Explore ${item.name}`}>
+            <span>Explore area</span> <ArrowUpRight size={13}/>
+          </span>
+        </div>
+      </div>
+    </Link>
+  );
+}
 export function BlogCard({item}){return <article className="blog-card"><Link href={`/insights/${item.slug}`}><Photo src={item.image} alt="Illustrative architecture and living spaces"/></Link><p className="eyebrow">{item.category} · Demo article</p><h3><Link href={`/insights/${item.slug}`}>{item.title}</Link></h3><p className="muted">1 September 2026 · {item.readingTime}</p><p>{item.summary}</p><Link className="text-link" href={`/insights/${item.slug}`}><span>Read the story</span> <ArrowUpRight size={13}/></Link></article>}
 

@@ -584,3 +584,82 @@
   transform: translateY(-1px);
   box-shadow: 0 6px 24px rgba(224, 204, 181, 0.35);
 }
+
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-align: left;
+}
+
+.fieldLabel {
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: rgba(244, 245, 240, 0.88);
+  font-weight: 500;
+}
+
+.phoneInputGroup {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.phoneCountrySelect {
+  flex: 0 0 148px;
+  max-width: 46%;
+  cursor: pointer;
+  padding: 0.95rem 0.65rem !important;
+  font-size: 0.85rem !important;
+}
+
+.phoneNumberInput {
+  flex: 1;
+  min-width: 0;
+}
+
+.fieldError {
+  color: #ff9b9b;
+  font-size: 0.76rem;
+  margin-top: 0.15rem;
+  display: block;
+}
+
+.successBox {
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+.successIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(224, 204, 181, 0.16);
+  border: 2px solid var(--warm-sand);
+  color: var(--warm-sand);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 0 25px rgba(224, 204, 181, 0.25);
+}
+
+.successMsg {
+  color: rgba(244, 245, 240, 0.9) !important;
+  line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+  .phoneCountrySelect {
+    flex: 0 0 125px;
+    font-size: 0.78rem !important;
+    padding: 0.95rem 0.4rem !important;
+  }
+}
