@@ -690,7 +690,27 @@ export function Discovery({items,kind='properties',initialFilters={}}){
     </section>
   );
 }
-export function ImageGallery({item}){const[index,setIndex]=useState(0);const[open,setOpen]=useState(false);const touch=useRef(0);function next(delta){setIndex(v=>(v+delta+item.gallery.length)%item.gallery.length);}return <div className="gallery"><button className="gallery-main" onClick={()=>setOpen(true)} aria-label={`Open gallery for ${item.title}`} onTouchStart={e=>touch.current=e.changedTouches[0].clientX} onTouchEnd={e=>{const d=e.changedTouches[0].clientX-touch.current;if(Math.abs(d)>45)next(d>0?-1:1);}}><Image src={item.gallery[index]} fill priority sizes="100vw" alt={`${item.title}: illustrative photo ${index+1}`}/><span className="badge">View gallery · {index+1} / {item.gallery.length}</span></button><div className="gallery-thumbs">{item.gallery.map((src,i)=><button key={i} aria-label={`Show photo ${i+1}`} aria-pressed={i===index} onClick={()=>setIndex(i)}><Image src={src} fill sizes="25vw" alt={`Illustrative view ${i+1}`}/></button>)}</div><Modal open={open} onClose={()=>setOpen(false)} title={`${item.title} — gallery`} className="gallery-dialog"><div className="lightbox" onKeyDown={e=>{if(e.key==='ArrowRight')next(1);if(e.key==='ArrowLeft')next(-1);}} onTouchStart={e=>touch.current=e.changedTouches[0].clientX} onTouchEnd={e=>{const d=e.changedTouches[0].clientX-touch.current;if(Math.abs(d)>45)next(d>0?-1:1);}}><Image src={item.gallery[index]} fill sizes="90vw" alt={`Illustrative photo ${index+1} of ${item.gallery.length}`}/></div><div className="gallery-controls"><button className="button secondary" onClick={()=>next(-1)}>← Previous</button><span aria-live="polite">{index+1} / {item.gallery.length}</span><button className="button secondary" onClick={()=>next(1)}>Next →</button></div><DemoNote>Representative stock photography, not photographs of this fictional property.</DemoNote></Modal></div>}
+export function ImageGallery({item = {}}){
+  let gallery = [];
+  if (Array.isArray(item.gallery) && item.gallery.length > 0) {
+    gallery = item.gallery.filter(Boolean);
+  } else if (Array.isArray(item.images) && item.images.length > 0) {
+    gallery = item.images.filter(Boolean);
+  } else if (typeof item.gallery === 'string' && item.gallery) {
+    gallery = [item.gallery];
+  } else if (typeof item.images === 'string' && item.images) {
+    gallery = [item.images];
+  }
+  if (!gallery.length) {
+    gallery = ['/images/dubai.jpg'];
+  }
+
+  const[index,setIndex]=useState(0);
+  const[open,setOpen]=useState(false);
+  const touch=useRef(0);
+  function next(delta){setIndex(v=>(v+delta+gallery.length)%gallery.length);}
+  return <div className="gallery"><button className="gallery-main" onClick={()=>setOpen(true)} aria-label={`Open gallery for ${item.title || 'property'}`} onTouchStart={e=>touch.current=e.changedTouches[0].clientX} onTouchEnd={e=>{const d=e.changedTouches[0].clientX-touch.current;if(Math.abs(d)>45)next(d>0?-1:1);}}><Image src={gallery[index]} fill priority sizes="100vw" alt={`${item.title || 'Property'}: illustrative photo ${index+1}`}/><span className="badge">View gallery · {index+1} / {gallery.length}</span></button><div className="gallery-thumbs">{gallery.map((src,i)=><button key={i} aria-label={`Show photo ${i+1}`} aria-pressed={i===index} onClick={()=>setIndex(i)}><Image src={src} fill sizes="25vw" alt={`Illustrative view ${i+1}`}/></button>)}</div><Modal open={open} onClose={()=>setOpen(false)} title={`${item.title || 'Property'} — gallery`} className="gallery-dialog"><div className="lightbox" onKeyDown={e=>{if(e.key==='ArrowRight')next(1);if(e.key==='ArrowLeft')next(-1);}} onTouchStart={e=>touch.current=e.changedTouches[0].clientX} onTouchEnd={e=>{const d=e.changedTouches[0].clientX-touch.current;if(Math.abs(d)>45)next(d>0?-1:1);}}><Image src={gallery[index]} fill sizes="90vw" alt={`Illustrative photo ${index+1} of ${gallery.length}`}/></div><div className="gallery-controls"><button className="button secondary" onClick={()=>next(-1)}>← Previous</button><span aria-live="polite">{index+1} / {gallery.length}</span><button className="button secondary" onClick={()=>next(1)}>Next →</button></div><DemoNote>Representative stock photography, not photographs of this fictional property.</DemoNote></Modal></div>;
+}
 const baseFields=[['name','Name','text',true],['email','Email','email',true],['phone','Phone','tel',true]];
 export function EnquiryForm({variant='quick',context='',submitLabel='Submit Enquiry'}){
   const [status,setStatus]=useState('idle');

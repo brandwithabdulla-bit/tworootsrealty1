@@ -1,0 +1,654 @@
+.mapPageWrapper {
+  padding-top: 94px;
+  background: var(--navy, #08121e);
+  color: var(--ivory, #f4f5f0);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Bar */
+.mapHeaderBar {
+  background: var(--midnight, #050b13);
+  padding: 40px 0 24px;
+  border-bottom: 1px solid rgba(244, 245, 240, 0.12);
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+  margin-bottom: 30px;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sand, #e0ccb5);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.pageTitle {
+  font-size: clamp(2.2rem, 3.5vw, 3.8rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  margin: 0;
+  color: var(--ivory, #f4f5f0);
+}
+
+.statsStrip {
+  display: flex;
+  gap: 28px;
+  background: rgba(244, 245, 240, 0.05);
+  padding: 14px 24px;
+  border-radius: 14px;
+  border: 1px solid rgba(244, 245, 240, 0.1);
+  backdrop-filter: blur(12px);
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.statItem strong {
+  font-size: 1.25rem;
+  color: var(--sand, #e0ccb5);
+  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif);
+  font-weight: 600;
+}
+
+.statItem span {
+  font-size: 0.72rem;
+  opacity: 0.75;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Filter Controls Bar */
+.filtersBar {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.searchBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(244, 245, 240, 0.08);
+  border: 1px solid rgba(244, 245, 240, 0.18);
+  border-radius: 12px;
+  padding: 0 16px;
+  transition: border-color 0.25s ease;
+}
+
+.searchBox:focus-within {
+  border-color: var(--sand, #e0ccb5);
+  background: rgba(244, 245, 240, 0.12);
+}
+
+.searchBox svg {
+  color: var(--sand, #e0ccb5);
+  flex-shrink: 0;
+  margin-right: 12px;
+}
+
+.searchBox input {
+  width: 100%;
+  height: 48px;
+  background: transparent;
+  border: 0;
+  color: var(--ivory, #f4f5f0);
+  font-size: 0.95rem;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+.searchBox input::placeholder {
+  color: rgba(244, 245, 240, 0.5);
+}
+
+.clearSearch {
+  background: transparent;
+  border: 0;
+  color: rgba(244, 245, 240, 0.6);
+  font-size: 1rem;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.filterDropdowns {
+  display: flex;
+  gap: 12px;
+}
+
+.filterDropdowns select {
+  height: 48px;
+  background: rgba(244, 245, 240, 0.08);
+  border: 1px solid rgba(244, 245, 240, 0.18);
+  border-radius: 12px;
+  color: var(--ivory, #f4f5f0);
+  padding: 0 16px;
+  font-size: 0.88rem;
+  outline: none;
+  cursor: pointer;
+  min-width: 160px;
+  margin: 0;
+}
+
+.filterDropdowns select option {
+  background: var(--navy, #08121e);
+  color: var(--ivory, #f4f5f0);
+}
+
+/* Community Pills Bar */
+.communityPills {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+}
+
+.pillBtn {
+  background: rgba(244, 245, 240, 0.06);
+  border: 1px solid rgba(244, 245, 240, 0.15);
+  color: var(--ivory, #f4f5f0);
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 0.82rem;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.pillBtn:hover {
+  background: rgba(244, 245, 240, 0.15);
+  border-color: var(--sand, #e0ccb5);
+}
+
+.pillActive {
+  background: var(--sand, #e0ccb5) !important;
+  color: var(--navy, #08121e) !important;
+  border-color: var(--sand, #e0ccb5) !important;
+  font-weight: 600;
+}
+
+/* Split Screen Layout */
+.splitLayout {
+  display: grid;
+  grid-template-columns: 460px 1fr;
+  flex: 1;
+  min-height: calc(100vh - 280px);
+  position: relative;
+}
+
+/* Left Sidebar Stream */
+.sidebarStream {
+  background: var(--navy, #08121e);
+  border-right: 1px solid rgba(244, 245, 240, 0.12);
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 280px);
+  overflow-y: auto;
+}
+
+.sidebarHeader {
+  padding: 20px 24px 12px;
+  border-bottom: 1px solid rgba(244, 245, 240, 0.08);
+  position: sticky;
+  top: 0;
+  background: var(--navy, #08121e);
+  z-index: 5;
+}
+
+.sidebarHeader h3 {
+  font-size: 1.15rem;
+  margin: 0 0 4px;
+}
+
+.sidebarHeader p {
+  font-size: 0.8rem;
+  opacity: 0.65;
+  margin: 0;
+}
+
+.cardsList {
+  padding: 16px 20px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.projectCard {
+  display: flex;
+  gap: 16px;
+  background: rgba(244, 245, 240, 0.04);
+  border: 1px solid rgba(244, 245, 240, 0.1);
+  border-radius: 16px;
+  padding: 14px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.projectCard:hover {
+  background: rgba(244, 245, 240, 0.08);
+  border-color: var(--sand, #e0ccb5);
+  transform: translateY(-2px);
+}
+
+.activeCard {
+  border-color: var(--sand, #e0ccb5) !important;
+  background: rgba(224, 204, 181, 0.12) !important;
+  box-shadow: 0 8px 24px rgba(8, 18, 30, 0.4);
+}
+
+.cardPhotoWrap {
+  position: relative;
+  width: 130px;
+  height: 110px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #112233;
+}
+
+.cardPhotoWrap img {
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.projectCard:hover .cardPhotoWrap img {
+  transform: scale(1.06);
+}
+
+.cardStatusBadge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(8, 18, 30, 0.75);
+  backdrop-filter: blur(8px);
+  color: var(--sand, #e0ccb5);
+  font-size: 0.62rem;
+  padding: 3px 8px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border: 1px solid rgba(244, 245, 240, 0.2);
+}
+
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  min-width: 0;
+}
+
+.cardMetaRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  opacity: 0.7;
+}
+
+.cardLocation {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardDeveloper {
+  color: var(--sand, #e0ccb5);
+  font-weight: 500;
+}
+
+.cardTitle {
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin: 4px 0;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--ivory, #f4f5f0);
+}
+
+.cardDetailsRow {
+  font-size: 0.78rem;
+  opacity: 0.65;
+  margin-bottom: 6px;
+}
+
+.cardBottomRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.cardPrice {
+  font-size: 0.95rem;
+  color: var(--sand, #e0ccb5);
+  font-weight: 600;
+}
+
+.cardLinkBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  color: var(--ivory, #f4f5f0);
+  background: rgba(244, 245, 240, 0.1);
+  padding: 4px 10px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.cardLinkBtn:hover {
+  background: var(--sand, #e0ccb5);
+  color: var(--navy, #08121e);
+}
+
+.emptyState {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.emptyState h4 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.emptyState p {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-bottom: 20px;
+}
+
+.resetBtn {
+  background: var(--sand, #e0ccb5);
+  color: var(--navy, #08121e);
+  border: 0;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Map Canvas Container */
+.mapCanvasWrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: calc(100vh - 280px);
+  background: #0f1c2c;
+}
+
+.mapContainer {
+  width: 100%;
+  height: 100%;
+  min-height: calc(100vh - 280px);
+}
+
+.mapLoader {
+  position: absolute;
+  inset: 0;
+  background: var(--navy, #08121e);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: var(--ivory, #f4f5f0);
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid rgba(244, 245, 240, 0.2);
+  border-top-color: var(--sand, #e0ccb5);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Custom Marker Pin Styles */
+.markerContainer {
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.customMarkerPin {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.markerBadge {
+  background: var(--navy, #08121e);
+  color: var(--sand, #e0ccb5);
+  border: 1px solid var(--sand, #e0ccb5);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+}
+
+.markerPoint {
+  width: 10px;
+  height: 10px;
+  background: var(--sand, #e0ccb5);
+  border-radius: 50%;
+  margin-top: 2px;
+  box-shadow: 0 0 10px var(--sand, #e0ccb5);
+}
+
+.customMarkerPin:hover,
+.activeMarkerPin {
+  transform: scale(1.15) translateY(-4px);
+}
+
+.activeMarkerPin .markerBadge {
+  background: var(--sand, #e0ccb5);
+  color: var(--navy, #08121e);
+}
+
+/* Custom Leaflet Popup */
+:global(.leaflet-popup-content-wrapper) {
+  background: var(--navy, #08121e) !important;
+  color: var(--ivory, #f4f5f0) !important;
+  border: 1px solid rgba(244, 245, 240, 0.2) !important;
+  border-radius: 16px !important;
+  padding: 0 !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5) !important;
+  overflow: hidden;
+}
+
+:global(.leaflet-popup-tip) {
+  background: var(--navy, #08121e) !important;
+  border: 1px solid rgba(244, 245, 240, 0.2) !important;
+}
+
+:global(.leaflet-popup-content) {
+  margin: 0 !important;
+  width: 260px !important;
+}
+
+.mapPopupContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.popupImageWrap {
+  position: relative;
+  width: 100%;
+  height: 130px;
+}
+
+.popupImageWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.popupStatus {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(8, 18, 30, 0.85);
+  color: var(--sand, #e0ccb5);
+  font-size: 0.65rem;
+  padding: 3px 8px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.popupBody {
+  padding: 14px;
+}
+
+.popupSub {
+  font-size: 0.72rem;
+  opacity: 0.7;
+  display: block;
+}
+
+.popupTitle {
+  font-size: 1.05rem;
+  margin: 4px 0 6px;
+  color: var(--ivory, #f4f5f0);
+}
+
+.popupPrice {
+  font-size: 1rem;
+  color: var(--sand, #e0ccb5);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.popupBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--sand, #e0ccb5);
+  color: var(--navy, #08121e);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.popupBtn:hover {
+  opacity: 0.9;
+}
+
+/* Advisory Banner */
+.mapAdvisoryBanner {
+  background: var(--sand, #e0ccb5);
+  color: var(--navy, #08121e);
+  padding: 36px 0;
+  border-top: 1px solid rgba(8, 18, 30, 0.1);
+}
+
+.advisoryInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+}
+
+.advisoryInner h3 {
+  font-size: 1.4rem;
+  margin: 0 0 6px;
+
+}
+
+.advisoryInner p {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  margin: 0;
+  max-width: 680px;
+}
+
+.advisoryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--navy, #08121e);
+  color: var(--ivory, #f4f5f0);
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background 0.25s ease;
+}
+
+.advisoryBtn:hover {
+  background: #000;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .splitLayout {
+    grid-template-columns: 380px 1fr;
+  }
+  .headerContent {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .mapHeaderBar {
+    padding: 24px 0 16px;
+  }
+
+  .filtersBar {
+    grid-template-columns: 1fr;
+  }
+
+  .filterDropdowns {
+    flex-direction: column;
+  }
+
+  .splitLayout {
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .sidebarStream {
+    max-height: 400px;
+  }
+
+  .mapCanvasWrap, .mapContainer {
+    min-height: 380px;
+  }
+
+  .advisoryInner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

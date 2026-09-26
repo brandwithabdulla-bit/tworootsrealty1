@@ -25,6 +25,11 @@ export default function Navbar() {
   const [callbackStatus, setCallbackStatus] = useState('idle'); // idle | loading | success
   const pathname = usePathname();
   
+  // Do not render navbar on studio route
+  if (pathname?.startsWith('/studio')) {
+    return null;
+  }
+  
   // Only apply transparent header on homepage
   const isHomepage = pathname === '/';
 
@@ -239,6 +244,7 @@ export default function Navbar() {
               </span>
               <div className={styles.dropdownMenu}>
                 <Link href="/insights" onClick={closeAllMenus}>All Media</Link>
+                <Link href="/map" onClick={closeAllMenus}>Dubai Real Estate Map</Link>
                 <Link href="/insights?category=blogs" onClick={closeAllMenus}>Blogs & Guides</Link>
                 <Link href="/insights?category=investment" onClick={closeAllMenus}>Investment Insights</Link>
                 <Link href="/gallery" onClick={closeAllMenus}>Gallery</Link>
@@ -313,6 +319,7 @@ export default function Navbar() {
               {openMobileSubmenu === 'media' && (
                 <div className={styles.mobileSubmenu}>
                   <Link href="/insights" onClick={closeAllMenus}>All Media</Link>
+                  <Link href="/map" onClick={closeAllMenus}>Dubai Real Estate Map</Link>
                   <Link href="/insights?category=blogs" onClick={closeAllMenus}>Blogs & Guides</Link>
                   <Link href="/insights?category=investment" onClick={closeAllMenus}>Investment Insights</Link>
                   <Link href="/gallery" onClick={closeAllMenus}>Gallery</Link>

@@ -1,0 +1,1920 @@
+{
+  "developers": [
+    {
+      "type": "developer",
+      "content": {
+        "name": "Emaar",
+        "slug": {
+          "_type": "slug",
+          "current": "emaar"
+        },
+        "description": "Explore the illustrative Emaar collection, with connected projects and communities to help shape your shortlist.",
+        "featured": true
+      }
+    },
+    {
+      "type": "developer",
+      "content": {
+        "name": "Damac",
+        "slug": {
+          "_type": "slug",
+          "current": "damac"
+        },
+        "description": "Explore the illustrative Damac collection, with connected projects and communities to help shape your shortlist.",
+        "featured": true
+      }
+    },
+    {
+      "type": "developer",
+      "content": {
+        "name": "Sobha",
+        "slug": {
+          "_type": "slug",
+          "current": "sobha"
+        },
+        "description": "Explore the illustrative Sobha collection, with connected projects and communities to help shape your shortlist.",
+        "featured": true
+      }
+    },
+    {
+      "type": "developer",
+      "content": {
+        "name": "Ellington",
+        "slug": {
+          "_type": "slug",
+          "current": "ellington"
+        },
+        "description": "Explore the illustrative Ellington collection, with connected projects and communities to help shape your shortlist.",
+        "featured": true
+      }
+    },
+    {
+      "type": "developer",
+      "content": {
+        "name": "Dubai Holdings",
+        "slug": {
+          "_type": "slug",
+          "current": "dubai-holdings"
+        },
+        "description": "Explore the illustrative Dubai Holdings collection, with connected projects and communities to help shape your shortlist.",
+        "featured": true
+      }
+    },
+    {
+      "type": "developer",
+      "content": {
+        "name": "Omniyat",
+        "slug": {
+          "_type": "slug",
+          "current": "omniyat"
+        },
+        "description": "Explore the illustrative Omniyat collection, with connected projects and communities to help shape your shortlist.",
+        "featured": true
+      }
+    },
+    {
+      "type": "developer",
+      "content": {
+        "name": "Beyond",
+        "slug": {
+          "_type": "slug",
+          "current": "beyond"
+        },
+        "description": "Explore the illustrative Beyond collection, with connected projects and communities to help shape your shortlist.",
+        "featured": true
+      }
+    },
+    {
+      "type": "developer",
+      "content": {
+        "name": "Dubai South",
+        "slug": {
+          "_type": "slug",
+          "current": "dubai-south"
+        },
+        "description": "Explore the illustrative Dubai South collection, with connected projects and communities to help shape your shortlist.",
+        "featured": true
+      }
+    },
+    {
+      "type": "developer",
+      "content": {
+        "name": "Leos",
+        "slug": {
+          "_type": "slug",
+          "current": "leos"
+        },
+        "description": "Explore the illustrative Leos collection, with connected projects and communities to help shape your shortlist.",
+        "featured": true
+      }
+    },
+    {
+      "type": "developer",
+      "content": {
+        "name": "Object1",
+        "slug": {
+          "_type": "slug",
+          "current": "object1"
+        },
+        "description": "Explore the illustrative Object1 collection, with connected projects and communities to help shape your shortlist.",
+        "featured": true
+      }
+    },
+    {
+      "type": "developer",
+      "content": {
+        "name": "Marquis",
+        "slug": {
+          "_type": "slug",
+          "current": "marquis"
+        },
+        "description": "Explore the illustrative Marquis collection, with connected projects and communities to help shape your shortlist.",
+        "featured": true
+      }
+    },
+    {
+      "type": "developer",
+      "content": {
+        "name": "Imtiaz",
+        "slug": {
+          "_type": "slug",
+          "current": "imtiaz"
+        },
+        "description": "Explore the illustrative Imtiaz collection, with connected projects and communities to help shape your shortlist.",
+        "featured": true
+      }
+    },
+    {
+      "type": "developer",
+      "content": {
+        "name": "Samana",
+        "slug": {
+          "_type": "slug",
+          "current": "samana"
+        },
+        "description": "Explore the illustrative Samana collection, with connected projects and communities to help shape your shortlist.",
+        "featured": true
+      }
+    },
+    {
+      "type": "developer",
+      "content": {
+        "name": "Binghatti",
+        "slug": {
+          "_type": "slug",
+          "current": "binghatti"
+        },
+        "description": "Explore the illustrative Binghatti collection, with connected projects and communities to help shape your shortlist.",
+        "featured": true
+      }
+    },
+    {
+      "type": "developer",
+      "content": {
+        "name": "Azizi",
+        "slug": {
+          "_type": "slug",
+          "current": "azizi"
+        },
+        "description": "Explore the illustrative Azizi collection, with connected projects and communities to help shape your shortlist.",
+        "featured": true
+      }
+    }
+  ],
+  "locations": [
+    {
+      "type": "location",
+      "content": {
+        "name": "Downtown Dubai",
+        "slug": {
+          "_type": "slug",
+          "current": "downtown-dubai"
+        },
+        "category": "Popular",
+        "latitude": 25.1972,
+        "longitude": 55.2744,
+        "description": "Discover Downtown Dubai through the places, homes and everyday priorities that matter to you. This demonstration guide connects representative property types with a starting point for a personal conversation.",
+        "lifestyle": [
+          "Consider your everyday journey",
+          "Compare neighbourhood amenities",
+          "Visit at different times of day"
+        ],
+        "propertyTypes": [
+          "Apartment",
+          "Townhouse"
+        ]
+      }
+    },
+    {
+      "type": "location",
+      "content": {
+        "name": "Business Bay",
+        "slug": {
+          "_type": "slug",
+          "current": "business-bay"
+        },
+        "category": "Popular",
+        "latitude": 25.185,
+        "longitude": 55.265,
+        "description": "Discover Business Bay through the places, homes and everyday priorities that matter to you. This demonstration guide connects representative property types with a starting point for a personal conversation.",
+        "lifestyle": [
+          "Consider your everyday journey",
+          "Compare neighbourhood amenities",
+          "Visit at different times of day"
+        ],
+        "propertyTypes": [
+          "Apartment",
+          "Villa",
+          "Mansion"
+        ]
+      }
+    },
+    {
+      "type": "location",
+      "content": {
+        "name": "Dubai Creek Harbour",
+        "slug": {
+          "_type": "slug",
+          "current": "dubai-creek-harbour"
+        },
+        "category": "Popular",
+        "latitude": 25.207,
+        "longitude": 55.345,
+        "description": "Discover Dubai Creek Harbour through the places, homes and everyday priorities that matter to you. This demonstration guide connects representative property types with a starting point for a personal conversation.",
+        "lifestyle": [
+          "Consider your everyday journey",
+          "Compare neighbourhood amenities",
+          "Visit at different times of day"
+        ],
+        "propertyTypes": [
+          "Apartment",
+          "Villa",
+          "Mansion"
+        ]
+      }
+    },
+    {
+      "type": "location",
+      "content": {
+        "name": "Dubai Hills Estate",
+        "slug": {
+          "_type": "slug",
+          "current": "dubai-hills-estate"
+        },
+        "category": "Popular",
+        "latitude": 25.106,
+        "longitude": 55.247,
+        "description": "Discover Dubai Hills Estate through the places, homes and everyday priorities that matter to you. This demonstration guide connects representative property types with a starting point for a personal conversation.",
+        "lifestyle": [
+          "Consider your everyday journey",
+          "Compare neighbourhood amenities",
+          "Visit at different times of day"
+        ],
+        "propertyTypes": [
+          "Apartment",
+          "Townhouse"
+        ]
+      }
+    },
+    {
+      "type": "location",
+      "content": {
+        "name": "Dubai South",
+        "slug": {
+          "_type": "slug",
+          "current": "dubai-south"
+        },
+        "category": "Investment",
+        "latitude": 24.948,
+        "longitude": 55.154,
+        "description": "Discover Dubai South through the places, homes and everyday priorities that matter to you. This demonstration guide connects representative property types with a starting point for a personal conversation.",
+        "lifestyle": [
+          "Consider your everyday journey",
+          "Compare neighbourhood amenities",
+          "Visit at different times of day"
+        ],
+        "propertyTypes": [
+          "Apartment",
+          "Villa",
+          "Mansion"
+        ]
+      }
+    },
+    {
+      "type": "location",
+      "content": {
+        "name": "Palm Jebel Ali",
+        "slug": {
+          "_type": "slug",
+          "current": "palm-jebel-ali"
+        },
+        "category": "Emerging",
+        "latitude": 24.997,
+        "longitude": 54.986,
+        "description": "Discover Palm Jebel Ali through the places, homes and everyday priorities that matter to you. This demonstration guide connects representative property types with a starting point for a personal conversation.",
+        "lifestyle": [
+          "Consider your everyday journey",
+          "Compare neighbourhood amenities",
+          "Visit at different times of day"
+        ],
+        "propertyTypes": [
+          "Apartment",
+          "Villa",
+          "Mansion"
+        ]
+      }
+    },
+    {
+      "type": "location",
+      "content": {
+        "name": "Dubai Islands",
+        "slug": {
+          "_type": "slug",
+          "current": "dubai-islands"
+        },
+        "category": "Investment",
+        "latitude": 25.307,
+        "longitude": 55.306,
+        "description": "Discover Dubai Islands through the places, homes and everyday priorities that matter to you. This demonstration guide connects representative property types with a starting point for a personal conversation.",
+        "lifestyle": [
+          "Consider your everyday journey",
+          "Compare neighbourhood amenities",
+          "Visit at different times of day"
+        ],
+        "propertyTypes": [
+          "Apartment",
+          "Townhouse"
+        ]
+      }
+    },
+    {
+      "type": "location",
+      "content": {
+        "name": "Dubai Marina",
+        "slug": {
+          "_type": "slug",
+          "current": "dubai-marina"
+        },
+        "category": "Popular",
+        "latitude": 25.081,
+        "longitude": 55.14,
+        "description": "Discover Dubai Marina through the places, homes and everyday priorities that matter to you. This demonstration guide connects representative property types with a starting point for a personal conversation.",
+        "lifestyle": [
+          "Consider your everyday journey",
+          "Compare neighbourhood amenities",
+          "Visit at different times of day"
+        ],
+        "propertyTypes": [
+          "Apartment",
+          "Villa",
+          "Mansion"
+        ]
+      }
+    },
+    {
+      "type": "location",
+      "content": {
+        "name": "Jumeirah Village Circle",
+        "slug": {
+          "_type": "slug",
+          "current": "jumeirah-village-circle"
+        },
+        "category": "Investment",
+        "latitude": 25.059,
+        "longitude": 55.208,
+        "description": "Discover Jumeirah Village Circle through the places, homes and everyday priorities that matter to you. This demonstration guide connects representative property types with a starting point for a personal conversation.",
+        "lifestyle": [
+          "Consider your everyday journey",
+          "Compare neighbourhood amenities",
+          "Visit at different times of day"
+        ],
+        "propertyTypes": [
+          "Apartment",
+          "Villa",
+          "Mansion"
+        ]
+      }
+    },
+    {
+      "type": "location",
+      "content": {
+        "name": "Meydan",
+        "slug": {
+          "_type": "slug",
+          "current": "meydan"
+        },
+        "category": "Emerging",
+        "latitude": 25.154,
+        "longitude": 55.299,
+        "description": "Discover Meydan through the places, homes and everyday priorities that matter to you. This demonstration guide connects representative property types with a starting point for a personal conversation.",
+        "lifestyle": [
+          "Consider your everyday journey",
+          "Compare neighbourhood amenities",
+          "Visit at different times of day"
+        ],
+        "propertyTypes": [
+          "Apartment",
+          "Townhouse"
+        ]
+      }
+    },
+    {
+      "type": "location",
+      "content": {
+        "name": "Al Furjan",
+        "slug": {
+          "_type": "slug",
+          "current": "al-furjan"
+        },
+        "category": "Investment",
+        "latitude": 25.026,
+        "longitude": 55.144,
+        "description": "Discover Al Furjan through the places, homes and everyday priorities that matter to you. This demonstration guide connects representative property types with a starting point for a personal conversation.",
+        "lifestyle": [
+          "Consider your everyday journey",
+          "Compare neighbourhood amenities",
+          "Visit at different times of day"
+        ],
+        "propertyTypes": [
+          "Apartment",
+          "Villa",
+          "Mansion"
+        ]
+      }
+    },
+    {
+      "type": "location",
+      "content": {
+        "name": "Rashid Yachts & Marina",
+        "slug": {
+          "_type": "slug",
+          "current": "rashid-yachts-marina"
+        },
+        "category": "Emerging",
+        "latitude": 25.273,
+        "longitude": 55.278,
+        "description": "Discover Rashid Yachts & Marina through the places, homes and everyday priorities that matter to you. This demonstration guide connects representative property types with a starting point for a personal conversation.",
+        "lifestyle": [
+          "Consider your everyday journey",
+          "Compare neighbourhood amenities",
+          "Visit at different times of day"
+        ],
+        "propertyTypes": [
+          "Apartment",
+          "Villa",
+          "Mansion"
+        ]
+      }
+    },
+    {
+      "type": "location",
+      "content": {
+        "name": "Expo City",
+        "slug": {
+          "_type": "slug",
+          "current": "expo-city"
+        },
+        "category": "Investment",
+        "latitude": 24.96,
+        "longitude": 55.15,
+        "description": "Discover Expo City through the places, homes and everyday priorities that matter to you. This demonstration guide connects representative property types with a starting point for a personal conversation.",
+        "lifestyle": [
+          "Consider your everyday journey",
+          "Compare neighbourhood amenities",
+          "Visit at different times of day"
+        ],
+        "propertyTypes": [
+          "Apartment",
+          "Townhouse"
+        ]
+      }
+    },
+    {
+      "type": "location",
+      "content": {
+        "name": "Ras Al Khaimah",
+        "slug": {
+          "_type": "slug",
+          "current": "ras-al-khaimah"
+        },
+        "category": "Emerging",
+        "latitude": 25.789,
+        "longitude": 55.943,
+        "description": "Discover Ras Al Khaimah through the places, homes and everyday priorities that matter to you. This demonstration guide connects representative property types with a starting point for a personal conversation.",
+        "lifestyle": [
+          "Consider your everyday journey",
+          "Compare neighbourhood amenities",
+          "Visit at different times of day"
+        ],
+        "propertyTypes": [
+          "Apartment",
+          "Villa",
+          "Mansion"
+        ]
+      }
+    }
+  ],
+  "properties": [
+    {
+      "type": "property",
+      "content": {
+        "title": "Harbour Light Residence",
+        "slug": {
+          "_type": "slug",
+          "current": "harbour-light-residence"
+        },
+        "propertyType": "Apartment",
+        "purpose": "Buy",
+        "status": "Off-Plan",
+        "price": 2450000,
+        "priceLabel": "AED 2,450,000",
+        "bedrooms": 2,
+        "bathrooms": 3,
+        "area": 1760,
+        "handover": "Q4 2028 (demo)",
+        "shortDescription": "Considered spaces. A connected address. Room for your next chapter.",
+        "description": "Harbour Light Residence is an illustrative apartment in Dubai Creek Harbour. Generous proportions, considered living spaces and an emphasis on everyday comfort shape this example. Explore the gallery, compare the key facts and tell us what you would like from your next property. All prices, specifications, developer associations and availability shown here are demonstration data, not an offer for sale or rent.",
+        "amenities": [
+          "Pool",
+          "Fitness studio",
+          "Covered parking",
+          "Residents’ lounge",
+          "Outdoor spaces",
+          "Concierge"
+        ],
+        "paymentPlan": [
+          {
+            "label": "On reservation",
+            "percent": 20
+          },
+          {
+            "label": "During construction",
+            "percent": 40
+          },
+          {
+            "label": "On handover",
+            "percent": 40
+          }
+        ],
+        "featured": true,
+        "offPlan": true,
+        "ready": false,
+        "investment": false,
+        "latitude": 25.207,
+        "longitude": 55.345
+      }
+    },
+    {
+      "type": "property",
+      "content": {
+        "title": "The Garden House",
+        "slug": {
+          "_type": "slug",
+          "current": "the-garden-house"
+        },
+        "propertyType": "Villa",
+        "purpose": "Buy",
+        "status": "Ready",
+        "price": 7800000,
+        "priceLabel": "AED 7,800,000",
+        "bedrooms": 4,
+        "bathrooms": 5,
+        "area": 2740,
+        "handover": "Ready",
+        "shortDescription": "Considered spaces. A connected address. Room for your next chapter.",
+        "description": "The Garden House is an illustrative villa in Dubai Hills Estate. Generous proportions, considered living spaces and an emphasis on everyday comfort shape this example. Explore the gallery, compare the key facts and tell us what you would like from your next property. All prices, specifications, developer associations and availability shown here are demonstration data, not an offer for sale or rent.",
+        "amenities": [
+          "Pool",
+          "Fitness studio",
+          "Covered parking",
+          "Residents’ lounge",
+          "Outdoor spaces",
+          "Concierge"
+        ],
+        "paymentPlan": [],
+        "featured": true,
+        "offPlan": false,
+        "ready": true,
+        "investment": false,
+        "latitude": 25.106,
+        "longitude": 55.247
+      }
+    },
+    {
+      "type": "property",
+      "content": {
+        "title": "Marina Horizon",
+        "slug": {
+          "_type": "slug",
+          "current": "marina-horizon"
+        },
+        "propertyType": "Mansion",
+        "purpose": "Buy",
+        "status": "Ready",
+        "price": 12500000,
+        "priceLabel": "AED 12,500,000",
+        "bedrooms": 4,
+        "bathrooms": 5,
+        "area": 2740,
+        "handover": "Ready",
+        "shortDescription": "Considered spaces. A connected address. Room for your next chapter.",
+        "description": "Marina Horizon is an illustrative mansion in Dubai Marina. Generous proportions, considered living spaces and an emphasis on everyday comfort shape this example. Explore the gallery, compare the key facts and tell us what you would like from your next property. All prices, specifications, developer associations and availability shown here are demonstration data, not an offer for sale or rent.",
+        "amenities": [
+          "Pool",
+          "Fitness studio",
+          "Covered parking",
+          "Residents’ lounge",
+          "Outdoor spaces",
+          "Concierge"
+        ],
+        "paymentPlan": [],
+        "featured": true,
+        "offPlan": false,
+        "ready": true,
+        "investment": false,
+        "latitude": 25.081,
+        "longitude": 55.14
+      }
+    },
+    {
+      "type": "property",
+      "content": {
+        "title": "Creekside Atelier",
+        "slug": {
+          "_type": "slug",
+          "current": "creekside-atelier"
+        },
+        "propertyType": "Apartment",
+        "purpose": "Invest",
+        "status": "Off-Plan",
+        "price": 1850000,
+        "priceLabel": "AED 1,850,000",
+        "bedrooms": 1,
+        "bathrooms": 2,
+        "area": 1270,
+        "handover": "Q4 2028 (demo)",
+        "shortDescription": "Considered spaces. A connected address. Room for your next chapter.",
+        "description": "Creekside Atelier is an illustrative apartment in Dubai Creek Harbour. Generous proportions, considered living spaces and an emphasis on everyday comfort shape this example. Explore the gallery, compare the key facts and tell us what you would like from your next property. All prices, specifications, developer associations and availability shown here are demonstration data, not an offer for sale or rent.",
+        "amenities": [
+          "Pool",
+          "Fitness studio",
+          "Covered parking",
+          "Residents’ lounge",
+          "Outdoor spaces",
+          "Concierge"
+        ],
+        "paymentPlan": [
+          {
+            "label": "On reservation",
+            "percent": 20
+          },
+          {
+            "label": "During construction",
+            "percent": 40
+          },
+          {
+            "label": "On handover",
+            "percent": 40
+          }
+        ],
+        "featured": false,
+        "offPlan": true,
+        "ready": false,
+        "investment": true,
+        "latitude": 25.207,
+        "longitude": 55.345
+      }
+    },
+    {
+      "type": "property",
+      "content": {
+        "title": "Parkline Townhouse",
+        "slug": {
+          "_type": "slug",
+          "current": "parkline-townhouse"
+        },
+        "propertyType": "Townhouse",
+        "purpose": "Buy",
+        "status": "Off-Plan",
+        "price": 3200000,
+        "priceLabel": "AED 3,200,000",
+        "bedrooms": 3,
+        "bathrooms": 4,
+        "area": 2250,
+        "handover": "Q4 2028 (demo)",
+        "shortDescription": "Considered spaces. A connected address. Room for your next chapter.",
+        "description": "Parkline Townhouse is an illustrative townhouse in Dubai South. Generous proportions, considered living spaces and an emphasis on everyday comfort shape this example. Explore the gallery, compare the key facts and tell us what you would like from your next property. All prices, specifications, developer associations and availability shown here are demonstration data, not an offer for sale or rent.",
+        "amenities": [
+          "Pool",
+          "Fitness studio",
+          "Covered parking",
+          "Residents’ lounge",
+          "Outdoor spaces",
+          "Concierge"
+        ],
+        "paymentPlan": [
+          {
+            "label": "On reservation",
+            "percent": 20
+          },
+          {
+            "label": "During construction",
+            "percent": 40
+          },
+          {
+            "label": "On handover",
+            "percent": 40
+          }
+        ],
+        "featured": false,
+        "offPlan": true,
+        "ready": false,
+        "investment": false,
+        "latitude": 24.948,
+        "longitude": 55.154
+      }
+    },
+    {
+      "type": "property",
+      "content": {
+        "title": "Downtown Frame",
+        "slug": {
+          "_type": "slug",
+          "current": "downtown-frame"
+        },
+        "propertyType": "Apartment",
+        "purpose": "Rent",
+        "status": "Ready",
+        "price": 185000,
+        "priceLabel": "AED 185,000 / year",
+        "bedrooms": 2,
+        "bathrooms": 3,
+        "area": 1760,
+        "handover": "Ready",
+        "shortDescription": "Considered spaces. A connected address. Room for your next chapter.",
+        "description": "Downtown Frame is an illustrative apartment in Downtown Dubai. Generous proportions, considered living spaces and an emphasis on everyday comfort shape this example. Explore the gallery, compare the key facts and tell us what you would like from your next property. All prices, specifications, developer associations and availability shown here are demonstration data, not an offer for sale or rent.",
+        "amenities": [
+          "Pool",
+          "Fitness studio",
+          "Covered parking",
+          "Residents’ lounge",
+          "Outdoor spaces",
+          "Concierge"
+        ],
+        "paymentPlan": [],
+        "featured": false,
+        "offPlan": false,
+        "ready": true,
+        "investment": false,
+        "latitude": 25.1972,
+        "longitude": 55.2744
+      }
+    },
+    {
+      "type": "property",
+      "content": {
+        "title": "Canal Workspace",
+        "slug": {
+          "_type": "slug",
+          "current": "canal-workspace"
+        },
+        "propertyType": "Commercial",
+        "purpose": "Buy",
+        "status": "Ready",
+        "price": 2900000,
+        "priceLabel": "AED 2,900,000",
+        "bedrooms": 0,
+        "bathrooms": 1,
+        "area": 580,
+        "handover": "Ready",
+        "shortDescription": "Considered spaces. A connected address. Room for your next chapter.",
+        "description": "Canal Workspace is an illustrative commercial in Business Bay. Generous proportions, considered living spaces and an emphasis on everyday comfort shape this example. Explore the gallery, compare the key facts and tell us what you would like from your next property. All prices, specifications, developer associations and availability shown here are demonstration data, not an offer for sale or rent.",
+        "amenities": [
+          "Pool",
+          "Fitness studio",
+          "Covered parking",
+          "Residents’ lounge",
+          "Outdoor spaces",
+          "Concierge"
+        ],
+        "paymentPlan": [],
+        "featured": false,
+        "offPlan": false,
+        "ready": true,
+        "investment": false,
+        "latitude": 25.185,
+        "longitude": 55.265
+      }
+    },
+    {
+      "type": "property",
+      "content": {
+        "title": "Island Pavilion",
+        "slug": {
+          "_type": "slug",
+          "current": "island-pavilion"
+        },
+        "propertyType": "Branded Residence",
+        "purpose": "Invest",
+        "status": "Off-Plan",
+        "price": 5100000,
+        "priceLabel": "AED 5,100,000",
+        "bedrooms": 3,
+        "bathrooms": 4,
+        "area": 2250,
+        "handover": "Q4 2028 (demo)",
+        "shortDescription": "Considered spaces. A connected address. Room for your next chapter.",
+        "description": "Island Pavilion is an illustrative branded residence in Dubai Islands. Generous proportions, considered living spaces and an emphasis on everyday comfort shape this example. Explore the gallery, compare the key facts and tell us what you would like from your next property. All prices, specifications, developer associations and availability shown here are demonstration data, not an offer for sale or rent.",
+        "amenities": [
+          "Pool",
+          "Fitness studio",
+          "Covered parking",
+          "Residents’ lounge",
+          "Outdoor spaces",
+          "Concierge"
+        ],
+        "paymentPlan": [
+          {
+            "label": "On reservation",
+            "percent": 20
+          },
+          {
+            "label": "During construction",
+            "percent": 40
+          },
+          {
+            "label": "On handover",
+            "percent": 40
+          }
+        ],
+        "featured": false,
+        "offPlan": true,
+        "ready": false,
+        "investment": true,
+        "latitude": 25.307,
+        "longitude": 55.306
+      }
+    },
+    {
+      "type": "property",
+      "content": {
+        "title": "Meydan Courtyard",
+        "slug": {
+          "_type": "slug",
+          "current": "meydan-courtyard"
+        },
+        "propertyType": "Villa",
+        "purpose": "Buy",
+        "status": "Ready",
+        "price": 6100000,
+        "priceLabel": "AED 6,100,000",
+        "bedrooms": 4,
+        "bathrooms": 5,
+        "area": 2740,
+        "handover": "Ready",
+        "shortDescription": "Considered spaces. A connected address. Room for your next chapter.",
+        "description": "Meydan Courtyard is an illustrative villa in Meydan. Generous proportions, considered living spaces and an emphasis on everyday comfort shape this example. Explore the gallery, compare the key facts and tell us what you would like from your next property. All prices, specifications, developer associations and availability shown here are demonstration data, not an offer for sale or rent.",
+        "amenities": [
+          "Pool",
+          "Fitness studio",
+          "Covered parking",
+          "Residents’ lounge",
+          "Outdoor spaces",
+          "Concierge"
+        ],
+        "paymentPlan": [],
+        "featured": false,
+        "offPlan": false,
+        "ready": true,
+        "investment": false,
+        "latitude": 25.154,
+        "longitude": 55.299
+      }
+    },
+    {
+      "type": "property",
+      "content": {
+        "title": "Village Terrace",
+        "slug": {
+          "_type": "slug",
+          "current": "village-terrace"
+        },
+        "propertyType": "Apartment",
+        "purpose": "Rent",
+        "status": "Ready",
+        "price": 95000,
+        "priceLabel": "AED 95,000 / year",
+        "bedrooms": 1,
+        "bathrooms": 2,
+        "area": 1270,
+        "handover": "Ready",
+        "shortDescription": "Considered spaces. A connected address. Room for your next chapter.",
+        "description": "Village Terrace is an illustrative apartment in Jumeirah Village Circle. Generous proportions, considered living spaces and an emphasis on everyday comfort shape this example. Explore the gallery, compare the key facts and tell us what you would like from your next property. All prices, specifications, developer associations and availability shown here are demonstration data, not an offer for sale or rent.",
+        "amenities": [
+          "Pool",
+          "Fitness studio",
+          "Covered parking",
+          "Residents’ lounge",
+          "Outdoor spaces",
+          "Concierge"
+        ],
+        "paymentPlan": [],
+        "featured": false,
+        "offPlan": false,
+        "ready": true,
+        "investment": false,
+        "latitude": 25.059,
+        "longitude": 55.208
+      }
+    },
+    {
+      "type": "property",
+      "content": {
+        "title": "Palm Shore House",
+        "slug": {
+          "_type": "slug",
+          "current": "palm-shore-house"
+        },
+        "propertyType": "Villa",
+        "purpose": "Invest",
+        "status": "Off-Plan",
+        "price": 14800000,
+        "priceLabel": "AED 14,800,000",
+        "bedrooms": 5,
+        "bathrooms": 6,
+        "area": 3230,
+        "handover": "Q4 2028 (demo)",
+        "shortDescription": "Considered spaces. A connected address. Room for your next chapter.",
+        "description": "Palm Shore House is an illustrative villa in Palm Jebel Ali. Generous proportions, considered living spaces and an emphasis on everyday comfort shape this example. Explore the gallery, compare the key facts and tell us what you would like from your next property. All prices, specifications, developer associations and availability shown here are demonstration data, not an offer for sale or rent.",
+        "amenities": [
+          "Pool",
+          "Fitness studio",
+          "Covered parking",
+          "Residents’ lounge",
+          "Outdoor spaces",
+          "Concierge"
+        ],
+        "paymentPlan": [
+          {
+            "label": "On reservation",
+            "percent": 20
+          },
+          {
+            "label": "During construction",
+            "percent": 40
+          },
+          {
+            "label": "On handover",
+            "percent": 40
+          }
+        ],
+        "featured": false,
+        "offPlan": true,
+        "ready": false,
+        "investment": true,
+        "latitude": 24.997,
+        "longitude": 54.986
+      }
+    },
+    {
+      "type": "property",
+      "content": {
+        "title": "Expo Perspective",
+        "slug": {
+          "_type": "slug",
+          "current": "expo-perspective"
+        },
+        "propertyType": "Apartment",
+        "purpose": "Buy",
+        "status": "Off-Plan",
+        "price": 1650000,
+        "priceLabel": "AED 1,650,000",
+        "bedrooms": 1,
+        "bathrooms": 2,
+        "area": 1270,
+        "handover": "Q4 2028 (demo)",
+        "shortDescription": "Considered spaces. A connected address. Room for your next chapter.",
+        "description": "Expo Perspective is an illustrative apartment in Expo City. Generous proportions, considered living spaces and an emphasis on everyday comfort shape this example. Explore the gallery, compare the key facts and tell us what you would like from your next property. All prices, specifications, developer associations and availability shown here are demonstration data, not an offer for sale or rent.",
+        "amenities": [
+          "Pool",
+          "Fitness studio",
+          "Covered parking",
+          "Residents’ lounge",
+          "Outdoor spaces",
+          "Concierge"
+        ],
+        "paymentPlan": [
+          {
+            "label": "On reservation",
+            "percent": 20
+          },
+          {
+            "label": "During construction",
+            "percent": 40
+          },
+          {
+            "label": "On handover",
+            "percent": 40
+          }
+        ],
+        "featured": false,
+        "offPlan": true,
+        "ready": false,
+        "investment": false,
+        "latitude": 24.96,
+        "longitude": 55.15
+      }
+    },
+    {
+      "type": "property",
+      "content": {
+        "title": "Yacht Club Residence",
+        "slug": {
+          "_type": "slug",
+          "current": "yacht-club-residence"
+        },
+        "propertyType": "Apartment",
+        "purpose": "Invest",
+        "status": "Off-Plan",
+        "price": 2750000,
+        "priceLabel": "AED 2,750,000",
+        "bedrooms": 2,
+        "bathrooms": 3,
+        "area": 1760,
+        "handover": "Q4 2028 (demo)",
+        "shortDescription": "Considered spaces. A connected address. Room for your next chapter.",
+        "description": "Yacht Club Residence is an illustrative apartment in Rashid Yachts & Marina. Generous proportions, considered living spaces and an emphasis on everyday comfort shape this example. Explore the gallery, compare the key facts and tell us what you would like from your next property. All prices, specifications, developer associations and availability shown here are demonstration data, not an offer for sale or rent.",
+        "amenities": [
+          "Pool",
+          "Fitness studio",
+          "Covered parking",
+          "Residents’ lounge",
+          "Outdoor spaces",
+          "Concierge"
+        ],
+        "paymentPlan": [
+          {
+            "label": "On reservation",
+            "percent": 20
+          },
+          {
+            "label": "During construction",
+            "percent": 40
+          },
+          {
+            "label": "On handover",
+            "percent": 40
+          }
+        ],
+        "featured": false,
+        "offPlan": true,
+        "ready": false,
+        "investment": true,
+        "latitude": 25.273,
+        "longitude": 55.278
+      }
+    },
+    {
+      "type": "property",
+      "content": {
+        "title": "Al Furjan Retreat",
+        "slug": {
+          "_type": "slug",
+          "current": "al-furjan-retreat"
+        },
+        "propertyType": "Townhouse",
+        "purpose": "Rent",
+        "status": "Ready",
+        "price": 210000,
+        "priceLabel": "AED 210,000 / year",
+        "bedrooms": 3,
+        "bathrooms": 4,
+        "area": 2250,
+        "handover": "Ready",
+        "shortDescription": "Considered spaces. A connected address. Room for your next chapter.",
+        "description": "Al Furjan Retreat is an illustrative townhouse in Al Furjan. Generous proportions, considered living spaces and an emphasis on everyday comfort shape this example. Explore the gallery, compare the key facts and tell us what you would like from your next property. All prices, specifications, developer associations and availability shown here are demonstration data, not an offer for sale or rent.",
+        "amenities": [
+          "Pool",
+          "Fitness studio",
+          "Covered parking",
+          "Residents’ lounge",
+          "Outdoor spaces",
+          "Concierge"
+        ],
+        "paymentPlan": [],
+        "featured": false,
+        "offPlan": false,
+        "ready": true,
+        "investment": false,
+        "latitude": 25.026,
+        "longitude": 55.144
+      }
+    },
+    {
+      "type": "property",
+      "content": {
+        "title": "Mountain Coast",
+        "slug": {
+          "_type": "slug",
+          "current": "mountain-coast"
+        },
+        "propertyType": "Branded Residence",
+        "purpose": "Invest",
+        "status": "Off-Plan",
+        "price": 3600000,
+        "priceLabel": "AED 3,600,000",
+        "bedrooms": 2,
+        "bathrooms": 3,
+        "area": 1760,
+        "handover": "Q4 2028 (demo)",
+        "shortDescription": "Considered spaces. A connected address. Room for your next chapter.",
+        "description": "Mountain Coast is an illustrative branded residence in Ras Al Khaimah. Generous proportions, considered living spaces and an emphasis on everyday comfort shape this example. Explore the gallery, compare the key facts and tell us what you would like from your next property. All prices, specifications, developer associations and availability shown here are demonstration data, not an offer for sale or rent.",
+        "amenities": [
+          "Pool",
+          "Fitness studio",
+          "Covered parking",
+          "Residents’ lounge",
+          "Outdoor spaces",
+          "Concierge"
+        ],
+        "paymentPlan": [
+          {
+            "label": "On reservation",
+            "percent": 20
+          },
+          {
+            "label": "During construction",
+            "percent": 40
+          },
+          {
+            "label": "On handover",
+            "percent": 40
+          }
+        ],
+        "featured": false,
+        "offPlan": true,
+        "ready": false,
+        "investment": true,
+        "latitude": 25.789,
+        "longitude": 55.943
+      }
+    },
+    {
+      "type": "property",
+      "content": {
+        "title": "Bayline Studio",
+        "slug": {
+          "_type": "slug",
+          "current": "bayline-studio"
+        },
+        "propertyType": "Apartment",
+        "purpose": "Buy",
+        "status": "Ready",
+        "price": 890000,
+        "priceLabel": "AED 890,000",
+        "bedrooms": 0,
+        "bathrooms": 1,
+        "area": 580,
+        "handover": "Ready",
+        "shortDescription": "Considered spaces. A connected address. Room for your next chapter.",
+        "description": "Bayline Studio is an illustrative apartment in Business Bay. Generous proportions, considered living spaces and an emphasis on everyday comfort shape this example. Explore the gallery, compare the key facts and tell us what you would like from your next property. All prices, specifications, developer associations and availability shown here are demonstration data, not an offer for sale or rent.",
+        "amenities": [
+          "Pool",
+          "Fitness studio",
+          "Covered parking",
+          "Residents’ lounge",
+          "Outdoor spaces",
+          "Concierge"
+        ],
+        "paymentPlan": [],
+        "featured": false,
+        "offPlan": false,
+        "ready": true,
+        "investment": false,
+        "latitude": 25.185,
+        "longitude": 55.265
+      }
+    },
+    {
+      "type": "property",
+      "content": {
+        "title": "Sky Garden",
+        "slug": {
+          "_type": "slug",
+          "current": "sky-garden"
+        },
+        "propertyType": "Mansion",
+        "purpose": "Buy",
+        "status": "Ready",
+        "price": 8500000,
+        "priceLabel": "AED 8,500,000",
+        "bedrooms": 3,
+        "bathrooms": 4,
+        "area": 2250,
+        "handover": "Ready",
+        "shortDescription": "Considered spaces. A connected address. Room for your next chapter.",
+        "description": "Sky Garden is an illustrative mansion in Downtown Dubai. Generous proportions, considered living spaces and an emphasis on everyday comfort shape this example. Explore the gallery, compare the key facts and tell us what you would like from your next property. All prices, specifications, developer associations and availability shown here are demonstration data, not an offer for sale or rent.",
+        "amenities": [
+          "Pool",
+          "Fitness studio",
+          "Covered parking",
+          "Residents’ lounge",
+          "Outdoor spaces",
+          "Concierge"
+        ],
+        "paymentPlan": [],
+        "featured": false,
+        "offPlan": false,
+        "ready": true,
+        "investment": false,
+        "latitude": 25.1972,
+        "longitude": 55.2744
+      }
+    },
+    {
+      "type": "property",
+      "content": {
+        "title": "Southern Courtyard",
+        "slug": {
+          "_type": "slug",
+          "current": "southern-courtyard"
+        },
+        "propertyType": "Townhouse",
+        "purpose": "Invest",
+        "status": "Off-Plan",
+        "price": 2650000,
+        "priceLabel": "AED 2,650,000",
+        "bedrooms": 3,
+        "bathrooms": 4,
+        "area": 2250,
+        "handover": "Q4 2028 (demo)",
+        "shortDescription": "Considered spaces. A connected address. Room for your next chapter.",
+        "description": "Southern Courtyard is an illustrative townhouse in Dubai South. Generous proportions, considered living spaces and an emphasis on everyday comfort shape this example. Explore the gallery, compare the key facts and tell us what you would like from your next property. All prices, specifications, developer associations and availability shown here are demonstration data, not an offer for sale or rent.",
+        "amenities": [
+          "Pool",
+          "Fitness studio",
+          "Covered parking",
+          "Residents’ lounge",
+          "Outdoor spaces",
+          "Concierge"
+        ],
+        "paymentPlan": [
+          {
+            "label": "On reservation",
+            "percent": 20
+          },
+          {
+            "label": "During construction",
+            "percent": 40
+          },
+          {
+            "label": "On handover",
+            "percent": 40
+          }
+        ],
+        "featured": false,
+        "offPlan": true,
+        "ready": false,
+        "investment": true,
+        "latitude": 24.948,
+        "longitude": 55.154
+      }
+    }
+  ],
+  "projects": [
+    {
+      "type": "project",
+      "content": {
+        "title": "Terra Woods Garden & Estate Villas",
+        "slug": {
+          "_type": "slug",
+          "current": "terra-woods-expo-living"
+        },
+        "propertyType": "Villa",
+        "purpose": "Buy",
+        "status": "Off-Plan",
+        "price": 5091251,
+        "priceLabel": "From AED 5,091,251",
+        "bedrooms": 4,
+        "bathrooms": 5,
+        "area": 4309,
+        "plotArea": 4553,
+        "lifestyle": "City Side",
+        "tags": [
+          "Off-Plan",
+          "City Side",
+          "Luxury",
+          "Villas",
+          "Investment"
+        ],
+        "handover": "March 2030",
+        "featured": true,
+        "offPlan": true,
+        "investment": true,
+        "latitude": 24.96,
+        "longitude": 55.15,
+        "unitBreakdown": [
+          {
+            "type": "Garden Villas",
+            "price": "From AED 5,091,251",
+            "plot": "1,998 sq ft"
+          },
+          {
+            "type": "Estate Villas",
+            "price": "From AED 9,049,822",
+            "plot": "4,553 sq ft",
+            "bua": "4,309 sq ft"
+          }
+        ],
+        "highlights": [
+          "Direct walking connectivity to Expo City & Dubai Expo Mall",
+          "10 minutes drive to Al Maktoum International Airport (DWC)",
+          "15 minutes drive to Dubai Marina & JBR",
+          "By Emaar: 118,400+ homes delivered globally",
+          "Attractive 80/20 payment plan with 10% on booking",
+          "Lush green courtyards, serene ponds & future Central Park vistas"
+        ],
+        "paymentPlan": [
+          {
+            "label": "Down Payment (On Booking)",
+            "percent": 10,
+            "date": "Immediate"
+          },
+          {
+            "label": "1st Instalment",
+            "percent": 10,
+            "date": "Apr 2026"
+          },
+          {
+            "label": "2nd Instalment",
+            "percent": 10,
+            "date": "Oct 2026"
+          },
+          {
+            "label": "3rd Instalment",
+            "percent": 10,
+            "date": "Apr 2027"
+          },
+          {
+            "label": "4th Instalment",
+            "percent": 10,
+            "date": "Sep 2027"
+          },
+          {
+            "label": "5th Instalment (50% Construction)",
+            "percent": 10,
+            "date": "Feb 2028"
+          },
+          {
+            "label": "6th Instalment (70% Construction)",
+            "percent": 10,
+            "date": "Aug 2028"
+          },
+          {
+            "label": "7th Instalment (90% Construction)",
+            "percent": 10,
+            "date": "Mar 2029"
+          },
+          {
+            "label": "8th Instalment (100% Handover)",
+            "percent": 20,
+            "date": "Mar 2030"
+          }
+        ],
+        "amenities": [
+          "Adult & Kids Swimming Pools",
+          "Padel Tennis Court",
+          "Yoga Lawn & Meditation Garden",
+          "Outdoor Gym & Functional Fitness",
+          "BBQ Courtyard & Dining Lawns",
+          "Continuous Jogging Track & Green Corridors",
+          "Multipurpose Sports Courts",
+          "Direct Dubai Expo Mall & Metro Access"
+        ],
+        "description": "Terra Woods presents an exclusive villa enclave at Expo Living, designed for those who aspire to live dynamically. Steps from Expo City and minutes from Al Maktoum International Airport, this collection features Garden Villas from AED 5,091,251 (1,998 sq ft plot) and grand Estate Villas from AED 9,049,822 with 4,553 sq ft private plots and 4,309 sq ft built-up area. Mid-rise residences and private villa enclaves frame lush courtyards, offering sunlight-flooded interiors and a forward-thinking lifestyle inspired by the Dubai 2040 Urban Master Plan."
+      }
+    },
+    {
+      "type": "project",
+      "content": {
+        "title": "Terra Woods Residences",
+        "slug": {
+          "_type": "slug",
+          "current": "terra-woods-apartments"
+        },
+        "propertyType": "Apartment",
+        "purpose": "Buy",
+        "status": "Off-Plan",
+        "price": 1600000,
+        "priceLabel": "From AED 1,600,000",
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "area": 1111,
+        "lifestyle": "City Side",
+        "tags": [
+          "Off-Plan",
+          "City Side",
+          "Luxury",
+          "Apartments",
+          "Investment"
+        ],
+        "handover": "March 2030",
+        "featured": true,
+        "offPlan": true,
+        "investment": true,
+        "latitude": 24.96,
+        "longitude": 55.15,
+        "unitBreakdown": [
+          {
+            "type": "1-Bedroom Residences",
+            "price": "From AED 1,600,000",
+            "size": "742 sq ft"
+          },
+          {
+            "type": "2-Bedroom Residences",
+            "price": "From AED 2,300,000",
+            "size": "1,111 sq ft"
+          },
+          {
+            "type": "3-Bedroom Residences",
+            "price": "From AED 3,500,000",
+            "size": "1,667 sq ft"
+          }
+        ],
+        "highlights": [
+          "Mid-rise contemporary residential buildings forming serene courtyards",
+          "Floor-to-ceiling panoramic glass windows with park and city skyline vistas",
+          "5 minutes walk to Expo City & Dubai Expo Mall",
+          "10 minutes drive to Al Maktoum International Airport",
+          "80/20 staged construction payment schedule with 10% down payment"
+        ],
+        "paymentPlan": [
+          {
+            "label": "Down Payment (On Booking)",
+            "percent": 10,
+            "date": "Immediate"
+          },
+          {
+            "label": "1st Instalment",
+            "percent": 10,
+            "date": "Apr 2026"
+          },
+          {
+            "label": "2nd Instalment",
+            "percent": 10,
+            "date": "Oct 2026"
+          },
+          {
+            "label": "3rd Instalment",
+            "percent": 10,
+            "date": "Apr 2027"
+          },
+          {
+            "label": "4th Instalment",
+            "percent": 10,
+            "date": "Sep 2027"
+          },
+          {
+            "label": "5th Instalment (50% Construction)",
+            "percent": 10,
+            "date": "Feb 2028"
+          },
+          {
+            "label": "6th Instalment (70% Construction)",
+            "percent": 10,
+            "date": "Aug 2028"
+          },
+          {
+            "label": "7th Instalment (90% Construction)",
+            "percent": 10,
+            "date": "Mar 2029"
+          },
+          {
+            "label": "8th Instalment (100% Handover)",
+            "percent": 20,
+            "date": "Mar 2030"
+          }
+        ],
+        "amenities": [
+          "Adult & Kids Swimming Pools",
+          "Yoga Lawn & Meditation Garden",
+          "Outdoor Gym & Fitness Zone",
+          "Padel Tennis Court",
+          "BBQ Courtyard & Lounge Spaces",
+          "Continuous Jogging Track",
+          "Expo Mall & Metro Access"
+        ],
+        "description": "Terra Woods Residences at Expo Living offers smart, modern 1 to 3 bedroom apartments designed for contemporary urban living with a sense of calm. Whether relaxing at home or looking out to lush greenery and city horizons beyond, every apartment feels effortlessly comfortable and connected."
+      }
+    },
+    {
+      "type": "project",
+      "content": {
+        "title": "The Woods at Sobha Sanctuary",
+        "slug": {
+          "_type": "slug",
+          "current": "the-woods-sobha-sanctuary"
+        },
+        "propertyType": "Apartment",
+        "purpose": "Buy",
+        "status": "Ready",
+        "price": 1100000,
+        "priceLabel": "From AED 1,100,000",
+        "bedrooms": 1,
+        "bathrooms": 2,
+        "area": 540,
+        "lifestyle": "Nature Sanctuary",
+        "tags": [
+          "Ready",
+          "Nature Sanctuary",
+          "Forest Living",
+          "Luxury",
+          "Branded Residences",
+          "Investment"
+        ],
+        "handover": "Ready / Immediate",
+        "featured": true,
+        "offPlan": false,
+        "investment": true,
+        "latitude": 24.948,
+        "longitude": 55.154,
+        "unitBreakdown": [
+          {
+            "type": "1-Bedroom Luxury Residences",
+            "price": "From AED 1,100,000",
+            "size": "540.13 sq ft"
+          },
+          {
+            "type": "2-Bedroom Luxury Residences",
+            "price": "From AED 1,600,000",
+            "size": "864.13 sq ft"
+          }
+        ],
+        "highlights": [
+          "Master Community spanning 37,483,888 sq ft (~50% dedicated green open spaces)",
+          "50,000+ native trees and an expansive ~800,000 sq ft central community park",
+          "~9 KM Purpose-Built Wellness Loop and ~5 KM Leisure Loop",
+          "~20 KM connected cycling network, botanical gardens & resort beach lagoon",
+          "Six elegant contemporary towers centered around a private landscaped garden",
+          "Fully fitted kitchens with premium European appliances (Siemens/Bosch/Duravit)",
+          "Ready to move in with attractive flexible payment terms"
+        ],
+        "paymentPlan": [
+          {
+            "label": "On Booking",
+            "percent": 20,
+            "date": "Immediate"
+          },
+          {
+            "label": "On Handover",
+            "percent": 80,
+            "date": "Ready"
+          }
+        ],
+        "amenities": [
+          "Resort Lagoon & Swimming Pool with Wetdeck",
+          "Sun Loungers & Private Jacuzzi Spaces",
+          "Pet Zone & Dedicated Dog Park",
+          "Zen Rock Garden & Serenity Meditation Lawns",
+          "Outdoor Calisthenics & Functional Fitness Zone",
+          "Amphitheatre & Social Event Lawns",
+          "Co-Working Spaces & Residents Library Lounge",
+          "Reflexology Paths & Nature Forest Trails",
+          "Nursery & Dedicated Kids Play Zones"
+        ],
+        "description": "Sobha Sanctuary is a nature-led, future-ready sanctuary designed for ~20,000 families across 37.5 million square feet, seamlessly integrating luxury residences, retail, and wellness within a walkable green ecosystem. Within this setting, The Woods emerges as a refined enclave of six elegant towers centered around tranquil landscaped courtyards. Offering 1 & 2 bedroom residences from AED 1.1M, every home enjoys panoramic forest vistas, high-performance double-glazed glass, porcelain tile floors, and a wellness-focused way of life."
+      }
+    },
+    {
+      "type": "project",
+      "content": {
+        "title": "Sobha City",
+        "slug": {
+          "_type": "slug",
+          "current": "sobha-city"
+        },
+        "propertyType": "Apartment",
+        "purpose": "Buy",
+        "status": "Ready",
+        "price": 1450000,
+        "priceLabel": "From AED 1,450,000",
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "area": 890,
+        "lifestyle": "Waterfront",
+        "tags": [
+          "Ready",
+          "Waterfront",
+          "Lagoon Living",
+          "Luxury",
+          "Branded Residences",
+          "Investment"
+        ],
+        "handover": "Ready / Immediate",
+        "featured": true,
+        "offPlan": false,
+        "investment": true,
+        "latitude": 25.154,
+        "longitude": 55.299,
+        "unitBreakdown": [
+          {
+            "type": "1-Bedroom Waterfront Residences",
+            "price": "From AED 1,450,000",
+            "size": "620 sq ft"
+          },
+          {
+            "type": "2-Bedroom Waterfront Residences",
+            "price": "From AED 2,150,000",
+            "size": "890 sq ft"
+          },
+          {
+            "type": "3-Bedroom Waterfront Residences",
+            "price": "From AED 3,200,000",
+            "size": "1,420 sq ft"
+          }
+        ],
+        "highlights": [
+          "Pristine crystal lagoons with white-sand beaches & boardwalk promenade",
+          "Prime location in Meydan, just minutes from Downtown Dubai and Burj Khalifa",
+          "Two premier international schools integrated within the master community",
+          "Signature Sobha backward-integration construction excellence",
+          "Floor-to-ceiling panoramic glass windows with skyline and water views",
+          "Move-in ready with flexible payment options"
+        ],
+        "paymentPlan": [
+          {
+            "label": "On Booking",
+            "percent": 20,
+            "date": "Immediate"
+          },
+          {
+            "label": "On Handover",
+            "percent": 80,
+            "date": "Ready"
+          }
+        ],
+        "amenities": [
+          "Crystal Lagoon & Boardwalk Promenade",
+          "Infinity Lap Pools & Sun Decks",
+          "Fully Equipped Fitness Club & Spa",
+          "Tennis, Squash & Padel Courts",
+          "Waterfront Dining Boulevard & Cafes",
+          "Childrens Aqua Play Park & Splash Pads",
+          "24/7 Gated Security & Concierge Service"
+        ],
+        "description": "Sobha City is an iconic master-planned waterfront destination located in Meydan, minutes from Downtown Dubai. Framed by turquoise crystal lagoons and lush parks, this master development offers meticulously crafted 1 to 4 bedroom residences with floor-to-ceiling glass, bespoke European finishes, and world-class resort amenities."
+      }
+    }
+  ],
+  "articles": [
+    {
+      "type": "article",
+      "content": {
+        "title": "A better shortlist starts with better questions",
+        "slug": {
+          "_type": "slug",
+          "current": "a-better-shortlist-starts-with-better-questions"
+        },
+        "category": "Buying Guide",
+        "date": "2026-09-01",
+        "readingTime": "3 min read",
+        "author": "Two Roots editorial preview",
+        "summary": "A considered starting point for a conversation about your next property decision.",
+        "contentSections": [
+          {
+            "heading": "Start with your priorities",
+            "text": "Write down what matters most: the purpose of the property, your preferred timeline, the space you need and the places you want to be close to. A clear brief makes it easier to compare options consistently."
+          },
+          {
+            "heading": "Make room for the details",
+            "text": "Ask what information is confirmed, what is provisional and what still needs checking. Keep documents, questions and assumptions together so each conversation builds on the last."
+          },
+          {
+            "heading": "Take the next step with context",
+            "text": "Bring your shortlist and the questions you cannot yet answer to an advisor. This demonstration article illustrates the publishing layout; it is not a market report, legal opinion or personalised investment recommendation."
+          }
+        ]
+      }
+    },
+    {
+      "type": "article",
+      "content": {
+        "title": "Look beyond the purchase price",
+        "slug": {
+          "_type": "slug",
+          "current": "look-beyond-the-purchase-price"
+        },
+        "category": "Investment",
+        "date": "2026-09-01",
+        "readingTime": "3 min read",
+        "author": "Two Roots editorial preview",
+        "summary": "A considered starting point for a conversation about your next property decision.",
+        "contentSections": [
+          {
+            "heading": "Start with your priorities",
+            "text": "Write down what matters most: the purpose of the property, your preferred timeline, the space you need and the places you want to be close to. A clear brief makes it easier to compare options consistently."
+          },
+          {
+            "heading": "Make room for the details",
+            "text": "Ask what information is confirmed, what is provisional and what still needs checking. Keep documents, questions and assumptions together so each conversation builds on the last."
+          },
+          {
+            "heading": "Take the next step with context",
+            "text": "Bring your shortlist and the questions you cannot yet answer to an advisor. This demonstration article illustrates the publishing layout; it is not a market report, legal opinion or personalised investment recommendation."
+          }
+        ]
+      }
+    },
+    {
+      "type": "article",
+      "content": {
+        "title": "Finding a neighbourhood that fits your life",
+        "slug": {
+          "_type": "slug",
+          "current": "finding-a-neighbourhood-that-fits-your-life"
+        },
+        "category": "Communities",
+        "date": "2026-09-01",
+        "readingTime": "3 min read",
+        "author": "Two Roots editorial preview",
+        "summary": "A considered starting point for a conversation about your next property decision.",
+        "contentSections": [
+          {
+            "heading": "Start with your priorities",
+            "text": "Write down what matters most: the purpose of the property, your preferred timeline, the space you need and the places you want to be close to. A clear brief makes it easier to compare options consistently."
+          },
+          {
+            "heading": "Make room for the details",
+            "text": "Ask what information is confirmed, what is provisional and what still needs checking. Keep documents, questions and assumptions together so each conversation builds on the last."
+          },
+          {
+            "heading": "Take the next step with context",
+            "text": "Bring your shortlist and the questions you cannot yet answer to an advisor. This demonstration article illustrates the publishing layout; it is not a market report, legal opinion or personalised investment recommendation."
+          }
+        ]
+      }
+    },
+    {
+      "type": "article",
+      "content": {
+        "title": "Reading a payment plan with perspective",
+        "slug": {
+          "_type": "slug",
+          "current": "reading-a-payment-plan-with-perspective"
+        },
+        "category": "Off-Plan",
+        "date": "2026-09-01",
+        "readingTime": "3 min read",
+        "author": "Two Roots editorial preview",
+        "summary": "A considered starting point for a conversation about your next property decision.",
+        "contentSections": [
+          {
+            "heading": "Start with your priorities",
+            "text": "Write down what matters most: the purpose of the property, your preferred timeline, the space you need and the places you want to be close to. A clear brief makes it easier to compare options consistently."
+          },
+          {
+            "heading": "Make room for the details",
+            "text": "Ask what information is confirmed, what is provisional and what still needs checking. Keep documents, questions and assumptions together so each conversation builds on the last."
+          },
+          {
+            "heading": "Take the next step with context",
+            "text": "Bring your shortlist and the questions you cannot yet answer to an advisor. This demonstration article illustrates the publishing layout; it is not a market report, legal opinion or personalised investment recommendation."
+          }
+        ]
+      }
+    },
+    {
+      "type": "article",
+      "content": {
+        "title": "Preparing your property for its next chapter",
+        "slug": {
+          "_type": "slug",
+          "current": "preparing-your-property-for-its-next-chapter"
+        },
+        "category": "Selling Guide",
+        "date": "2026-09-01",
+        "readingTime": "3 min read",
+        "author": "Two Roots editorial preview",
+        "summary": "A considered starting point for a conversation about your next property decision.",
+        "contentSections": [
+          {
+            "heading": "Start with your priorities",
+            "text": "Write down what matters most: the purpose of the property, your preferred timeline, the space you need and the places you want to be close to. A clear brief makes it easier to compare options consistently."
+          },
+          {
+            "heading": "Make room for the details",
+            "text": "Ask what information is confirmed, what is provisional and what still needs checking. Keep documents, questions and assumptions together so each conversation builds on the last."
+          },
+          {
+            "heading": "Take the next step with context",
+            "text": "Bring your shortlist and the questions you cannot yet answer to an advisor. This demonstration article illustrates the publishing layout; it is not a market report, legal opinion or personalised investment recommendation."
+          }
+        ]
+      }
+    },
+    {
+      "type": "article",
+      "content": {
+        "title": "What to bring to a market conversation",
+        "slug": {
+          "_type": "slug",
+          "current": "what-to-bring-to-a-market-conversation"
+        },
+        "category": "Market Updates",
+        "date": "2026-09-01",
+        "readingTime": "3 min read",
+        "author": "Two Roots editorial preview",
+        "summary": "A considered starting point for a conversation about your next property decision.",
+        "contentSections": [
+          {
+            "heading": "Start with your priorities",
+            "text": "Write down what matters most: the purpose of the property, your preferred timeline, the space you need and the places you want to be close to. A clear brief makes it easier to compare options consistently."
+          },
+          {
+            "heading": "Make room for the details",
+            "text": "Ask what information is confirmed, what is provisional and what still needs checking. Keep documents, questions and assumptions together so each conversation builds on the last."
+          },
+          {
+            "heading": "Take the next step with context",
+            "text": "Bring your shortlist and the questions you cannot yet answer to an advisor. This demonstration article illustrates the publishing layout; it is not a market report, legal opinion or personalised investment recommendation."
+          }
+        ]
+      }
+    },
+    {
+      "type": "article",
+      "content": {
+        "title": "A clear brief for your Dubai property search",
+        "slug": {
+          "_type": "slug",
+          "current": "a-clear-brief-for-your-dubai-property-search"
+        },
+        "category": "Dubai Real Estate",
+        "date": "2026-09-01",
+        "readingTime": "3 min read",
+        "author": "Two Roots editorial preview",
+        "summary": "A considered starting point for a conversation about your next property decision.",
+        "contentSections": [
+          {
+            "heading": "Start with your priorities",
+            "text": "Write down what matters most: the purpose of the property, your preferred timeline, the space you need and the places you want to be close to. A clear brief makes it easier to compare options consistently."
+          },
+          {
+            "heading": "Make room for the details",
+            "text": "Ask what information is confirmed, what is provisional and what still needs checking. Keep documents, questions and assumptions together so each conversation builds on the last."
+          },
+          {
+            "heading": "Take the next step with context",
+            "text": "Bring your shortlist and the questions you cannot yet answer to an advisor. This demonstration article illustrates the publishing layout; it is not a market report, legal opinion or personalised investment recommendation."
+          }
+        ]
+      }
+    }
+  ],
+  "teamMembers": [
+    {
+      "type": "teamMember",
+      "content": {
+        "name": "Sunand Poyyerikunnath",
+        "role": "Co-Founder & CEO",
+        "bio": "Over 10 years of sales experience, including more than six years in Dubai real estate. Specialises in property investment advisory and building trusted relationships between Dubai and key global markets.",
+        "expertise": [
+          "Market knowledge",
+          "Transparent approach",
+          "Strong international network"
+        ],
+        "order": 1
+      }
+    },
+    {
+      "type": "teamMember",
+      "content": {
+        "name": "Muhammed Ashmid",
+        "role": "Co-Founder & Managing Director",
+        "bio": "Over eight years of international experience across the UK, Qatar and UAE, including Dubai real estate. Holds a Master’s degree in International Business from De Montfort University, UK.",
+        "expertise": [
+          "Real estate and hospitality",
+          "Customer service and business operations",
+          "Relationship-focused guidance"
+        ],
+        "order": 2
+      }
+    }
+  ],
+  "testimonials": [
+    {
+      "type": "testimonial",
+      "content": {
+        "quote": "Client testimonial will be added here.",
+        "approved": false
+      }
+    },
+    {
+      "type": "testimonial",
+      "content": {
+        "quote": "Client testimonial will be added here.",
+        "approved": false
+      }
+    }
+  ]
+}
