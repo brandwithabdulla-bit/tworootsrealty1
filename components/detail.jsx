@@ -168,3 +168,20 @@ export function ListingDetail({ item, kind = 'properties', similar = [] }) {
     </div>
   );
 }
+
+export function MapSection({ item = {} }) {
+  const locationName = item.name || item.location || 'Dubai';
+  return (
+    <div className="map-section">
+      <span className="eyebrow">Location &amp; Neighbourhood</span>
+      <h2 className="map-label">{locationName}</h2>
+      <p>Explore nearby amenities, connectivity, and real estate market performance on our interactive map.</p>
+      <div style={{ marginTop: '20px' }}>
+        <Link href={`/map?location=${encodeURIComponent(locationName)}`} className="button">
+          <span>View {locationName} on Interactive Map</span> <ArrowUpRight size={14} />
+        </Link>
+      </div>
+    </div>
+  );
+}
+

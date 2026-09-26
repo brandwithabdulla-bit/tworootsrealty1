@@ -2,62 +2,226 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowUpRight } from '@/components/ui';
 import styles from './InteractiveMap.module.css';
 
-export default function InteractiveMap({ initialItems = [] }) {
+// Master Dubai Communities Dataset matching masterplan layout
+const dubaxCommunities = [
+  {
+    id: 'downtown-dubai',
+    name: 'Downtown Dubai',
+    tagline: 'The Centre of Now • Home to Burj Khalifa & Dubai Mall',
+    lat: 25.1972,
+    lng: 55.2744,
+    developer: 'Emaar Properties',
+    type: 'Apartments & Penthouses',
+    priceRange: 'From AED 1.8M',
+    description: 'Dubai’s iconic flagship master community featuring world-class shopping, dining, and ultra-luxury residential towers.',
+    slug: 'downtown-dubai'
+  },
+  {
+    id: 'dubai-marina',
+    name: 'Dubai Marina',
+    tagline: 'Waterfront Promenade & Riviera Lifestyle',
+    lat: 25.081,
+    lng: 55.140,
+    developer: 'Emaar / Select Group',
+    type: 'Waterfront Apartments & Mansions',
+    priceRange: 'From AED 1.5M',
+    description: 'A vibrant waterfront community surrounding a 3.5 km man-made canal, lined with dining, luxury yachts, and beaches.',
+    slug: 'dubai-marina'
+  },
+  {
+    id: 'palm-jumeirah',
+    name: 'Palm Jumeirah',
+    tagline: 'World-Famous Iconic Island Masterpiece',
+    lat: 25.112,
+    lng: 55.139,
+    developer: 'Nakheel',
+    type: 'Beachfront Villas & Branded Residences',
+    priceRange: 'From AED 3.2M',
+    description: 'The world-famous tree-shaped artificial island offering private beachfront villas, 5-star resorts, and luxury apartments.',
+    slug: 'palm-jumeirah'
+  },
+  {
+    id: 'new-marina-jebel-ali',
+    name: 'Palm Jebel Ali & New Marina',
+    tagline: 'The Future of Dubai Beachfront Living',
+    lat: 24.997,
+    lng: 54.986,
+    developer: 'Nakheel',
+    type: 'Ultra-Luxury Beachfront Villas',
+    priceRange: 'From AED 18M',
+    description: 'Dubai’s newest mega-island masterplan twice the size of Palm Jumeirah, setting new benchmarks in eco-luxury beachfront living.',
+    slug: 'palm-jebel-ali'
+  },
+  {
+    id: 'dubai-creek-harbour',
+    name: 'Dubai Creek Harbour',
+    tagline: 'The Next Downtown • Waterfront Green Metropolis',
+    lat: 25.207,
+    lng: 55.345,
+    developer: 'Emaar Properties',
+    type: 'Waterfront Apartments & Townhouses',
+    priceRange: 'From AED 1.4M',
+    description: 'A futuristic waterfront destination offering uninterrupted views of the Dubai skyline and Ras Al Khor Wildlife Sanctuary.',
+    slug: 'dubai-creek-harbour'
+  },
+  {
+    id: 'dubai-hills-estate',
+    name: 'Dubai Hills Estate',
+    tagline: 'The Green Heart of Dubai • Golf Course Masterplan',
+    lat: 25.106,
+    lng: 55.247,
+    developer: 'Emaar Properties',
+    type: 'Villas, Townhouses & Apartments',
+    priceRange: 'From AED 1.6M',
+    description: 'An elegantly planned 18-hole championship golf course community featuring expansive parks, Dubai Hills Mall, and top schools.',
+    slug: 'dubai-hills-estate'
+  },
+  {
+    id: 'expo-city',
+    name: 'Expo City & Expo Living',
+    tagline: 'Future-Ready Sustainable Master Community',
+    lat: 24.960,
+    lng: 55.150,
+    developer: 'Emaar / Expo City',
+    type: 'Garden Villas & Modern Apartments',
+    priceRange: 'From AED 1.6M',
+    description: 'A legacy smart city destination framed by lush parks, tech hubs, and direct walking access to Dubai Expo Mall.',
+    slug: 'expo-city'
+  },
+  {
+    id: 'dubai-south',
+    name: 'Dubai South & Al Maktoum Airport',
+    tagline: 'The World’s Largest Aerotropolis & Logistics City',
+    lat: 24.948,
+    lng: 55.154,
+    developer: 'Dubai South / Emaar / Sobha',
+    type: 'Villas, Townhouses & Residences',
+    priceRange: 'From AED 1.1M',
+    description: 'An expansive 145 sq km urban ecosystem surrounding Al Maktoum International Airport (DWC), driving Dubai’s future growth.',
+    slug: 'dubai-south'
+  },
+  {
+    id: 'the-oasis',
+    name: 'The Oasis by Emaar',
+    tagline: 'Ultra-Luxury Sanctuary Water Villa Community',
+    lat: 24.980,
+    lng: 55.210,
+    developer: 'Emaar Properties',
+    type: 'Waterfront Mansions & Estate Villas',
+    priceRange: 'From AED 8.5M',
+    description: 'A resort-style sanctuary featuring pristine blue lagoons, swimming channels, and grand estate mansions.',
+    slug: 'the-oasis'
+  },
+  {
+    id: 'tilal-al-ghaf',
+    name: 'Tilal Al Ghaf',
+    tagline: 'Resort-Style Lagoon Community by Majid Al Futtaim',
+    lat: 25.035,
+    lng: 55.228,
+    developer: 'Majid Al Futtaim',
+    type: 'Lagoon Villas & Luxury Townhouses',
+    priceRange: 'From AED 2.4M',
+    description: 'Centered around the stunning crystal-clear Lagoon Al Ghaf with sandy white beaches, parks, and walking trails.',
+    slug: 'tilal-al-ghaf'
+  },
+  {
+    id: 'damac-lagoons',
+    name: 'DAMAC Lagoons & DAMAC Hills',
+    tagline: 'Mediterranean-Inspired Water Masterplan',
+    lat: 25.020,
+    lng: 55.245,
+    developer: 'DAMAC Properties',
+    type: 'Mediterranean Villas & Townhouses',
+    priceRange: 'From AED 1.9M',
+    description: 'A resort-inspired master development featuring crystal lagoons, tropical islands, kayaking, and golf course vistas.',
+    slug: 'damac-lagoons'
+  },
+  {
+    id: 'sobha-hartland-meydan',
+    name: 'Meydan & Sobha Hartland',
+    tagline: 'Lagoon Living Minutes from Downtown',
+    lat: 25.154,
+    lng: 55.299,
+    developer: 'Sobha Realty / Meydan',
+    type: 'Waterfront Apartments & Mansions',
+    priceRange: 'From AED 1.4M',
+    description: 'Prime waterfront master development in Meydan with crystal lagoons, international schools, and lush green parks.',
+    slug: 'meydan'
+  },
+  {
+    id: 'business-bay',
+    name: 'Business Bay',
+    tagline: 'Dubai’s Central Business & Luxury Canal District',
+    lat: 25.185,
+    lng: 55.265,
+    developer: 'Deyaar / Select Group / Omniyat',
+    type: 'Canal-Front Apartments & Penthouses',
+    priceRange: 'From AED 1.2M',
+    description: 'A dynamic commercial and luxury residential hub along the Dubai Water Canal, bordering Downtown Dubai.',
+    slug: 'business-bay'
+  },
+  {
+    id: 'jumeirah-village-circle',
+    name: 'Jumeirah Village Circle (JVC)',
+    tagline: 'Family-Friendly Community with High Rental Yields',
+    lat: 25.059,
+    lng: 55.208,
+    developer: 'Nakheel / Ellington',
+    type: 'Apartments & Townhouses',
+    priceRange: 'From AED 650K',
+    description: 'A peaceful, central family community with 30+ parks, international schools, and high investment yields.',
+    slug: 'jumeirah-village-circle'
+  },
+  {
+    id: 'arabian-ranches',
+    name: 'Arabian Ranches 1, 2 & 3',
+    tagline: 'Desert Monitored Gated Villa Masterpiece',
+    lat: 25.070,
+    lng: 55.300,
+    developer: 'Emaar Properties',
+    type: 'Gated Villa & Townhouse Communities',
+    priceRange: 'From AED 2.8M',
+    description: 'Emaar’s classic suburban villa master community with golf courses, polo club, parks, and retail centers.',
+    slug: 'arabian-ranches'
+  },
+  {
+    id: 'al-furjan',
+    name: 'Al Furjan',
+    tagline: 'Connected Family Neighbourhood near Metro',
+    lat: 25.026,
+    lng: 55.144,
+    developer: 'Nakheel',
+    type: 'Villas, Townhouses & Apartments',
+    priceRange: 'From AED 950K',
+    description: 'A vibrant residential community with direct Dubai Metro connectivity, clubhouses, and community centers.',
+    slug: 'al-furjan'
+  },
+  {
+    id: 'rashid-yachts-marina',
+    name: 'Rashid Yachts & Marina',
+    tagline: 'Heritage Waterfront Yachting Destination',
+    lat: 25.273,
+    lng: 55.278,
+    developer: 'Emaar Properties',
+    type: 'Marina-Front Luxury Apartments',
+    priceRange: 'From AED 1.7M',
+    description: 'Emaar’s new luxury coastal destination for yacht owners, blending historic charm with modern waterfront living.',
+    slug: 'rashid-yachts-marina'
+  }
+];
+
+export default function InteractiveMap() {
   const mapContainerRef = useRef(null);
   const leafletMapRef = useRef(null);
   const markersRef = useRef({});
 
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCommunity, setSelectedCommunity] = useState('All');
-  const [selectedStatus, setSelectedStatus] = useState('All');
-  const [selectedType, setSelectedType] = useState('All');
-  const [activeItemId, setActiveItemId] = useState(null);
-  const [hoveredItemId, setHoveredItemId] = useState(null);
+  const [selectedCommunity, setSelectedCommunity] = useState(null);
   const [leafletLoaded, setLeafletLoaded] = useState(false);
 
-  // Extract unique communities
-  const communities = [
-    'All',
-    'Downtown Dubai',
-    'Dubai Marina',
-    'Palm Jumeirah',
-    'Dubai Creek Harbour',
-    'Dubai Hills Estate',
-    'Meydan',
-    'Expo City',
-    'Dubai South',
-    'Business Bay'
-  ];
-
-  // Filter items
-  const filteredItems = initialItems.filter(item => {
-    const matchesSearch = 
-      !searchQuery.trim() ||
-      item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (item.developer && item.developer.toLowerCase().includes(searchQuery.toLowerCase()));
-
-    const matchesCommunity = 
-      selectedCommunity === 'All' || 
-      item.location.toLowerCase().includes(selectedCommunity.toLowerCase());
-
-    const matchesStatus = 
-      selectedStatus === 'All' || 
-      (selectedStatus === 'Off-Plan' && (item.offPlan || item.status === 'Off-Plan')) ||
-      (selectedStatus === 'Ready' && (item.ready || item.status === 'Ready'));
-
-    const matchesType = 
-      selectedType === 'All' || 
-      item.propertyType.toLowerCase() === selectedType.toLowerCase();
-
-    return matchesSearch && matchesCommunity && matchesStatus && matchesType;
-  });
-
-  // Load Leaflet CSS & JS dynamically
+  // Load Leaflet dynamically
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
@@ -69,47 +233,66 @@ export default function InteractiveMap({ initialItems = [] }) {
     const cssLink = document.createElement('link');
     cssLink.rel = 'stylesheet';
     cssLink.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
-    cssLink.integrity = 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=';
-    cssLink.crossOrigin = '';
     document.head.appendChild(cssLink);
 
     const script = document.createElement('script');
     script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-    script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
-    script.crossOrigin = '';
     script.onload = () => {
       setLeafletLoaded(true);
     };
     document.head.appendChild(script);
-
-    return () => {
-      // Keep script cached for sub-navs
-    };
   }, []);
 
-  // Initialize Map
+  // Initialize Satellite Masterplan Map
   useEffect(() => {
     if (!leafletLoaded || !mapContainerRef.current || leafletMapRef.current) return;
 
     const L = window.L;
-    // Center of Dubai
+    // Bounds centered on Dubai master developments
     const map = L.map(mapContainerRef.current, {
-      center: [25.08, 55.25],
+      center: [25.08, 55.22],
       zoom: 11,
-      zoomControl: false
+      zoomControl: false,
+      minZoom: 9,
+      maxZoom: 17
     });
 
-    // Elegant luxury carto voyager tile layer
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      subdomains: 'abcd',
-      maxZoom: 19
+    // High-Resolution Esri World Satellite Imagery (Aerial Masterplan View)
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+      attribution: '&copy; Esri, Maxar, Earthstar Geographics',
+      maxZoom: 17
     }).addTo(map);
 
-    // Custom zoom control in bottom right
+    // Zoom Controls
     L.control.zoom({ position: 'bottomright' }).addTo(map);
 
     leafletMapRef.current = map;
+
+    // Render Master Community Markers (Matching black luxury blocks from reference)
+    dubaxCommunities.forEach(comm => {
+      const markerHtml = `
+        <div class="${styles.masterplanTag}">
+          <div class="${styles.tagTitle}">${comm.name}</div>
+          <div class="${styles.tagSub}">${comm.priceRange}</div>
+        </div>
+      `;
+
+      const customIcon = L.divIcon({
+        html: markerHtml,
+        className: styles.masterplanIconWrap,
+        iconSize: [160, 48],
+        iconAnchor: [80, 24]
+      });
+
+      const marker = L.marker([comm.lat, comm.lng], { icon: customIcon }).addTo(map);
+
+      marker.on('click', () => {
+        setSelectedCommunity(comm);
+        map.flyTo([comm.lat, comm.lng], 13, { duration: 1 });
+      });
+
+      markersRef.current[comm.id] = marker;
+    });
 
     return () => {
       if (leafletMapRef.current) {
@@ -119,298 +302,100 @@ export default function InteractiveMap({ initialItems = [] }) {
     };
   }, [leafletLoaded]);
 
-  // Update Markers when filtered items change
-  useEffect(() => {
-    if (!leafletMapRef.current || !window.L) return;
-
-    const L = window.L;
-    const map = leafletMapRef.current;
-
-    // Clear existing markers
-    Object.values(markersRef.current).forEach(marker => marker.remove());
-    markersRef.current = {};
-
-    if (filteredItems.length === 0) return;
-
-    const bounds = L.latLngBounds();
-
-    filteredItems.forEach(item => {
-      if (!item.latitude || !item.longitude) return;
-
-      const isHovered = hoveredItemId === item.id;
-      const isActive = activeItemId === item.id;
-
-      // Price label formatting for pin badge
-      let badgePrice = item.priceLabel || 'AED 1M+';
-      if (typeof item.price === 'number') {
-        if (item.price >= 1000000) {
-          badgePrice = `AED ${(item.price / 1000000).toFixed(1)}M`;
-        } else {
-          badgePrice = `AED ${(item.price / 1000).toFixed(0)}K`;
-        }
-      }
-
-      const markerHtml = `
-        <div class="${styles.customMarkerPin} ${isHovered || isActive ? styles.activeMarkerPin : ''}">
-          <span class="${styles.markerBadge}">${badgePrice}</span>
-          <div class="${styles.markerPoint}"></div>
-        </div>
-      `;
-
-      const customIcon = L.divIcon({
-        html: markerHtml,
-        className: styles.markerContainer,
-        iconSize: [90, 40],
-        iconAnchor: [45, 40]
-      });
-
-      const marker = L.marker([item.latitude, item.longitude], { icon: customIcon }).addTo(map);
-
-      // Popup Content
-      const popupHtml = `
-        <div class="${styles.mapPopupContent}">
-          <div class="${styles.popupImageWrap}">
-            <img src="${Array.isArray(item.images) ? item.images[0] : item.image || '/images/dubai.jpg'}" alt="${item.title}" />
-            <span class="${styles.popupStatus}">${item.status || 'Off-Plan'}</span>
-          </div>
-          <div class="${styles.popupBody}">
-            <span class="${styles.popupSub}">${item.developer ? item.developer + ' • ' : ''}${item.location}</span>
-            <h4 class="${styles.popupTitle}">${item.title}</h4>
-            <p class="${styles.popupPrice}">${item.priceLabel || badgePrice}</p>
-            <a href="${item.slug ? (item.offPlan !== false ? `/projects/${item.slug}` : `/properties/${item.slug}`) : '/projects'}" class="${styles.popupBtn}">
-              View Masterplan & Details ↗
-            </a>
-          </div>
-        </div>
-      `;
-
-      marker.bindPopup(popupHtml, {
-        className: styles.customLeafletPopup,
-        maxWidth: 280,
-        minWidth: 260
-      });
-
-      marker.on('click', () => {
-        setActiveItemId(item.id);
-        // Scroll card into view in sidebar
-        const el = document.getElementById(`map-card-${item.id}`);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-      });
-
-      markersRef.current[item.id] = marker;
-      bounds.extend([item.latitude, item.longitude]);
-    });
-
-    // Fit map bounds if items exist
-    if (filteredItems.length > 0 && bounds.isValid()) {
-      map.fitBounds(bounds, { padding: [50, 50], maxZoom: 13 });
+  const handlePillClick = (comm) => {
+    setSelectedCommunity(comm);
+    if (leafletMapRef.current) {
+      leafletMapRef.current.flyTo([comm.lat, comm.lng], 13, { duration: 1.2 });
     }
-  }, [filteredItems, hoveredItemId, activeItemId, leafletLoaded]);
+  };
 
-  // Handle Card Click
-  const handleCardClick = (item) => {
-    setActiveItemId(item.id);
-    if (leafletMapRef.current && item.latitude && item.longitude) {
-      leafletMapRef.current.flyTo([item.latitude, item.longitude], 14, {
-        duration: 1.2
-      });
-      const marker = markersRef.current[item.id];
-      if (marker) {
-        marker.openPopup();
-      }
+  const handleReset = () => {
+    setSelectedCommunity(null);
+    if (leafletMapRef.current) {
+      leafletMapRef.current.flyTo([25.08, 55.22], 11, { duration: 1.2 });
     }
   };
 
   return (
-    <div className={styles.mapPageWrapper}>
-      {/* Header Bar */}
-      <div className={styles.mapHeaderBar}>
-        <div className="container">
-          <div className={styles.headerContent}>
-            <div>
-              <span className={styles.eyebrow}>Dubai Masterplan &amp; Location Intelligence</span>
-              <h1 className={styles.pageTitle}>Dubai Real Estate Map</h1>
-            </div>
-            
-            <div className={styles.statsStrip}>
-              <div className={styles.statItem}>
-                <strong>{filteredItems.length}</strong>
-                <span>Properties Mapped</span>
-              </div>
-              <div className={styles.statItem}>
-                <strong>6.5% – 8.8%</strong>
-                <span>Est. Rental Yield</span>
-              </div>
-              <div className={styles.statItem}>
-                <strong>10+ Prime</strong>
-                <span>Dubai Communities</span>
-              </div>
-            </div>
+    <div className={styles.masterplanPageWrap}>
+      {/* Floating Header Controls */}
+      <div className={styles.topControlBar}>
+        <div className={styles.barHeader}>
+          <span className={styles.eyebrow}>Dubai Masterplan &amp; Community Map</span>
+          <h1 className={styles.title}>Explore Dubai Communities</h1>
+        </div>
+
+        {/* Quick Community Quick-Pills */}
+        <div className={styles.communityPillsRow}>
+          <button 
+            className={`${styles.pillBtn} ${!selectedCommunity ? styles.activePill : ''}`}
+            onClick={handleReset}
+          >
+            Overview Map
+          </button>
+          {dubaxCommunities.map(comm => (
+            <button 
+              key={comm.id}
+              className={`${styles.pillBtn} ${selectedCommunity?.id === comm.id ? styles.activePill : ''}`}
+              onClick={() => handlePillClick(comm)}
+            >
+              {comm.name}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Map Canvas */}
+      <div className={styles.mapCanvasWrap}>
+        {!leafletLoaded && (
+          <div className={styles.mapLoadingOverlay}>
+            <div className={styles.spinner}></div>
+            <p>Loading Dubai Satellite Masterplan Map…</p>
           </div>
+        )}
+        <div ref={mapContainerRef} className={styles.mapCanvas}></div>
+      </div>
 
-          {/* Filters Bar */}
-          <div className={styles.filtersBar}>
-            {/* Search Input */}
-            <div className={styles.searchBox}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                <circle cx="11" cy="11" r="8"/>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-              </svg>
-              <input 
-                type="text" 
-                placeholder="Search area, project, or developer..." 
-                value={searchQuery} 
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-              {searchQuery && (
-                <button className={styles.clearSearch} onClick={() => setSearchQuery('')}>✕</button>
-              )}
+      {/* Selected Community Popup Modal / Card Overlay */}
+      {selectedCommunity && (
+        <div className={styles.communityModalOverlay}>
+          <div className={styles.communityCard}>
+            <button className={styles.closeCardBtn} onClick={() => setSelectedCommunity(null)}>✕</button>
+            <span className={styles.cardEyebrow}>{selectedCommunity.developer}</span>
+            <h2 className={styles.cardTitle}>{selectedCommunity.name}</h2>
+            <p className={styles.cardTagline}>{selectedCommunity.tagline}</p>
+
+            <div className={styles.cardSpecsGrid}>
+              <div>
+                <span>Property Types</span>
+                <strong>{selectedCommunity.type}</strong>
+              </div>
+              <div>
+                <span>Price Guidance</span>
+                <strong>{selectedCommunity.priceRange}</strong>
+              </div>
             </div>
 
-            {/* Select Filters */}
-            <div className={styles.filterDropdowns}>
-              <select value={selectedStatus} onChange={(e) => setSelectedStatus(e.target.value)}>
-                <option value="All">All Statuses</option>
-                <option value="Off-Plan">Off-Plan Projects</option>
-                <option value="Ready">Ready to Move</option>
-              </select>
+            <p className={styles.cardDesc}>{selectedCommunity.description}</p>
 
-              <select value={selectedType} onChange={(e) => setSelectedType(e.target.value)}>
-                <option value="All">All Property Types</option>
-                <option value="Apartment">Apartments</option>
-                <option value="Villa">Villas</option>
-                <option value="Townhouse">Townhouses</option>
-                <option value="Branded Residence">Branded Residences</option>
-                <option value="Commercial">Commercial</option>
-              </select>
-            </div>
-          </div>
-
-          {/* Community Pills */}
-          <div className={styles.communityPills}>
-            {communities.map(comm => (
-              <button 
-                key={comm}
-                className={`${styles.pillBtn} ${selectedCommunity === comm ? styles.pillActive : ''}`}
-                onClick={() => setSelectedCommunity(comm)}
+            <div className={styles.cardActions}>
+              <Link 
+                href={`/projects?location=${encodeURIComponent(selectedCommunity.name)}`}
+                className={styles.primaryBtn}
               >
-                {comm}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Main Split Layout: Drawer Sidebar + Map Canvas */}
-      <div className={styles.splitLayout}>
-        {/* Left Drawer / Listing Stream */}
-        <aside className={styles.sidebarStream}>
-          <div className={styles.sidebarHeader}>
-            <h3>Showing {filteredItems.length} Locations</h3>
-            <p>Click any project to locate on the map or explore details.</p>
-          </div>
-
-          <div className={styles.cardsList}>
-            {filteredItems.length === 0 ? (
-              <div className={styles.emptyState}>
-                <h4>No properties found</h4>
-                <p>Try resetting your search query or community filter.</p>
-                <button 
-                  className={styles.resetBtn} 
-                  onClick={() => {
-                    setSearchQuery('');
-                    setSelectedCommunity('All');
-                    setSelectedStatus('All');
-                    setSelectedType('All');
-                  }}
-                >
-                  Reset All Filters
-                </button>
-              </div>
-            ) : (
-              filteredItems.map(item => {
-                const img = Array.isArray(item.images) ? item.images[0] : item.image || '/images/dubai.jpg';
-                const linkHref = item.slug 
-                  ? (item.offPlan !== false ? `/projects/${item.slug}` : `/properties/${item.slug}`)
-                  : '/projects';
-
-                return (
-                  <div 
-                    key={item.id}
-                    id={`map-card-${item.id}`}
-                    className={`${styles.projectCard} ${activeItemId === item.id ? styles.activeCard : ''}`}
-                    onClick={() => handleCardClick(item)}
-                    onMouseEnter={() => setHoveredItemId(item.id)}
-                    onMouseLeave={() => setHoveredItemId(null)}
-                  >
-                    <div className={styles.cardPhotoWrap}>
-                      <Image 
-                        src={img} 
-                        alt={item.title} 
-                        fill 
-                        sizes="180px" 
-                        unoptimized
-                      />
-                      <span className={styles.cardStatusBadge}>
-                        {item.status || 'Off-Plan'}
-                      </span>
-                    </div>
-
-                    <div className={styles.cardInfo}>
-                      <div className={styles.cardMetaRow}>
-                        <span className={styles.cardLocation}>{item.location}</span>
-                        {item.developer && <span className={styles.cardDeveloper}>{item.developer}</span>}
-                      </div>
-
-                      <h4 className={styles.cardTitle}>{item.title}</h4>
-                      
-                      <div className={styles.cardDetailsRow}>
-                        <span>{item.bedrooms ? `${item.bedrooms} Bed` : 'Studio'} • {item.propertyType}</span>
-                      </div>
-
-                      <div className={styles.cardBottomRow}>
-                        <strong className={styles.cardPrice}>{item.priceLabel}</strong>
-                        <Link href={linkHref} className={styles.cardLinkBtn} onClick={(e) => e.stopPropagation()}>
-                          Details <ArrowUpRight size={12} />
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })
-            )}
-          </div>
-        </aside>
-
-        {/* Right Interactive Map */}
-        <div className={styles.mapCanvasWrap}>
-          {!leafletLoaded && (
-            <div className={styles.mapLoader}>
-              <div className={styles.spinner}></div>
-              <p>Loading Dubai Interactive Map…</p>
+                <span>Explore Projects in {selectedCommunity.name}</span>
+                <ArrowUpRight size={14} />
+              </Link>
+              <Link 
+                href="#speak-to-advisor"
+                className={styles.secondaryBtn}
+              >
+                <span>Enquire Allocation</span>
+              </Link>
             </div>
-          )}
-          <div ref={mapContainerRef} className={styles.mapContainer}></div>
-        </div>
-      </div>
-
-      {/* Advisory Bar at Bottom */}
-      <section className={styles.mapAdvisoryBanner}>
-        <div className="container">
-          <div className={styles.advisoryInner}>
-            <div>
-              <h3>Looking for Off-Plan Allocation in a Specific Dubai Community?</h3>
-              <p>Our senior real estate advisors provide direct developer access, payment plan analysis, and inventory availability.</p>
-            </div>
-            <Link href="#speak-to-advisor" className={styles.advisoryBtn}>
-              <span>Speak to an Advisor</span>
-              <ArrowUpRight size={15} />
-            </Link>
           </div>
         </div>
-      </section>
+      )}
     </div>
   );
 }
