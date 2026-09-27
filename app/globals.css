@@ -400,6 +400,23 @@
   text-shadow: 0 1px 16px rgba(8, 18, 30, 0.85);
 }
 
+.page-hero-content .button {
+  background: var(--sand);
+  border-color: var(--sand);
+  color: var(--midnight);
+  font-weight: 500;
+  box-shadow: 0 4px 18px rgba(8, 18, 30, 0.4);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.page-hero-content .button:hover {
+  background: #FFFFFF;
+  border-color: #FFFFFF;
+  color: var(--navy);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(8, 18, 30, 0.5);
+}
+
 @keyframes heroCinematicMotion {
   0% {
     transform: scale(1) translate3d(0, 0, 0);
