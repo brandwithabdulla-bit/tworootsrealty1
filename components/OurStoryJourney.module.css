@@ -327,21 +327,23 @@
 }
 
 .culminationTitle {
-  font-size: clamp(2.2rem, 3.4vw, 3.2rem);
+  font-size: clamp(2.4rem, 3.6vw, 3.4rem);
   font-weight: 400;
   letter-spacing: -0.03em;
   color: #FFFFFF;
-  margin-bottom: 0.4rem;
+  margin-bottom: 1.4rem;
   line-height: 1.15;
 }
 
 .culminationTagline {
   font-family: var(--serif, 'Cormorant Garamond', Georgia, serif);
   font-style: italic;
-  font-size: clamp(1.25rem, 1.8vw, 1.65rem);
+  font-size: clamp(1.2rem, 1.7vw, 1.55rem);
   color: var(--warm-sand, #E0CCB5);
-  margin-bottom: 1.4rem;
+  margin-top: 1.6rem;
+  margin-bottom: 0;
   display: block;
+  letter-spacing: 0.01em;
 }
 
 .culminationDesc {

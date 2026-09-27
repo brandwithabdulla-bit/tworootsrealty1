@@ -5,17 +5,7 @@ export default function OurStoryJourney() {
     <section className={`container ${styles.storyJourneySection}`}>
       <article className={styles.culminationCard}>
         <div className={styles.culminationLeft}>
-          <div className={styles.culminationTop}>
-            <span className={styles.culminationBadge}>
-              <span className={styles.culminationBadgeDot}></span>
-              The Inception · August 2026
-            </span>
-          </div>
-
           <h2 className={styles.culminationTitle}>Our Story</h2>
-          <span className={styles.culminationTagline}>
-            Two roots. One vision. Infinite opportunities
-          </span>
 
           <div className={styles.culminationDesc}>
             <p>
@@ -24,6 +14,10 @@ export default function OurStoryJourney() {
             <p>
               Founded in Dubai in 2026, we bring local insight and international perspective to every relationship. Our purpose is to understand what matters to each client, build the right connections and turn considered decisions into lasting opportunities.
             </p>
+          </div>
+
+          <div className={styles.culminationTagline}>
+            Two roots. One vision. Infinite opportunities
           </div>
         </div>
 
