@@ -1122,30 +1122,53 @@
 }
 
 .footer-social-icons {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  flex-wrap: wrap !important;
 }
 
+.footer-links .footer-social-icons a.footer-social-icon,
+.footer-social-icons .footer-social-icon,
 .footer-social-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: rgba(244, 245, 240, 0.08);
-  border: 1px solid rgba(224, 204, 181, 0.22);
-  color: var(--ivory);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
+  border-radius: 50% !important;
+  background: rgba(244, 245, 240, 0.08) !important;
+  border: 1px solid rgba(224, 204, 181, 0.22) !important;
+  color: var(--ivory) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  opacity: 1 !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
+  box-sizing: border-box !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
+.footer-links .footer-social-icons a.footer-social-icon:hover,
+.footer-social-icons .footer-social-icon:hover,
 .footer-social-icon:hover {
-  background: var(--sand);
-  color: var(--midnight);
-  border-color: var(--sand);
-  transform: translateY(-2px);
+  background: var(--sand) !important;
+  color: var(--midnight) !important;
+  border-color: var(--sand) !important;
+  transform: translateY(-2px) !important;
+  opacity: 1 !important;
+}
+
+.footer-social-icon svg,
+.footer-social-icons a svg {
+  display: block !important;
+  width: 18px !important;
+  height: 18px !important;
+  margin: auto !important;
+  flex-shrink: 0 !important;
+  pointer-events: none !important;
 }
 
 @media (max-width: 768px) {
