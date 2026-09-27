@@ -1,0 +1,319 @@
+/* ==========================================================================
+   About Us — Mission, Vision & Values 3-Card Luxury Suite
+   ========================================================================== */
+
+.section {
+  padding-top: clamp(60px, 7vw, 100px);
+  padding-bottom: clamp(60px, 7vw, 100px);
+  position: relative;
+}
+
+.header {
+  max-width: 800px;
+  margin-bottom: clamp(2.5rem, 4vw, 3.75rem);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 1.2rem;
+  opacity: 0.88;
+}
+
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1.5px;
+  background: var(--warm-sand, #E0CCB5);
+}
+
+.title {
+  font-size: clamp(2.2rem, 3.8vw, 3.4rem);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--midnight, #08121E);
+  margin-bottom: 1.1rem;
+  font-weight: 400;
+}
+
+.title em {
+  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif);
+  font-style: italic;
+  color: var(--navy);
+}
+
+.lead {
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  line-height: 1.68;
+  color: rgba(15, 38, 69, 0.8);
+  max-width: 62ch;
+  margin: 0;
+}
+
+/* 3-Card Luxury Bento Grid */
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  align-items: stretch;
+}
+
+/* Base Card Style (Cards 1 & 3: Pristine Ivory) */
+.card {
+  position: relative;
+  border-radius: 24px;
+  background: #FFFFFF;
+  border: 1px solid rgba(15, 38, 69, 0.12);
+  padding: 2.6rem 2.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 440px;
+  box-shadow: 
+    0 10px 30px rgba(8, 18, 30, 0.04),
+    0 1px 3px rgba(8, 18, 30, 0.02);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.35s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 
+    0 24px 50px rgba(8, 18, 30, 0.09),
+    0 4px 14px rgba(8, 18, 30, 0.04);
+  border-color: rgba(15, 38, 69, 0.28);
+}
+
+/* Featured Dark Card (Card 2: Vision) */
+.cardFeatured {
+  position: relative;
+  border-radius: 24px;
+  background: linear-gradient(150deg, #08121E 0%, #0F2645 100%);
+  color: var(--ivory, #F4F5F0);
+  border: 1px solid rgba(224, 204, 181, 0.3);
+  padding: 2.6rem 2.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 440px;
+  box-shadow: 
+    0 20px 48px rgba(8, 18, 30, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease;
+  overflow: hidden;
+}
+
+.cardFeatured::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -30%;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(224, 204, 181, 0.12) 0%, rgba(8, 18, 30, 0) 70%);
+  pointer-events: none;
+}
+
+.cardFeatured:hover {
+  transform: translateY(-6px);
+  box-shadow: 
+    0 28px 65px rgba(8, 18, 30, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  border-color: rgba(224, 204, 181, 0.55);
+}
+
+/* Card Top Bar */
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  color: var(--navy);
+  background: rgba(224, 204, 181, 0.25);
+  padding: 6px 13px;
+  border-radius: 20px;
+  border: 1px solid rgba(224, 204, 181, 0.45);
+}
+
+.badgeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--navy);
+  opacity: 0.8;
+}
+
+.badgeGold {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  color: var(--warm-sand, #E0CCB5);
+  background: rgba(224, 204, 181, 0.14);
+  padding: 6px 13px;
+  border-radius: 20px;
+  border: 1px solid rgba(224, 204, 181, 0.3);
+}
+
+.badgeGoldDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--warm-sand, #E0CCB5);
+  box-shadow: 0 0 8px var(--warm-sand, #E0CCB5);
+}
+
+.cardNum {
+  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif);
+  font-size: 2.2rem;
+  line-height: 1;
+  font-weight: 400;
+  color: rgba(15, 38, 69, 0.22);
+  transition: color 0.3s ease;
+}
+
+.card:hover .cardNum {
+  color: var(--navy);
+}
+
+.cardNumGold {
+  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif);
+  font-size: 2.2rem;
+  line-height: 1;
+  font-weight: 400;
+  color: rgba(224, 204, 181, 0.4);
+  transition: color 0.3s ease;
+}
+
+.cardFeatured:hover .cardNumGold {
+  color: var(--warm-sand, #E0CCB5);
+}
+
+/* Card Body */
+.cardBody {
+  margin-bottom: 2rem;
+}
+
+.cardHeading {
+  font-size: clamp(1.4rem, 1.8vw, 1.7rem);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  color: var(--midnight, #08121E);
+  margin-bottom: 0.9rem;
+  line-height: 1.25;
+}
+
+.cardHeading em {
+  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif);
+  font-style: italic;
+  color: var(--navy);
+}
+
+.cardHeadingLight {
+  font-size: clamp(1.4rem, 1.8vw, 1.7rem);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  color: #FFFFFF;
+  margin-bottom: 0.9rem;
+  line-height: 1.25;
+}
+
+.cardHeadingLight em {
+  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif);
+  font-style: italic;
+  color: var(--warm-sand, #E0CCB5);
+}
+
+.cardText {
+  font-size: 0.98rem;
+  line-height: 1.72;
+  color: rgba(15, 38, 69, 0.85);
+  margin: 0;
+}
+
+.cardTextLight {
+  font-size: 0.98rem;
+  line-height: 1.72;
+  color: rgba(244, 245, 240, 0.9);
+  margin: 0;
+}
+
+/* Card Footer */
+.cardFooter {
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(15, 38, 69, 0.08);
+  margin-top: auto;
+}
+
+.cardFooterLight {
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(244, 245, 240, 0.14);
+  margin-top: auto;
+}
+
+/* Pillar Badges / Tag Clusters */
+.pillList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pill {
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: rgba(15, 38, 69, 0.05);
+  color: var(--navy);
+  border: 1px solid rgba(15, 38, 69, 0.1);
+}
+
+.pillLight {
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: rgba(224, 204, 181, 0.12);
+  color: var(--warm-sand, #E0CCB5);
+  border: 1px solid rgba(224, 204, 181, 0.25);
+}
+
+/* Responsive */
+@media (max-width: 1080px) {
+  .cardsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .card, .cardFeatured {
+    min-height: auto;
+    padding: 2.2rem 1.8rem;
+  }
+}
