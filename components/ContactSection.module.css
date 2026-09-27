@@ -134,6 +134,44 @@
   overflow-wrap: anywhere;
 }
 
+.channelLink {
+  color: var(--ivory);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.channelLink:hover {
+  color: var(--sand);
+}
+
+.socialRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.socialBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(224, 204, 181, 0.12);
+  border: 1px solid rgba(224, 204, 181, 0.25);
+  color: var(--sand);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.socialBtn:hover {
+  background: var(--sand);
+  color: var(--midnight);
+  border-color: var(--sand);
+  transform: translateY(-2px);
+}
+
 .consultationNotice {
   display: flex;
   align-items: flex-start;
