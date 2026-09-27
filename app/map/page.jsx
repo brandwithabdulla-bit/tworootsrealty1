@@ -9,7 +9,7 @@ export const metadata = pageMetadata(
 
 export default function MapPage() {
   return (
-    <main>
+    <main style={{ background: '#08121e', minHeight: '100vh', overflow: 'hidden' }}>
       <InteractiveMap />
     </main>
   );

@@ -739,7 +739,7 @@ export function EnquiryForm({variant='quick',context='',submitLabel='Submit Enqu
     budget:budgetOptions.map(b=>b.label),
     contactMethod:['Call','Email','WhatsApp'],
     goal:['Rental income','Long-term ownership','Future home','Portfolio diversification'],
-    bedrooms:['Studio','1','2','3','4','5+']
+    bedrooms:['Studio','1','2','3','4','5','5+']
   };
 
   async function submit(e){

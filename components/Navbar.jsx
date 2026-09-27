@@ -149,7 +149,8 @@ export default function Navbar() {
     setOpenMobileSubmenu(openMobileSubmenu === menu ? null : menu);
   };
 
-  const navClass = `${styles.navbar} ${isScrolled ? styles.scrolled : ''} ${!isScrolled && isHomepage ? styles.transparent : ''}`;
+  const isMapPage = pathname === '/map';
+  const navClass = `${styles.navbar} ${isScrolled ? styles.scrolled : ''} ${!isScrolled && isHomepage ? styles.transparent : ''} ${isMapPage ? styles.darkNavbar : ''}`;
 
   return (
     <>

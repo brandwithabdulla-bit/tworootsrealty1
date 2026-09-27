@@ -349,7 +349,15 @@
   line-height: 1.72;
   color: rgba(244, 245, 240, 0.88);
   margin-bottom: 0;
-  max-width: 52ch;
+  max-width: 54ch;
+}
+
+.culminationDesc p {
+  margin: 0 0 1.15rem 0;
+}
+
+.culminationDesc p:last-child {
+  margin-bottom: 0;
 }
 
 /* Culmination Right Side: Architectural Pillar / Monogram Box */

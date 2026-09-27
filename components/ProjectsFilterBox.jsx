@@ -340,7 +340,7 @@ export function ProjectsFilterBox({ filters, setFilters, onReset }) {
             className={styles.selectInput}
           >
             <option value="">Any bedrooms</option>
-            {['Studio', '1', '2', '3', '4', '5+'].map((beds) => (
+            {['Studio', '1', '2', '3', '4', '5', '5+'].map((beds) => (
               <option key={beds} value={beds}>{beds}</option>
             ))}
           </select>

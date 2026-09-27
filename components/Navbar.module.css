@@ -11,7 +11,7 @@
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   border-bottom: 1px solid rgba(244, 245, 240, 0.12);
-  z-index: 100;
+  z-index: 3000;
   transition: background 0.4s ease, border-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
   padding: 1.25rem 0;
   color: var(--white);
@@ -31,6 +31,14 @@
   border-bottom-color: rgba(244, 245, 240, 0.12);
 }
 
+.darkNavbar {
+  background: rgba(8, 18, 30, 0.95);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border-bottom: 1px solid rgba(244, 245, 240, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
 .navContainer {
   display: flex;
   justify-content: space-between;
@@ -41,7 +49,7 @@
 .logoWrapper {
   display: flex;
   align-items: center;
-  z-index: 101;
+  z-index: 3001;
   transition: opacity 0.25s ease;
 }
 
@@ -141,6 +149,7 @@
   flex-direction: column;
   gap: 0.25rem;
   pointer-events: none;
+  z-index: 3010;
 }
 
 .dropdownOpen .dropdownMenu,
@@ -199,7 +208,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2.25rem;
-  z-index: 100;
+  z-index: 3010;
   visibility: hidden;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
@@ -321,7 +330,7 @@
   border: 1px solid rgba(244, 245, 240, 0.18);
   border-radius: 8px;
   cursor: pointer;
-  z-index: 102;
+  z-index: 3060;
   color: var(--white);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -368,7 +377,7 @@
   border-left: 1px solid rgba(244, 245, 240, 0.16);
   box-shadow: -15px 0 45px rgba(0, 0, 0, 0.55);
   color: var(--white);
-  z-index: 100;
+  z-index: 3050;
   transition: right 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
@@ -472,7 +481,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  z-index: 10000;
   padding: 1rem;
 }
 

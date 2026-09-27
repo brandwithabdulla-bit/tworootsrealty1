@@ -3,6 +3,7 @@ import { ArrowUpRight } from './ui';
 import styles from './CTASection.module.css';
 
 export default function CTASection({
+  badge = "Let's Break the Ice",
   title = "Let's Find the Right Property for You",
   text = 'Whether you are buying a home or building an investment portfolio, our team is ready to guide you.',
   label = 'Book a Consultation',
@@ -15,7 +16,7 @@ export default function CTASection({
           <div className={styles.cardInner}>
             <div className={styles.badge}>
               <span className={styles.badgeDot} aria-hidden="true" />
-              <span>A conversation is a good beginning</span>
+              <span>{badge}</span>
             </div>
 
             <h2 className={styles.title}>{title}</h2>
