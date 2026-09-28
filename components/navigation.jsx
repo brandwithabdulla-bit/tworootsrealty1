@@ -4,6 +4,7 @@ import {usePathname} from 'next/navigation';
 import Link from 'next/link';
 import {Modal,EnquiryForm} from './interactive';
 import {ArrowUpRight} from './ui';
+import {WHATSAPP_URL} from '@/data/brand';
 const links=[['Home','/'],['About','/about',[['About Two Roots','/about'],['Our Story','/about/our-story'],['Founders & Team','/about/team']]],['Projects','/projects',[['All Projects','/projects'],['Off-Plan','/projects?status=Off-Plan'],['Ready Projects','/projects?status=Ready'],['Investment Opportunities','/investment']]],['Services','/services'],['Developers','/developers'],['Areas','/areas'],['Insights','/insights',[['Blog','/insights'],['Market Insights','/insights?category=Market%20Updates']]],['Contact','/contact']];
 export function Wordmark(){return <Link href="/" className="wordmark-img" aria-label="Two Roots Realty home"><img src="/logo.png" alt="Two Roots Realty" className="logo-img" /></Link>}
 export { default as Navbar } from './Navbar';
@@ -71,7 +72,7 @@ export function Footer(){
                     <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
                   </svg>
                 </a>
-                <a href="https://wa.me/971585830569" target="_blank" rel="noopener noreferrer" className="footer-social-icon" aria-label="WhatsApp">
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="footer-social-icon" aria-label="WhatsApp">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/>
                     <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/>
@@ -95,6 +96,8 @@ export function Footer(){
             <span className="footer-bar-label">Direct Enquiries</span>
             <p>
               <a href="tel:+971585830569">+971 585830569</a>
+              <span className="sep">·</span>
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">WhatsApp</a>
               <span className="sep">·</span>
               <a href="mailto:Info@tworootsrealty.com">Info@tworootsrealty.com</a>
               <span className="sep">·</span>

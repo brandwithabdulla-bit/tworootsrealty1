@@ -2,3 +2,8 @@ export const brand={name:'Two Roots Realty',established:'August 2026',mission:'T
 export const values=[['Integrity','Acting with responsibility, clarity and honesty in every recommendation.'],['Clarity','Bringing straightforward, transparent guidance to complex decisions.'],['Connection','Opening meaningful cross-border relationships and property opportunities.'],['Discernment','Applying meticulous evaluation to curate only the finest investments.'],['Commitment','Providing dedicated guidance and personal support long after the first conversation.']];
 export const journey=['Consultation','Property Selection','Financial Guidance','Purchase Support','Handover','After-Sales'];
 export const why=['Strong Dubai market knowledge','Personalised and transparent advice','Carefully evaluated opportunities','Trusted international network','Complete assistance','Long-term relationships'];
+
+export const WHATSAPP_NUMBER = '971585830569';
+export const WHATSAPP_DISPLAY_PHONE = '+971 585830569';
+export const WHATSAPP_MESSAGE = "Hello Two Roots Realty, I found you through your website. I’m interested in exploring property opportunities in the UAE. Could someone from your team assist me?";
+export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
