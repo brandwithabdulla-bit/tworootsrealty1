@@ -1,7 +1,7 @@
 import { PageHero, CTASection } from '@/components/ui';
 import { StorySection, WhySection, TeamSection } from '@/components/sections';
 import AboutMissionVisionValues from '@/components/AboutMissionVisionValues';
-import { images } from '@/data/images';
+import { aboutSlides } from '@/data/slides';
 import { getTeamMembers } from '@/lib/sanity-data';
 import { pageMetadata } from '@/lib/seo';
 
@@ -20,8 +20,7 @@ export default async function Page() {
         eyebrow="Established August 2026 · UAE"
         title={<>Two roots.<br /><em>One shared perspective.</em></>}
         description="A trusted Dubai real estate advisory company combining strong local expertise with international reach."
-        image={images.architecture}
-        imageAlt="Two Roots Realty luxury Dubai architecture"
+        slides={aboutSlides}
       />
       
       <StorySection />
