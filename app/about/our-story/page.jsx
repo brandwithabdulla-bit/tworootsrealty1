@@ -1,5 +1,5 @@
 import { PageHero, CTASection, Button } from '@/components/ui';
-import { images } from '@/data/images';
+import { storySlides } from '@/data/slides';
 import { pageMetadata } from '@/lib/seo';
 import OurStoryJourney from '@/components/OurStoryJourney';
 
@@ -15,8 +15,7 @@ export default function Page() {
       <PageHero 
         eyebrow="Our story" 
         title={<>Rooted in trust. Connected by purpose.<br /><em>Building opportunities that go beyond borders.</em></>} 
-        image={images.architecture} 
-        imageAlt="Two Roots Realty story and foundational architecture"
+        slides={storySlides}
       >
         <div style={{ marginTop: '28px' }}>
           <Button href="/projects">Discover Opportunities</Button>

@@ -40,3 +40,26 @@ export const defaultSlides = [
     position: 'center center'
   }
 ];
+
+export const storySlides = [
+  {
+    src: '/images/story/story-hero-1.jpg',
+    alt: 'Desert heritage and camel caravan with Dubai skyline at sunset',
+    position: 'center center'
+  },
+  {
+    src: '/images/story/story-hero-2.jpg',
+    alt: 'Golden desert sand dunes overlooking Dubai skyline',
+    position: 'center center'
+  },
+  {
+    src: '/images/story/story-hero-3.jpg',
+    alt: 'Downtown Dubai illuminated skyline and Burj Khalifa',
+    position: 'center center'
+  },
+  {
+    src: '/images/story/story-hero-4.jpg',
+    alt: 'Palm Jumeirah and Arabian Gulf sunset aerial panorama',
+    position: 'center center'
+  }
+];
