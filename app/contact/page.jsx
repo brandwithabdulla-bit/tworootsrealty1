@@ -16,9 +16,9 @@ export default async function Page({ searchParams }) {
   return (
     <>
       <PageHero
-        eyebrow="A connection starts here"
-        title="Let's Find the Right Property for You"
-        description="Tell us what you have in mind. A home, an investment, a new requirement — or simply a question."
+        eyebrow="EVERY GREAT MOVE BEGINS WITH A CONVERSATION"
+        title="Let’s Find What Moves You Forward"
+        description="A place to call home. An investment with purpose. A new opportunity. Whatever brings you here, we’re ready to listen and help you take the next step."
         image="/images/hero/hero-3.jpg"
         imageAlt="Two Roots Realty advisory and luxury architectural consultation"
       />

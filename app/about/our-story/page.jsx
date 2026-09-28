@@ -15,7 +15,6 @@ export default function Page() {
       <PageHero 
         eyebrow="Our story" 
         title={<>Rooted in trust. Connected by purpose.<br /><em>Building opportunities that go beyond borders.</em></>} 
-        description="Some connections become the foundation for something bigger." 
         image={images.architecture} 
         imageAlt="Two Roots Realty story and foundational architecture"
       >
