@@ -223,3 +223,16 @@ export const allTeamMembersQuery = groq`
     expertise
   }
 `;
+
+// Gallery Items GROQ Query
+export const allGalleryItemsQuery = groq`
+  *[_type == "galleryItem"] | order(order asc, _createdAt desc) {
+    _id,
+    "id": _id,
+    title,
+    category,
+    "src": image.asset->url,
+    order
+  }
+`;
+
