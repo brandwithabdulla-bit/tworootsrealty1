@@ -1232,3 +1232,57 @@
     padding: 24px 0 18px;
   }
 }
+
+/* Project & Property Detail Page Spacing */
+.detail-page-container {
+  padding-top: 100px !important;
+}
+
+.detail-title {
+  display: flex !important;
+  justify-content: space-between !important;
+  gap: 32px !important;
+  align-items: flex-end !important;
+  padding: 24px 0 28px !important;
+}
+
+.detail-title .eyebrow {
+  margin-bottom: 8px !important;
+  font-size: 0.78rem !important;
+  letter-spacing: 0.14em !important;
+}
+
+.detail-title h1 {
+  font-size: clamp(2.4rem, 3.8vw, 3.8rem) !important;
+  margin-bottom: 0 !important;
+  line-height: 1.12 !important;
+}
+
+.detail-title .price {
+  font-size: clamp(1.35rem, 1.8vw, 1.85rem) !important;
+  font-weight: 500 !important;
+  margin-bottom: 0 !important;
+  white-space: nowrap !important;
+}
+
+@media (max-width: 1024px) {
+  .detail-page-container {
+    padding-top: 92px !important;
+  }
+  .detail-title {
+    padding: 20px 0 24px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .detail-page-container {
+    padding-top: 86px !important;
+  }
+  .detail-title {
+    display: block !important;
+    padding: 16px 0 20px !important;
+  }
+  .detail-title .price {
+    margin-top: 12px !important;
+  }
+}

@@ -13,15 +13,6 @@ export function ListingDetail({ item, kind = 'properties', similar = [] }) {
 
   return (
     <div className="detail-page-container container">
-      {/* Breadcrumbs */}
-      <nav className="breadcrumbs" aria-label="Breadcrumb">
-        <Link href="/">Home</Link>
-        <span> / </span>
-        <Link href={`/${kind}`}>{kind === 'projects' ? 'Projects' : 'Properties'}</Link>
-        <span> / </span>
-        <span aria-current="page">{item.title}</span>
-      </nav>
-
       {/* Detail Header */}
       <div className="detail-title">
         <div>
