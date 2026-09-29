@@ -4,15 +4,18 @@ import { useState } from 'react';
 import { ArrowUpRight } from './ui';
 import BrochureModal from './BrochureModal';
 
-export default function ProjectBrochureSection({ item }) {
+export default function ProjectBrochureSection({ item, project }) {
+  const target = item || project || {};
   const [modalOpen, setModalOpen] = useState(false);
+
+  if (!target || !target.title) return null;
 
   return (
     <div className="document-row real-brochure-row">
       <div>
         <h3>Official Project Documentation</h3>
         <p>
-          Download the official developer brochure, floor plans and verified masterplan specifications for {item.title}.
+          Download the official developer brochure, floor plans and verified masterplan specifications for {target.title}.
         </p>
       </div>
 
@@ -30,8 +33,8 @@ export default function ProjectBrochureSection({ item }) {
       <BrochureModal
         open={modalOpen}
         onClose={() => setModalOpen(false)}
-        projectTitle={item.title}
-        brochureUrl={item.brochure}
+        projectTitle={target.title}
+        brochureUrl={target.brochure}
       />
     </div>
   );

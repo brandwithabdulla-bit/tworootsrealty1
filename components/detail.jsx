@@ -126,7 +126,7 @@ export function ListingDetail({ item, kind = 'properties', similar = [] }) {
           {/* Brochure & Factsheet Download */}
           {isProject && (
             <section>
-              <ProjectBrochureSection project={item} />
+              <ProjectBrochureSection item={item} project={item} />
             </section>
           )}
 

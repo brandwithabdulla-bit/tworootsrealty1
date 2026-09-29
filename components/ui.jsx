@@ -64,8 +64,66 @@ export function Breadcrumbs({items}){return <nav className="breadcrumbs" aria-la
 export function DemoNote({children='Illustrative collection. Prices, specifications, imagery and developer relationships are demo content, not live inventory.'}){return <p className="demo-note">{children}</p>}
 import CTASection from './CTASection';
 export { CTASection };
-export function PropertyCard({item,kind='properties'}){return <article className="property-card"><Photo className="card-backdrop" src={item.images[0]} alt={`${item.title} photography`} sizes="(max-width: 700px) 95vw, (max-width: 1100px) 50vw, 33vw"/><div className="card-top"><div style={{display:'flex',gap:'6px',flexWrap:'wrap'}}><span className="badge">{item.status}</span>{item.lifestyle&&<span className="badge lifestyle-badge">{item.lifestyle}</span>}</div><Link className="card-open" href={`/${kind}/${item.slug}`} aria-label={`View ${item.title}`}><ArrowUpRight size={16}/></Link></div><div className="card-copy"><div className="card-meta"><span>{item.propertyType}</span><span>{item.lifestyle?`${item.lifestyle} · Selected`:'Demo collection'}</span></div><h3><Link href={`/${kind}/${item.slug}`}>{item.title}</Link></h3><p className="card-location">{item.location} <span>· {item.developer}</span></p><div className="card-facts"><span>{item.bedrooms===0?'Studio':`${item.bedrooms} beds`}</span><span>{item.bathrooms} baths</span><span>{item.area.toLocaleString()} sq ft</span></div><div className="card-bottom"><p className="price">{item.priceLabel}</p><Link href={`/${kind}/${item.slug}`} className="card-details" aria-label={`Explore ${item.title}`}><span>Explore</span> <ArrowUpRight size={13}/></Link></div></div></article>}
-export function PropertyGrid({items,kind='properties',carousel=false}){return <div className={`property-grid ${carousel?'mobile-carousel':''}`}>{items.map(x=><PropertyCard key={x.id} item={x} kind={kind}/>)}</div>}
+export function PropertyCard({ item = {}, kind = 'properties' }) {
+  if (!item || !item.title) return null;
+  const imageSrc = (Array.isArray(item.images) && item.images.length > 0 && item.images[0])
+    ? item.images[0]
+    : (typeof item.image === 'string' ? item.image : '/images/dubai.jpg');
+  const statusLabel = item.status || (kind === 'projects' ? 'Off-Plan' : 'Ready');
+  const priceDisplay = item.priceLabel || (item.price ? `AED ${item.price.toLocaleString('en-AE')}` : 'Price on Application');
+  const beds = item.bedrooms === 0 ? 'Studio' : (item.bedrooms ? `${item.bedrooms} beds` : 'N/A');
+  const baths = item.bathrooms ? `${item.bathrooms} baths` : 'N/A';
+  const areaDisplay = item.area ? `${item.area.toLocaleString()} sq ft` : 'On Request';
+
+  return (
+    <article className="property-card">
+      <Photo className="card-backdrop" src={imageSrc} alt={`${item.title} photography`} sizes="(max-width: 700px) 95vw, (max-width: 1100px) 50vw, 33vw"/>
+      <div className="card-top">
+        <div style={{display:'flex',gap:'6px',flexWrap:'wrap'}}>
+          <span className="badge">{statusLabel}</span>
+          {item.lifestyle && <span className="badge lifestyle-badge">{item.lifestyle}</span>}
+        </div>
+        <Link className="card-open" href={`/${kind}/${item.slug}`} aria-label={`View ${item.title}`}>
+          <ArrowUpRight size={16}/>
+        </Link>
+      </div>
+      <div className="card-copy">
+        <div className="card-meta">
+          <span>{item.propertyType || 'Residential'}</span>
+          <span>{item.lifestyle ? `${item.lifestyle} · Selected` : 'Collection'}</span>
+        </div>
+        <h3>
+          <Link href={`/${kind}/${item.slug}`}>{item.title}</Link>
+        </h3>
+        <p className="card-location">
+          {item.location} {item.developer ? <span>· {item.developer}</span> : null}
+        </p>
+        <div className="card-facts">
+          <span>{beds}</span>
+          <span>{baths}</span>
+          <span>{areaDisplay}</span>
+        </div>
+        <div className="card-bottom">
+          <p className="price">{priceDisplay}</p>
+          <Link href={`/${kind}/${item.slug}`} className="card-details" aria-label={`Explore ${item.title}`}>
+            <span>Explore</span> <ArrowUpRight size={13}/>
+          </Link>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+export function PropertyGrid({ items = [], kind = 'properties', carousel = false }) {
+  const validItems = (items || []).filter(Boolean);
+  return (
+    <div className={`property-grid ${carousel ? 'mobile-carousel' : ''}`}>
+      {validItems.map((x, idx) => (
+        <PropertyCard key={x.id || x._id || idx} item={x} kind={kind} />
+      ))}
+    </div>
+  );
+}
 export function DeveloperCard({item,projectCount=0}){return <article className="developer-card"><Photo src={item.image||images.architecture} alt={`Illustrative architecture for ${item.name}; not an official developer asset`}/><span className="developer-image-label">Illustrative architecture</span><div className="developer-card-content"><div className="developer-card-heading"><h3>{item.name}</h3><span className="developer-monogram" aria-hidden="true">{item.name.slice(0,1)}</span></div><p className="developer-placeholder">Official logo to be supplied</p><p>{item.description}</p><div className="developer-card-bottom"><span>{projectCount} demo projects</span><Link className="card-open" href={`/developers/${item.slug}`} aria-label={`Explore ${item.name}`}><ArrowUpRight size={16}/></Link></div></div></article>}
 export function LocationCard({item}){
   return (
