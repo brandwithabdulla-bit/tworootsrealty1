@@ -6,7 +6,7 @@ import {pageMetadata} from '@/lib/seo';
 export async function generateMetadata({params}){
   const {slug}=await params;
   const p = await getProjectBySlug(slug);
-  return p?pageMetadata(p.title,`${p.title} in ${p.location}: gallery, payment plan and project information. Demo project.`,`/projects/${slug}`):{};
+  return p?pageMetadata(p.title,`${p.title} in ${p.location}: gallery, payment plan and luxury project information.`,`/projects/${slug}`):{};
 }
 
 export default async function Page({params}){

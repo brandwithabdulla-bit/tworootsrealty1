@@ -61,7 +61,7 @@ export function PageHero({
   );
 }
 export function Breadcrumbs({items}){return <nav className="breadcrumbs" aria-label="Breadcrumb"><Link href="/">Home</Link>{items.map((x,i)=><span key={i}> / {x.href?<Link href={x.href}>{x.label}</Link>:x.label}</span>)}</nav>}
-export function DemoNote({children='Illustrative collection. Prices, specifications, imagery and developer relationships are demo content, not live inventory.'}){return <p className="demo-note">{children}</p>}
+export function DemoNote({children}){if(!children)return null;return <p className="demo-note">{children}</p>}
 import CTASection from './CTASection';
 export { CTASection };
 export function PropertyCard({ item = {}, kind = 'properties' }) {
@@ -124,7 +124,7 @@ export function PropertyGrid({ items = [], kind = 'properties', carousel = false
     </div>
   );
 }
-export function DeveloperCard({item,projectCount=0}){return <article className="developer-card"><Photo src={item.image||images.architecture} alt={`Illustrative architecture for ${item.name}; not an official developer asset`}/><span className="developer-image-label">Illustrative architecture</span><div className="developer-card-content"><div className="developer-card-heading"><h3>{item.name}</h3><span className="developer-monogram" aria-hidden="true">{item.name.slice(0,1)}</span></div><p className="developer-placeholder">Official logo to be supplied</p><p>{item.description}</p><div className="developer-card-bottom"><span>{projectCount} demo projects</span><Link className="card-open" href={`/developers/${item.slug}`} aria-label={`Explore ${item.name}`}><ArrowUpRight size={16}/></Link></div></div></article>}
+export function DeveloperCard({item,projectCount=0}){return <article className="developer-card"><Photo src={item.image||images.architecture} alt={`${item.name} architecture and developments`}/><div className="developer-card-content"><div className="developer-card-heading"><h3>{item.name}</h3><span className="developer-monogram" aria-hidden="true">{item.name.slice(0,1)}</span></div><p>{item.description}</p><div className="developer-card-bottom"><span>{projectCount} {projectCount === 1 ? 'project' : 'projects'}</span><Link className="card-open" href={`/developers/${item.slug}`} aria-label={`Explore ${item.name}`}><ArrowUpRight size={16}/></Link></div></div></article>}
 export function LocationCard({item}){
   return (
     <Link className="property-card location-card" href={`/areas/${item.slug}`}>
@@ -152,5 +152,5 @@ export function LocationCard({item}){
     </Link>
   );
 }
-export function BlogCard({item}){return <article className="blog-card"><Link href={`/insights/${item.slug}`}><Photo src={item.image} alt="Illustrative architecture and living spaces"/></Link><p className="eyebrow">{item.category} · Demo article</p><h3><Link href={`/insights/${item.slug}`}>{item.title}</Link></h3><p className="muted">1 September 2026 · {item.readingTime}</p><p>{item.summary}</p><Link className="text-link" href={`/insights/${item.slug}`}><span>Read the story</span> <ArrowUpRight size={13}/></Link></article>}
+export function BlogCard({item}){return <article className="blog-card"><Link href={`/insights/${item.slug}`}><Photo src={item.image} alt={item.title}/></Link><p className="eyebrow">{item.category}</p><h3><Link href={`/insights/${item.slug}`}>{item.title}</Link></h3><p className="muted">1 September 2026 · {item.readingTime}</p><p>{item.summary}</p><Link className="text-link" href={`/insights/${item.slug}`}><span>Read the story</span> <ArrowUpRight size={13}/></Link></article>}
 

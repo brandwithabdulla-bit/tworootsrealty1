@@ -6,7 +6,7 @@ import styles from '@/components/CareersSection.module.css';
 
 export const metadata = pageMetadata(
   'Careers',
-  'Explore the culture of Two Roots Realty and the future careers experience.',
+  'Explore career opportunities and the culture of Two Roots Realty in Dubai.',
   '/careers'
 );
 
@@ -14,15 +14,15 @@ export default function Page() {
   const roles = [
     {
       title: 'Property Advisor',
-      tag: 'Demo position',
+      tag: 'Full-time · Dubai',
       description:
-        'This sample role demonstrates how future openings can be presented. Responsibilities, location, eligibility and application deadlines will be supplied for confirmed vacancies.'
+        'Deliver discerning advice and personalized guidance to high-net-worth clients across Dubai’s prime and off-plan property markets.'
     },
     {
       title: 'Client Relations Coordinator',
-      tag: 'Demo position',
+      tag: 'Full-time · Dubai',
       description:
-        'This sample role demonstrates how future openings can be presented. Responsibilities, location, eligibility and application deadlines will be supplied for confirmed vacancies.'
+        'Coordinate seamless client experiences from initial consultation through to transaction completion and property handover.'
     }
   ];
 
@@ -81,7 +81,7 @@ export default function Page() {
             <Eyebrow>Opportunities</Eyebrow>
             <h2 className={styles.jobsTitle}>Open positions</h2>
             <p className={styles.jobsDescription}>
-              Demo listings for the careers layout. These are not confirmed vacancies.
+              Explore current opportunities to join our advisory and client relationship teams in Dubai.
             </p>
           </div>
 
@@ -97,7 +97,7 @@ export default function Page() {
                 </div>
 
                 <ScrollToLink className={styles.jobLink} targetId="application">
-                  <span>Explore the application form</span>
+                  <span>Apply for this position</span>
                   <ArrowUpRight size={14} />
                 </ScrollToLink>
               </div>
@@ -117,7 +117,7 @@ export default function Page() {
             </div>
 
             <p className={styles.applicationInfoDesc}>
-              The demonstration form accepts a CV or portfolio link. It does not upload or send a document.
+              Submit your CV or portfolio link below. Our leadership team reviews every application thoroughly.
             </p>
 
             <div className={styles.applicationHighlights}>

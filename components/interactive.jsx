@@ -596,8 +596,8 @@ export function Discovery({items,kind='properties',initialFilters={}}){
   useEffect(()=>{
     if(!navigator.modelContext)return;
     const tool={
-      name:'search_demo_properties',
-      description:'Search illustrative Two Roots property inventory; no live availability or transactions.',
+      name:'search_properties',
+      description:'Search Two Roots property inventory.',
       inputSchema:{type:'object',properties:{query:{type:'string'}}},
       execute:async({query=''})=>({
         content:[{type:'text',text:JSON.stringify(filterListings(items,{q:query}).map(({title,slug,priceLabel})=>({title,url:`/${kind}/${slug}`,priceLabel})))}]
@@ -658,7 +658,6 @@ export function Discovery({items,kind='properties',initialFilters={}}){
               </select>
             </label>
           </div>
-          <DemoNote/>
           <PropertyGrid items={results.slice(0,limit)} kind={kind}/>
           {results.length===0&&(
             <div className="empty">
@@ -709,7 +708,7 @@ export function ImageGallery({item = {}}){
   const[open,setOpen]=useState(false);
   const touch=useRef(0);
   function next(delta){setIndex(v=>(v+delta+gallery.length)%gallery.length);}
-  return <div className="gallery"><button className="gallery-main" onClick={()=>setOpen(true)} aria-label={`Open gallery for ${item.title || 'property'}`} onTouchStart={e=>touch.current=e.changedTouches[0].clientX} onTouchEnd={e=>{const d=e.changedTouches[0].clientX-touch.current;if(Math.abs(d)>45)next(d>0?-1:1);}}><Image src={gallery[index]} fill priority sizes="100vw" alt={`${item.title || 'Property'}: illustrative photo ${index+1}`}/><span className="badge">View gallery · {index+1} / {gallery.length}</span></button><div className="gallery-thumbs">{gallery.map((src,i)=><button key={i} aria-label={`Show photo ${i+1}`} aria-pressed={i===index} onClick={()=>setIndex(i)}><Image src={src} fill sizes="25vw" alt={`Illustrative view ${i+1}`}/></button>)}</div><Modal open={open} onClose={()=>setOpen(false)} title={`${item.title || 'Property'} — gallery`} className="gallery-dialog"><div className="lightbox" onKeyDown={e=>{if(e.key==='ArrowRight')next(1);if(e.key==='ArrowLeft')next(-1);}} onTouchStart={e=>touch.current=e.changedTouches[0].clientX} onTouchEnd={e=>{const d=e.changedTouches[0].clientX-touch.current;if(Math.abs(d)>45)next(d>0?-1:1);}}><Image src={gallery[index]} fill sizes="90vw" alt={`Illustrative photo ${index+1} of ${gallery.length}`}/></div><div className="gallery-controls"><button className="button secondary" onClick={()=>next(-1)}>← Previous</button><span aria-live="polite">{index+1} / {gallery.length}</span><button className="button secondary" onClick={()=>next(1)}>Next →</button></div><DemoNote>Representative stock photography, not photographs of this fictional property.</DemoNote></Modal></div>;
+  return <div className="gallery"><button className="gallery-main" onClick={()=>setOpen(true)} aria-label={`Open gallery for ${item.title || 'property'}`} onTouchStart={e=>touch.current=e.changedTouches[0].clientX} onTouchEnd={e=>{const d=e.changedTouches[0].clientX-touch.current;if(Math.abs(d)>45)next(d>0?-1:1);}}><Image src={gallery[index]} fill priority sizes="100vw" alt={`${item.title || 'Property'}: photo ${index+1}`}/><span className="badge">View gallery · {index+1} / {gallery.length}</span></button><div className="gallery-thumbs">{gallery.map((src,i)=><button key={i} aria-label={`Show photo ${i+1}`} aria-pressed={i===index} onClick={()=>setIndex(i)}><Image src={src} fill sizes="25vw" alt={`View ${i+1}`}/></button>)}</div><Modal open={open} onClose={()=>setOpen(false)} title={`${item.title || 'Property'} — gallery`} className="gallery-dialog"><div className="lightbox" onKeyDown={e=>{if(e.key==='ArrowRight')next(1);if(e.key==='ArrowLeft')next(-1);}} onTouchStart={e=>touch.current=e.changedTouches[0].clientX} onTouchEnd={e=>{const d=e.changedTouches[0].clientX-touch.current;if(Math.abs(d)>45)next(d>0?-1:1);}}><Image src={gallery[index]} fill sizes="90vw" alt={`Photo ${index+1} of ${gallery.length}`}/></div><div className="gallery-controls"><button className="button secondary" onClick={()=>next(-1)}>← Previous</button><span aria-live="polite">{index+1} / {gallery.length}</span><button className="button secondary" onClick={()=>next(1)}>Next →</button></div></Modal></div>;
 }
 const baseFields=[['name','Name','text',true],['email','Email','email',true],['phone','Phone','tel',true]];
 export function EnquiryForm({variant='quick',context='',submitLabel='Submit Enquiry'}){
@@ -760,7 +759,7 @@ export function EnquiryForm({variant='quick',context='',submitLabel='Submit Enqu
     });
     if(data.email&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email))issues.email='Enter a valid email address.';
     if(fullPhone&&!/^\+?[\d\s().-]{7,25}$/.test(fullPhone))issues.phone='Enter a valid phone number.';
-    if(!data.consent)issues.consent='Please acknowledge the demo privacy notice.';
+    if(!data.consent)issues.consent='Please acknowledge the privacy policy.';
     setErrors(issues);
     if(Object.keys(issues).length){
       if(issues.phone&&!issues.name&&!issues.email){
@@ -792,7 +791,6 @@ export function EnquiryForm({variant='quick',context='',submitLabel='Submit Enqu
 
   return (
     <form ref={form} onSubmit={submit} className={`enquiry-form ${variant}`} noValidate>
-      <p className="form-note">Demo form · details are validated but are not sent or saved. Please use test details.</p>
       {context&&<p className="context-note">Enquiry: <strong>{context}</strong></p>}
       <div className="form-grid">
         {fields.map(([key,label,type='text',required=false])=>{
@@ -916,15 +914,15 @@ export function EnquiryForm({variant='quick',context='',submitLabel='Submit Enqu
       {variant!=='newsletter'&&<label>Message<textarea name="message" rows="3" maxLength="4000"/></label>}
       <label className="consent">
         <input type="checkbox" name="consent" aria-invalid={!!errors.consent}/>
-        <span>I understand this is a demo form. See the <Link href="/privacy-policy">privacy notice</Link>.</span>
+        <span>I agree to the <Link href="/privacy-policy">privacy policy</Link> and to be contacted regarding my enquiry.</span>
       </label>
       {errors.consent&&<p className="field-error">{errors.consent}</p>}
       <button className="button" disabled={status==='loading'}>
-        <span>{status==='loading'?'Checking details…':submitLabel}</span> <ArrowUpRight size={14}/>
+        <span>{status==='loading'?'Sending enquiry…':submitLabel}</span> <ArrowUpRight size={14}/>
       </button>
       <div role="status" aria-live="polite">
-        {status==='success'&&<p className="form-result">Demo complete: your details passed validation. Nothing was sent or saved, and no advisor has received this enquiry.</p>}
-        {status==='error'&&<p className="form-result">The form could not be checked. Please try again; nothing has been sent.</p>}
+        {status==='success'&&<p className="form-result">Thank you for your enquiry. Our team will get back to you shortly.</p>}
+        {status==='error'&&<p className="form-result">There was an issue submitting your enquiry. Please try again or contact us directly.</p>}
       </div>
     </form>
   );

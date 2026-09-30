@@ -9,5 +9,5 @@ export const metadata=pageMetadata('Insights','Property stories, community persp
 export default async function Page({searchParams}){
   const {category}=await searchParams;
   const blog = await getArticles();
-  return <><PageHero eyebrow="The Two Roots journal" title="A little more perspective." description="Ideas, questions and places to explore. These sample articles demonstrate the future journal." image={images.apartment} imageAlt="Considered Dubai architecture and living spaces"/><InsightsDiscovery items={blog} initialCategory={category}/><CTASection title="A question worth asking?" text="Bring it to a conversation with our team." label="Talk to an Advisor"/></>;
+  return <><PageHero eyebrow="The Two Roots journal" title="A little more perspective." description="Ideas, questions and places to explore across Dubai's architectural landscape." image={images.apartment} imageAlt="Considered Dubai architecture and living spaces"/><InsightsDiscovery items={blog} initialCategory={category}/><CTASection title="A question worth asking?" text="Bring it to a conversation with our team." label="Talk to an Advisor"/></>;
 }

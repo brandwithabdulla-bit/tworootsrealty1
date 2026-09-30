@@ -3,7 +3,7 @@ import {PageHero} from '@/components/ui';
 import {Discovery} from '@/components/interactive';
 import {pageMetadata} from '@/lib/seo';
 
-export const metadata=pageMetadata('Projects','Explore off-plan, ready, waterfront and luxury demo projects with connected developer and community information.','/projects');
+export const metadata=pageMetadata('Projects','Explore off-plan, ready, waterfront and luxury projects with connected developer and community information.','/projects');
 
 export default async function Page({searchParams}){
   const projects = await getProjects();

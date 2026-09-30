@@ -4,7 +4,7 @@ import { pageMetadata } from '@/lib/seo';
 
 export const metadata = pageMetadata(
   'Contact',
-  'Start a property conversation with Two Roots Realty. Enquiry forms are currently demonstration only.',
+  'Start a property conversation with Two Roots Realty. Connect with our dedicated advisory team.',
   '/contact'
 );
 

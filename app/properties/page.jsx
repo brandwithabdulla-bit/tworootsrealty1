@@ -4,7 +4,7 @@ import {PageHero} from '@/components/ui';
 import {Discovery} from '@/components/interactive';
 import {pageMetadata} from '@/lib/seo';
 
-export const metadata=pageMetadata('Explore Properties','Find your next Dubai property. Filter illustrative homes by location, developer, budget, bedrooms and property type.','/properties');
+export const metadata=pageMetadata('Explore Properties','Find your next Dubai property. Filter premium homes by location, developer, budget, bedrooms and property type.','/properties');
 
 export default async function Page({searchParams}){
   const params=await searchParams;

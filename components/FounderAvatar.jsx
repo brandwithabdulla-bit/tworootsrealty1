@@ -35,12 +35,11 @@ export default function FounderAvatar({
     );
   }
 
-  // Demo avatar mode (currently used for founders demo)
   return (
     <div
       className={`${styles.avatarCard} ${className}`}
       role="img"
-      aria-label={`Demo avatar for ${name}; photograph pending`}
+      aria-label={`Avatar for ${name}`}
     >
       <div className={styles.glow} aria-hidden="true" />
       <div className={styles.ringAccent} aria-hidden="true" />
