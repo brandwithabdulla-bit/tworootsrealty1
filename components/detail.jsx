@@ -21,8 +21,13 @@ export function ListingDetail({ item, kind = 'properties', similar = [] }) {
         {/* Full-Bleed Cinematic Hero matching Image 1 */}
         <ProjectHeroBanner item={item} />
 
+        {/* Dedicated Full-Width Gallery (Spans full container width, zero right-side whitespace) */}
+        <section className="container" style={{ paddingTop: '40px', paddingBottom: '10px' }}>
+          <ProjectGalleryCarousel item={item} />
+        </section>
+
         {/* Main Content Layout */}
-        <div className="container" style={{ paddingTop: '50px' }}>
+        <div className="container" style={{ paddingTop: '20px' }}>
           <div className="detail-layout">
             <div className="detail-content">
               {/* Key Facts */}
@@ -85,26 +90,6 @@ export function ListingDetail({ item, kind = 'properties', similar = [] }) {
                     {item.amenities.map(x => <li key={x}>{x}</li>)}
                   </ul>
                   <DemoNote>Amenities are representative and sourced directly from developer project specifications.</DemoNote>
-                </section>
-              )}
-
-              {/* Dedicated Gallery Carousel Section matching Image 2 */}
-              <ProjectGalleryCarousel item={item} />
-
-              {/* Payment Plan */}
-              {item.paymentPlan && item.paymentPlan.length > 0 && (
-                <section>
-                  <h2>Payment plan</h2>
-                  <div className="payment-plan">
-                    {item.paymentPlan.map((step, idx) => (
-                      <div key={idx} className="payment-step">
-                        <strong>{step.percent}%</strong>
-                        <span>{step.label}</span>
-                        {step.date && <small>{step.date}</small>}
-                      </div>
-                    ))}
-                  </div>
-                  <DemoNote>Payment schedules are subject to developer terms and official reservation contract.</DemoNote>
                 </section>
               )}
 

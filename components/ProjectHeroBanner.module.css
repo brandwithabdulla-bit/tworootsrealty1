@@ -1,11 +1,14 @@
 .heroWrapper {
   position: relative;
   width: 100%;
-  min-height: 84vh;
+  height: 100vh;
+  min-height: 100vh;
+  height: 100svh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 130px var(--space, 40px) 48px;
+  padding: 120px var(--space, 40px) 40px;
   color: var(--ivory, #F4F5F0);
   background: var(--midnight, #08121E);
   overflow: hidden;
@@ -197,8 +200,11 @@
 
 @media (max-width: 768px) {
   .heroWrapper {
-    min-height: 75vh;
-    padding: 100px 20px 32px;
+    height: 100vh;
+    min-height: 100vh;
+    height: 100svh;
+    min-height: 100svh;
+    padding: 96px 20px 24px;
   }
   .titleArea {
     margin-bottom: 24px;

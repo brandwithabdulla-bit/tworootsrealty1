@@ -1,5 +1,5 @@
 .gallerySection {
-  margin: 50px 0 60px;
+  margin: 0 0 24px;
   position: relative;
   width: 100%;
 }
@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .galleryTitle {
@@ -20,10 +20,25 @@
   font-family: var(--sans);
 }
 
+.headerControls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.counterBadge {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--navy, #0F2645);
+  opacity: 0.8;
+  letter-spacing: 0.05em;
+}
+
 .navControls {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
 
 .navArrow {
@@ -57,114 +72,144 @@
   transform: scale(1.1);
 }
 
-.carouselViewport {
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  padding: 6px 2px 18px 2px;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-}
-
-.carouselViewport::-webkit-scrollbar {
-  display: none;
-}
-
-.carouselTrack {
-  display: flex;
-  gap: 22px;
-  width: max-content;
-}
-
-.galleryCard {
+/* Single Item Display Stage (Full-width, No Right-side White Space) */
+.stage {
   position: relative;
-  flex: 0 0 clamp(310px, 36vw, 480px);
-  aspect-ratio: 16 / 10;
-  border-radius: 14px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 640px;
+  border-radius: 20px;
   overflow: hidden;
   background: var(--sand, #E0CCB5);
-  cursor: pointer;
-  scroll-snap-align: start;
+  box-shadow: 0 10px 32px rgba(8, 18, 30, 0.08);
   border: 1px solid rgba(8, 18, 30, 0.08);
-  box-shadow: 0 6px 20px rgba(8, 18, 30, 0.07);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+  user-select: none;
 }
 
-.galleryCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 32px rgba(8, 18, 30, 0.14);
+.slideTrack {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-.galleryCardImage {
-  object-fit: cover;
-  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.galleryCard:hover .galleryCardImage {
-  transform: scale(1.05);
-}
-
-.cardOverlay {
+.slide {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 55%, rgba(8, 18, 30, 0.5) 100%);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  visibility: hidden;
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(1.02);
+}
+
+.slideActive {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.slideImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+.slideOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 70%, rgba(8, 18, 30, 0.4) 100%);
   pointer-events: none;
 }
 
-.galleryCard:hover .cardOverlay {
-  opacity: 1;
+/* On-image navigation arrows */
+.stageArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(244, 245, 240, 0.4);
+  background: rgba(8, 18, 30, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 6;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
-.zoomBadge {
+.stageArrow:hover {
+  background: var(--sand, #E0CCB5);
+  color: var(--midnight, #08121E);
+  border-color: var(--sand, #E0CCB5);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.stageArrowPrev {
+  left: 20px;
+}
+
+.stageArrowNext {
+  right: 20px;
+}
+
+/* Dots at bottom of stage */
+.dotsTrack {
   position: absolute;
-  bottom: 14px;
-  right: 14px;
-  background: rgba(8, 18, 30, 0.75);
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 5;
+  background: rgba(8, 18, 30, 0.5);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  color: #FFFFFF;
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 500;
-  padding: 6px 12px;
-  border-radius: 20px;
-  opacity: 0;
-  transform: translateY(6px);
-  transition: all 0.25s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 30px;
+  border: 1px solid rgba(244, 245, 240, 0.2);
 }
 
-.galleryCard:hover .zoomBadge {
-  opacity: 1;
-  transform: translateY(0);
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid rgba(244, 245, 240, 0.6);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.25s ease;
+}
+
+.dotActive {
+  background: var(--sand, #E0CCB5);
+  border-color: var(--sand, #E0CCB5);
+  width: 22px;
+  border-radius: 10px;
 }
 
 @media (max-width: 768px) {
   .gallerySection {
     margin: 36px 0 45px;
   }
-  .galleryHeader {
-    margin-bottom: 18px;
-  }
-  .galleryTitle {
-    font-size: 1.85rem;
-  }
-  .navArrow {
-    width: 38px;
-    height: 38px;
-  }
-  .galleryCard {
-    flex: 0 0 82vw;
+  .stage {
     aspect-ratio: 16 / 11;
-    border-radius: 12px;
+    border-radius: 16px;
   }
-  .carouselTrack {
-    gap: 14px;
+  .stageArrow {
+    width: 40px;
+    height: 40px;
+  }
+  .stageArrowPrev {
+    left: 12px;
+  }
+  .stageArrowNext {
+    right: 12px;
+  }
+  .dotsTrack {
+    bottom: 12px;
   }
 }
