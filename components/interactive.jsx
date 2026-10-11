@@ -704,11 +704,110 @@ export function ImageGallery({item = {}}){
     gallery = ['/images/dubai.jpg'];
   }
 
-  const[index,setIndex]=useState(0);
-  const[open,setOpen]=useState(false);
-  const touch=useRef(0);
-  function next(delta){setIndex(v=>(v+delta+gallery.length)%gallery.length);}
-  return <div className="gallery"><button className="gallery-main" onClick={()=>setOpen(true)} aria-label={`Open gallery for ${item.title || 'property'}`} onTouchStart={e=>touch.current=e.changedTouches[0].clientX} onTouchEnd={e=>{const d=e.changedTouches[0].clientX-touch.current;if(Math.abs(d)>45)next(d>0?-1:1);}}><Image src={gallery[index]} fill priority sizes="100vw" alt={`${item.title || 'Property'}: photo ${index+1}`}/><span className="badge">View gallery · {index+1} / {gallery.length}</span></button><div className="gallery-thumbs">{gallery.map((src,i)=><button key={i} aria-label={`Show photo ${i+1}`} aria-pressed={i===index} onClick={()=>setIndex(i)}><Image src={src} fill sizes="25vw" alt={`View ${i+1}`}/></button>)}</div><Modal open={open} onClose={()=>setOpen(false)} title={`${item.title || 'Property'} — gallery`} className="gallery-dialog"><div className="lightbox" onKeyDown={e=>{if(e.key==='ArrowRight')next(1);if(e.key==='ArrowLeft')next(-1);}} onTouchStart={e=>touch.current=e.changedTouches[0].clientX} onTouchEnd={e=>{const d=e.changedTouches[0].clientX-touch.current;if(Math.abs(d)>45)next(d>0?-1:1);}}><Image src={gallery[index]} fill sizes="90vw" alt={`Photo ${index+1} of ${gallery.length}`}/></div><div className="gallery-controls"><button className="button secondary" onClick={()=>next(-1)}>← Previous</button><span aria-live="polite">{index+1} / {gallery.length}</span><button className="button secondary" onClick={()=>next(1)}>Next →</button></div></Modal></div>;
+  const [index, setIndex] = useState(0);
+  const [open, setOpen] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const touch = useRef(0);
+
+  const next = useCallback((delta, e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    setIndex(v => (v + delta + gallery.length) % gallery.length);
+  }, [gallery.length]);
+
+  useEffect(() => {
+    if (gallery.length <= 1 || hovered || open) return;
+    const timer = setInterval(() => {
+      setIndex(v => (v + 1) % gallery.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [gallery.length, hovered, open]);
+
+  return (
+    <div 
+      className="gallery"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <div 
+        className="gallery-main" 
+        onClick={() => setOpen(true)} 
+        role="button"
+        tabIndex={0}
+        aria-label={`Open gallery for ${item.title || 'property'}`} 
+        onTouchStart={e => touch.current = e.changedTouches[0].clientX} 
+        onTouchEnd={e => {
+          const d = e.changedTouches[0].clientX - touch.current;
+          if (Math.abs(d) > 45) next(d > 0 ? -1 : 1);
+        }}
+        onKeyDown={e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            setOpen(true);
+          }
+        }}
+      >
+        <Image src={gallery[index]} fill priority sizes="100vw" alt={`${item.title || 'Property'}: photo ${index+1}`} />
+        <span className="badge">View gallery · {index+1} / {gallery.length}</span>
+
+        {gallery.length > 1 && (
+          <>
+            <button 
+              type="button" 
+              className="gallery-arrow prev" 
+              onClick={(e) => next(-1, e)} 
+              aria-label="Previous photograph"
+            >
+              ‹
+            </button>
+            <button 
+              type="button" 
+              className="gallery-arrow next" 
+              onClick={(e) => next(1, e)} 
+              aria-label="Next photograph"
+            >
+              ›
+            </button>
+          </>
+        )}
+      </div>
+      <div className="gallery-thumbs">
+        {gallery.map((src, i) => (
+          <button 
+            key={i} 
+            aria-label={`Show photo ${i+1}`} 
+            aria-pressed={i === index} 
+            onClick={() => setIndex(i)}
+          >
+            <Image src={src} fill sizes="25vw" alt={`View ${i+1}`} />
+          </button>
+        ))}
+      </div>
+      <Modal open={open} onClose={() => setOpen(false)} title={`${item.title || 'Property'} — gallery`} className="gallery-dialog">
+        <div 
+          className="lightbox" 
+          onKeyDown={e => {
+            if (e.key === 'ArrowRight') next(1, e);
+            if (e.key === 'ArrowLeft') next(-1, e);
+          }} 
+          onTouchStart={e => touch.current = e.changedTouches[0].clientX} 
+          onTouchEnd={e => {
+            const d = e.changedTouches[0].clientX - touch.current;
+            if (Math.abs(d) > 45) next(d > 0 ? -1 : 1);
+          }}
+        >
+          <Image src={gallery[index]} fill sizes="90vw" alt={`Photo ${index+1} of ${gallery.length}`} />
+        </div>
+        <div className="gallery-controls">
+          <button className="button secondary" onClick={(e) => next(-1, e)}>← Previous</button>
+          <span aria-live="polite">{index+1} / {gallery.length}</span>
+          <button className="button secondary" onClick={(e) => next(1, e)}>Next →</button>
+        </div>
+      </Modal>
+    </div>
+  );
 }
 const baseFields=[['name','Name','text',true],['email','Email','email',true],['phone','Phone','tel',true]];
 export function EnquiryForm({variant='quick',context='',submitLabel='Submit Enquiry'}){

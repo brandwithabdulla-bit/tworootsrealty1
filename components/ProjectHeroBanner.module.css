@@ -1,0 +1,242 @@
+.heroWrapper {
+  position: relative;
+  width: 100%;
+  min-height: 84vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 130px var(--space, 40px) 48px;
+  color: var(--ivory, #F4F5F0);
+  background: var(--midnight, #08121E);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.heroBackground {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: center 45%;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 18, 30, 0.45) 0%,
+    rgba(8, 18, 30, 0.55) 45%,
+    rgba(8, 18, 30, 0.88) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: var(--container, 1280px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(244, 245, 240, 0.75);
+  margin-bottom: 28px;
+}
+
+.breadcrumbs a {
+  color: rgba(244, 245, 240, 0.75);
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+  color: #FFFFFF;
+}
+
+.breadcrumbSeparator {
+  opacity: 0.45;
+}
+
+.breadcrumbCurrent {
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+.titleArea {
+  margin-top: auto;
+  margin-bottom: 40px;
+}
+
+.developerBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFFFFF;
+  color: #08121E;
+  padding: 6px 18px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  margin-bottom: 20px;
+}
+
+.heroTitle {
+  font-size: clamp(2.8rem, 5.2vw, 4.8rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+  margin: 0 0 10px 0;
+  max-width: 900px;
+}
+
+.heroLocation {
+  font-size: clamp(1.1rem, 1.6vw, 1.45rem);
+  color: rgba(244, 245, 240, 0.85);
+  margin: 0;
+  font-weight: 400;
+}
+
+.heroBottomBar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding-top: 20px;
+}
+
+.statsRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.statCard {
+  background: rgba(8, 18, 30, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(244, 245, 240, 0.22);
+  border-radius: 10px;
+  padding: 14px 22px;
+  min-width: 140px;
+}
+
+.statLabel {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(244, 245, 240, 0.65);
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.statValue {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 0;
+  font-family: var(--sans);
+  letter-spacing: -0.01em;
+}
+
+.enquireBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #FFFFFF;
+  color: #08121E;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid #FFFFFF;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  text-decoration: none;
+}
+
+.enquireBtn:hover {
+  background: var(--sand, #E0CCB5);
+  border-color: var(--sand, #E0CCB5);
+  color: var(--midnight, #08121E);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+.enquireBtn svg {
+  transition: transform 0.2s ease;
+}
+
+.enquireBtn:hover svg {
+  transform: translateX(3px);
+}
+
+@media (max-width: 768px) {
+  .heroWrapper {
+    min-height: 75vh;
+    padding: 100px 20px 32px;
+  }
+  .titleArea {
+    margin-bottom: 24px;
+  }
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+  .heroLocation {
+    font-size: 1rem;
+  }
+  .heroBottomBar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  .statsRow {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .statCard {
+    padding: 10px 12px;
+    min-width: 0;
+  }
+  .statLabel {
+    font-size: 0.58rem;
+  }
+  .statValue {
+    font-size: 0.95rem;
+  }
+  .enquireBtn {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .statsRow {
+    grid-template-columns: 1fr;
+  }
+}

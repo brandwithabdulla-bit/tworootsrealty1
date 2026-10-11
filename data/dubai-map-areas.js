@@ -493,6 +493,25 @@ export const DUBAI_MAP_AREAS = [
     priceRange: 'AED 600K - 2.8M',
     locationSlug: 'town-square',
     popular: false
+  },
+  {
+    id: 'dubailand',
+    name: 'Dubailand (Al Yufrah)',
+    shortName: 'Dubailand',
+    aliases: ['dubailand', 'al yufrah', 'al yufrah 1', 'sobha sanctuary', 'the valley', 'damac hills 2', 'al yufrah 1, dubailand, dubai, uae'],
+    lat: 25.02,
+    lng: 55.35,
+    zoom: 14,
+    radius: 2600,
+    type: 'Master Planned District',
+    category: 'Emerging',
+    tagline: 'Expansive family and luxury master community in Dubai’s high-growth corridor',
+    description: 'An expansive master development destination featuring integrated villa communities, equestrian trails, lush greenery, and luxury enclaves like Sobha Sanctuary.',
+    highlights: ['Lush Forest Enclaves & Lagoons', 'Direct Al Ain Road & Emirates Road Access', 'High Capital Appreciation Corridor', 'Spacious Luxury Living'],
+    avgRoi: '7.2% - 8.2%',
+    priceRange: 'AED 1.2M - 15M+',
+    locationSlug: 'dubailand',
+    popular: true
   }
 ];
 

@@ -241,29 +241,83 @@ function InteractiveMapContent() {
       if (map) map.invalidateSize();
     }, 150);
 
-    // Check if URL has ?location= parameter
-    const locationParam = searchParams.get('location');
-    if (locationParam) {
-      const matched = DUBAI_MAP_AREAS.find(a => 
-        a.name.toLowerCase().includes(locationParam.toLowerCase()) ||
-        a.locationSlug === locationParam.toLowerCase() ||
-        a.shortName.toLowerCase() === locationParam.toLowerCase() ||
-        (a.aliases && a.aliases.some(al => al.includes(locationParam.toLowerCase())))
-      );
-      if (matched) {
-        setTimeout(() => {
-          selectArea(matched);
-        }, 300);
-      }
-    }
-
     return () => {
       if (leafletMapRef.current) {
         leafletMapRef.current.remove();
         leafletMapRef.current = null;
       }
     };
-  }, [leafletLoaded, selectArea, searchParams]);
+  }, [leafletLoaded]);
+
+  // Handle URL location/coordinates parameters (?location=..., ?lat=..., ?lng=..., ?title=...)
+  useEffect(() => {
+    if (!leafletLoaded || !leafletMapRef.current) return;
+
+    const locationParam = searchParams.get('location');
+    const latParam = searchParams.get('lat');
+    const lngParam = searchParams.get('lng');
+    const titleParam = searchParams.get('title') || searchParams.get('name');
+
+    if (!locationParam && !latParam && !lngParam) return;
+
+    const latNum = parseFloat(latParam);
+    const lngNum = parseFloat(lngParam);
+
+    if (!isNaN(latNum) && !isNaN(lngNum)) {
+      const locClean = (locationParam || '').toLowerCase().trim();
+      const matchedArea = locClean ? DUBAI_MAP_AREAS.find(a => 
+        a.locationSlug === locClean ||
+        a.shortName.toLowerCase() === locClean ||
+        a.name.toLowerCase().includes(locClean) ||
+        locClean.includes(a.name.toLowerCase()) ||
+        locClean.includes(a.shortName.toLowerCase()) ||
+        (a.aliases && a.aliases.some(al => locClean.includes(al) || al.includes(locClean)))
+      ) : null;
+
+      const customArea = matchedArea ? {
+        ...matchedArea,
+        lat: latNum,
+        lng: lngNum,
+        name: titleParam ? `${titleParam} (${matchedArea.shortName || matchedArea.name})` : matchedArea.name,
+        shortName: titleParam || matchedArea.shortName
+      } : {
+        id: 'custom-location',
+        name: titleParam ? `${titleParam}${locationParam ? ` • ${locationParam}` : ''}` : (locationParam || 'Selected Location'),
+        shortName: titleParam || locationParam || 'Location',
+        lat: latNum,
+        lng: lngNum,
+        zoom: 15,
+        radius: 1400,
+        type: 'Project Location',
+        category: 'Selected',
+        tagline: locationParam || titleParam || 'Dubai Real Estate Location',
+        description: `Verified masterplan coordinates for ${titleParam || locationParam || 'this property'}.`,
+        highlights: ['Verified Dubai Coordinates', 'Aerial Masterplan Perspective']
+      };
+
+      setTimeout(() => {
+        selectArea(customArea);
+      }, 350);
+      return;
+    }
+
+    if (locationParam) {
+      const locClean = locationParam.toLowerCase().trim();
+      const matched = DUBAI_MAP_AREAS.find(a => 
+        a.locationSlug === locClean ||
+        a.shortName.toLowerCase() === locClean ||
+        a.name.toLowerCase().includes(locClean) ||
+        locClean.includes(a.name.toLowerCase()) ||
+        locClean.includes(a.shortName.toLowerCase()) ||
+        (a.aliases && a.aliases.some(al => locClean.includes(al) || al.includes(locClean)))
+      );
+      if (matched) {
+        setTimeout(() => {
+          selectArea(matched);
+        }, 350);
+      }
+    }
+  }, [leafletLoaded, searchParams, selectArea]);
 
   // Search Results filtering: ONLY populated when there is an active search query
   const hasQuery = searchQuery.trim().length > 0;

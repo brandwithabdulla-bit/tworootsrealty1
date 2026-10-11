@@ -5,12 +5,155 @@ import { ImageGallery, EnquiryForm } from './interactive';
 import { DemoNote, ArrowUpRight, PropertyGrid } from './ui';
 import ProjectBrochureSection from './ProjectBrochureSection';
 import SpeakToAdvisorLink from './SpeakToAdvisorLink';
+import ProjectHeroBanner from './ProjectHeroBanner';
+import ProjectGalleryCarousel from './ProjectGalleryCarousel';
 
 export function ListingDetail({ item, kind = 'properties', similar = [] }) {
   if (!item) return null;
 
   const isProject = kind === 'projects' || item.offPlan;
+  const mapUrl = `/map?location=${encodeURIComponent(item.locationSlug || item.location || 'Dubai')}${item.latitude ? `&lat=${item.latitude}&lng=${item.longitude}` : ''}${item.title ? `&title=${encodeURIComponent(item.title)}` : ''}`;
 
+  // Project Layout (Cinematic Hero Image + Dedicated Gallery Carousel)
+  if (isProject) {
+    return (
+      <div className="project-detail-view">
+        {/* Full-Bleed Cinematic Hero matching Image 1 */}
+        <ProjectHeroBanner item={item} />
+
+        {/* Main Content Layout */}
+        <div className="container" style={{ paddingTop: '50px' }}>
+          <div className="detail-layout">
+            <div className="detail-content">
+              {/* Key Facts */}
+              <section className="facts-section">
+                <dl className="facts">
+                  <div>
+                    <dt>Property type</dt>
+                    <dd>{item.propertyType || 'Residential'}</dd>
+                  </div>
+                  <div>
+                    <dt>Bedrooms</dt>
+                    <dd>{item.bedrooms ? `${item.bedrooms} Bedrooms` : 'Studio'}</dd>
+                  </div>
+                  <div>
+                    <dt>Bathrooms</dt>
+                    <dd>{item.bathrooms || 'N/A'}</dd>
+                  </div>
+                  <div>
+                    <dt>Built-up Area</dt>
+                    <dd>{item.area ? `${item.area.toLocaleString('en-AE')} sq ft` : 'On Request'}</dd>
+                  </div>
+                  {item.handover && (
+                    <div>
+                      <dt>Handover / Status</dt>
+                      <dd>{item.handover}</dd>
+                    </div>
+                  )}
+                  {item.developer && (
+                    <div>
+                      <dt>Developer</dt>
+                      <dd>{item.developer}</dd>
+                    </div>
+                  )}
+                </dl>
+              </section>
+
+              {/* Description */}
+              <section>
+                <h2>A considered place to begin.</h2>
+                <p className="editorial-copy">{item.description}</p>
+              </section>
+
+              {/* Highlights */}
+              {item.highlights && item.highlights.length > 0 && (
+                <section>
+                  <h2>Key Highlights</h2>
+                  <ul className="amenities">
+                    {item.highlights.map((h, i) => (
+                      <li key={i}>{h}</li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+
+              {/* Amenities */}
+              {item.amenities && item.amenities.length > 0 && (
+                <section>
+                  <h2>Amenities &amp; Features</h2>
+                  <ul className="amenities">
+                    {item.amenities.map(x => <li key={x}>{x}</li>)}
+                  </ul>
+                  <DemoNote>Amenities are representative and sourced directly from developer project specifications.</DemoNote>
+                </section>
+              )}
+
+              {/* Dedicated Gallery Carousel Section matching Image 2 */}
+              <ProjectGalleryCarousel item={item} />
+
+              {/* Payment Plan */}
+              {item.paymentPlan && item.paymentPlan.length > 0 && (
+                <section>
+                  <h2>Payment plan</h2>
+                  <div className="payment-plan">
+                    {item.paymentPlan.map((step, idx) => (
+                      <div key={idx} className="payment-step">
+                        <strong>{step.percent}%</strong>
+                        <span>{step.label}</span>
+                        {step.date && <small>{step.date}</small>}
+                      </div>
+                    ))}
+                  </div>
+                  <DemoNote>Payment schedules are subject to developer terms and official reservation contract.</DemoNote>
+                </section>
+              )}
+
+              {/* Brochure & Factsheet Download */}
+              <section>
+                <ProjectBrochureSection item={item} project={item} />
+              </section>
+
+              {/* Location Map Preview */}
+              <section className="map-section">
+                <span className="eyebrow">Location &amp; Neighbourhood</span>
+                <h2 className="map-label">{item.location}</h2>
+                <p>Explore nearby amenities, connectivity, and real estate market performance on our interactive map.</p>
+                <div style={{ marginTop: '20px' }}>
+                  <Link href={mapUrl} className="button">
+                    <span>View on Dubai Real Estate Map</span> <ArrowUpRight size={14} />
+                  </Link>
+                </div>
+              </section>
+            </div>
+
+            {/* Sticky Enquiry Sidebar */}
+            <aside className="sticky-enquiry" id="enquiry-form">
+              <h2>Request Allocation &amp; Details</h2>
+              <p className="small muted">Speak directly with our senior advisory desk regarding this listing.</p>
+              <EnquiryForm 
+                variant="sticky" 
+                context={item.title} 
+                submitLabel="Request Details"
+              />
+            </aside>
+          </div>
+        </div>
+
+        {/* Similar Listings */}
+        {similar.length > 0 && (
+          <section className="section container">
+            <div className="section-heading">
+              <h2>Similar Projects</h2>
+              <Link href="/projects" className="text-link">View all</Link>
+            </div>
+            <PropertyGrid items={similar} kind="projects" />
+          </section>
+        )}
+      </div>
+    );
+  }
+
+  // Standard Property Layout
   return (
     <div className="detail-page-container container">
       {/* Detail Header */}
@@ -24,7 +167,7 @@ export function ListingDetail({ item, kind = 'properties', similar = [] }) {
         </div>
         <div>
           <p className="price">{item.priceLabel || (item.price ? `AED ${item.price.toLocaleString('en-AE')}` : 'Price on Application')}</p>
-          <span className="badge">{item.status || (isProject ? 'Off-Plan' : 'Ready')}</span>
+          <span className="badge">{item.status || 'Ready'}</span>
         </div>
       </div>
 
@@ -74,18 +217,6 @@ export function ListingDetail({ item, kind = 'properties', similar = [] }) {
             <p className="editorial-copy">{item.description}</p>
           </section>
 
-          {/* Highlights */}
-          {item.highlights && item.highlights.length > 0 && (
-            <section>
-              <h2>Key Highlights</h2>
-              <ul className="amenities">
-                {item.highlights.map((h, i) => (
-                  <li key={i}>{h}</li>
-                ))}
-              </ul>
-            </section>
-          )}
-
           {/* Amenities */}
           {item.amenities && item.amenities.length > 0 && (
             <section>
@@ -93,31 +224,7 @@ export function ListingDetail({ item, kind = 'properties', similar = [] }) {
               <ul className="amenities">
                 {item.amenities.map(x => <li key={x}>{x}</li>)}
               </ul>
-              <DemoNote>Amenities are representative and sourced directly from developer project specifications.</DemoNote>
-            </section>
-          )}
-
-          {/* Payment Plan */}
-          {item.paymentPlan && item.paymentPlan.length > 0 && (
-            <section>
-              <h2>Payment plan</h2>
-              <div className="payment-plan">
-                {item.paymentPlan.map((step, idx) => (
-                  <div key={idx} className="payment-step">
-                    <strong>{step.percent}%</strong>
-                    <span>{step.label}</span>
-                    {step.date && <small>{step.date}</small>}
-                  </div>
-                ))}
-              </div>
-              <DemoNote>Payment schedules are subject to developer terms and official reservation contract.</DemoNote>
-            </section>
-          )}
-
-          {/* Brochure & Factsheet Download */}
-          {isProject && (
-            <section>
-              <ProjectBrochureSection item={item} project={item} />
+              <DemoNote>Amenities are representative and sourced directly from developer specifications.</DemoNote>
             </section>
           )}
 
@@ -127,7 +234,7 @@ export function ListingDetail({ item, kind = 'properties', similar = [] }) {
             <h2 className="map-label">{item.location}</h2>
             <p>Explore nearby amenities, connectivity, and real estate market performance on our interactive map.</p>
             <div style={{ marginTop: '20px' }}>
-              <Link href="/map" className="button">
+              <Link href={mapUrl} className="button">
                 <span>View on Dubai Real Estate Map</span> <ArrowUpRight size={14} />
               </Link>
             </div>
@@ -135,12 +242,12 @@ export function ListingDetail({ item, kind = 'properties', similar = [] }) {
         </div>
 
         {/* Sticky Enquiry Sidebar */}
-        <aside className="sticky-enquiry">
+        <aside className="sticky-enquiry" id="enquiry-form">
           <h2>Request Allocation &amp; Details</h2>
           <p className="small muted">Speak directly with our senior advisory desk regarding this listing.</p>
           <EnquiryForm 
             variant="sticky" 
-            context={`${item.title} (${item.location})`} 
+            context={item.title} 
             submitLabel="Request Details"
           />
         </aside>
@@ -150,10 +257,10 @@ export function ListingDetail({ item, kind = 'properties', similar = [] }) {
       {similar.length > 0 && (
         <section className="section container">
           <div className="section-heading">
-            <h2>Similar {kind === 'projects' ? 'Projects' : 'Properties'}</h2>
-            <Link href={`/${kind}`} className="text-link">View all</Link>
+            <h2>Similar Properties</h2>
+            <Link href="/properties" className="text-link">View all</Link>
           </div>
-          <PropertyGrid items={similar} kind={kind} />
+          <PropertyGrid items={similar} kind="properties" />
         </section>
       )}
     </div>
@@ -162,17 +269,17 @@ export function ListingDetail({ item, kind = 'properties', similar = [] }) {
 
 export function MapSection({ item = {} }) {
   const locationName = item.name || item.location || 'Dubai';
+  const targetMapUrl = `/map?location=${encodeURIComponent(item.locationSlug || locationName || 'Dubai')}${item.latitude ? `&lat=${item.latitude}&lng=${item.longitude}` : ''}${item.title ? `&title=${encodeURIComponent(item.title)}` : ''}`;
   return (
     <div className="map-section">
       <span className="eyebrow">Location &amp; Neighbourhood</span>
       <h2 className="map-label">{locationName}</h2>
       <p>Explore nearby amenities, connectivity, and real estate market performance on our interactive map.</p>
       <div style={{ marginTop: '20px' }}>
-        <Link href={`/map?location=${encodeURIComponent(locationName)}`} className="button">
+        <Link href={targetMapUrl} className="button">
           <span>View {locationName} on Interactive Map</span> <ArrowUpRight size={14} />
         </Link>
       </div>
     </div>
   );
 }
-
