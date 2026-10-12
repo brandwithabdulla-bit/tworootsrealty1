@@ -7,6 +7,7 @@ import ProjectBrochureSection from './ProjectBrochureSection';
 import SpeakToAdvisorLink from './SpeakToAdvisorLink';
 import ProjectHeroBanner from './ProjectHeroBanner';
 import ProjectGalleryCarousel from './ProjectGalleryCarousel';
+import ProjectOverviewSection from './ProjectOverviewSection';
 
 export function ListingDetail({ item, kind = 'properties', similar = [] }) {
   if (!item) return null;
@@ -26,103 +27,73 @@ export function ListingDetail({ item, kind = 'properties', similar = [] }) {
           <ProjectGalleryCarousel item={item} />
         </section>
 
-        {/* Main Content Layout */}
-        <div className="container" style={{ paddingTop: '20px' }}>
-          <div className="detail-layout">
-            <div className="detail-content">
-              {/* Key Facts */}
-              <section className="facts-section">
-                <dl className="facts">
-                  <div>
-                    <dt>Property type</dt>
-                    <dd>{item.propertyType || 'Residential'}</dd>
-                  </div>
-                  <div>
-                    <dt>Bedrooms</dt>
-                    <dd>{item.bedrooms ? `${item.bedrooms} Bedrooms` : 'Studio'}</dd>
-                  </div>
-                  <div>
-                    <dt>Bathrooms</dt>
-                    <dd>{item.bathrooms || 'N/A'}</dd>
-                  </div>
-                  <div>
-                    <dt>Built-up Area</dt>
-                    <dd>{item.area ? `${item.area.toLocaleString('en-AE')} sq ft` : 'On Request'}</dd>
-                  </div>
-                  {item.handover && (
-                    <div>
-                      <dt>Handover / Status</dt>
-                      <dd>{item.handover}</dd>
-                    </div>
-                  )}
-                  {item.developer && (
-                    <div>
-                      <dt>Developer</dt>
-                      <dd>{item.developer}</dd>
-                    </div>
-                  )}
-                </dl>
-              </section>
+        {/* About Project & Key Specifications (Only About & Specs Box in this row) */}
+        <section className="container" style={{ paddingTop: '30px', paddingBottom: '10px' }}>
+          <ProjectOverviewSection item={item} />
+        </section>
 
-              {/* Description */}
+        {/* Project Content (Highlights, Amenities, Map) */}
+        <div className="container">
+          <div className="detail-content" style={{ maxWidth: '100%' }}>
+            {/* Highlights */}
+            {item.highlights && item.highlights.length > 0 && (
               <section>
-                <h2>A considered place to begin.</h2>
-                <p className="editorial-copy">{item.description}</p>
+                <h2>Key Highlights</h2>
+                <ul className="amenities">
+                  {item.highlights.map((h, i) => (
+                    <li key={i}>{h}</li>
+                  ))}
+                </ul>
               </section>
+            )}
 
-              {/* Highlights */}
-              {item.highlights && item.highlights.length > 0 && (
-                <section>
-                  <h2>Key Highlights</h2>
-                  <ul className="amenities">
-                    {item.highlights.map((h, i) => (
-                      <li key={i}>{h}</li>
-                    ))}
-                  </ul>
-                </section>
-              )}
-
-              {/* Amenities */}
-              {item.amenities && item.amenities.length > 0 && (
-                <section>
-                  <h2>Amenities &amp; Features</h2>
-                  <ul className="amenities">
-                    {item.amenities.map(x => <li key={x}>{x}</li>)}
-                  </ul>
-                  <DemoNote>Amenities are representative and sourced directly from developer project specifications.</DemoNote>
-                </section>
-              )}
-
-              {/* Brochure & Factsheet Download */}
+            {/* Amenities */}
+            {item.amenities && item.amenities.length > 0 && (
               <section>
-                <ProjectBrochureSection item={item} project={item} />
+                <h2>Amenities &amp; Features</h2>
+                <ul className="amenities">
+                  {item.amenities.map(x => <li key={x}>{x}</li>)}
+                </ul>
+                <DemoNote>Amenities are representative and sourced directly from developer project specifications.</DemoNote>
               </section>
+            )}
 
-              {/* Location Map Preview */}
-              <section className="map-section">
-                <span className="eyebrow">Location &amp; Neighbourhood</span>
-                <h2 className="map-label">{item.location}</h2>
-                <p>Explore nearby amenities, connectivity, and real estate market performance on our interactive map.</p>
-                <div style={{ marginTop: '20px' }}>
-                  <Link href={mapUrl} className="button">
-                    <span>View on Dubai Real Estate Map</span> <ArrowUpRight size={14} />
-                  </Link>
-                </div>
-              </section>
-            </div>
-
-            {/* Sticky Enquiry Sidebar */}
-            <aside className="sticky-enquiry" id="enquiry-form">
-              <h2>Request Allocation &amp; Details</h2>
-              <p className="small muted">Speak directly with our senior advisory desk regarding this listing.</p>
-              <EnquiryForm 
-                variant="sticky" 
-                context={item.title} 
-                submitLabel="Request Details"
-              />
-            </aside>
+            {/* Location Map Preview */}
+            <section className="map-section">
+              <span className="eyebrow">Location &amp; Neighbourhood</span>
+              <h2 className="map-label">{item.location}</h2>
+              <p>Explore nearby amenities, connectivity, and real estate market performance on our interactive map.</p>
+              <div style={{ marginTop: '20px' }}>
+                <Link href={mapUrl} className="button">
+                  <span>View on Dubai Real Estate Map</span> <ArrowUpRight size={14} />
+                </Link>
+              </div>
+            </section>
           </div>
         </div>
+
+        {/* Request Allocation & Details Form Section (Placed below) */}
+        <section className="section sand" id="enquiry-form" style={{ marginTop: '50px' }}>
+          <div className="container split">
+            <div>
+              <span className="eyebrow">Speak with our senior advisory desk</span>
+              <h2>Request Allocation &amp; Details</h2>
+              <p className="editorial-copy">
+                Speak directly with our senior advisory desk regarding this listing. Receive verified floor plans, payment schedules, and priority allocation guidance for {item.title}.
+              </p>
+            </div>
+            <div>
+              <div style={{ background: 'var(--ivory)', padding: '36px', borderRadius: '12px', border: '1px solid var(--line)', boxShadow: '0 8px 30px rgba(8, 18, 30, 0.05)' }}>
+                <EnquiryForm 
+                  variant="quick" 
+                  context={item.title} 
+                  submitLabel="Request Details"
+                  hideLocation
+                />
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Similar Listings */}
         {similar.length > 0 && (
@@ -234,6 +205,7 @@ export function ListingDetail({ item, kind = 'properties', similar = [] }) {
             variant="sticky" 
             context={item.title} 
             submitLabel="Request Details"
+            hideLocation
           />
         </aside>
       </div>

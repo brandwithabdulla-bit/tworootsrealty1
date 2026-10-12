@@ -810,7 +810,7 @@ export function ImageGallery({item = {}}){
   );
 }
 const baseFields=[['name','Name','text',true],['email','Email','email',true],['phone','Phone','tel',true]];
-export function EnquiryForm({variant='quick',context='',submitLabel='Submit Enquiry'}){
+export function EnquiryForm({variant='quick',context='',submitLabel='Submit Enquiry',hideLocation=false}){
   const [status,setStatus]=useState('idle');
   const [errors,setErrors]=useState({});
   const [countryCode,setCountryCode]=useState('+971');
@@ -830,8 +830,11 @@ export function EnquiryForm({variant='quick',context='',submitLabel='Submit Enqu
     ?[['role','Position of interest'],['portfolio','CV / portfolio link','url'],['country','Country']]
     :variant==='newsletter'
     ?[]
+    :variant==='sticky'
+    ?[['contactMethod','Preferred contact method']]
     :[['location','Preferred location'],['contactMethod','Preferred contact method']];
-  const fields=variant==='newsletter'?[baseFields[1]]:[...baseFields,...extra];
+  const rawFields=variant==='newsletter'?[baseFields[1]]:[...baseFields,...extra];
+  const fields=hideLocation?rawFields.filter(([k])=>k!=='location'):rawFields;
   const selectOptions={
     propertyType:options.propertyType,
     budget:budgetOptions.map(b=>b.label),
