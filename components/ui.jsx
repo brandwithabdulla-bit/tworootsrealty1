@@ -66,9 +66,11 @@ import CTASection from './CTASection';
 export { CTASection };
 export function PropertyCard({ item = {}, kind = 'properties' }) {
   if (!item || !item.title) return null;
-  const imageSrc = (Array.isArray(item.images) && item.images.length > 0 && item.images[0])
-    ? item.images[0]
-    : (typeof item.image === 'string' ? item.image : '/images/dubai.jpg');
+  const imageSrc = (item.heroImage && typeof item.heroImage === 'string')
+    ? item.heroImage
+    : ((Array.isArray(item.images) && item.images.length > 0 && item.images[0])
+      ? item.images[0]
+      : (typeof item.image === 'string' ? item.image : '/images/dubai.jpg'));
   const statusLabel = item.status || (kind === 'projects' ? 'Off-Plan' : 'Ready');
   const priceDisplay = item.priceLabel || (item.price ? `AED ${item.price.toLocaleString('en-AE')}` : 'Price on Application');
   const beds = item.bedrooms === 0 ? 'Studio' : (item.bedrooms ? `${item.bedrooms} beds` : 'N/A');

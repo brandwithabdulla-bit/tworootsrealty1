@@ -189,6 +189,13 @@ export default {
       type: 'text'
     },
     {
+      name: 'heroImage',
+      title: 'Hero Banner Image',
+      type: 'image',
+      description: 'Primary hero image displayed at the top of the individual project page. If not uploaded, the first gallery image is used as fallback.',
+      options: { hotspot: true }
+    },
+    {
       name: 'images',
       title: 'Gallery Images',
       type: 'array',

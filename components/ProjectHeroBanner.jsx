@@ -5,15 +5,17 @@ import Link from 'next/link';
 import styles from './ProjectHeroBanner.module.css';
 
 export default function ProjectHeroBanner({ item = {} }) {
-  // Normalize first image for hero
+  // Resolve hero image: prioritize dedicated heroImage from schema, fallback to first gallery image
+  const rawHero = item?.heroImage;
   const rawGallery = item?.gallery || item?.images || [];
   const rawFirst = Array.isArray(rawGallery) ? rawGallery[0] : rawGallery;
+  const targetImage = rawHero || rawFirst;
   
   let heroImage = '/images/dubai.jpg';
-  if (typeof rawFirst === 'string' && rawFirst) {
-    heroImage = rawFirst;
-  } else if (rawFirst && typeof rawFirst === 'object') {
-    heroImage = rawFirst?.asset?.url || rawFirst?.url || '/images/dubai.jpg';
+  if (typeof targetImage === 'string' && targetImage) {
+    heroImage = targetImage;
+  } else if (targetImage && typeof targetImage === 'object') {
+    heroImage = targetImage?.asset?.url || targetImage?.url || '/images/dubai.jpg';
   }
 
   // Calculate payment plan ratio

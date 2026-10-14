@@ -106,6 +106,7 @@ export const allProjectsQuery = groq`
     paymentPlan,
     amenities,
     description,
+    "heroImage": heroImage.asset->url,
     "images": images[].asset->url,
     "gallery": images[].asset->url
   }
@@ -145,6 +146,7 @@ export const projectBySlugQuery = groq`
     paymentPlan,
     amenities,
     description,
+    "heroImage": heroImage.asset->url,
     "images": images[].asset->url,
     "gallery": images[].asset->url
   }

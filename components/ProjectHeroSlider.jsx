@@ -6,12 +6,16 @@ import { Modal } from './interactive';
 import styles from './ProjectHeroSlider.module.css';
 
 export default function ProjectHeroSlider({ item = {} }) {
-  // Extract and normalize image URLs from gallery or images
-  const rawList = (Array.isArray(item?.gallery) && item.gallery.length > 0)
+  // Extract and normalize image URLs from gallery or images, prioritizing heroImage first if present
+  const baseList = (Array.isArray(item?.gallery) && item.gallery.length > 0)
     ? item.gallery
     : ((Array.isArray(item?.images) && item.images.length > 0)
       ? item.images
       : (item?.gallery || item?.images || ['/images/dubai.jpg']));
+
+  const rawList = item?.heroImage
+    ? [item.heroImage, ...(Array.isArray(baseList) ? baseList : [baseList])]
+    : baseList;
 
   const imageList = (Array.isArray(rawList) ? rawList : [rawList])
     .map(img => {
