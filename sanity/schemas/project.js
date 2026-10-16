@@ -66,16 +66,7 @@ export default {
       title: 'Price Label (e.g. From AED 5,091,251)',
       type: 'string'
     },
-    {
-      name: 'bedrooms',
-      title: 'Bedrooms',
-      type: 'number'
-    },
-    {
-      name: 'bathrooms',
-      title: 'Bathrooms',
-      type: 'number'
-    },
+
     {
       name: 'area',
       title: 'Built-up Area (sq ft)',
@@ -120,16 +111,7 @@ export default {
       type: 'boolean',
       initialValue: true
     },
-    {
-      name: 'latitude',
-      title: 'Latitude',
-      type: 'number'
-    },
-    {
-      name: 'longitude',
-      title: 'Longitude',
-      type: 'number'
-    },
+
     {
       name: 'mapUrl',
       title: 'Google Maps Link',

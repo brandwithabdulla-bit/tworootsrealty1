@@ -164,16 +164,7 @@ export default {
       type: 'boolean',
       initialValue: false
     },
-    {
-      name: 'latitude',
-      title: 'Latitude',
-      type: 'number'
-    },
-    {
-      name: 'longitude',
-      title: 'Longitude',
-      type: 'number'
-    },
+
     {
       name: 'mapUrl',
       title: 'Google Maps Link',

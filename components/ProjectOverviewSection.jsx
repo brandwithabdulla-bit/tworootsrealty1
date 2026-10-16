@@ -27,11 +27,12 @@ export default function ProjectOverviewSection({ item = {} }) {
     return '10%';
   };
 
-  // Helper to determine Unit Options
+  // Helper to determine Unit Options from Unit Breakdown
   const getUnitOptions = () => {
     if (item.unitOptions) return item.unitOptions;
     if (Array.isArray(item.unitBreakdown) && item.unitBreakdown.length > 0) {
       const types = item.unitBreakdown.map(u => u.type).filter(Boolean);
+      const hasStudio = types.some(t => /studio/i.test(t));
       const nums = types
         .map(t => {
           const m = t.match(/(\d+)/);
@@ -39,12 +40,15 @@ export default function ProjectOverviewSection({ item = {} }) {
         })
         .filter(n => n !== null);
       if (nums.length > 1) {
-        return `${Math.min(...nums)} - ${Math.max(...nums)} Bedrooms`;
+        const min = Math.min(...nums);
+        const max = Math.max(...nums);
+        return hasStudio ? `Studio - ${max} Bedrooms` : `${min} - ${max} Bedrooms`;
       }
-    }
-    if (item.bedrooms) {
-      if (item.bedrooms > 1) return `1 - ${item.bedrooms} Bedrooms`;
-      return `${item.bedrooms} Bedrooms`;
+      if (nums.length === 1) {
+        return hasStudio ? `Studio - ${nums[0]} Bedrooms` : `${nums[0]} Bedrooms`;
+      }
+      if (hasStudio) return 'Studio';
+      if (types.length > 0) return types[0];
     }
     if (item.propertyType?.toLowerCase().includes('villa')) {
       return '3 - 6 Bedrooms';
