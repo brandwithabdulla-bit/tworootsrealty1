@@ -73,9 +73,6 @@ export function PropertyCard({ item = {}, kind = 'properties' }) {
       : (typeof item.image === 'string' ? item.image : '/images/dubai.jpg'));
   const statusLabel = item.status || (kind === 'projects' ? 'Off-Plan' : 'Ready');
   const priceDisplay = item.priceLabel || (item.price ? `AED ${item.price.toLocaleString('en-AE')}` : 'Price on Application');
-  const beds = item.bedrooms === 0 ? 'Studio' : (item.bedrooms ? `${item.bedrooms} beds` : 'N/A');
-  const baths = item.bathrooms ? `${item.bathrooms} baths` : 'N/A';
-  const areaDisplay = item.area ? `${item.area.toLocaleString()} sq ft` : 'On Request';
 
   return (
     <article className="property-card">
@@ -100,11 +97,6 @@ export function PropertyCard({ item = {}, kind = 'properties' }) {
         <p className="card-location">
           {item.location} {item.developer ? <span>· {item.developer}</span> : null}
         </p>
-        <div className="card-facts">
-          <span>{beds}</span>
-          <span>{baths}</span>
-          <span>{areaDisplay}</span>
-        </div>
         <div className="card-bottom">
           <p className="price">{priceDisplay}</p>
           <Link href={`/${kind}/${item.slug}`} className="card-details" aria-label={`Explore ${item.title}`}>
