@@ -131,10 +131,10 @@ export default {
       type: 'number'
     },
     {
-      name: 'brochure',
-      title: 'Brochure PDF File',
-      type: 'file',
-      options: { accept: '.pdf' }
+      name: 'mapUrl',
+      title: 'Google Maps Link',
+      type: 'url',
+      description: 'Paste any Google Maps link (e.g. https://maps.app.goo.gl/... or google.com/maps/place/...). Coordinates are automatically parsed for the Interactive Map.'
     },
     {
       name: 'unitBreakdown',

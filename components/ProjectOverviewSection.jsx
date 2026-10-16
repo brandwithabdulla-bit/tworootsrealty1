@@ -157,7 +157,6 @@ export default function ProjectOverviewSection({ item = {} }) {
         open={modalOpen}
         onClose={() => setModalOpen(false)}
         projectTitle={item.title}
-        brochureUrl={item.brochure}
       />
     </section>
   );

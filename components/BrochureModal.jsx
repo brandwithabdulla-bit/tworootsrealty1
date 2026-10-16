@@ -5,7 +5,7 @@ import { countryCodes } from '@/data/countries';
 import SearchableCountrySelect from '@/components/SearchableCountrySelect';
 import styles from './BrochureModal.module.css';
 
-export default function BrochureModal({ open, onClose, projectTitle, brochureUrl }) {
+export default function BrochureModal({ open, onClose, projectTitle }) {
   const [name, setName] = useState('');
   const [countryCode, setCountryCode] = useState('+971');
   const [phone, setPhone] = useState('');

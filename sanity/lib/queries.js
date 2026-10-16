@@ -32,7 +32,7 @@ export const allPropertiesQuery = groq`
     investment,
     latitude,
     longitude,
-    "brochure": brochure.asset->url
+    mapUrl
   }
 `;
 
@@ -67,7 +67,7 @@ export const propertyBySlugQuery = groq`
     investment,
     latitude,
     longitude,
-    "brochure": brochure.asset->url
+    mapUrl
   }
 `;
 
@@ -99,7 +99,7 @@ export const allProjectsQuery = groq`
     investment,
     latitude,
     longitude,
-    "brochure": brochure.asset->url,
+    mapUrl,
     unitBreakdown,
     highlights,
     paymentPlan,
@@ -138,7 +138,7 @@ export const projectBySlugQuery = groq`
     investment,
     latitude,
     longitude,
-    "brochure": brochure.asset->url,
+    mapUrl,
     unitBreakdown,
     highlights,
     paymentPlan,

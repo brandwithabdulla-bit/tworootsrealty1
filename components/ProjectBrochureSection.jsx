@@ -34,7 +34,6 @@ export default function ProjectBrochureSection({ item, project }) {
         open={modalOpen}
         onClose={() => setModalOpen(false)}
         projectTitle={target.title}
-        brochureUrl={target.brochure}
       />
     </div>
   );
