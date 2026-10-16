@@ -73,11 +73,6 @@ export default {
       type: 'number'
     },
     {
-      name: 'plotArea',
-      title: 'Plot Area (sq ft)',
-      type: 'number'
-    },
-    {
       name: 'lifestyle',
       title: 'Lifestyle Category',
       type: 'string'

@@ -136,7 +136,6 @@ async function migrate() {
       bedrooms: proj.bedrooms,
       bathrooms: proj.bathrooms,
       area: proj.area,
-      plotArea: proj.plotArea,
       lifestyle: proj.lifestyle,
       tags: proj.tags,
       handover: proj.handover,

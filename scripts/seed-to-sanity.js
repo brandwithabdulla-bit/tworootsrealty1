@@ -73,7 +73,6 @@ const projDocs = projects.map(proj => ({
     bedrooms: proj.bedrooms,
     bathrooms: proj.bathrooms,
     area: proj.area,
-    plotArea: proj.plotArea || undefined,
     lifestyle: proj.lifestyle,
     tags: proj.tags,
     handover: proj.handover,
