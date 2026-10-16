@@ -39,7 +39,8 @@ export default {
           { title: 'Townhouse', value: 'Townhouse' },
           { title: 'Mansion', value: 'Mansion' },
           { title: 'Branded Residence', value: 'Branded Residence' },
-          { title: 'Commercial', value: 'Commercial' }
+          { title: 'Commercial', value: 'Commercial' },
+          { title: 'Community Living', value: 'Community Living' }
         ]
       },
       validation: Rule => Rule.required()

@@ -64,7 +64,8 @@ export const propertyTypeOrder = [
   'Townhouse',
   'Villa',
   'Mansion',
-  'Commercial'
+  'Commercial',
+  'Community Living'
 ];
 
 export const developerDatabase = [

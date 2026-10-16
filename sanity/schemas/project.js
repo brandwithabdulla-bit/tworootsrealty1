@@ -38,7 +38,9 @@ export default {
           { title: 'Apartment', value: 'Apartment' },
           { title: 'Townhouse', value: 'Townhouse' },
           { title: 'Branded Residence', value: 'Branded Residence' },
-          { title: 'Mixed Use', value: 'Mixed Use' }
+          { title: 'Mixed Use', value: 'Mixed Use' },
+          { title: 'Community Living', value: 'Community Living' },
+          { title: 'Commercial', value: 'Commercial' }
         ]
       }
     },
@@ -131,12 +133,6 @@ export default {
     {
       name: 'brochure',
       title: 'Brochure PDF File',
-      type: 'file',
-      options: { accept: '.pdf' }
-    },
-    {
-      name: 'factsheet',
-      title: 'Factsheet PDF File',
       type: 'file',
       options: { accept: '.pdf' }
     },
