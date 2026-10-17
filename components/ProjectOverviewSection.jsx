@@ -37,6 +37,9 @@ export default function ProjectOverviewSection({ item = {} }) {
   // Helper to determine Unit Options from Unit Breakdown
   const getUnitOptions = () => {
     if (item.unitOptions) return item.unitOptions;
+    if (typeof item.unitBreakdown === 'string' && item.unitBreakdown.trim()) {
+      return item.unitBreakdown.trim();
+    }
     if (Array.isArray(item.unitBreakdown) && item.unitBreakdown.length > 0) {
       const types = item.unitBreakdown.map(u => u.type).filter(Boolean);
       const hasStudio = types.some(t => /studio/i.test(t));

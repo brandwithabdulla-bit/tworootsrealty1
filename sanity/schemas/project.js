@@ -115,19 +115,9 @@ export default {
     },
     {
       name: 'unitBreakdown',
-      title: 'Unit Breakdown',
-      type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            { name: 'type', title: 'Unit Type', type: 'string' },
-            { name: 'price', title: 'Starting Price', type: 'string' },
-            { name: 'plot', title: 'Plot Area', type: 'string' },
-            { name: 'bua', title: 'Built-up Area', type: 'string' }
-          ]
-        }
-      ]
+      title: 'Unit Breakdown / Unit Options',
+      type: 'string',
+      description: 'Single text box for unit options (e.g. 1 - 4 Bedrooms, Studio to 3 Beds, or 4 Bedrooms)'
     },
     {
       name: 'highlights',
