@@ -19,7 +19,14 @@ export default function ProjectOverviewSection({ item = {} }) {
 
   // Helper to determine Down Payment
   const getDownPayment = () => {
-    if (item.downPayment) return item.downPayment;
+    if (item.downPayment !== undefined && item.downPayment !== null && String(item.downPayment).trim()) {
+      const val = String(item.downPayment).trim();
+      return val.includes('%') || /^[A-Za-z]/.test(val) || val.includes(' ') ? val : `${val}%`;
+    }
+    if (typeof item.paymentPlan === 'string' && item.paymentPlan.trim()) {
+      const match = item.paymentPlan.match(/(\d+)%/);
+      if (match) return `${match[1]}%`;
+    }
     if (Array.isArray(item.paymentPlan) && item.paymentPlan.length > 0) {
       const first = item.paymentPlan[0];
       if (first && first.percent) return `${first.percent}%`;

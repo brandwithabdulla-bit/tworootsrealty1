@@ -152,6 +152,18 @@ export function ListingDetail({ item, kind = 'properties', similar = [] }) {
                 <dt>Built-up Area</dt>
                 <dd>{item.area ? `${item.area.toLocaleString('en-AE')} sq ft` : 'On Request'}</dd>
               </div>
+              {item.downPayment && (
+                <div>
+                  <dt>Down Payment</dt>
+                  <dd>{item.downPayment}</dd>
+                </div>
+              )}
+              {item.paymentPlan && typeof item.paymentPlan === 'string' && (
+                <div>
+                  <dt>Payment Plan</dt>
+                  <dd>{item.paymentPlan}</dd>
+                </div>
+              )}
               {item.handover && (
                 <div>
                   <dt>Handover / Status</dt>

@@ -35,16 +35,7 @@ export default {
       },
       initialValue: 'Popular'
     },
-    {
-      name: 'latitude',
-      title: 'Latitude',
-      type: 'number'
-    },
-    {
-      name: 'longitude',
-      title: 'Longitude',
-      type: 'number'
-    },
+
     {
       name: 'description',
       title: 'Description',

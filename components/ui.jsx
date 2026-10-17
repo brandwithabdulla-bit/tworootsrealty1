@@ -89,7 +89,6 @@ export function PropertyCard({ item = {}, kind = 'properties' }) {
       <div className="card-copy">
         <div className="card-meta">
           <span>{item.propertyType || 'Residential'}</span>
-          <span>{item.lifestyle ? `${item.lifestyle} · Selected` : 'Collection'}</span>
         </div>
         <h3>
           <Link href={`/${kind}/${item.slug}`}>{item.title}</Link>

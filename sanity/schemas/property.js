@@ -120,19 +120,16 @@ export default {
       of: [{ type: 'string' }]
     },
     {
+      name: 'downPayment',
+      title: 'Down Payment',
+      type: 'string',
+      description: 'Down payment percentage or amount (e.g. 10%, 20%, or AED 150,000)'
+    },
+    {
       name: 'paymentPlan',
-      title: 'Payment Plan Milestones',
-      type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            { name: 'label', title: 'Milestone Label', type: 'string' },
-            { name: 'percent', title: 'Percentage', type: 'number' },
-            { name: 'date', title: 'Estimated Date', type: 'string' }
-          ]
-        }
-      ]
+      title: 'Payment Plan',
+      type: 'string',
+      description: 'Single payment plan summary (e.g. 80/20, 60/40, or 70/30 on Handover)'
     },
     {
       name: 'images',

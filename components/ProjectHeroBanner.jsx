@@ -21,6 +21,9 @@ export default function ProjectHeroBanner({ item = {} }) {
   // Calculate payment plan ratio
   const getPaymentPlanRatio = () => {
     if (item?.paymentPlanRatio) return item.paymentPlanRatio;
+    if (typeof item?.paymentPlan === 'string' && item.paymentPlan.trim()) {
+      return item.paymentPlan.trim();
+    }
     if (Array.isArray(item?.paymentPlan) && item.paymentPlan.length > 0) {
       const handoverStep = item.paymentPlan.find(s => 
         s.label?.toLowerCase().includes('handover') || 

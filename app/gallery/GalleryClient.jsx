@@ -6,15 +6,8 @@ import Link from 'next/link';
 import { PageHero } from '@/components/ui';
 import styles from './page.module.css';
 
-const categories = ['All', 'Waterfront', 'Villas', 'Mansions', 'Architecture', 'Interiors'];
-
 export default function GalleryClient({ items = [] }) {
-  const [selectedCategory, setSelectedCategory] = useState('All');
   const [activeImage, setActiveImage] = useState(null);
-
-  const filteredItems = selectedCategory === 'All' 
-    ? items 
-    : items.filter(item => item.category === selectedCategory);
 
   return (
     <>
@@ -27,22 +20,9 @@ export default function GalleryClient({ items = [] }) {
       />
 
       <section className={`container ${styles.gallerySection}`}>
-        {/* Category Filter Tabs */}
-        <div className={styles.filterTabs}>
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              className={`${styles.filterBtn} ${selectedCategory === cat ? styles.filterBtnActive : ''}`}
-              onClick={() => setSelectedCategory(cat)}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-
         {/* Gallery Grid */}
         <div className={styles.galleryGrid}>
-          {filteredItems.map((item, index) => (
+          {items.map((item, index) => (
             <div 
               key={item.id || item._id || index} 
               className={styles.galleryCard}
