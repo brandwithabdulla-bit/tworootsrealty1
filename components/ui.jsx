@@ -94,7 +94,7 @@ export function PropertyCard({ item = {}, kind = 'properties' }) {
           <Link href={`/${kind}/${item.slug}`}>{item.title}</Link>
         </h3>
         <p className="card-location">
-          {item.location} {item.developer ? <span>· {item.developer}</span> : null}
+          {item.location} {item.developer ? <span>{item.developer}</span> : null}
         </p>
         <div className="card-bottom">
           <p className="price">{priceDisplay}</p>
