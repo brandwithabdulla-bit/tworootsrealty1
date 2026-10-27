@@ -146,5 +146,35 @@ export function LocationCard({item}){
     </Link>
   );
 }
-export function BlogCard({item}){return <article className="blog-card"><Link href={`/insights/${item.slug}`}><Photo src={item.image} alt={item.title}/></Link><p className="eyebrow">{item.category}</p><h3><Link href={`/insights/${item.slug}`}>{item.title}</Link></h3><p className="muted">1 September 2026 · {item.readingTime}</p><p>{item.summary}</p><Link className="text-link" href={`/insights/${item.slug}`}><span>Read the story</span> <ArrowUpRight size={13}/></Link></article>}
+export function BlogCard({ item }) {
+  if (!item) return null;
+  const getExcerpt = (text, title) => {
+    if (!text) return '';
+    const paragraphs = text.split(/\r?\n+/).map(p => p.trim()).filter(Boolean);
+    const candidate = paragraphs.find(p => p.toLowerCase() !== title?.toLowerCase()) || paragraphs[0] || '';
+    return candidate;
+  };
+
+  const excerpt = getExcerpt(item.summary, item.title);
+  const formattedDate = item.date
+    ? new Date(item.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+    : '1 September 2026';
+
+  return (
+    <article className="blog-card">
+      <Link href={`/insights/${item.slug}`} aria-label={`Read article: ${item.title}`}>
+        <Photo src={item.image || '/images/dubai.jpg'} alt={item.title || 'Insights article'} />
+      </Link>
+      <p className="eyebrow">{item.category || 'Dubai Real Estate'}</p>
+      <h3>
+        <Link href={`/insights/${item.slug}`}>{item.title}</Link>
+      </h3>
+      <p className="muted">{formattedDate} · {item.readingTime || '3 min read'}</p>
+      <p className="blog-card-excerpt">{excerpt}</p>
+      <Link className="text-link" href={`/insights/${item.slug}`}>
+        <span>Read the story</span> <ArrowUpRight size={13} />
+      </Link>
+    </article>
+  );
+}
 
