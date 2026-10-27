@@ -36,7 +36,8 @@ export function PageHero({
   imageAlt,
   imagePosition = 'center center',
   slides,
-  children
+  children,
+  className = ''
 }){
   let heroSlides = slides;
   if (!heroSlides && image) {
@@ -48,7 +49,7 @@ export function PageHero({
   }
 
   return (
-    <header className="page-hero">
+    <header className={`page-hero ${className}`.trim()}>
       <HeroSlideshow slides={heroSlides} />
       <div className="page-hero-shade" aria-hidden="true" />
       <div className="container page-hero-content">
@@ -78,12 +79,12 @@ export function PropertyCard({ item = {}, kind = 'properties' }) {
     <article className="property-card">
       <Photo className="card-backdrop" src={imageSrc} alt={`${item.title} photography`} sizes="(max-width: 700px) 95vw, (max-width: 1100px) 50vw, 33vw"/>
       <div className="card-top">
-        <div style={{display:'flex',gap:'6px',flexWrap:'wrap'}}>
-          <span className="badge">{statusLabel}</span>
+        <div className="card-badges">
+          <span className="badge badge-status">{statusLabel}</span>
           {item.lifestyle && <span className="badge lifestyle-badge">{item.lifestyle}</span>}
         </div>
         <Link className="card-open" href={`/${kind}/${item.slug}`} aria-label={`View ${item.title}`}>
-          <ArrowUpRight size={16}/>
+          <ArrowUpRight size={16} className="arrow-icon"/>
         </Link>
       </div>
       <div className="card-copy">
@@ -99,7 +100,7 @@ export function PropertyCard({ item = {}, kind = 'properties' }) {
         <div className="card-bottom">
           <p className="price">{priceDisplay}</p>
           <Link href={`/${kind}/${item.slug}`} className="card-details" aria-label={`Explore ${item.title}`}>
-            <span>Explore</span> <ArrowUpRight size={13}/>
+            <span>Explore</span> <ArrowUpRight size={13} className="arrow-icon"/>
           </Link>
         </div>
       </div>
@@ -117,16 +118,16 @@ export function PropertyGrid({ items = [], kind = 'properties', carousel = false
     </div>
   );
 }
-export function DeveloperCard({item,projectCount=0}){return <article className="developer-card"><Photo src={item.image||images.architecture} alt={`${item.name} architecture and developments`}/><div className="developer-card-content"><div className="developer-card-heading"><h3>{item.name}</h3><span className="developer-monogram" aria-hidden="true">{item.name.slice(0,1)}</span></div><p>{item.description}</p><div className="developer-card-bottom"><span>{projectCount} {projectCount === 1 ? 'project' : 'projects'}</span><Link className="card-open" href={`/developers/${item.slug}`} aria-label={`Explore ${item.name}`}><ArrowUpRight size={16}/></Link></div></div></article>}
+export function DeveloperCard({item,projectCount=0}){return <article className="developer-card"><Photo src={item.image||images.architecture} alt={`${item.name} architecture and developments`}/><div className="developer-card-content"><div className="developer-card-heading"><h3>{item.name}</h3><span className="developer-monogram" aria-hidden="true">{item.name.slice(0,1)}</span></div><p>{item.description}</p><div className="developer-card-bottom"><span>{projectCount} {projectCount === 1 ? 'project' : 'projects'}</span><Link className="card-open" href={`/developers/${item.slug}`} aria-label={`Explore ${item.name}`}><ArrowUpRight size={16} className="arrow-icon"/></Link></div></div></article>}
 export function LocationCard({item}){
   return (
     <Link className="property-card location-card" href={`/areas/${item.slug}`}>
       <Photo className="card-backdrop" src={item.image} alt={`Representative community imagery for ${item.name}`} sizes="(max-width: 700px) 95vw, (max-width: 1100px) 50vw, 33vw"/>
       <div className="card-top">
-        <div style={{display:'flex',gap:'6px',flexWrap:'wrap'}}>
-          <span className="badge">{item.category}</span>
+        <div className="card-badges">
+          <span className="badge badge-status">{item.category}</span>
         </div>
-        <span className="card-open" aria-label={`Explore ${item.name}`}><ArrowUpRight size={16}/></span>
+        <span className="card-open" aria-label={`Explore ${item.name}`}><ArrowUpRight size={16} className="arrow-icon"/></span>
       </div>
       <div className="card-copy">
         <div className="card-meta">

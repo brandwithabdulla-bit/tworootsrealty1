@@ -154,13 +154,118 @@
   }
 }
 
-/* Lifestyle Badge */
-.lifestyle-badge {
-  background: rgba(224, 204, 181, 0.45) !important;
-  color: var(--sand) !important;
-  border-color: rgba(224, 204, 181, 0.6) !important;
-  letter-spacing: 0.06em;
+/* Property & Project Card Header, Badges & Action Button */
+.property-card:after {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: -1 !important;
+  background: linear-gradient(180deg, rgba(8, 18, 30, 0.48) 0%, rgba(8, 18, 30, 0.1) 25%, rgba(8, 18, 30, 0.42) 65%, rgba(8, 18, 30, 0.96) 100%) !important;
 }
+
+.card-top {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-bottom: 180px !important;
+  position: relative !important;
+  z-index: 2 !important;
+  min-width: 0 !important;
+}
+
+.card-badges {
+  display: flex !important;
+  gap: 6px !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+}
+
+.card-top .badge {
+  position: static !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 30px !important;
+  font-size: 0.68rem !important;
+  line-height: 1.2 !important;
+  padding: 6px 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  font-weight: 700 !important;
+  white-space: nowrap !important;
+  box-shadow: 0 4px 14px rgba(8, 18, 30, 0.35) !important;
+  transition: all 0.25s ease !important;
+}
+
+/* Primary Status Badge ("Off-Plan" / "Ready") - Brand Warm Sand with Midnight Navy text */
+.card-top .badge.badge-status,
+.card-top .badge:not(.lifestyle-badge) {
+  background: var(--sand, #E0CCB5) !important;
+  color: var(--midnight, #08121E) !important;
+  border: 1px solid rgba(224, 204, 181, 0.95) !important;
+  font-weight: 700 !important;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+}
+
+/* Lifestyle Badge ("Nature Inspired Wellness Living", "Wellness & Luxury Waterfront Living") - Brand Deep Navy with Warm Sand text */
+.card-top .badge.lifestyle-badge,
+.lifestyle-badge {
+  background: rgba(15, 38, 69, 0.92) !important;
+  color: var(--sand, #E0CCB5) !important;
+  border: 1px solid rgba(224, 204, 181, 0.55) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  letter-spacing: 0.05em !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 14px rgba(8, 18, 30, 0.35) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  flex: 0 1 auto !important;
+  min-width: 0 !important;
+}
+
+/* Top-Right Circular Button (↗) - Brand Deep Navy with Warm Sand icon */
+.card-open {
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  background: rgba(15, 38, 69, 0.92) !important;
+  color: var(--sand, #E0CCB5) !important;
+  border: 1px solid rgba(224, 204, 181, 0.5) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  box-shadow: 0 4px 14px rgba(8, 18, 30, 0.3) !important;
+  font-size: 1.1rem !important;
+  transition: all 0.25s ease !important;
+  margin-left: auto !important;
+}
+
+.card-open:hover {
+  background: var(--sand, #E0CCB5) !important;
+  color: var(--midnight, #08121E) !important;
+  border-color: var(--sand, #E0CCB5) !important;
+  transform: scale(1.08) !important;
+  box-shadow: 0 6px 18px rgba(8, 18, 30, 0.45) !important;
+}
+
+.card-open .arrow-icon {
+  transition: transform 0.25s ease !important;
+}
+
+.card-open:hover .arrow-icon {
+  transform: translate(2px, -2px) !important;
+}
+
 
 /* Project Highlights & Connectivity */
 .detail-content .project-highlights-section,
@@ -334,8 +439,15 @@
   overflow: hidden;
   background: var(--midnight) !important;
   color: var(--ivory) !important;
-  padding: clamp(170px, 19vh, 230px) 0 clamp(70px, 9vh, 120px) !important;
+  min-height: clamp(520px, 62vh, 720px) !important;
+  padding: clamp(190px, 22vh, 260px) 0 clamp(110px, 15vh, 180px) !important;
   border-bottom: 1px solid rgba(244, 245, 240, 0.14);
+}
+
+.projects-hero {
+  min-height: clamp(580px, 70vh, 820px) !important;
+  padding-top: clamp(220px, 25vh, 290px) !important;
+  padding-bottom: clamp(160px, 20vh, 250px) !important;
 }
 
 .page-hero .hero-slides {
@@ -432,7 +544,12 @@
 /* Tablet responsiveness */
 @media (max-width: 1024px) {
   .page-hero {
-    padding: 155px 0 60px !important;
+    min-height: 480px !important;
+    padding: 160px 0 90px !important;
+  }
+  .projects-hero {
+    min-height: 520px !important;
+    padding: 175px 0 130px !important;
   }
   .page-hero-shade {
     background: 
@@ -444,7 +561,12 @@
 /* Mobile responsiveness */
 @media (max-width: 767px) {
   .page-hero {
-    padding: 135px 0 50px !important;
+    min-height: 440px !important;
+    padding: 140px 0 80px !important;
+  }
+  .projects-hero {
+    min-height: 480px !important;
+    padding: 155px 0 110px !important;
   }
   .page-hero-content h1 {
     font-size: clamp(2.4rem, 7vw, 3.4rem);

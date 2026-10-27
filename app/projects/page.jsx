@@ -7,5 +7,17 @@ export const metadata=pageMetadata('Projects','Explore off-plan, ready, waterfro
 
 export default async function Page({searchParams}){
   const projects = await getProjects();
-  return <><PageHero eyebrow="A new point of view" title="Places taking shape." description="Discover projects through their architecture, their setting and the way you want to live." image="/images/hero/hero-5.jpg" imageAlt="Dubai landmark luxury developments and skyline"/><Discovery items={projects} kind="projects" initialFilters={await searchParams}/></>;
+  return (
+    <>
+      <PageHero
+        className="projects-hero"
+        eyebrow="A new point of view"
+        title="Places taking shape."
+        description="Discover projects through their architecture, their setting and the way you want to live."
+        image="/images/hero/hero-1.jpg"
+        imageAlt="Dubai landmark luxury developments and skyline"
+      />
+      <Discovery items={projects} kind="projects" initialFilters={await searchParams}/>
+    </>
+  );
 }
