@@ -8,7 +8,124 @@ import { pageMetadata } from '@/lib/seo';
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const a = await getLocationBySlug(slug);
-  return a ? pageMetadata(a.name, `Explore ${a.name}, community highlights and available properties in Dubai.`, `/areas/${slug}`) : {};
+  return a 
+    ? pageMetadata(
+        a.name, 
+        a.tagline || a.description || `Explore ${a.name}, community highlights and available properties in Dubai.`, 
+        `/areas/${slug}`
+      ) 
+    : {};
+}
+
+// Clean helper to limit description length and prevent oversized cards
+function getCleanExcerpt(text, maxLength = 440) {
+  if (!text) return '';
+  const clean = text.replace(/\s+/g, ' ').trim();
+  if (clean.length <= maxLength) return clean;
+  const trimmed = clean.slice(0, maxLength);
+  const lastPeriod = trimmed.lastIndexOf('.');
+  if (lastPeriod > 140) return trimmed.slice(0, lastPeriod + 1);
+  const lastSpace = trimmed.lastIndexOf(' ');
+  return (lastSpace > 0 ? trimmed.slice(0, lastSpace) : trimmed) + '...';
+}
+
+// Clean helper to limit individual lifestyle item size
+function getCleanItem(item, maxLength = 120) {
+  if (!item) return '';
+  const clean = item.replace(/\s+/g, ' ').trim();
+  if (clean.length <= maxLength) return clean;
+  const trimmed = clean.slice(0, maxLength);
+  const lastSpace = trimmed.lastIndexOf(' ');
+  return (lastSpace > 0 ? trimmed.slice(0, lastSpace) : trimmed) + '...';
+}
+
+// Helper to extract non-empty guide sections
+// STRICT RULE: If an item does not have a description, it will NOT show and will NOT leave blank space!
+function getAreaGuideSections(location) {
+  const sections = [];
+
+  const maybeAdd = (id, defaultNumber, defaultTitle, item) => {
+    if (!item) return;
+    const desc = item.description?.trim();
+    
+    // Strict conditional: Do NOT show and do NOT leave blank if no description exists!
+    if (!desc || desc.length === 0) return;
+
+    const subs = (item.subsections || []).filter(
+      s => s && s.description && s.description.trim().length > 0
+    );
+
+    // Ensure title has correct numbering prefix matching 1 to 8
+    let rawTitle = item.title?.trim() || defaultTitle;
+    let formattedTitle = rawTitle;
+    if (!/^\d+\./.test(rawTitle)) {
+      formattedTitle = `${defaultNumber}. ${rawTitle}`;
+    }
+
+    sections.push({
+      id,
+      index: defaultNumber,
+      title: formattedTitle,
+      subtitle: item.subtitle?.trim() || '',
+      description: desc,
+      subsections: subs
+    });
+  };
+
+  // 1. An Introduction to (Location)
+  maybeAdd('intro', 1, `An Introduction to ${location.name}`, location.guideIntro);
+
+  // 2. Lifestyle and Living Experience
+  maybeAdd('lifestyle', 2, 'Lifestyle and Living Experience', location.guideLifestyle);
+
+  // 3. Who is (Location) ideal for?
+  maybeAdd('ideal-for', 3, `Who is ${location.name} ideal for?`, location.guideIdealFor);
+
+  // 4. Connectivity and strategic location
+  maybeAdd('connectivity', 4, 'Connectivity and strategic location', location.guideConnectivity);
+
+  // 5. Property landscape and housing choices
+  maybeAdd('property-landscape', 5, 'Property landscape and housing choices', location.guidePropertyLandscape);
+
+  // 6. Investment potential and growth drivers
+  maybeAdd('investment', 6, 'Investment potential and growth drivers', location.guideInvestment);
+
+  // 7. Everyday conveniences and Nearby destinations
+  maybeAdd('conveniences', 7, 'Everyday conveniences and Nearby destinations', location.guideConveniences);
+
+  // 8. The future of (Location)
+  maybeAdd('future', 8, `The future of ${location.name}`, location.guideFuture);
+
+  // Dynamic CMS sections from array (if added by editor)
+  if (Array.isArray(location.guideSections)) {
+    location.guideSections.forEach((item, idx) => {
+      if (!item) return;
+      const desc = item.description?.trim();
+      if (!desc || desc.length === 0) return;
+
+      const subs = (item.subsections || []).filter(
+        s => s && s.description && s.description.trim().length > 0
+      );
+
+      const num = sections.length + 1;
+      let rawTitle = item.title?.trim() || `Guide Topic ${num}`;
+      let formattedTitle = rawTitle;
+      if (!/^\d+\./.test(rawTitle)) {
+        formattedTitle = `${num}. ${rawTitle}`;
+      }
+
+      sections.push({
+        id: `custom-guide-${idx + 1}`,
+        index: num,
+        title: formattedTitle,
+        subtitle: item.subtitle?.trim() || '',
+        description: desc,
+        subsections: subs
+      });
+    });
+  }
+
+  return sections;
 }
 
 export default async function Page({ params }) {
@@ -36,12 +153,26 @@ export default async function Page({ params }) {
     ? a.propertyTypes 
     : ['Apartment', 'Villa', 'Townhouse'];
 
+  // Clean description and limit lifestyle items to keep cards balanced (matching user's requirement)
+  const overviewDescription = getCleanExcerpt(
+    a.description || 'Find a setting for the way you want to live. Explore community perspectives, architecture and connected residences.'
+  );
+
+  const lifestyleItems = (a.lifestyle && a.lifestyle.length > 0 ? a.lifestyle : [
+    'Consider your everyday journey and commute',
+    'Compare neighbourhood amenities and parks',
+    'Visit at different times of day'
+  ]).slice(0, 4).map(item => getCleanItem(item));
+
+  const guideSections = getAreaGuideSections(a);
+
   return (
     <div className="area-detail-page">
+      {/* 1. Cinematic PageHero Banner */}
       <PageHero 
         eyebrow={`${a.category || 'Popular'} Community · Dubai Area Guide`} 
         title={a.name} 
-        description="Find a setting for the way you want to live. Explore community perspectives, architecture and connected residences." 
+        description={a.tagline || "Find a setting for the way you want to live. Explore community perspectives, architecture and connected residences."} 
         image={a.image} 
         imageAlt={`${a.name} community guide and lifestyle perspective in Dubai`}
       />
@@ -50,15 +181,15 @@ export default async function Page({ params }) {
         <Breadcrumbs items={[{ label: 'Areas', href: '/areas' }, { label: a.name }]} />
       </div>
 
-      {/* Community Overview & Lifestyle Dynamics (Structured luxury cards instead of raw document) */}
+      {/* 2. Community Overview Section (Balanced cards with limited description & items) */}
       <section className="container area-overview-section">
         <div className="area-overview-grid">
-          {/* Card 1: Sense of Place */}
+          {/* Card 1: Sense of Place (Limited description size) */}
           <div className="area-overview-card">
             <div>
               <span className="eyebrow">Community Character</span>
               <h2>A sense of place.</h2>
-              <p className="area-lead-text">{a.description}</p>
+              <p className="area-lead-text">{overviewDescription}</p>
             </div>
             
             <div className="area-stats-strip">
@@ -77,18 +208,14 @@ export default async function Page({ params }) {
             </div>
           </div>
 
-          {/* Card 2: Everyday Life & Property Types */}
+          {/* Card 2: Everyday Life & Property Types (Limited items) */}
           <div className="area-overview-card area-lifestyle-card">
             <div>
               <span className="eyebrow">Living Dynamics</span>
               <h2>Everyday life, considered.</h2>
               
               <div className="area-lifestyle-tags">
-                {(a.lifestyle && a.lifestyle.length > 0 ? a.lifestyle : [
-                  'Consider your everyday journey and commute',
-                  'Compare neighbourhood amenities and parks',
-                  'Visit at different times of day'
-                ]).map((point, idx) => (
+                {lifestyleItems.map((point, idx) => (
                   <div key={idx} className="area-lifestyle-tag">
                     <span className="area-tag-dot" aria-hidden="true" />
                     <span>{point}</span>
@@ -116,6 +243,55 @@ export default async function Page({ params }) {
           </div>
         </div>
       </section>
+
+      {/* 3. The 8 Dynamic Guide Items ("About {Location}") */}
+      {/* Strict: If an item has no description, it does NOT show and leaves NO blank space */}
+      {guideSections.length > 0 && (
+        <section className="container area-guide-section">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">Location Guide</p>
+              <h2>About {a.name}</h2>
+            </div>
+          </div>
+
+          <div className="area-guide-grid">
+            {guideSections.map(sec => (
+              <article key={sec.id} className="area-guide-item-card">
+                <div className="area-guide-card-top">
+                  <h3 className="area-guide-item-title">{sec.title}</h3>
+                  {sec.subtitle && (
+                    <p className="area-guide-card-subtitle">{sec.subtitle}</p>
+                  )}
+                </div>
+
+                {sec.description && (
+                  <div className="area-guide-card-body">
+                    {sec.description.split(/\n\s*\n/).map((para, pIdx) => (
+                      <p key={pIdx}>{para.trim()}</p>
+                    ))}
+                  </div>
+                )}
+
+                {sec.subsections && sec.subsections.length > 0 && (
+                  <div className="area-guide-subsections-wrap">
+                    <div className="area-subsections-row">
+                      {sec.subsections.map((sub, sIdx) => (
+                        <div key={sIdx} className="area-sub-card">
+                          <h4>{sub.subtitle}</h4>
+                          {sub.description.split(/\n\s*\n/).map((sp, spIdx) => (
+                            <p key={spIdx}>{sp.trim()}</p>
+                          ))}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Featured Projects in this Area */}
       <section className="container area-content-block">
