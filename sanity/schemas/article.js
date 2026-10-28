@@ -17,6 +17,12 @@ export default {
       validation: Rule => Rule.required()
     },
     {
+      name: 'slogan',
+      title: 'Slogan / Tagline',
+      type: 'string',
+      description: 'Catchy slogan or tagline for this article (displayed on the blog card and article header)'
+    },
+    {
       name: 'category',
       title: 'Category',
       type: 'string',

@@ -171,11 +171,47 @@ export const allLocationsQuery = groq`
     "slug": slug.current,
     "image": image.asset->url,
     category,
+    tagline,
     latitude,
     longitude,
     description,
     lifestyle,
-    propertyTypes
+    propertyTypes,
+    guideIntro,
+    guideLifestyle,
+    guideIdealFor,
+    guideConnectivity,
+    guidePropertyLandscape,
+    guideInvestment,
+    guideConveniences,
+    guideFuture,
+    guideSections
+  }
+`;
+
+export const locationBySlugQuery = groq`
+  *[_type == "location" && slug.current == $slug][0] {
+    _id,
+    "id": _id,
+    name,
+    "slug": slug.current,
+    "image": image.asset->url,
+    category,
+    tagline,
+    latitude,
+    longitude,
+    description,
+    lifestyle,
+    propertyTypes,
+    guideIntro,
+    guideLifestyle,
+    guideIdealFor,
+    guideConnectivity,
+    guidePropertyLandscape,
+    guideInvestment,
+    guideConveniences,
+    guideFuture,
+    guideSections
   }
 `;
 
@@ -187,6 +223,24 @@ export const allArticlesQuery = groq`
     title,
     "slug": slug.current,
     category,
+    slogan,
+    "image": image.asset->url,
+    date,
+    readingTime,
+    author,
+    summary,
+    contentSections
+  }
+`;
+
+export const articleBySlugQuery = groq`
+  *[_type == "article" && slug.current == $slug][0] {
+    _id,
+    "id": _id,
+    title,
+    "slug": slug.current,
+    category,
+    slogan,
     "image": image.asset->url,
     date,
     readingTime,

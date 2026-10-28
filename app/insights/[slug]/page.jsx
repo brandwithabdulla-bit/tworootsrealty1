@@ -32,10 +32,16 @@ export default async function Page({ params }) {
       <PageHero
         eyebrow={p.category || 'Insights'}
         title={p.title}
-        description={`${p.author || 'Two Roots Editorial'} · ${formattedDate} · ${p.readingTime || '3 min read'}`}
+        description={p.slogan || `${p.author || 'Two Roots Editorial'} · ${formattedDate} · ${p.readingTime || '3 min read'}`}
         image={p.image}
         imageAlt={`${p.title} - Two Roots Realty Journal`}
-      />
+      >
+        {p.slogan && (
+          <p className="article-hero-author-meta" style={{ marginTop: '12px', fontSize: '0.92rem', opacity: 0.85 }}>
+            {p.author || 'Two Roots Editorial'} · {formattedDate} · {p.readingTime || '3 min read'}
+          </p>
+        )}
+      </PageHero>
 
       <section className="container section article-section-container">
         <Breadcrumbs
@@ -48,6 +54,14 @@ export default async function Page({ params }) {
         <div className="article-layout">
           {/* Main Article Content Column */}
           <article className="article-main">
+            {/* Dynamic Slogan Callout */}
+            {p.slogan && (
+              <div className="article-slogan-lead">
+                <span className="slogan-accent-bar" aria-hidden="true" />
+                <p className="slogan-text">{p.slogan}</p>
+              </div>
+            )}
+
             {/* Description / Overview Section */}
             {descriptionParagraphs.length > 0 && (
               <section id="overview" className="article-intro-section">

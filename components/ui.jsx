@@ -169,6 +169,9 @@ export function BlogCard({ item }) {
       <h3>
         <Link href={`/insights/${item.slug}`}>{item.title}</Link>
       </h3>
+      {item.slogan ? (
+        <p className="blog-card-slogan">{item.slogan}</p>
+      ) : null}
       <p className="muted">{formattedDate} · {item.readingTime || '3 min read'}</p>
       <p className="blog-card-excerpt">{excerpt}</p>
       <Link className="text-link" href={`/insights/${item.slug}`}>
