@@ -1970,371 +1970,12 @@
 }
 
 /* ==========================================================================
-   Area Detail Page Luxury Showcase System (Hero & 8 Dynamic Pillars)
+   Area Detail Page Luxury Showcase System
    ========================================================================== */
 .area-detail-page {
   width: 100%;
 }
 
-/* --- Split Location Presentation (Matching Reference 1 & Elevated) --- */
-.area-intro-split-block {
-  padding: clamp(32px, 4.5vw, 56px) clamp(28px, 4vw, 48px);
-  background: var(--ivory);
-  border-radius: 24px;
-  border: 1px solid rgba(15, 38, 69, 0.1);
-  margin-top: 10px;
-  margin-bottom: 24px;
-  box-shadow: 0 10px 30px rgba(8, 18, 30, 0.04);
-}
-
-.area-hero-split-section {
-  padding: clamp(48px, 6vw, 84px) 0 clamp(36px, 4vw, 56px);
-  background: linear-gradient(180deg, #fbfbf9 0%, #f4f5f0 100%);
-  border-bottom: 1px solid var(--line);
-}
-
-.area-hero-split-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: clamp(36px, 5vw, 64px);
-  align-items: center;
-}
-
-.area-hero-split-copy {
-  display: flex;
-  flex-direction: column;
-}
-
-.area-hero-title {
-  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-  font-weight: 700;
-  line-height: 1.1;
-  color: var(--navy);
-  margin: 10px 0 14px;
-  letter-spacing: -0.03em;
-}
-
-.area-hero-tagline {
-  font-size: clamp(1.08rem, 1.5vw, 1.3rem);
-  font-weight: 500;
-  color: #8e734c;
-  font-style: italic;
-  margin-bottom: 18px;
-  line-height: 1.45;
-  border-left: 3px solid #c5a880;
-  padding-left: 16px;
-}
-
-.area-hero-lead {
-  font-size: clamp(1.02rem, 1.25vw, 1.12rem);
-  line-height: 1.75;
-  color: #233446;
-  margin-bottom: 24px;
-  max-width: 65ch;
-}
-
-.area-hero-meta-strip {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  padding: 16px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  margin-bottom: 24px;
-}
-
-.area-hero-meta-item .meta-label {
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  opacity: 0.65;
-  display: block;
-  margin-bottom: 4px;
-}
-
-.area-hero-meta-item .meta-val {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--navy);
-}
-
-.area-hero-actions {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
-.area-hero-split-media {
-  position: relative;
-}
-
-.area-hero-media-wrap {
-  position: relative;
-  border-radius: 28px;
-  overflow: hidden;
-  box-shadow: 0 24px 60px rgba(8, 18, 30, 0.14);
-  border: 1px solid rgba(15, 38, 69, 0.1);
-  aspect-ratio: 4/3;
-  width: 100%;
-}
-
-.area-hero-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.area-hero-media-wrap:hover .area-hero-photo {
-  transform: scale(1.03);
-}
-
-.area-hero-media-badge {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  background: rgba(8, 18, 30, 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  color: var(--ivory);
-  padding: 8px 16px;
-  border-radius: 30px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border: 1px solid rgba(244, 245, 240, 0.2);
-}
-
-.badge-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #4ade80;
-  box-shadow: 0 0 8px #4ade80;
-}
-
-/* --- Dynamic Area Guide Pillars ("About {Location}") --- */
-.area-guide-container {
-  padding-top: 36px;
-  padding-bottom: 60px;
-}
-
-.area-guide-header {
-  margin-bottom: 36px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.area-guide-header-text h2 {
-  font-size: clamp(2rem, 3.2vw, 2.8rem);
-  line-height: 1.2;
-  letter-spacing: -0.025em;
-  margin: 8px 0 10px;
-}
-
-.area-guide-lead {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  opacity: 0.85;
-  max-width: 65ch;
-}
-
-.area-guide-nav {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-  padding: 14px 20px;
-  background: rgba(224, 204, 181, 0.24);
-  border: 1px solid rgba(15, 38, 69, 0.08);
-  border-radius: 16px;
-}
-
-.area-guide-nav-label {
-  font-size: 0.76rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--navy);
-  opacity: 0.8;
-}
-
-.area-guide-nav-pills {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.area-guide-nav-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
-  border-radius: 20px;
-  background: #ffffff;
-  border: 1px solid rgba(15, 38, 69, 0.12);
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--navy);
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.area-guide-nav-pill:hover {
-  background: var(--navy);
-  color: #ffffff;
-  border-color: var(--navy);
-  transform: translateY(-1px);
-}
-
-.nav-pill-num {
-  font-size: 0.72rem;
-  font-weight: 700;
-  opacity: 0.6;
-}
-
-.area-guide-list {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
-.area-guide-card {
-  background: #ffffff;
-  border: 1px solid rgba(15, 38, 69, 0.12);
-  border-radius: 24px;
-  padding: clamp(28px, 3.5vw, 44px);
-  box-shadow: 0 12px 32px rgba(8, 18, 30, 0.03);
-  scroll-margin-top: 100px;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-.area-guide-card:hover {
-  border-color: rgba(15, 38, 69, 0.24);
-  box-shadow: 0 16px 40px rgba(8, 18, 30, 0.06);
-}
-
-.area-guide-card-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-
-.area-guide-card-num {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-  background: var(--navy);
-  color: var(--ivory);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.25rem;
-  font-weight: 700;
-  flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(15, 38, 69, 0.18);
-}
-
-.area-guide-card-kicker {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #8e734c;
-  font-weight: 600;
-  display: block;
-  margin-bottom: 4px;
-}
-
-.area-guide-card-titles h3 {
-  font-size: clamp(1.4rem, 2vw, 1.9rem);
-  font-weight: 600;
-  color: var(--navy);
-  line-height: 1.25;
-  letter-spacing: -0.02em;
-  margin: 0;
-}
-
-.area-guide-card-subtitle {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #7a6344;
-  margin-top: 6px;
-  letter-spacing: 0.02em;
-}
-
-.area-guide-body p {
-  font-size: 1.04rem;
-  line-height: 1.8;
-  color: #233446;
-  margin-bottom: 16px;
-}
-
-.area-guide-body p:last-child {
-  margin-bottom: 0;
-}
-
-.area-guide-subsections {
-  margin-top: 24px;
-  padding-top: 24px;
-  border-top: 1px solid var(--line);
-}
-
-.area-subsections-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 20px;
-}
-
-.area-subsection-card {
-  background: rgba(244, 245, 240, 0.7);
-  border: 1px solid rgba(15, 38, 69, 0.08);
-  border-radius: 18px;
-  padding: 22px 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.area-subsection-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-
-.area-sub-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #c5a880;
-  flex-shrink: 0;
-}
-
-.area-subsection-header h4 {
-  font-size: 1.08rem;
-  font-weight: 600;
-  color: var(--navy);
-  margin: 0;
-}
-
-.area-subsection-text p {
-  font-size: 0.94rem;
-  line-height: 1.65;
-  color: #2f4356;
-  margin-bottom: 12px;
-}
-
-.area-subsection-text p:last-child {
-  margin-bottom: 0;
-}
-
-/* --- Living Dynamics & Property Types Section --- */
 .area-overview-section {
   padding-top: 16px;
   padding-bottom: 40px;
@@ -2378,6 +2019,34 @@
   margin-bottom: 28px;
 }
 
+.area-stats-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  margin-top: auto;
+}
+
+.area-stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.area-stat-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.65;
+}
+
+.area-stat-val {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
 .area-lifestyle-tags {
   display: flex;
   flex-direction: column;
@@ -2406,8 +2075,7 @@
   flex-shrink: 0;
 }
 
-.area-property-types-box,
-.area-dev-box {
+.area-property-types-box {
   padding-top: 20px;
   border-top: 1px solid var(--line);
   margin-top: auto;
@@ -2450,52 +2118,6 @@
   border-color: var(--midnight);
 }
 
-.area-dev-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.area-dev-tag-dark {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  border-radius: 20px;
-  background: rgba(15, 38, 69, 0.06);
-  border: 1px solid rgba(15, 38, 69, 0.12);
-  color: var(--navy);
-  font-size: 0.84rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  text-decoration: none;
-}
-
-.area-dev-tag-dark:hover {
-  background: var(--navy);
-  color: var(--ivory);
-  transform: translateY(-2px);
-}
-
-.area-pillar-list-inline {
-  list-style: none;
-  padding: 0;
-  margin: 10px 0 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.area-pillar-list-inline li {
-  font-size: 0.88rem;
-  line-height: 1.5;
-  color: #233446;
-}
-
-.area-pillar-list-inline strong {
-  color: var(--navy);
-}
-
 .area-content-block {
   padding-top: 36px;
   padding-bottom: 48px;
@@ -2536,31 +2158,112 @@
   flex-wrap: wrap;
 }
 
+.area-investment-panel {
+  background: var(--navy);
+  color: var(--ivory);
+  border-radius: 24px;
+  padding: clamp(36px, 5vw, 56px);
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+  box-shadow: 0 20px 48px rgba(8, 18, 30, 0.2);
+  border: 1px solid rgba(244, 245, 240, 0.12);
+}
+
+.area-investment-copy h2 {
+  font-size: clamp(1.8rem, 2.5vw, 2.6rem);
+  margin-bottom: 16px;
+}
+
+.area-investment-copy p {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  opacity: 0.88;
+  max-width: 58ch;
+}
+
+.area-investment-copy .eyebrow {
+  color: var(--sand);
+}
+
+.area-investment-side h3 {
+  font-size: 1.25rem;
+  margin-bottom: 16px;
+}
+
+.area-dev-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.area-dev-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 24px;
+  background: rgba(244, 245, 240, 0.1);
+  border: 1px solid rgba(244, 245, 240, 0.25);
+  color: var(--ivory);
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.area-dev-tag:hover {
+  background: var(--sand);
+  color: var(--navy);
+  border-color: var(--sand);
+  transform: translateY(-2px);
+}
+
+.area-pillar-list {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.area-pillar-list li {
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(244, 245, 240, 0.15);
+}
+
+.area-pillar-list li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.area-pillar-list strong {
+  display: block;
+  color: var(--sand);
+  font-size: 0.92rem;
+  margin-bottom: 4px;
+}
+
+.area-pillar-list span {
+  font-size: 0.82rem;
+  opacity: 0.8;
+}
+
 @media (max-width: 900px) {
-  .area-hero-split-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-  .area-subsections-grid {
-    grid-template-columns: 1fr;
-  }
   .area-overview-grid {
     grid-template-columns: 1fr;
     gap: 24px;
   }
-  .area-guide-card-header {
-    gap: 14px;
-  }
-  .area-guide-card-num {
-    width: 44px;
-    height: 44px;
-    font-size: 1.1rem;
-    border-radius: 10px;
+  .area-investment-panel {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 32px 24px;
   }
 }
 
 @media (max-width: 600px) {
-  .area-hero-meta-strip {
+  .area-stats-strip {
     grid-template-columns: 1fr;
     gap: 12px;
   }
