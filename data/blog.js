@@ -3,37 +3,32 @@ import {slugify} from './developers.js';
 
 const entries = [
   [
-    'Buying Guide',
+    'Property Buying Guides',
     'A better shortlist starts with better questions',
     'Navigating Dubai’s luxury market with clarity, precision, and discerning questions.'
   ],
   [
-    'Investment',
+    'Investment Insights',
     'Look beyond the purchase price',
     'Real yield performance, true holding costs, and long-term capital preservation.'
   ],
   [
-    'Communities',
+    'Areas & Community Guides',
     'Finding a neighbourhood that fits your life',
     'Why master-planned livability outweighs mere geographical address.'
   ],
   [
-    'Off-Plan',
-    'Reading a payment plan with perspective',
-    'Decoding milestones, escrow safeguards, and post-handover dynamics.'
-  ],
-  [
-    'Selling Guide',
-    'Preparing your property for its next chapter',
-    'Strategic staging and pricing intelligence for prime Dubai residences.'
-  ],
-  [
-    'Market Updates',
+    'Market Trends & Research',
     'What to bring to a market conversation',
     'Key metrics that matter when analyzing Dubai real estate cycles.'
   ],
   [
-    'Dubai Real Estate',
+    'Global Investor Guides',
+    'Reading a payment plan with perspective',
+    'Decoding milestones, escrow safeguards, and post-handover dynamics.'
+  ],
+  [
+    'Smart Property Decisions',
     'A clear brief for your Dubai property search',
     'From vision to keys — crafting an uncompromising property search.'
   ]

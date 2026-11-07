@@ -1,6 +1,25 @@
 // Curated Dubai Master Communities and Neighborhoods for Interactive Map
 export const DUBAI_MAP_AREAS = [
   {
+    id: 'al-jaddaf',
+    name: 'Al Jaddaf, Dubai',
+    shortName: 'Al Jaddaf',
+    aliases: ['al jaddaf', 'jaddaf', 'al jaddaf dubai', 'al jadaf', 'jaddaf waterfront', 'culture village'],
+    lat: 25.215,
+    lng: 55.335,
+    zoom: 15,
+    radius: 1600,
+    type: 'Creekside & Cultural District',
+    category: 'Popular',
+    tagline: 'Modern waterfront living and cultural heritage along Dubai Creek',
+    description: 'A historic district transformed into a modern residential and cultural destination, featuring waterfront promenades, healthcare hubs, and seamless connectivity to Downtown and Dubai International Airport.',
+    highlights: ['Dubai Creek Waterfront Promenade', 'Jameel Arts Centre & Culture Village', 'Direct Metro & Al Khail Road Access', 'Proximity to Downtown & Airport'],
+    avgRoi: '7.2% - 8.2%',
+    priceRange: 'AED 850K - 4.5M',
+    locationSlug: 'al-jaddaf-dubai',
+    popular: true
+  },
+  {
     id: 'jvc',
     name: 'Jumeirah Village Circle (JVC)',
     shortName: 'JVC',

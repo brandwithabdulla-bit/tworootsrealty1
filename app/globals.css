@@ -2362,7 +2362,16 @@
   margin-bottom: 0;
 }
 
+.area-guide-item-card p {
+  max-width: 100%;
+}
+
+.area-guide-card-body {
+  width: 100%;
+}
+
 .area-guide-card-body p {
+  max-width: 100%;
   font-size: 1.02rem;
   line-height: 1.75;
   color: #233446;
@@ -2412,3 +2421,23 @@
 
 
 
+
+.page-hero.page-hero-no-photo {
+  min-height: auto !important;
+  padding: clamp(160px, 18vh, 210px) 0 clamp(70px, 9vh, 100px) !important;
+  background: var(--midnight) !important;
+}
+
+@media (max-width: 1024px) {
+  .page-hero.page-hero-no-photo {
+    min-height: auto !important;
+    padding: 145px 0 65px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .page-hero.page-hero-no-photo {
+    min-height: auto !important;
+    padding: 125px 0 50px !important;
+  }
+}

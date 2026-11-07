@@ -37,10 +37,11 @@ export function PageHero({
   imagePosition = 'center center',
   slides,
   children,
-  className = ''
+  className = '',
+  noPhoto = false
 }){
   let heroSlides = slides;
-  if (!heroSlides && image) {
+  if (!noPhoto && !heroSlides && image) {
     const remaining = defaultSlides.filter(s => s.src !== image);
     heroSlides = [
       { src: image, alt: imageAlt || 'Dubai luxury property', position: imagePosition },
@@ -49,9 +50,13 @@ export function PageHero({
   }
 
   return (
-    <header className={`page-hero ${className}`.trim()}>
-      <HeroSlideshow slides={heroSlides} />
-      <div className="page-hero-shade" aria-hidden="true" />
+    <header className={`page-hero ${noPhoto ? 'page-hero-no-photo' : ''} ${className}`.trim()}>
+      {!noPhoto && (
+        <>
+          <HeroSlideshow slides={heroSlides} />
+          <div className="page-hero-shade" aria-hidden="true" />
+        </>
+      )}
       <div className="container page-hero-content">
         {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
         <h1>{title}</h1>

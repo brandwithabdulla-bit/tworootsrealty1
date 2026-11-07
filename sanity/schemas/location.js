@@ -52,6 +52,13 @@ export default {
       initialValue: 'Popular'
     },
     {
+      name: 'mapUrl',
+      title: 'Google Maps Link',
+      type: 'url',
+      group: 'general',
+      description: 'Paste any Google Maps link (e.g. https://maps.app.goo.gl/... or google.com/maps/place/...). Coordinates are automatically parsed for the Interactive Map.'
+    },
+    {
       name: 'description',
       title: 'Overview Description',
       type: 'text',

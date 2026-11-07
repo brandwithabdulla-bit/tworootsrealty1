@@ -238,16 +238,21 @@ export function ListingDetail({ item, kind = 'properties', similar = [] }) {
 
 export function MapSection({ item = {} }) {
   const locationName = item.name || item.location || 'Dubai';
-  const targetMapUrl = `/map?location=${encodeURIComponent(item.locationSlug || locationName || 'Dubai')}${item.latitude ? `&lat=${item.latitude}&lng=${item.longitude}` : ''}${item.title ? `&title=${encodeURIComponent(item.title)}` : ''}`;
+  const targetMapUrl = `/map?location=${encodeURIComponent(item.locationSlug || item.slug || locationName || 'Dubai')}${item.latitude ? `&lat=${item.latitude}&lng=${item.longitude}` : ''}${item.title || item.name ? `&title=${encodeURIComponent(item.title || item.name)}` : ''}`;
   return (
     <div className="map-section">
       <span className="eyebrow">Location &amp; Neighbourhood</span>
       <h2 className="map-label">{locationName}</h2>
       <p>Explore nearby amenities, connectivity, and real estate market performance on our interactive map.</p>
-      <div style={{ marginTop: '20px' }}>
+      <div style={{ marginTop: '20px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
         <Link href={targetMapUrl} className="button">
           <span>View {locationName} on Interactive Map</span> <ArrowUpRight size={14} />
         </Link>
+        {item.mapUrl && (
+          <a href={item.mapUrl} target="_blank" rel="noopener noreferrer" className="button secondary">
+            <span>Open in Google Maps</span> <ArrowUpRight size={14} />
+          </a>
+        )}
       </div>
     </div>
   );

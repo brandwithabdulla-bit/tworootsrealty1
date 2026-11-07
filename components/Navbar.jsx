@@ -246,8 +246,7 @@ export default function Navbar() {
               <div className={styles.dropdownMenu}>
                 <Link href="/insights" onClick={closeAllMenus}>All Media</Link>
                 <Link href="/gallery" onClick={closeAllMenus}>Gallery</Link>
-                <Link href="/insights?category=blogs" onClick={closeAllMenus}>Blogs & Guides</Link>
-                <Link href="/insights?category=investment" onClick={closeAllMenus}>Investment Insights</Link>
+                <Link href="/insights" onClick={closeAllMenus}>Insights & Guides</Link>
                 <Link href="/map" onClick={closeAllMenus}>Dubai Map</Link>
               </div>
             </div>
@@ -321,8 +320,7 @@ export default function Navbar() {
                 <div className={styles.mobileSubmenu}>
                   <Link href="/insights" onClick={closeAllMenus}>All Media</Link>
                   <Link href="/gallery" onClick={closeAllMenus}>Gallery</Link>
-                  <Link href="/insights?category=blogs" onClick={closeAllMenus}>Blogs & Guides</Link>
-                  <Link href="/insights?category=investment" onClick={closeAllMenus}>Investment Insights</Link>
+                  <Link href="/insights" onClick={closeAllMenus}>Insights & Guides</Link>
                   <Link href="/map" onClick={closeAllMenus}>Dubai Map</Link>
                 </div>
               )}

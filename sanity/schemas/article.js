@@ -28,13 +28,12 @@ export default {
       type: 'string',
       options: {
         list: [
-          { title: 'Buying Guide', value: 'Buying Guide' },
-          { title: 'Investment', value: 'Investment' },
-          { title: 'Communities', value: 'Communities' },
-          { title: 'Off-Plan', value: 'Off-Plan' },
-          { title: 'Selling Guide', value: 'Selling Guide' },
-          { title: 'Market Updates', value: 'Market Updates' },
-          { title: 'Dubai Real Estate', value: 'Dubai Real Estate' }
+          { title: 'Property Buying Guides', value: 'Property Buying Guides' },
+          { title: 'Investment Insights', value: 'Investment Insights' },
+          { title: 'Areas & Community Guides', value: 'Areas & Community Guides' },
+          { title: 'Market Trends & Research', value: 'Market Trends & Research' },
+          { title: 'Global Investor Guides', value: 'Global Investor Guides' },
+          { title: 'Smart Property Decisions', value: 'Smart Property Decisions' }
         ]
       }
     },
