@@ -33,15 +33,11 @@ export default async function Page({ params }) {
       <PageHero
         eyebrow={p.category || 'Insights'}
         title={p.title}
-        description={p.slogan || `${p.author || 'Two Roots Editorial'} · ${formattedDate} · ${p.readingTime || '3 min read'}`}
+        description={`${p.author || 'Two Roots Editorial'} · ${formattedDate} · ${p.readingTime || '3 min read'}`}
         image={p.image}
         imageAlt={`${p.title} - Two Roots Realty Journal`}
       >
-        {p.slogan && (
-          <p className="article-hero-author-meta" style={{ marginTop: '12px', fontSize: '0.92rem', opacity: 0.85 }}>
-            {p.author || 'Two Roots Editorial'} · {formattedDate} · {p.readingTime || '3 min read'}
-          </p>
-        )}
+      
       </PageHero>
 
       <section className="container section article-section-container">
