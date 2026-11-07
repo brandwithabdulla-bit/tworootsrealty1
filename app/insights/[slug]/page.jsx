@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { getArticles, getArticleBySlug } from '@/lib/sanity-data';
 import { PageHero, CTASection, SectionHeader, BlogCard, Breadcrumbs, Button, ArrowUpRight } from '@/components/ui';
@@ -108,7 +109,15 @@ export default async function Page({ params }) {
 
             {/* Author / Brand Footnote Card */}
             <div className="article-author-card">
-              <div className="author-badge-mark">TR</div>
+              <div className="author-badge-mark">
+                <Image 
+                  src="/icon.png" 
+                  alt="Two Roots Realty" 
+                  width={52} 
+                  height={52} 
+                  className="author-logo-img" 
+                />
+              </div>
               <div className="author-bio">
                 <h4>{p.author || 'Two Roots Editorial Team'}</h4>
                 <p>
