@@ -84,9 +84,9 @@ export function ListingDetail({ item, kind = 'properties', similar = [] }) {
             </div>
             <div>
               <div style={{ background: 'var(--ivory)', padding: '36px', borderRadius: '12px', border: '1px solid var(--line)', boxShadow: '0 8px 30px rgba(8, 18, 30, 0.05)' }}>
-                <EnquiryForm 
-                  variant="quick" 
-                  context={item.title} 
+                <EnquiryForm
+                  variant="quick"
+                  context={item.title}
                   submitLabel="Request Details"
                   hideLocation
                 />
@@ -213,9 +213,9 @@ export function ListingDetail({ item, kind = 'properties', similar = [] }) {
         <aside className="sticky-enquiry" id="enquiry-form">
           <h2>Request Allocation &amp; Details</h2>
           <p className="small muted">Speak directly with our senior advisory desk regarding this listing.</p>
-          <EnquiryForm 
-            variant="sticky" 
-            context={item.title} 
+          <EnquiryForm
+            variant="sticky"
+            context={item.title}
             submitLabel="Request Details"
             hideLocation
           />
@@ -248,11 +248,6 @@ export function MapSection({ item = {} }) {
         <Link href={targetMapUrl} className="button">
           <span>View {locationName} on Interactive Map</span> <ArrowUpRight size={14} />
         </Link>
-        {item.mapUrl && (
-          <a href={item.mapUrl} target="_blank" rel="noopener noreferrer" className="button secondary">
-            <span>Open in Google Maps</span> <ArrowUpRight size={14} />
-          </a>
-        )}
       </div>
     </div>
   );

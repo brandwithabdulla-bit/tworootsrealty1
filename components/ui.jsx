@@ -2,9 +2,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import HeroSlideshow from './hero-slideshow';
 import { defaultSlides } from '@/data/slides';
-import {images} from '@/data/images';
+import { images } from '@/data/images';
 
-export function ArrowUpRight({className='', size=14}){
+export function ArrowUpRight({ className = '', size = 14 }) {
   return (
     <svg
       className={`arrow-icon ${className}`}
@@ -18,20 +18,21 @@ export function ArrowUpRight({className='', size=14}){
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <line x1="7" y1="17" x2="17" y2="7"/>
-      <polyline points="7 7 17 7 17 17"/>
+      <line x1="7" y1="17" x2="17" y2="7" />
+      <polyline points="7 7 17 7 17 17" />
     </svg>
   );
 }
 
-export function Button({href,children,secondary=false,...props}){return <Link className={`button ${secondary?'secondary':''}`} href={href} {...props}><span>{children}</span><ArrowUpRight size={14}/></Link>}
-export function Eyebrow({children}){return <p className="eyebrow">{children}</p>}
-export function SectionHeader({eyebrow,title,href,label='Explore more'}){return <div className="section-heading"><div>{eyebrow&&<Eyebrow>{eyebrow}</Eyebrow>}<h2>{title}</h2></div>{href&&<Link className="text-link" href={href}><span>{label}</span> <ArrowUpRight size={13}/></Link>}</div>}
-export function Photo({src,alt,priority=false,className='',sizes='(max-width: 768px) 100vw, 50vw'}){return <div className={`photo ${className}`}><Image src={src} alt={alt} fill sizes={sizes} priority={priority}/></div>}
+export function Button({ href, children, secondary = false, ...props }) { return <Link className={`button ${secondary ? 'secondary' : ''}`} href={href} {...props}><span>{children}</span><ArrowUpRight size={14} /></Link> }
+export function Eyebrow({ children }) { return <p className="eyebrow">{children}</p> }
+export function SectionHeader({ eyebrow, title, href, label = 'Explore more' }) { return <div className="section-heading"><div>{eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}<h2>{title}</h2></div>{href && <Link className="text-link" href={href}><span>{label}</span> <ArrowUpRight size={13} /></Link>}</div> }
+export function Photo({ src, alt, priority = false, className = '', sizes = '(max-width: 768px) 100vw, 50vw' }) { return <div className={`photo ${className}`}><Image src={src} alt={alt} fill sizes={sizes} priority={priority} /></div> }
 export function PageHero({
   eyebrow,
   title,
   description,
+  lead,
   image,
   imageAlt,
   imagePosition = 'center center',
@@ -39,7 +40,7 @@ export function PageHero({
   children,
   className = '',
   noPhoto = false
-}){
+}) {
   let heroSlides = slides;
   if (!noPhoto && !heroSlides && image) {
     const remaining = defaultSlides.filter(s => s.src !== image);
@@ -61,13 +62,14 @@ export function PageHero({
         {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
         <h1>{title}</h1>
         {description && <p className="lead">{description}</p>}
+        {lead && <p className="eyebrow" style={{ marginTop: '24px', letterSpacing: '.22em' }}>{lead}</p>}
         {children}
       </div>
     </header>
   );
 }
-export function Breadcrumbs({items}){return <nav className="breadcrumbs" aria-label="Breadcrumb"><Link href="/">Home</Link>{items.map((x,i)=><span key={i}> / {x.href?<Link href={x.href}>{x.label}</Link>:x.label}</span>)}</nav>}
-export function DemoNote({children}){if(!children)return null;return <p className="demo-note">{children}</p>}
+export function Breadcrumbs({ items }) { return <nav className="breadcrumbs" aria-label="Breadcrumb"><Link href="/">Home</Link>{items.map((x, i) => <span key={i}> / {x.href ? <Link href={x.href}>{x.label}</Link> : x.label}</span>)}</nav> }
+export function DemoNote({ children }) { if (!children) return null; return <p className="demo-note">{children}</p> }
 import CTASection from './CTASection';
 export { CTASection };
 export function PropertyCard({ item = {}, kind = 'properties' }) {
@@ -82,14 +84,14 @@ export function PropertyCard({ item = {}, kind = 'properties' }) {
 
   return (
     <article className="property-card">
-      <Photo className="card-backdrop" src={imageSrc} alt={`${item.title} photography`} sizes="(max-width: 700px) 95vw, (max-width: 1100px) 50vw, 33vw"/>
+      <Photo className="card-backdrop" src={imageSrc} alt={`${item.title} photography`} sizes="(max-width: 700px) 95vw, (max-width: 1100px) 50vw, 33vw" />
       <div className="card-top">
         <div className="card-badges">
           <span className="badge badge-status">{statusLabel}</span>
           {item.lifestyle && <span className="badge lifestyle-badge">{item.lifestyle}</span>}
         </div>
         <Link className="card-open" href={`/${kind}/${item.slug}`} aria-label={`View ${item.title}`}>
-          <ArrowUpRight size={16} className="arrow-icon"/>
+          <ArrowUpRight size={16} className="arrow-icon" />
         </Link>
       </div>
       <div className="card-copy">
@@ -105,7 +107,7 @@ export function PropertyCard({ item = {}, kind = 'properties' }) {
         <div className="card-bottom">
           <p className="price">{priceDisplay}</p>
           <Link href={`/${kind}/${item.slug}`} className="card-details" aria-label={`Explore ${item.title}`}>
-            <span>Explore</span> <ArrowUpRight size={13} className="arrow-icon"/>
+            <span>Explore</span> <ArrowUpRight size={13} className="arrow-icon" />
           </Link>
         </div>
       </div>
@@ -123,16 +125,16 @@ export function PropertyGrid({ items = [], kind = 'properties', carousel = false
     </div>
   );
 }
-export function DeveloperCard({item,projectCount=0}){return <article className="developer-card"><Photo src={item.image||images.architecture} alt={`${item.name} architecture and developments`}/><div className="developer-card-content"><div className="developer-card-heading"><h3>{item.name}</h3><span className="developer-monogram" aria-hidden="true">{item.name.slice(0,1)}</span></div><p>{item.description}</p><div className="developer-card-bottom"><span>{projectCount} {projectCount === 1 ? 'project' : 'projects'}</span><Link className="card-open" href={`/developers/${item.slug}`} aria-label={`Explore ${item.name}`}><ArrowUpRight size={16} className="arrow-icon"/></Link></div></div></article>}
-export function LocationCard({item}){
+export function DeveloperCard({ item, projectCount = 0 }) { return <article className="developer-card"><Photo src={item.image || images.architecture} alt={`${item.name} architecture and developments`} /><div className="developer-card-content"><div className="developer-card-heading"><h3>{item.name}</h3><span className="developer-monogram" aria-hidden="true">{item.name.slice(0, 1)}</span></div><p>{item.description}</p><div className="developer-card-bottom"><span>{projectCount} {projectCount === 1 ? 'project' : 'projects'}</span><Link className="card-open" href={`/developers/${item.slug}`} aria-label={`Explore ${item.name}`}><ArrowUpRight size={16} className="arrow-icon" /></Link></div></div></article> }
+export function LocationCard({ item }) {
   return (
     <Link className="property-card location-card" href={`/areas/${item.slug}`}>
-      <Photo className="card-backdrop" src={item.image} alt={`Representative community imagery for ${item.name}`} sizes="(max-width: 700px) 95vw, (max-width: 1100px) 50vw, 33vw"/>
+      <Photo className="card-backdrop" src={item.image} alt={`Representative community imagery for ${item.name}`} sizes="(max-width: 700px) 95vw, (max-width: 1100px) 50vw, 33vw" />
       <div className="card-top">
         <div className="card-badges">
           <span className="badge badge-status">{item.category}</span>
         </div>
-        <span className="card-open" aria-label={`Explore ${item.name}`}><ArrowUpRight size={16} className="arrow-icon"/></span>
+        <span className="card-open" aria-label={`Explore ${item.name}`}><ArrowUpRight size={16} className="arrow-icon" /></span>
       </div>
       <div className="card-copy">
         <div className="card-meta">
@@ -142,9 +144,9 @@ export function LocationCard({item}){
         <h3>{item.name}</h3>
         <p className="card-location">Explore prime communities &amp; residences</p>
         <div className="card-bottom">
-          <p className="price" style={{fontSize:'0.88rem',opacity:0.85}}>Prime Location</p>
+          <p className="price" style={{ fontSize: '0.88rem', opacity: 0.85 }}>Prime Location</p>
           <span className="card-details" aria-label={`Explore ${item.name}`}>
-            <span>Explore area</span> <ArrowUpRight size={13}/>
+            <span>Explore area</span> <ArrowUpRight size={13} />
           </span>
         </div>
       </div>
