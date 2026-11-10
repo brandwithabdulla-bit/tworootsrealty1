@@ -79,14 +79,6 @@ export default async function Page({ params }) {
                     </p>
                   ))}
                 </div>
-
-                {descriptionParagraphs.length >= 2 && (
-                  <div className="article-quote-box">
-                    <span className="quote-mark" aria-hidden="true">“</span>
-                    <p className="quote-text">{descriptionParagraphs[0]}</p>
-                    <span className="quote-source">Two Roots Realty · Strategic Property Brief</span>
-                  </div>
-                )}
               </section>
             )}
 
