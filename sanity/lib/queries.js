@@ -272,7 +272,8 @@ export const allTeamMembersQuery = groq`
     "id": _id,
     name,
     role,
-    "image": image.asset->url,
+    image,
+    "imageUrl": image.asset->url,
     bio,
     expertise
   }

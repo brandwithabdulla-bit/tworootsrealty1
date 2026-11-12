@@ -17,6 +17,26 @@
   box-sizing: border-box;
 }
 
+.hasPhotoCard {
+  padding: 0 !important;
+  display: block;
+}
+
+.photoImg {
+  width: 100%;
+  height: 100%;
+  min-height: 250px;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  border-radius: 15px;
+  transition: transform 0.4s ease;
+}
+
+.avatarCard:hover .photoImg {
+  transform: scale(1.03);
+}
+
 .glow {
   position: absolute;
   top: 50%;
@@ -105,6 +125,9 @@
   .avatarCard {
     min-height: 180px;
     padding: 16px 8px;
+  }
+  .photoImg {
+    min-height: 180px;
   }
   .avatarMedallion {
     width: 64px;

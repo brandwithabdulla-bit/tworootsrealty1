@@ -7,7 +7,7 @@ export default function FounderAvatar({
   name = 'Founder',
   role = 'Co-Founder',
   initials,
-  hasApprovedPhoto = false,
+  hasApprovedPhoto,
   imageSrc,
   className = '',
 }) {
@@ -22,14 +22,17 @@ export default function FounderAvatar({
       .toUpperCase()
   ) || 'TR';
 
-  // If approved photo is ready in the future, render image
-  if (hasApprovedPhoto && imageSrc) {
+  // If approved photo is available, render image
+  const showPhoto = Boolean(imageSrc) && hasApprovedPhoto !== false;
+
+  if (showPhoto) {
     return (
-      <div className={`${styles.avatarCard} ${className}`} style={{ padding: 0 }}>
+      <div className={`${styles.avatarCard} ${styles.hasPhotoCard} ${className}`} style={{ padding: 0 }}>
         <img
           src={imageSrc}
           alt={name}
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          className={styles.photoImg}
+          loading="lazy"
         />
       </div>
     );
