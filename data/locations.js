@@ -100,6 +100,8 @@ export const locations = names.map((name, i) => {
     latitude: coords[i][0],
     longitude: coords[i][1],
     category: [0, 1, 2, 3, 7].includes(i) ? 'Popular' : i % 2 ? 'Emerging' : 'Investment',
+    hideInPopularLocations: false,
+    hideInPopular: false,
     tagline: isDowntown 
       ? downtownGuide.tagline 
       : `${name} — Dubai Prime Community & Residences`,

@@ -3,6 +3,7 @@ import './globals.css';
 import {Navbar,Footer} from '@/components/navigation';
 import ScrollRestoration from '@/components/ScrollRestoration';
 import {origin} from '@/lib/seo';
+import {getLocations} from '@/lib/sanity-data';
 
 export const metadata={
   metadataBase:new URL(origin),
@@ -20,7 +21,18 @@ export const metadata={
   },
   robots:{index:false,follow:false}
 };
-export default function RootLayout({children}){
+export default async function RootLayout({children}){
+  let popularLocations = [];
+  try {
+    const locations = await getLocations();
+    popularLocations = locations
+      .filter(x => (x.category === 'Popular' || x.popular) && !x.hideInPopularLocations && !x.hideInPopular)
+      .slice(0, 5)
+      .map(x => ({ name: x.name, slug: x.slug }));
+  } catch (err) {
+    // Graceful fallback
+  }
+
   return (
     <html lang="en">
       <head>
@@ -38,7 +50,7 @@ export default function RootLayout({children}){
         <ScrollRestoration />
         <Navbar/>
         <main id="main-content">{children}</main>
-        <Footer/>
+        <Footer popularLocations={popularLocations}/>
       </body>
     </html>
   );

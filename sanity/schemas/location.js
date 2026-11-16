@@ -52,6 +52,14 @@ export default {
       initialValue: 'Popular'
     },
     {
+      name: 'hideInPopularLocations',
+      title: 'Hide in Popular Locations',
+      type: 'boolean',
+      group: 'general',
+      description: 'If turned on, this location will not appear in Popular Locations lists or tabs.',
+      initialValue: false
+    },
+    {
       name: 'mapUrl',
       title: 'Google Maps Link',
       type: 'url',

@@ -3,7 +3,7 @@ import {useState,useEffect,useRef,useId,useTransition} from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {useRouter} from 'next/navigation';
-import {defaults,filterListings} from '@/lib/discovery';
+import {defaults,filterListings,filterLocations} from '@/lib/discovery';
 import {developers} from '@/data/developers';
 import {locations} from '@/data/locations';
 import {PropertyGrid,LocationCard,BlogCard,DemoNote,ArrowUpRight} from './ui';
@@ -573,7 +573,7 @@ export function Discovery({items,kind='properties',initialFilters={}}){
   const[tab,setTab]=useState(getInitialTab(initialFilters));
   const[limit,setLimit]=useState(9);
   const[drawer,setDrawer]=useState(false);
-  const results=filterListings(items,filters,sort,tab);
+  const results=filterListings(items,filters,sort,tab,kind);
 
   function setFilters(value){
     setFiltersState(value);
@@ -600,7 +600,7 @@ export function Discovery({items,kind='properties',initialFilters={}}){
       description:'Search Two Roots property inventory.',
       inputSchema:{type:'object',properties:{query:{type:'string'}}},
       execute:async({query=''})=>({
-        content:[{type:'text',text:JSON.stringify(filterListings(items,{q:query}).map(({title,slug,priceLabel})=>({title,url:`/${kind}/${slug}`,priceLabel})))}]
+        content:[{type:'text',text:JSON.stringify(filterListings(items,{q:query},'featured','All',kind).map(({title,slug,priceLabel})=>({title,url:`/${kind}/${slug}`,priceLabel})))}]
       })
     };
     try{navigator.modelContext.registerTool(tool);}catch{}
@@ -1049,5 +1049,5 @@ export function ContactTabs({initial='Quick enquiry',context=''}){
     </>
   );
 }
-export function AreaDiscovery({items}){const[q,setQ]=useState('');const[category,setCategory]=useState('All');const results=items.filter(x=>x.name.toLowerCase().includes(q.toLowerCase())&&(category==='All'||x.category===category));return <section className="section container"><div className="directory-controls"><label>Search locations<input value={q} onChange={e=>setQ(e.target.value)} placeholder="Find a neighbourhood"/></label><div className="tabs">{['All','Popular','Emerging','Investment'].map(x=><button key={x} aria-pressed={category===x} onClick={()=>setCategory(x)}>{x}</button>)}</div></div><p aria-live="polite">{results.length} locations</p><div className="locations-grid">{results.map(x=><LocationCard key={x.id} item={x}/>)}</div>{!results.length&&<div className="empty"><p>No locations match your search.</p><button onClick={()=>{setQ('');setCategory('All');}} className="button">Reset search</button></div>}</section>}
+export function AreaDiscovery({items, initialCategory = 'All'}){const[q,setQ]=useState('');const[category,setCategory]=useState(initialCategory);const results=filterLocations(items, { query: q, category });return <section className="section container"><div className="directory-controls"><label>Search locations<input value={q} onChange={e=>setQ(e.target.value)} placeholder="Find a neighbourhood"/></label><div className="tabs">{['All','Popular','Emerging','Investment'].map(x=><button key={x} aria-pressed={category===x} onClick={()=>setCategory(x)}>{x}</button>)}</div></div><p aria-live="polite">{results.length} locations</p><div className="locations-grid">{results.map(x=><LocationCard key={x.id} item={x}/>)}</div>{!results.length&&<div className="empty"><p>No locations match your search.</p><button onClick={()=>{setQ('');setCategory('All');}} className="button">Reset search</button></div>}</section>}
 export function InsightsDiscovery({items,initialCategory='All'}){const getCategory=(cat)=>{if(!cat||cat.toLowerCase()==='all'||cat.toLowerCase()==='blogs')return 'All';const found=items.find(x=>x.category.toLowerCase()===cat.toLowerCase());return found?found.category:'All';};const[category,setCategory]=useState(getCategory(initialCategory));const[q,setQ]=useState('');useEffect(()=>{setCategory(getCategory(initialCategory));},[initialCategory]);const results=items.filter(x=>(category==='All'||x.category===category)&&x.title.toLowerCase().includes(q.toLowerCase()));return <section className="section container"><div className="directory-controls"><label>Search insights<input value={q} onChange={e=>setQ(e.target.value)}/></label><label>Category<select value={category} onChange={e=>setCategory(e.target.value)}>{['All',...new Set(items.map(x=>x.category))].map(x=><option key={x}>{x}</option>)}</select></label></div><div className="blog-grid">{results.map(x=><BlogCard key={x.id} item={x}/>)}</div>{!results.length&&<p className="empty">No articles match your search.</p>}</section>}

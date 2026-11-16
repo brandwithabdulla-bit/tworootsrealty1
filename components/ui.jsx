@@ -127,19 +127,24 @@ export function PropertyGrid({ items = [], kind = 'properties', carousel = false
 }
 export function DeveloperCard({ item, projectCount = 0 }) { return <article className="developer-card"><Photo src={item.image || images.architecture} alt={`${item.name} architecture and developments`} /><div className="developer-card-content"><div className="developer-card-heading"><h3>{item.name}</h3><span className="developer-monogram" aria-hidden="true">{item.name.slice(0, 1)}</span></div><p>{item.description}</p><div className="developer-card-bottom"><span>{projectCount} {projectCount === 1 ? 'project' : 'projects'}</span><Link className="card-open" href={`/developers/${item.slug}`} aria-label={`Explore ${item.name}`}><ArrowUpRight size={16} className="arrow-icon" /></Link></div></div></article> }
 export function LocationCard({ item }) {
+  const isHiddenFromPopular = Boolean(item.hideInPopularLocations || item.hideInPopular);
+  const displayCategory = (item.category === 'Popular' && isHiddenFromPopular)
+    ? 'Community'
+    : (item.category || 'Community');
+
   return (
     <Link className="property-card location-card" href={`/areas/${item.slug}`}>
       <Photo className="card-backdrop" src={item.image} alt={`Representative community imagery for ${item.name}`} sizes="(max-width: 700px) 95vw, (max-width: 1100px) 50vw, 33vw" />
       <div className="card-top">
         <div className="card-badges">
-          <span className="badge badge-status">{item.category}</span>
+          <span className="badge badge-status">{displayCategory}</span>
         </div>
         <span className="card-open" aria-label={`Explore ${item.name}`}><ArrowUpRight size={16} className="arrow-icon" /></span>
       </div>
       <div className="card-copy">
         <div className="card-meta">
           <span>Community</span>
-          <span>{item.category} · Dubai</span>
+          <span>{displayCategory} · Dubai</span>
         </div>
         <h3>{item.name}</h3>
         <p className="card-location">Explore prime communities &amp; residences</p>

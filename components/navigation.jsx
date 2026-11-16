@@ -9,9 +9,20 @@ const links=[['Home','/'],['About','/about',[['About Two Roots','/about'],['Our 
 export function Wordmark(){return <Link href="/" className="wordmark-img" aria-label="Two Roots Realty home"><img src="/logo.png" alt="Two Roots Realty" className="logo-img" /></Link>}
 export { default as Navbar } from './Navbar';
 
-export function Footer(){
+export function Footer({ popularLocations = [] } = {}){
   const pathname=usePathname();
   if(pathname?.startsWith('/studio'))return null;
+
+  const defaultPopular = [
+    { name: 'Downtown Dubai', slug: 'downtown-dubai' },
+    { name: 'Dubai Marina', slug: 'dubai-marina' },
+    { name: 'Dubai Hills Estate', slug: 'dubai-hills-estate' },
+    { name: 'Dubai Creek Harbour', slug: 'dubai-creek-harbour' }
+  ];
+
+  const popularList = Array.isArray(popularLocations) && popularLocations.length > 0
+    ? popularLocations
+    : defaultPopular;
   return (
     <footer className="site-footer">
       <div className="container">
@@ -43,7 +54,11 @@ export function Footer(){
           </div>
           <div>
             <h3>Popular locations</h3>
-            {[['Downtown Dubai','downtown-dubai'],['Dubai Marina','dubai-marina'],['Dubai Hills Estate','dubai-hills-estate'],['Dubai Creek Harbour','dubai-creek-harbour']].map(([n,s])=><Link key={n} href={`/areas/${s}`}>{n}</Link>)}
+            {popularList.map(item => {
+              const n = item.name || item[0];
+              const s = item.slug || item[1];
+              return <Link key={s} href={`/areas/${s}`}>{n}</Link>;
+            })}
             <div className="footer-social-section">
               <span className="footer-social-label">Follow Us</span>
               <div className="footer-social-icons">
