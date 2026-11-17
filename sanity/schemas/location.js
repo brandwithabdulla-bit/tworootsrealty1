@@ -56,7 +56,7 @@ export default {
       title: 'Hide in Popular Locations',
       type: 'boolean',
       group: 'general',
-      description: 'If turned on, this location will not appear in Popular Locations lists or tabs.',
+      description: 'If turned on, this location will be hidden from the areas directory and popular locations lists (properties & projects under this location remain unaffected).',
       initialValue: false
     },
     {
