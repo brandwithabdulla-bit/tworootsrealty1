@@ -224,7 +224,7 @@ export default function Navbar() {
                 </div>
                 <div className={styles.megaMenuSection}>
                   <h4>Discover</h4>
-                  <Link href="/areas" onClick={closeAllMenus}>Popular Locations</Link>
+                  <Link href="/areas?category=Popular" onClick={closeAllMenus}>Popular Locations</Link>
                   <Link href="/projects?category=Branded%20Residences" onClick={closeAllMenus}>Branded Residences</Link>
                   <Link href="/projects?category=Waterfront" onClick={closeAllMenus}>Waterfront Projects</Link>
                 </div>
@@ -305,7 +305,7 @@ export default function Navbar() {
                   <Link href="/projects?filter=new" onClick={closeAllMenus}>New Launches</Link>
                   <Link href="/projects?status=off-plan" onClick={closeAllMenus}>Off-Plan Projects</Link>
                   <Link href="/projects?status=ready" onClick={closeAllMenus}>Ready Projects</Link>
-                  <Link href="/areas" onClick={closeAllMenus}>Popular Locations</Link>
+                  <Link href="/areas?category=Popular" onClick={closeAllMenus}>Popular Locations</Link>
                   <Link href="/projects?category=Branded%20Residences" onClick={closeAllMenus}>Branded Residences</Link>
                   <Link href="/projects?category=Waterfront" onClick={closeAllMenus}>Waterfront Projects</Link>
                 </div>

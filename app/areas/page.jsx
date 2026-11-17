@@ -1,3 +1,4 @@
+import {Suspense} from 'react';
 import {getLocations} from '@/lib/sanity-data';
 import {images} from '@/data/images';
 import {PageHero,CTASection} from '@/components/ui';
@@ -9,6 +10,6 @@ export const metadata=pageMetadata('Areas','Discover Dubai and UAE locations thr
 
 export default async function Page({ searchParams }){
   const locations = await getLocations();
-  const initialCategory = searchParams?.category || 'All';
-  return <><PageHero eyebrow="Find your place" title="Your life. Your neighbourhood." description="City energy, waterfront calm or space to grow. Start with the setting that feels like you." image={images.community} imageAlt="Dubai premier communities and master-planned neighbourhoods"/><AreaDiscovery items={locations} initialCategory={initialCategory}/><section className="container section"><MapSection item={{name:'Dubai'}}/></section><CTASection title="Not sure where to begin?" text="Tell us about your everyday life, your priorities and your plans. We can help you explore the right locations." label="Find your community"/></>;
+  const initialCategory = searchParams?.category || 'Popular';
+  return <><PageHero eyebrow="Find your place" title="Your life. Your neighbourhood." description="City energy, waterfront calm or space to grow. Start with the setting that feels like you." image={images.community} imageAlt="Dubai premier communities and master-planned neighbourhoods"/><Suspense fallback={null}><AreaDiscovery items={locations} initialCategory={initialCategory}/></Suspense><section className="container section"><MapSection item={{name:'Dubai'}}/></section><CTASection title="Not sure where to begin?" text="Tell us about your everyday life, your priorities and your plans. We can help you explore the right locations." label="Find your community"/></>;
 }
